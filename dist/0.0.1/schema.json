@@ -8,46 +8,49 @@
       "properties": {
         "author": {
           "id": "/properties/data/properties/author", 
-          "title": "The author schema", 
+          "title": "Author name", 
           "type": "string"
         }, 
         "date": {
           "id": "/properties/data/properties/date", 
-          "title": "The date schema", 
+          "title": "Date and time", 
           "type": "string"
         }, 
         "description": {
           "id": "/properties/data/properties/description", 
-          "title": "The description schema", 
+          "title": "Description", 
           "type": "string"
         }, 
         "feature_image_url": {
           "id": "/properties/data/properties/feature_image_url", 
-          "title": "The feature_image_url schema", 
+          "title": "Feature image URL", 
           "type": "string"
         }, 
         "genre": { 
           "id": "/properties/data/properties/genre", 
-          "title": "The genre schema", 
+          "title": "Genre", 
           "type": "string"
         }, 
         "thumbnail_url": {
           "id": "/properties/data/properties/thumbnail_url", 
-          "title": "The thumbnail_url schema", 
+          "title": "Thumbnail URL", 
           "type": "string"
         }, 
         "title": { 
           "id": "/properties/data/properties/title", 
-          "title": "The title schema", 
+          "title": "Title", 
           "type": "string"
         }, 
         "url": {
           "id": "/properties/data/properties/url", 
-          "title": "The url schema", 
+          "title": "Article URL", 
           "type": "string"
         }
       }, 
-      "type": "object"
+      "type": "object",
+      "required": [
+        "date", "description", "feature_image_url", "genre", "thumbnail_url", "title", "url"
+      ]
     }
   }, 
   "type": "object"
