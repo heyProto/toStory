@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#", 
+  "definitions": {}, 
+  "id": "http://example.com/example.json", 
+  "properties": {
+    "data": {
+      "id": "/properties/data", 
+      "properties": {
+        "author": {
+          "id": "/properties/data/properties/author", 
+          "title": "The author schema", 
+          "type": "string"
+        }, 
+        "date": {
+          "id": "/properties/data/properties/date", 
+          "title": "The date schema", 
+          "type": "string"
+        }, 
+        "description": {
+          "id": "/properties/data/properties/description", 
+          "title": "The description schema", 
+          "type": "string"
+        }, 
+        "feature_image_url": {
+          "id": "/properties/data/properties/feature_image_url", 
+          "title": "The feature_image_url schema", 
+          "type": "string"
+        }, 
+        "genre": { 
+          "id": "/properties/data/properties/genre", 
+          "title": "The genre schema", 
+          "type": "string"
+        }, 
+        "thumbnail_url": {
+          "id": "/properties/data/properties/thumbnail_url", 
+          "title": "The thumbnail_url schema", 
+          "type": "string"
+        }, 
+        "title": { 
+          "id": "/properties/data/properties/title", 
+          "title": "The title schema", 
+          "type": "string"
+        }, 
+        "url": {
+          "id": "/properties/data/properties/url", 
+          "title": "The url schema", 
+          "type": "string"
+        }
+      }, 
+      "type": "object"
+    }
+  }, 
+  "type": "object"
+}
