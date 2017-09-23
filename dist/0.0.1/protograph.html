@@ -3,7 +3,7 @@
   <head>
     <meta charset = "UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Link Card</title>
+    <title>toArticle</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.protograph.pykih.com/lib/protograph-core.min.js">
     <link rel="stylesheet" type="text/css" href="card.min.css">
     <script type="text/javascript">
@@ -46,10 +46,10 @@
 
   </head>
   <body>
-    <div id="link-div"></div></br>
+    <div id="article-div"></div></br>
     <script src="card.min.js"></script>
     <script type="text/javascript">
-    var x = new ProtoGraph.Card.toLink();
+    var x = new ProtoGraph.Card.toArticle();
 
     function findGetParameter(parameterName) {
         var result = null,
@@ -75,7 +75,7 @@
         schema_base_path = base_url + "/" + schema_id;
 
       x.init({
-        selector: document.querySelector('#link-div'),
+        selector: document.querySelector('#article-div'),
         data_url: data_base_path + "/data.json",
         schema_url: schema_base_path + "/schema.json",
         configuration_url: data_base_path + "/view_cast.json",
@@ -86,15 +86,20 @@
 
     function renderWithMode(mode) {
       switch(mode){
-        case "laptop":
-          x.renderLaptop();
+        case 'small_image_text':
+          x.renderSmallImgTxtLayout();
           break;
-        case "list":
-          x.renderList();
+        case 'title_text':
+          x.renderTitleTextLayout();
           break;
-        case "mobile":
-        default:
-          x.renderMobile();
+        case 'thumbnail':
+          x.renderTitleThumbnailLayout();
+          break;
+        case 'feature_image':
+          x.renderFeatureImage();
+          break;
+        case 'big_image_text':
+          x.renderBigImgTxtLayout();
           break;
       }
     }

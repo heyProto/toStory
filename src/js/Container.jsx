@@ -89,7 +89,7 @@ export default class ToArticleCard extends React.Component {
       let date = this.calculateDateTime();
       return (
         <a href={data.data.url} target="_blank" className="protograph-url">
-          <div className="col-sm-16">
+          <div id="protograph-div" className="col-sm-16">
             <div className="proto-card tolink-card">
               <div className="title-small-img-text-layout">
                 <div className="card-title">{data.data.title}</div>
@@ -115,7 +115,7 @@ export default class ToArticleCard extends React.Component {
       let date = this.calculateDateTime();
       return (
         <a href={data.data.url} target="_blank" className="protograph-url">
-          <div className="col-sm-16">
+          <div id="protograph-div" className="col-sm-16">
             <div className="proto-card tolink-card">
               <div className="title-text-layout">
                 <div className="card-title">{data.data.title}</div>
@@ -140,7 +140,7 @@ export default class ToArticleCard extends React.Component {
       let date = this.calculateDateTime();
       return (
         <a href={data.data.url} target="_blank" className="protograph-url">
-          <div className="col-sm-16">
+          <div id="protograph-div" className="col-sm-16">
             <div className="proto-card tolink-card">
               <div className="title-thumbnail-layout">
                 <div className="col-sm-12 no-padding-col">
@@ -169,7 +169,7 @@ export default class ToArticleCard extends React.Component {
       let date = this.calculateDateTime();
       return(
         <a href={data.data.url} target="_blank" className="protograph-url">
-          <div className="col-sm-16">
+          <div id="protograph-div" className="col-sm-16">
             <div className="proto-card tolink-card">
               <div className="title-big-img-text-layout">
                 <div className="card-img"><img src={data.data.thumbnail_url}  width="100%"/></div>
@@ -194,7 +194,7 @@ export default class ToArticleCard extends React.Component {
       const data = this.state.dataJSON.card_data;
       return (
         <a href={data.data.url} target="_blank" className="protograph-url">
-          <div className="col-sm-16">
+          <div id="protograph-div" className="col-sm-16">
             <div className="proto-card tolink-card">
               <div className="feature-story-layout">
                 <div className="col-sm-16 no-padding-col feature-area">
