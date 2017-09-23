@@ -4,7 +4,7 @@ import axios from 'axios';
 import ArticleCard from './Container.jsx';
 import JSONSchemaForm from '../../lib/js/react-jsonschema-form';
 
-export default class EditLinkCard extends React.Component {
+export default class EditArticleCard extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -13,7 +13,7 @@ export default class EditLinkCard extends React.Component {
         card_data: {},
         configs: {}
       },
-      mode: "laptop",
+      mode: "small_image_text",
       loading: true,
       publishing: false,
       uiSchemaJSON: {},
@@ -37,60 +37,37 @@ export default class EditLinkCard extends React.Component {
   }
 
   componentDidMount() {
-    // get sample json data based on type i.e string or object
     if (typeof this.props.dataURL === "string"){
-      axios.all([axios.get(this.props.dataURL), axios.get(this.props.schemaURL), axios.get(this.props.optionalConfigURL), axios.get(this.props.optionalConfigSchemaURL), axios.get(this.props.uiSchemaURL)])
-        .then(axios.spread((card, schema, opt_config, opt_config_schema, uiSchema) => {
+      axios.all([axios.get(this.props.dataURL), axios.get(this.props.schemaURL), axios.get(this.props.optionalConfigURL), axios.get(this.props.optionalConfigSchemaURL)])
+        .then(axios.spread((card, schema, opt_config, opt_config_schema) => {
           this.setState({
             dataJSON: {
               card_data: card.data,
               configs: opt_config.data
-            }
+            },
+            schemaJSON: schema.data,
+            optionalConfigJSON: opt_config.data,
+            optionalConfigSchemaJSON: opt_config_schema.data
           });
-          axios.get('https://protograph.pykih.com/api/v1/iframely?url='+this.state.dataJSON.card_data.data.canonical)
-            .then(data => {
-              let obj = {};
-              obj.data = data.data;
-              this.setState({
-                dataJSON:{
-                  card_data: obj,
-                  configs: opt_config.data
-                },
-                schemaJSON: schema.data,
-                optionalConfigJSON: opt_config.data,
-                optionalConfigSchemaJSON: opt_config_schema.data,
-                uiSchemaJSON: uiSchema.data,
-                loading: false
-              })
-            })
-        }));
+        }))
+        .catch((error) => {
+          this.setState({
+            errorOnFetchingData: true
+          })
+        });
     }
   }
 
   onChangeHandler({formData}) {
     switch (this.state.step) {
       case 1:
-        if (formData.data.canonical !== undefined){
-          this.setState({
-            loading: true
-          })
-          axios
-            .get('https://protograph.pykih.com/api/v1/iframely?url='+formData.data.canonical)
-            .then(response => {
-              console.log(response, "response")
-              this.setState((prevStep, prop) => {
-                let dataJSON = prevStep.dataJSON;
-                dataJSON.card_data = response;
-                return {
-                  dataJSON: dataJSON,
-                  loading: false
-                }
-              })
-            })
-            .catch(function (error){
-              console.log(error, "URL not found")
-            })
-        }
+        this.setState((prevStep, prop) => {
+          let dataJSON = prevStep.dataJSON;
+          dataJSON.card_data = formData
+          return {
+            dataJSON: dataJSON
+          }
+        })
         break;
       case 2:
         this.setState((prevStep, prop) => {
@@ -218,29 +195,41 @@ export default class EditLinkCard extends React.Component {
                   formData={this.renderFormData()}
                   >
                   <a id="protograph-prev-link" className={`${this.state.publishing ? 'protograph-disable' : ''}`} onClick={((e) => this.onPrevHandler(e))}>{this.showLinkText()} </a>
-                  <button type="submit" className={`${this.state.publishing || this.state.loading ? 'ui primary loading disabled button' : ''} default-button protograph-primary-button`}>{this.showButtonText()}</button>
+                  <button type="submit" className={`${this.state.publishing ? 'ui primary loading disabled button' : ''} default-button protograph-primary-button`}>{this.showButtonText()}</button>
                 </JSONSchemaForm>
               </div>
               <div className="twelve wide column proto-card-preview proto-share-card-div">
                 <div className="protograph-menu-container">
                   <div className="ui compact menu">
-                    <a className={`item ${this.state.mode === 'laptop' ? 'active' : ''}`}
-                      data-mode='laptop'
+                    <a className={`item ${this.state.mode === 'small_image_text' ? 'active' : ''}`}
+                      data-mode='small_image_text'
                       onClick={this.toggleMode}
                     >
-                      <i className="desktop icon"></i>
+                      <i className="block layout icon"></i>
                     </a>
-                    <a className={`item ${this.state.mode === 'mobile' ? 'active' : ''}`}
-                      data-mode='mobile'
+                    <a className={`item ${this.state.mode === 'title_text' ? 'active' : ''}`}
+                      data-mode='title_text'
                       onClick={this.toggleMode}
                     >
-                      <i className="mobile icon"></i>
+                      <i className="block layout icon"></i>
                     </a>
-                    <a className={`item ${this.state.mode === 'list' ? 'active' : ''}`}
-                      data-mode='list'
+                    <a className={`item ${this.state.mode === 'thumbnail' ? 'active' : ''}`}
+                      data-mode='thumbnail'
                       onClick={this.toggleMode}
                     >
                       <i className="list icon"></i>
+                    </a>
+                     <a className={`item ${this.state.mode === 'big_image_text' ? 'active' : ''}`}
+                      data-mode='big_image_text'
+                      onClick={this.toggleMode}
+                    >
+                      <i className="file image outline  icon"></i>
+                    </a>
+                    <a className={`item ${this.state.mode === 'feature_image' ? 'active' : ''}`}
+                      data-mode='feature_image'
+                      onClick={this.toggleMode}
+                    >
+                      <i className="file image outline  icon"></i>
                     </a>
                   </div>
                 </div>
