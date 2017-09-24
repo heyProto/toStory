@@ -17,6 +17,7 @@
     "browserify": "^11.2.0",
     "browserify-shim": "^3.8.10",
     "css-loader": "^0.26.1",
+    "minifier": "^0.8.1",
     "json-loader": "^0.5.4",
     "node-sass": "^4.2.0",
     "sass-loader": "^4.1.1",
