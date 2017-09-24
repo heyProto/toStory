@@ -231,6 +231,12 @@ export default class EditArticleCard extends React.Component {
                     >
                       <i className="file image outline  icon"></i>
                     </a>
+                    <a className={`item ${this.state.mode === 'title' ? 'active' : ''}`}
+                      data-mode='title'
+                      onClick={this.toggleMode}
+                    >
+                      <i className="file image outline  icon"></i>
+                    </a>
                   </div>
                 </div>
                 <ArticleCard

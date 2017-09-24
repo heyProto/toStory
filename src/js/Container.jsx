@@ -106,6 +106,29 @@ export default class ToArticleCard extends React.Component {
       )
     }
   }
+  renderTitle(){
+    if (this.state.schemaJSON === undefined){
+      return(<div>Loading</div>)
+    } else {
+      const data = this.state.dataJSON.card_data;
+      let date = this.calculateDateTime();
+      return (
+        <a href={data.data.url} target="_blank" className="protograph-url">
+          <div id="protograph-div" className="col-sm-16">
+            <div className="proto-card tolink-card">
+              <div className="title-text-layout">
+                <div className="card-title">{data.data.title}</div>
+                <div className="by-time-line">
+                  {data.data.author !=='' || data.data.hasOwnProperty("author") ? <div className="by-line">{data.data.author}</div> : ''}
+                  <div className="time-ago">{date.month} {date.date[2]}, {date.date[0]} {date.time} {date.am_pm}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      )
+    }
+  }
 
   renderTitleTextLayout() {
     if (this.state.schemaJSON === undefined){
@@ -247,6 +270,8 @@ export default class ToArticleCard extends React.Component {
         return this.renderFeatureImage();
       case 'big_image_text':
         return this.renderBigImgTxtLayout();
+      case 'title':
+        return this.renderTitle();
       case 'screenshot':
         return this.renderScreenshot();
     }
