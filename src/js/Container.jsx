@@ -94,7 +94,7 @@ export default class ToArticleCard extends React.Component {
               <div className="title-small-img-text-layout">
                 <div className="card-title">{data.data.title}</div>
                 <div className="by-time-line">
-                  {data.data.author !=='' || data.data.hasOwnProperty("author") ? <div className="by-line">{data.data.author}</div> : ''}
+                  {data.data.author !=='' || data.data.hasOwnProperty("author") ? <div className="by-line" style={{color:this.state.dataJSON.configs.house_color}}>{data.data.author}</div> : ''}
                   <div className="time-ago">{date.month} {date.date[2]}, {date.date[0]} {date.time} {date.am_pm}</div>
                 </div>
                 <div className="card-img col-sm-7"><img src={data.data.thumbnail_url} width="100%"/></div>
@@ -119,7 +119,7 @@ export default class ToArticleCard extends React.Component {
               <div className="title-text-layout">
                 <div className="card-title">{data.data.title}</div>
                 <div className="by-time-line">
-                  {data.data.author !=='' || data.data.hasOwnProperty("author") ? <div className="by-line">{data.data.author}</div> : ''}
+                  {data.data.author !=='' || data.data.hasOwnProperty("author") ? <div className="by-line" style={{color:this.state.dataJSON.configs.house_color}}>{data.data.author}</div> : ''}
                   <div className="time-ago">{date.month} {date.date[2]}, {date.date[0]} {date.time} {date.am_pm}</div>
                 </div>
               </div>
@@ -143,7 +143,7 @@ export default class ToArticleCard extends React.Component {
               <div className="title-text-layout">
                 <div className="card-title">{data.data.title}</div>
                 <div className="by-time-line">
-                  {data.data.author !=='' || data.data.hasOwnProperty("author") ? <div className="by-line">{data.data.author}</div> : ''}
+                  {data.data.author !=='' || data.data.hasOwnProperty("author") ? <div className="by-line" style={{color:this.state.dataJSON.configs.house_color}}>{data.data.author}</div> : ''}
                   <div className="time-ago">{date.month} {date.date[2]}, {date.date[0]} {date.time} {date.am_pm}</div>
                 </div>
                 <div className="card-text">{data.data.description}</div>
@@ -169,7 +169,7 @@ export default class ToArticleCard extends React.Component {
                 <div className="col-sm-12 no-padding-col">
                   <div className="card-title">{data.data.title}</div>
                   <div className="by-time-line">
-                    {data.data.author !=='' || data.data.hasOwnProperty("author") ? <div className="by-line">{data.data.author}</div> : ''}
+                    {data.data.author !=='' || data.data.hasOwnProperty("author") ? <div className="by-line" style={{color:this.state.dataJSON.configs.house_color}}>{data.data.author}</div> : ''}
                     <div className="time-ago">{date.month} {date.date[2]}, {date.date[0]} {date.time} {date.am_pm}</div>
                   </div>
                 </div>
@@ -198,7 +198,7 @@ export default class ToArticleCard extends React.Component {
                 <div className="card-img"><img src={data.data.thumbnail_url}  width="100%"/></div>
                 <div className="card-title">{data.data.title}</div>
                 <div className="by-time-line">
-                  {data.data.author !=='' || data.data.hasOwnProperty("author") ? <div className="by-line">{data.data.author}</div> : ''}
+                  {data.data.author !=='' || data.data.hasOwnProperty("author") ? <div className="by-line" style={{color:this.state.dataJSON.configs.house_color}}>{data.data.author}</div> : ''}
                   <div className="time-ago">{date.month} {date.date[2]}, {date.date[0]} {date.time} {date.am_pm}</div>
                 </div>
                 <div className="card-text">{data.data.description}</div>
@@ -246,7 +246,7 @@ export default class ToArticleCard extends React.Component {
             <div className="title-small-img-text-layout">
               <div className="card-title">{data.data.title}</div>
               <div className="by-time-line">
-                {data.data.author !=='' || data.data.hasOwnProperty("author") ? <div className="by-line">{data.data.author}</div> : ''}
+                {data.data.author !=='' || data.data.hasOwnProperty("author") ? <div className="by-line" style={{color:this.state.dataJSON.configs.house_color}}>{data.data.author}</div> : ''}
                 <div className="time-ago">{date.month} {date.date[2]}, {date.date[0]} {date.time} {date.am_pm}</div>
               </div>
               <div className="card-img col-sm-7"><img src={data.data.thumbnail_url} width="100%"/></div>

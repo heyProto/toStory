@@ -2,6 +2,14 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {},
   "id": "http://example.com/example.json",
-  "properties": {},
+  "properties": {
+    "house_color": {
+      "default": "black",
+      "id": "/properties/house_color",
+      "type": "string",
+      "format":"color",
+      "title": "House Color"
+    }
+  },
   "type": "object"
 }
