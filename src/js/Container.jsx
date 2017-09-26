@@ -166,7 +166,7 @@ export default class ToArticleCard extends React.Component {
           <div id="protograph-div">
             <div className="proto-card tolink-card">
               <div className="title-thumbnail-layout">
-                <div className="col-sm-12 card-content no-left-padding">
+                <div className="col-sm-10 card-content no-left-padding">
                   <div className="card-title">{data.data.title}</div>
                   <div className="by-time-line">
                     {data.data.author !=='' || data.data.hasOwnProperty("author") ? <div className="by-line" style={{color:this.state.dataJSON.configs.house_colour}}>{data.data.author}</div> : ''}
