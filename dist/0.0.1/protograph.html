@@ -92,6 +92,9 @@
         case 'title_text':
           x.renderTitleTextLayout();
           break;
+        case 'title':
+          x.renderTitle();
+          break
         case 'thumbnail':
           x.renderTitleThumbnailLayout();
           break;
@@ -100,6 +103,9 @@
           break;
         case 'big_image_text':
           x.renderBigImgTxtLayout();
+          break;
+        default:
+          x.renderTitleTextLayout();
           break;
       }
     }
