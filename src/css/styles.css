@@ -118,4 +118,9 @@ body{
     -moz-column-count: 1;
     column-count: 1;
   }
+  .proto-card .title-big-img-text-layout .card-text{
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+  }
 }
