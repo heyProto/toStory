@@ -68,9 +68,9 @@ export default class ToArticleCard extends React.Component {
       time = data.data.date.split("T")[1];
     let is_am_pm_split = time.split(":"), am_pm;
     if (is_am_pm_split[0] < "12"){
-      am_pm = "a.m."
+      am_pm = "am"
     } else {
-      am_pm = "p.m."
+      am_pm = "pm"
     }
 
     return {
