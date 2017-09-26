@@ -89,7 +89,7 @@ export default class ToArticleCard extends React.Component {
       let date = this.calculateDateTime();
       return (
         <a href={data.data.url} target="_blank" className="protograph-url">
-          <div id="protograph-div" className="col-sm-16">
+          <div id="protograph-div">
             <div className="proto-card tolink-card">
               <div className="title-small-img-text-layout">
                 <div className="card-title">{data.data.title}</div>
@@ -97,8 +97,8 @@ export default class ToArticleCard extends React.Component {
                   {data.data.author !=='' || data.data.hasOwnProperty("author") ? <div className="by-line" style={{color:this.state.dataJSON.configs.house_colour}}>{data.data.author}</div> : ''}
                   <div className="time-ago">{date.month} {date.date[2]}, {date.date[0]} {date.time} {date.am_pm}</div>
                 </div>
-                <div className="card-img col-sm-7"><img src={data.data.thumbnail_url} width="100%"/></div>
-                <div className="card-text col-sm-9">{data.data.description}</div>
+                <div className="card-img col-sm-8 card-content no-left-padding"><img src={data.data.thumbnail_url} width="100%"/></div>
+                <div className="card-text col-sm-8 card-content no-right-padding">{data.data.description}</div>
              </div>
             </div>
           </div>
@@ -114,7 +114,7 @@ export default class ToArticleCard extends React.Component {
       let date = this.calculateDateTime();
       return (
         <a href={data.data.url} target="_blank" className="protograph-url">
-          <div id="protograph-div" className="col-sm-16">
+          <div id="protograph-div">
             <div className="proto-card tolink-card">
               <div className="title-text-layout">
                 <div className="card-title">{data.data.title}</div>
@@ -138,7 +138,7 @@ export default class ToArticleCard extends React.Component {
       let date = this.calculateDateTime();
       return (
         <a href={data.data.url} target="_blank" className="protograph-url">
-          <div id="protograph-div" className="col-sm-16">
+          <div id="protograph-div">
             <div className="proto-card tolink-card">
               <div className="title-text-layout">
                 <div className="card-title">{data.data.title}</div>
@@ -163,17 +163,17 @@ export default class ToArticleCard extends React.Component {
       let date = this.calculateDateTime();
       return (
         <a href={data.data.url} target="_blank" className="protograph-url">
-          <div id="protograph-div" className="col-sm-16">
+          <div id="protograph-div">
             <div className="proto-card tolink-card">
               <div className="title-thumbnail-layout">
-                <div className="col-sm-12 no-padding-col">
+                <div className="col-sm-12 card-content no-left-padding">
                   <div className="card-title">{data.data.title}</div>
                   <div className="by-time-line">
                     {data.data.author !=='' || data.data.hasOwnProperty("author") ? <div className="by-line" style={{color:this.state.dataJSON.configs.house_colour}}>{data.data.author}</div> : ''}
                     <div className="time-ago">{date.month} {date.date[2]}, {date.date[0]} {date.time} {date.am_pm}</div>
                   </div>
                 </div>
-                <div className="col-sm-4 no-padding-col">
+                <div className="col-sm-6 card-content no-right-padding">
                   <div className="card-img"><img src={data.data.thumbnail_url} width="100%"/></div>
                 </div>
               </div>
@@ -192,7 +192,7 @@ export default class ToArticleCard extends React.Component {
       let date = this.calculateDateTime();
       return(
         <a href={data.data.url} target="_blank" className="protograph-url">
-          <div id="protograph-div" className="col-sm-16">
+          <div id="protograph-div">
             <div className="proto-card tolink-card">
               <div className="title-big-img-text-layout">
                 <div className="card-img"><img src={data.data.thumbnail_url}  width="100%"/></div>
@@ -217,10 +217,10 @@ export default class ToArticleCard extends React.Component {
       const data = this.state.dataJSON.card_data;
       return (
         <a href={data.data.url} target="_blank" className="protograph-url">
-          <div id="protograph-div" className="col-sm-16">
+          <div id="protograph-div">
             <div className="proto-card tolink-card">
               <div className="feature-story-layout">
-                <div className="col-sm-16 no-padding-col feature-area">
+                <div className="feature-area">
                   <div className="feature-bg-image"><img src={data.data.feature_image_url} width="100%"/></div>
                   <div className="gradient-layer">
                     <div className="feature-title">{data.data.title}</div>
