@@ -109,18 +109,13 @@ body{
 
 @media only screen and (max-width: 450px){
   .proto-card .title-text-layout .card-text {
-    -webkit-column-count: 1;
-    -moz-column-count: 1;
-    column-count: 1;
+    -webkit-column-count: 1 !important;
+    -moz-column-count: 1 !important;
+    column-count: 1 !important;
   }
   .proto-card .title-big-img-text-layout .card-text {
-    -webkit-column-count: 1;
-    -moz-column-count: 1;
-    column-count: 1;
-  }
-  .proto-card .title-big-img-text-layout .card-text{
-    -webkit-column-count: 1;
-    -moz-column-count: 1;
-    column-count: 1;
+    -webkit-column-count: 1 !important;
+    -moz-column-count: 1 !important;
+    column-count: 1 !important;
   }
 }
