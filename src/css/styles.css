@@ -147,4 +147,7 @@ body{
     padding-right: 0px !important;
     padding-left: 0px !important;
   }
+  .title-small-img-text-layout img{
+    margin-bottom: 10px;
+  }
 }
