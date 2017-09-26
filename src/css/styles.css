@@ -138,4 +138,13 @@ body{
     -moz-column-count: 1 !important;
     column-count: 1 !important;
   }
+  .no-left-padding{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+
+  .no-right-padding{
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+  }
 }
