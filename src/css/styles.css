@@ -25,7 +25,6 @@ body{
   margin-bottom: 15px;
   width: 100%;
   display: inline-block;
-  border-bottom: 1px solid #efefef;
   position: relative;
 }
 .proto-card .card-title {
