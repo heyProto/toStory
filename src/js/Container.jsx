@@ -234,6 +234,34 @@ export default class ToArticleCard extends React.Component {
     }
   }
 
+  renderCol4BigImgTxtLayout () {
+    if (this.state.schemaJSON === undefined) {
+      return (<div>Loading</div>)
+    } else {
+      const data = this.state.dataJSON.card_data;
+      let date = this.calculateDateTime();
+      return (
+        <a href={data.data.url} target="_blank" className="protograph-url">
+          <div id="protograph-div">
+            <div className="proto-card tolink-card tolink-card-mode-col-4 ">
+              <div className="title-big-img-text-layout">
+                <div className="card-img"><img src={data.data.thumbnail_url} width="100%" /></div>
+                <div className="card-title card-title-mode-col-4">{data.data.title}</div>
+                <div className="by-time-line by-time-line-mode-col-4">
+                  {
+                    data.data.author !== '' || data.data.hasOwnProperty("author") ?
+                      <span className="by-line" style={{ color: this.state.dataJSON.configs.house_colour }}>{data.data.author}</span> : ''
+                  }
+                  <span className="time-ago time-ago-mode-col-4">{date.month} {date.date[2]}, {date.date[0]} {date.time} {date.am_pm}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      )
+    }
+  }
+
   renderScreenshot() {
     if (this.state.schemaJSON === undefined){
       return(<div>Loading</div>)
@@ -272,6 +300,8 @@ export default class ToArticleCard extends React.Component {
         return this.renderBigImgTxtLayout();
       case 'title':
         return this.renderTitle();
+      case 'col4_big_image_text':
+        return this.renderCol4BigImgTxtLayout();
       case 'screenshot':
         return this.renderScreenshot();
     }
