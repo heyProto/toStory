@@ -245,7 +245,7 @@ export default class ToArticleCard extends React.Component {
           <div id="protograph-div">
             <div className="proto-card tolink-card tolink-card-mode-col-4 ">
               <div className="title-big-img-text-layout">
-                <div className="card-img"><img src={data.data.thumbnail_url} width="100%" /></div>
+                <div className="card-img"><img src={data.data.thumbnail_url} width="100%" onLoad={(e) => { this.props.clickCallback() }} /></div>
                 <div className="card-title card-title-mode-col-4">{data.data.title}</div>
                 <div className="by-time-line by-time-line-mode-col-4">
                   {
