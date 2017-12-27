@@ -13,7 +13,7 @@ export default class EditArticleCard extends React.Component {
         card_data: {},
         configs: {}
       },
-      mode: "small_image_text",
+      mode: "16_col",
       loading: true,
       publishing: false,
       uiSchemaJSON: {},
@@ -201,41 +201,11 @@ export default class EditArticleCard extends React.Component {
               <div className="twelve wide column proto-card-preview proto-share-card-div">
                 <div className="protograph-menu-container">
                   <div className="ui compact menu">
-                    <a className={`item ${this.state.mode === 'small_image_text' ? 'active' : ''}`}
-                      data-mode='small_image_text'
+                    <a className={`item ${this.state.mode === '16_col' ? 'active' : ''}`}
+                      data-mode='16_col'
                       onClick={this.toggleMode}
                     >
                       <i className="block layout icon"></i>
-                    </a>
-                    <a className={`item ${this.state.mode === 'title_text' ? 'active' : ''}`}
-                      data-mode='title_text'
-                      onClick={this.toggleMode}
-                    >
-                      <i className="block layout icon"></i>
-                    </a>
-                    <a className={`item ${this.state.mode === 'thumbnail' ? 'active' : ''}`}
-                      data-mode='thumbnail'
-                      onClick={this.toggleMode}
-                    >
-                      <i className="list icon"></i>
-                    </a>
-                     <a className={`item ${this.state.mode === 'big_image_text' ? 'active' : ''}`}
-                      data-mode='big_image_text'
-                      onClick={this.toggleMode}
-                    >
-                      <i className="file image outline  icon"></i>
-                    </a>
-                    <a className={`item ${this.state.mode === 'feature_image' ? 'active' : ''}`}
-                      data-mode='feature_image'
-                      onClick={this.toggleMode}
-                    >
-                      <i className="file image outline  icon"></i>
-                    </a>
-                    <a className={`item ${this.state.mode === 'title' ? 'active' : ''}`}
-                      data-mode='title'
-                      onClick={this.toggleMode}
-                    >
-                      <i className="file image outline  icon"></i>
                     </a>
                   </div>
                 </div>

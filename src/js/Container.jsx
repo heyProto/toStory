@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-
+import ta from 'time-ago';
 export default class ToArticleCard extends React.Component {
   constructor(props) {
     super(props)
@@ -81,205 +81,23 @@ export default class ToArticleCard extends React.Component {
     }
   }
 
-  renderSmallImgTxtLayout() {
-    if (this.state.schemaJSON === undefined){
-      return(<div>Loading</div>)
-    } else {
-      const data = this.state.dataJSON.card_data;
-      let date = this.calculateDateTime();
-      return (
-        <a href={data.data.url} target="_blank" className="protograph-url">
-          <div id="protograph-div">
-            <div className="proto-card tolink-card">
-              <div className="title-small-img-text-layout">
-                <div className="card-title">{data.data.title}</div>
-                <div className="by-time-line">
-                  {data.data.author !=='' || data.data.hasOwnProperty("author") ? <div className="by-line" style={{color:this.state.dataJSON.configs.house_colour}}>{data.data.author}</div> : ''}
-                  <div className="time-ago">{date.month} {date.date[2]}, {date.date[0]} {date.time} {date.am_pm}</div>
-                </div>
-                <div className="card-img col-sm-8 card-content no-left-padding"><img src={data.data.thumbnail_url} width="100%"/></div>
-                <div className="card-text col-sm-8 card-content no-right-padding">{data.data.description}</div>
-             </div>
-            </div>
-          </div>
-        </a>
-      )
-    }
-  }
-  renderTitle(){
-    if (this.state.schemaJSON === undefined){
-      return(<div>Loading</div>)
-    } else {
-      const data = this.state.dataJSON.card_data;
-      let date = this.calculateDateTime();
-      return (
-        <a href={data.data.url} target="_blank" className="protograph-url">
-          <div id="protograph-div">
-            <div className="proto-card tolink-card">
-              <div className="title-text-layout">
-                <div className="card-title">{data.data.title}</div>
-                <div className="by-time-line">
-                  {data.data.author !=='' || data.data.hasOwnProperty("author") ? <div className="by-line" style={{color:this.state.dataJSON.configs.house_colour}}>{data.data.author}</div> : ''}
-                  <div className="time-ago">{date.month} {date.date[2]}, {date.date[0]} {date.time} {date.am_pm}</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </a>
-      )
-    }
-  }
-
-  renderTitleTextLayout() {
-    if (this.state.schemaJSON === undefined){
-      return(<div>Loading</div>)
-    } else {
-      const data = this.state.dataJSON.card_data;
-      let date = this.calculateDateTime();
-      return (
-        <a href={data.data.url} target="_blank" className="protograph-url">
-          <div id="protograph-div">
-            <div className="proto-card tolink-card">
-              <div className="title-text-layout">
-                <div className="card-title">{data.data.title}</div>
-                <div className="by-time-line">
-                  {data.data.author !=='' || data.data.hasOwnProperty("author") ? <div className="by-line" style={{color:this.state.dataJSON.configs.house_colour}}>{data.data.author}</div> : ''}
-                  <div className="time-ago">{date.month} {date.date[2]}, {date.date[0]} {date.time} {date.am_pm}</div>
-                </div>
-                <div className="card-text">{data.data.description}</div>
-              </div>
-            </div>
-          </div>
-        </a>
-      )
-    }
-  }
-
-  renderTitleThumbnailLayout(){
-    if (this.state.schemaJSON === undefined){
-      return(<div>Loading</div>)
-    } else {
-      const data = this.state.dataJSON.card_data;
-      let date = this.calculateDateTime();
-      return (
-        <a href={data.data.url} target="_blank" className="protograph-url">
-          <div id="protograph-div">
-            <div className="proto-card tolink-card">
-              <div className="title-thumbnail-layout">
-                <div className="col-sm-10 card-content no-left-padding">
-                  <div className="card-title">{data.data.title}</div>
-                  <div className="by-time-line">
-                    {data.data.author !=='' || data.data.hasOwnProperty("author") ? <div className="by-line" style={{color:this.state.dataJSON.configs.house_colour}}>{data.data.author}</div> : ''}
-                    <div className="time-ago">{date.month} {date.date[2]}, {date.date[0]} {date.time} {date.am_pm}</div>
-                  </div>
-                </div>
-                <div className="col-sm-6 card-content no-right-padding">
-                  <div className="card-img"><img src={data.data.thumbnail_url} width="100%"/></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </a>
-      )
-    }
-  }
-
-  renderBigImgTxtLayout() {
-    if (this.state.schemaJSON === undefined){
-      return(<div>Loading</div>)
-    } else {
-      const data = this.state.dataJSON.card_data;
-      let date = this.calculateDateTime();
+  renderSixteenCol(){
+    if(!this.state.schemaJSON){
       return(
-        <a href={data.data.url} target="_blank" className="protograph-url">
-          <div id="protograph-div">
-            <div className="proto-card tolink-card">
-              <div className="title-big-img-text-layout">
-                <div className="card-img"><img src={data.data.thumbnail_url}  width="100%"/></div>
-                <div className="card-title">{data.data.title}</div>
-                <div className="by-time-line">
-                  {data.data.author !=='' || data.data.hasOwnProperty("author") ? <div className="by-line" style={{color:this.state.dataJSON.configs.house_colour}}>{data.data.author}</div> : ''}
-                  <div className="time-ago">{date.month} {date.date[2]}, {date.date[0]} {date.time} {date.am_pm}</div>
-                </div>
-                <div className="card-text">{data.data.description}</div>
-              </div>
-            </div>
-          </div>
-        </a>
+        <div>Loading</div>
       )
-    }
-  }
-
-  renderFeatureImage(){
-    if (this.state.schemaJSON === undefined){
-      return(<div>Loading</div>)
-    } else {
-      const data = this.state.dataJSON.card_data;
-      return (
-        <a href={data.data.url} target="_blank" className="protograph-url">
-          <div id="protograph-div">
-            <div className="proto-card tolink-card">
-              <div className="feature-story-layout">
-                <div className="feature-area">
-                  <div className="feature-bg-image"><img src={data.data.feature_image_url} width="100%"/></div>
-                  <div className="gradient-layer">
-                    <div className="feature-title">{data.data.title}</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+    }else{
+      console.log(this.state);
+      return(
+        <div className="proto-story-container">
+          {this.state.dataJSON.card_data.data.imageurl ? <img height={430} width={1260} src={this.state.dataJSON.card_data.data.imageurl}></img>: null}
+          {this.state.dataJSON.card_data.data.genre ? <div className="proto-story-genre">
+            {this.state.dataJSON.card_data.data.genre } </div> : null}
+          <div className="proto-story-headline">
+            {this.state.dataJSON.card_data.data.headline}
           </div>
-        </a>
-      )
-    }
-  }
-
-  renderCol4BigImgTxtLayout () {
-    if (this.state.schemaJSON === undefined) {
-      return (<div>Loading</div>)
-    } else {
-      const data = this.state.dataJSON.card_data;
-      let date = this.calculateDateTime();
-      return (
-        <a href={data.data.url} target="_blank" className="protograph-url">
-          <div id="protograph-div">
-            <div className="proto-card tolink-card tolink-card-mode-col-4 ">
-              <div className="title-big-img-text-layout">
-                <div className="card-img"><img src={data.data.thumbnail_url} width="100%" onLoad={(e) => { this.props.clickCallback() }} /></div>
-                <div className="card-title card-title-mode-col-4">{data.data.title}</div>
-                <div className="by-time-line by-time-line-mode-col-4">
-                  {
-                    data.data.author !== '' || data.data.hasOwnProperty("author") ?
-                      <span className="by-line" style={{ color: this.state.dataJSON.configs.house_colour }}>{data.data.author}</span> : ''
-                  }
-                  <span className="time-ago time-ago-mode-col-4">{date.month} {date.date[2]}, {date.date[0]} {date.time} {date.am_pm}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </a>
-      )
-    }
-  }
-
-  renderScreenshot() {
-    if (this.state.schemaJSON === undefined){
-      return(<div>Loading</div>)
-    } else {
-      const data = this.state.dataJSON.card_data;
-      let date = this.calculateDateTime();
-      return (
-        <div id="ProtoScreenshot" className="col-sm-16" style={styles}>
-          <div className="proto-card tolink-card">
-            <div className="title-small-img-text-layout">
-              <div className="card-title">{data.data.title}</div>
-              <div className="by-time-line">
-                {data.data.author !=='' || data.data.hasOwnProperty("author") ? <div className="by-line" style={{color:this.state.dataJSON.configs.house_colour}}>{data.data.author}</div> : ''}
-                <div className="time-ago">{date.month} {date.date[2]}, {date.date[0]} {date.time} {date.am_pm}</div>
-              </div>
-              <div className="card-img col-sm-7"><img src={data.data.thumbnail_url} width="100%"/></div>
-              <div className="card-text col-sm-9">{data.data.description}</div>
-           </div>
+          <div className="proto-story-date">
+            {this.state.dataJSON.card_data.data.byline + ' . ' + ta.ago(this.state.dataJSON.card_data.data.publishedat)}
           </div>
         </div>
       )
@@ -288,22 +106,8 @@ export default class ToArticleCard extends React.Component {
 
   render() {
     switch(this.props.mode) {
-      case 'small_image_text':
-        return this.renderSmallImgTxtLayout();
-      case 'title_text':
-        return this.renderTitleTextLayout();
-      case 'thumbnail':
-        return this.renderTitleThumbnailLayout();
-      case 'feature_image':
-        return this.renderFeatureImage();
-      case 'big_image_text':
-        return this.renderBigImgTxtLayout();
-      case 'title':
-        return this.renderTitle();
-      case 'col4_big_image_text':
-        return this.renderCol4BigImgTxtLayout();
-      case 'screenshot':
-        return this.renderScreenshot();
+      case '16_col':
+        return this.renderSixteenCol();
     }
   }
 }

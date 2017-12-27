@@ -6,50 +6,76 @@
     "data": {
       "id": "/properties/data", 
       "properties": {
-        "author": {
-          "id": "/properties/data/properties/author", 
-          "title": "Author name", 
-          "type": "string"
-        }, 
-        "date": {
-          "id": "/properties/data/properties/date", 
-          "title": "Date and time", 
-          "type": "string"
-        }, 
-        "description": {
-          "id": "/properties/data/properties/description", 
-          "title": "Description", 
-          "type": "string"
-        }, 
-        "feature_image_url": {
-          "id": "/properties/data/properties/feature_image_url", 
-          "title": "Feature image URL", 
-          "type": "string"
-        }, 
-        "genre": { 
-          "id": "/properties/data/properties/genre", 
-          "title": "Genre", 
-          "type": "string"
-        }, 
-        "thumbnail_url": {
-          "id": "/properties/data/properties/thumbnail_url", 
-          "title": "Thumbnail URL", 
-          "type": "string"
-        }, 
-        "title": { 
-          "id": "/properties/data/properties/title", 
-          "title": "Title", 
-          "type": "string"
-        }, 
         "url": {
           "id": "/properties/data/properties/url", 
-          "title": "Article URL", 
+          "title": "Story URL", 
           "type": "string"
+        },
+        "headline":{
+          "title": "Headline", 
+          "type": "string",
+          "min":50,
+          "max": 90
+        },
+        "byline":{
+          "title": "By line", 
+          "type": "string",
+          "min":3,
+          "max": 25
+        },
+        "publishedat":{
+          "title": "Publish Date", 
+          "type": "string",
+          "format":"date-time"
+        },
+        "series":{
+          "title": "Series", 
+          "type": "string",
+          "min":3,
+          "max": 15
+        },
+        "genre":{
+          "title": "Genre", 
+          "type": "string",
+          "min":3,
+          "max": 15
+        },
+        "subgenre":{
+          "title": "Sub-Genre", 
+          "type": "string",
+          "min":3,
+          "max": 15
+        },
+        "sponsored":{
+          "title":"Is it sponsored?",
+          "type":"boolean"
+        },
+        "interactive":{
+          "title":"Does it have an interactive?",
+          "type":"boolean"
+        },
+        "summary":{
+          "title": "Summary", 
+          "type": "string",
+          "min":100,
+          "max": 220
+        },
+        "imageurl":{
+          "title":"Image URL",
+          "type":"string",
+          "format":"uri"
+        },
+        "focus":{
+          "title":"Is the image vertically focused or horizontally focused?",
+          "type":"string",
+          "enum":["h","v"],
+          "enumNames":["Vertically focused","Horizontally focused"],
+          "default":"h"
         }
       }, 
       "type": "object",
       "required": [
-        "date", "description", "feature_image_url", "genre", "thumbnail_url", "title", "url"
+        "url","headline","byline","publishedat"
       ]
     }
   }, 

@@ -1,12 +1,8 @@
 {
   "data": {
-    "author": "Nishant Shekhar",
-    "url":"http://indianexpress.com/article/sports/football/radamel-falcao-in-top-form-as-monaco-moves-level-on-points-with-psg-4857113/",
-    "date" : "2017-09-23T10:41",
-    "description": "Radamel Falcao is making Monaco fans forget Kylian Mbappe’s departure from the French champion. The Colombian striker added two more goals to his impressive tally this season as Monaco heaped more misery on struggling Lille with a 4-0 win at the northern club in the French league on Friday.",
-    "genre": "Nation",
-    "title": "Radamel Falcao in top form as Monaco move level on points with PSG",
-    "thumbnail_url":"http://images.indianexpress.com/2017/09/falcao-reuters-m.jpg",
-    "feature_image_url": "https://i1.wp.com/www.nepalenergyforum.com/wp-content/uploads/2014/05/Narendra-Modi.jpg?resize=500%2C500"
+    "url":"http://localhost:8080/index-edit.html",
+    "headline":"How three generations of Dalit women writers saw their identities and struggle?",
+    "byline":"By Sonakshi Awasthi",
+    "publishedat":"2017-12-27T08:29:00.000Z"
   }
 }
