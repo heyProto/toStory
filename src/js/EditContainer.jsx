@@ -207,11 +207,36 @@ export default class EditArticleCard extends React.Component {
                     >
                       <i className="block layout icon"></i>
                     </a>
+                    <a className={`item ${this.state.mode === '7_col' ? 'active' : ''}`}
+                      data-mode='7_col'
+                      onClick={this.toggleMode}
+                    >
+                      <i className="block layout icon"></i>
+                    </a>
+                    <a className={`item ${this.state.mode === '4_col' ? 'active' : ''}`}
+                      data-mode='4_col'
+                      onClick={this.toggleMode}
+                    >
+                      <i className="block layout icon"></i>
+                    </a>
+                    <a className={`item ${this.state.mode === '3_col' ? 'active' : ''}`}
+                      data-mode='3_col'
+                      onClick={this.toggleMode}
+                    >
+                      <i className="block layout icon"></i>
+                    </a>
+                    <a className={`item ${this.state.mode === '2_col' ? 'active' : ''}`}
+                      data-mode='2_col'
+                      onClick={this.toggleMode}
+                    >
+                      <i className="block layout icon"></i>
+                    </a>
                   </div>
                 </div>
                 <ArticleCard
                   mode={this.state.mode}
                   dataJSON={this.state.dataJSON}
+                  houseColors={this.props.houseColors}
                   schemaJSON={this.state.schemaJSON}
                   optionalConfigJSON={this.state.optionalConfigJSON}
                   optionalConfigSchemaJSON={this.state.optionalConfigSchemaJSON}

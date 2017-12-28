@@ -1,3 +1,4 @@
 {
-    "house_colour": "green"
+    "house_color": "#ff1f00",
+    "inverse_house_color":"#2e9d6f"
 }
