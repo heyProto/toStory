@@ -100,20 +100,25 @@ export default class ToArticleCard extends React.Component {
       }
       console.log(genreColor);
       return(
-        <div className="proto-story-container">
-          {this.state.dataJSON.card_data.data.imageurl ? <img height={430} src={this.state.dataJSON.card_data.data.imageurl}></img>: null}
-          <div className="proto-story-genre-cont">
-            {this.state.dataJSON.card_data.data.genre ? <span className="proto-story-genre" style={{backgroundColor: genreColor}}>
-              {this.state.dataJSON.card_data.data.genre } </span> : null}
-            {
-              this.state.dataJSON.card_data.data.sponsored ? <span className="proto-story-sponsored">SPONSORED</span> : null
-            }
-          </div>
-          <div className="proto-story-headline">
-            {this.state.dataJSON.card_data.data.headline}
-          </div>
-          <div className="proto-story-date">
-            {this.state.dataJSON.card_data.data.byline + ' . ' + ta.ago(this.state.dataJSON.card_data.data.publishedat)}
+        <div className="proto-col col-16">
+          <div className="col-16-story-card">
+          {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:430}} src={this.state.dataJSON.card_data.data.imageurl}></img>: null}
+            <div className="bottom-pull-div">
+              <div className="card-tags">
+                <div class="publisher-icon"></div>
+                {this.state.dataJSON.card_data.data.genre ? <div className="series-name">GenderAnd<div className="gener" style={{backgroundColor: genreColor}}>
+                  {this.state.dataJSON.card_data.data.genre } </div></div> : null}
+                {
+                  this.state.dataJSON.card_data.data.sponsored ? <div className="sub-gener-light">Sponsored</div> : null
+                }
+              </div>
+              <div className="article-title">
+                {this.state.dataJSON.card_data.data.headline}
+              </div>
+              <div className="by-line">
+                {this.state.dataJSON.card_data.data.byline + ' . ' + ta.ago(this.state.dataJSON.card_data.data.publishedat)}
+              </div>
+            </div>
           </div>
         </div>
       )
@@ -133,20 +138,25 @@ export default class ToArticleCard extends React.Component {
         genreColor = this.props.optionalConfigJSON.inverse_house_color;
       }
       return(
-        <div className="proto-story-container-seven proto-story-container">
-          {this.state.dataJSON.card_data.data.imageurl ? <img height={250} src={this.state.dataJSON.card_data.data.imageurl}></img>: null}
-          <div className="proto-story-genre-cont proto-story-genre-seven">
-            {this.state.dataJSON.card_data.data.genre ? <span className="proto-story-genre" style={{backgroundColor: genreColor}}>
-              {this.state.dataJSON.card_data.data.genre } </span> : null}
-            {
-              this.state.dataJSON.card_data.data.sponsored ? <span className="proto-story-sponsored">SPONSORED</span> : null
-            }
-          </div>
-          <div className="proto-story-headline-seven proto-story-headline">
-            {this.state.dataJSON.card_data.data.headline}
-          </div>
-          <div className="proto-story-date-seven proto-story-date">
-            {this.state.dataJSON.card_data.data.byline + ' . ' + ta.ago(this.state.dataJSON.card_data.data.publishedat)}
+        <div className="proto-col col-7">
+          <div className="col-7-story-card">
+          {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:250}} src={this.state.dataJSON.card_data.data.imageurl}></img>: null}
+            <div className="card-tags">
+                <div class="publisher-icon"></div>
+                {this.state.dataJSON.card_data.data.genre ? <div className="series-name">GenderAnd<div className="gener" style={{backgroundColor: genreColor}}>
+                  {this.state.dataJSON.card_data.data.genre } </div></div> : null}
+                {
+                  this.state.dataJSON.card_data.data.sponsored ? <div className="sub-gener-dark">Sponsored</div> : null
+                }
+            </div>
+            <div className="bottom-pull-div">
+              <div className="article-title">
+                {this.state.dataJSON.card_data.data.headline}
+              </div>
+              <div className="by-line">
+                {this.state.dataJSON.card_data.data.byline + ' . ' + ta.ago(this.state.dataJSON.card_data.data.publishedat)}
+              </div>
+            </div>
           </div>
         </div>
       )
@@ -166,20 +176,25 @@ export default class ToArticleCard extends React.Component {
         genreColor = this.props.optionalConfigJSON.inverse_house_color;
       }
       return(
-        <div className="proto-story-container-four proto-story-container">
-          {this.state.dataJSON.card_data.data.imageurl ? <img height={250} src={this.state.dataJSON.card_data.data.imageurl}></img>: null}
-          <div className="proto-story-genre-cont proto-story-genre-four">
-            {this.state.dataJSON.card_data.data.genre ? <span className="proto-story-genre" style={{backgroundColor: genreColor}}>
-              {this.state.dataJSON.card_data.data.genre } </span> : null}
-            {
-              this.state.dataJSON.card_data.data.sponsored ? <span className="proto-story-sponsored">SPONSORED</span> : null
-            }
-          </div>
-          <div className="proto-story-headline-four proto-story-headline">
-            {this.state.dataJSON.card_data.data.headline}
-          </div>
-          <div className="proto-story-date-four proto-story-date">
-            {this.state.dataJSON.card_data.data.byline + ' . ' + ta.ago(this.state.dataJSON.card_data.data.publishedat)}
+        <div className="proto-col col-4">
+          <div className="col-4-story-card">
+          {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:250}} src={this.state.dataJSON.card_data.data.imageurl}></img>: null}
+            <div className="card-tags">
+                <div class="publisher-icon"></div>
+                {this.state.dataJSON.card_data.data.genre ? <div className="series-name">GenderAnd<div className="gener" style={{backgroundColor: genreColor}}>
+                  {this.state.dataJSON.card_data.data.genre } </div></div> : null}
+                {
+                  this.state.dataJSON.card_data.data.sponsored ? <div className="sub-gener-dark">Sponsored</div> : null
+                }
+            </div>
+            <div className="bottom-pull-div">
+              <div className="article-title">
+                {this.state.dataJSON.card_data.data.headline}
+              </div>
+              <div className="by-line">
+                {this.state.dataJSON.card_data.data.byline + ' . ' + ta.ago(this.state.dataJSON.card_data.data.publishedat)}
+              </div>
+            </div>
           </div>
         </div>
       )
@@ -199,20 +214,25 @@ export default class ToArticleCard extends React.Component {
         genreColor = this.props.optionalConfigJSON.inverse_house_color;
       }
       return(
-        <div className="proto-story-container-three proto-story-container">
-          {this.state.dataJSON.card_data.data.imageurl ? <img height={250} src={this.state.dataJSON.card_data.data.imageurl}></img>: null}
-          <div className="proto-story-genre-cont proto-story-genre-three">
-            {this.state.dataJSON.card_data.data.genre ? <span className="proto-story-genre" style={{backgroundColor: genreColor}}>
-              {this.state.dataJSON.card_data.data.genre } </span> : null}
-            {
-              this.state.dataJSON.card_data.data.sponsored ? <span className="proto-story-sponsored">SPONSORED</span> : null
-            }
-          </div>
-          <div className="proto-story-headline-three proto-story-headline">
-            {this.state.dataJSON.card_data.data.headline}
-          </div>
-          <div className="proto-story-date-three proto-story-date">
-            {this.state.dataJSON.card_data.data.byline + ' . ' + ta.ago(this.state.dataJSON.card_data.data.publishedat)}
+        <div className="proto-col col-3">
+          <div className="col-3-story-card">
+          {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:250}} src={this.state.dataJSON.card_data.data.imageurl}></img>: null}
+            <div className="card-tags">
+                <div class="publisher-icon"></div>
+                {this.state.dataJSON.card_data.data.genre ? <div className="series-name">GenderAnd<div className="gener" style={{backgroundColor: genreColor}}>
+                  {this.state.dataJSON.card_data.data.genre } </div></div> : null}
+                {
+                  this.state.dataJSON.card_data.data.sponsored ? <div className="sub-gener-dark">Sponsored</div> : null
+                }
+            </div>
+            <div className="bottom-pull-div">
+              <div className="article-title">
+                {this.state.dataJSON.card_data.data.headline}
+              </div>
+              <div className="by-line">
+                {this.state.dataJSON.card_data.data.byline + ' . ' + ta.ago(this.state.dataJSON.card_data.data.publishedat)}
+              </div>
+            </div>
           </div>
         </div>
       )
@@ -232,20 +252,25 @@ export default class ToArticleCard extends React.Component {
         genreColor = this.props.optionalConfigJSON.inverse_house_color;
       }
       return(
-        <div className="proto-story-container-two proto-story-container">
-          {this.state.dataJSON.card_data.data.imageurl ? <img height={250} src={this.state.dataJSON.card_data.data.imageurl}></img>: null}
-          <div className="proto-story-genre-cont proto-story-genre-two">
-            {this.state.dataJSON.card_data.data.genre ? <span className="proto-story-genre" style={{backgroundColor: genreColor}}>
-              {this.state.dataJSON.card_data.data.genre } </span> : null}
-            {
-              this.state.dataJSON.card_data.data.sponsored ? <span className="proto-story-sponsored">SPONSORED</span> : null
-            }
-          </div>
-          <div className="proto-story-headline-two proto-story-headline">
-            {this.state.dataJSON.card_data.data.headline}
-          </div>
-          <div className="proto-story-date-two proto-story-date">
-            {this.state.dataJSON.card_data.data.byline + ' . ' + ta.ago(this.state.dataJSON.card_data.data.publishedat)}
+        <div className="proto-col col-2">
+          <div className="col-2-story-card">
+          {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:250}} src={this.state.dataJSON.card_data.data.imageurl}></img>: null}
+            <div className="card-tags">
+                <div class="publisher-icon"></div>
+                {this.state.dataJSON.card_data.data.genre ? <div className="series-name">GenderAnd<div className="gener" style={{backgroundColor: genreColor}}>
+                  {this.state.dataJSON.card_data.data.genre } </div></div> : null}
+                {
+                  this.state.dataJSON.card_data.data.sponsored ? <div className="sub-gener-dark">Sponsored</div> : null
+                }
+            </div>
+            <div className="bottom-pull-div">
+              <div className="article-title">
+                {this.state.dataJSON.card_data.data.headline}
+              </div>
+              <div className="by-line">
+                {this.state.dataJSON.card_data.data.byline + ' . ' + ta.ago(this.state.dataJSON.card_data.data.publishedat)}
+              </div>
+            </div>
           </div>
         </div>
       )
