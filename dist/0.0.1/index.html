@@ -16,18 +16,27 @@
         switch(bucket_name){
           case "cdn.protograph":
             siteId = '1';
+            window.ref_link_sources_url = "https://cdn.protograph.pykih.com/Assets/ref_link_sources.json"
             break;
           case "staging.cdn.protograph":
             siteId = '2';
+            window.ref_link_sources_url = "https://dkqrqc7q64awx.cloudfront.net/Assets/ref_link_sources.json"
             break;
         }
       } else if (origin === 'https://dkqrqc7q64awx.cloudfront.net') {
         siteId = '2';
         base_url = origin;
+        window.ref_link_sources_url = "https://dkqrqc7q64awx.cloudfront.net/Assets/ref_link_sources.json"
       } else {
         siteId = '1';
         base_url = origin;
+        window.ref_link_sources_url = "https://cdn.protograph.pykih.com/Assets/ref_link_sources.json"
       }
+
+      if(!window.ref_link_sources_url){
+        window.ref_link_sources_url = "https://s3.ap-south-1.amazonaws.com/dev.cdn.protograph/Assets/ref_link_sources.json"
+      }
+
 
       if(siteId){
         var _paq = _paq || [];
@@ -46,7 +55,7 @@
 
   </head>
   <body>
-    <div id="article-div" class="col-sm-16 no-padding-col"></div>
+    <div id="tolink-div" class="col-sm-16 no-padding-col"></div>
     <script src="https://cdn.protograph.pykih.com/lib/protograph-core.min.js"></script>
     <script src="card.min.js"></script>
     <script type="text/javascript">
@@ -76,23 +85,31 @@
     var ReceiverConsumer = Oasis.Consumer.extend({
       requests: {
         receive: function(mode) {
-          if(typeof (view_cast_id) !== 'undefined' && typeof(schema_id) !== 'undefined'){
+          console.log("hi", 1==1 || typeof (view_cast_id) !== 'undefined' && typeof(schema_id) !== 'undefined');
+          if(1==1 || typeof (view_cast_id) !== 'undefined' && typeof(schema_id) !== 'undefined'){
             var that = this,
               data_base_path = base_url + "/" + view_cast_id,
               schema_base_path = base_url + "/" + schema_id;
+
             x.init({
-              selector: document.querySelector('#article-div'),
+              selector: document.querySelector('#tolink-div'),
               data_url: data_base_path + "/data.json",
               schema_url: schema_base_path + "/schema.json",
               configuration_url: data_base_path + "/view_cast.json",
               configuration_schema_url: 'configuration_schema.json',
+              // selector: document.querySelector('#tolink-div'),
+              // data_url: 'sample.json',
+              // domain: 'http://indianexpress.com',
+              // schema_url: 'schema.json',
+              // configuration_url: 'configuration_sample.json', //will come from local folder
+              // configuration_schema_url: 'configuration_schema.json', //will come from local folder
               onClickCallback: function () {
                 let h = x.getData().height,
                   w = x.getData().width;
                 that.send('resize_frame', { width: w, height: h })
               }
             })
-            renderWithMode(mode);
+            x.renderSevenCol();
           }
         }
       },
@@ -129,29 +146,23 @@
 
     function renderWithMode(mode) {
       switch(mode){
-        case 'small_image_text':
-          x.renderSmallImgTxtLayout();
+        case 'col16':
+          x.renderSixteenCol();
           break;
-        case 'title_text':
-          x.renderTitleTextLayout();
+        case 'col7':
+          x.renderSevenCol();
           break;
-        case 'thumbnail':
-          x.renderTitleThumbnailLayout();
+        case 'col4':
+          x.renderFourCol();
           break;
-        case 'title':
-          x.renderTitle();
+        case 'col3':
+          x.renderThreeCol();
           break
-        case 'feature_image':
-          x.renderFeatureImage();
-          break;
-        case 'big_image_text':
-          x.renderBigImgTxtLayout();
-          break;
-        case 'col4_big_image_text':
-          x.renderCol4BigImgTxtLayout();
+        case 'col2':
+          x.renderTwoCol();
           break;
         default:
-          x.renderTitleTextLayout();
+          x.renderSevenCol();
           break;
       }
     }
