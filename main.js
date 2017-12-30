@@ -5,19 +5,19 @@ import ArticleCard from './src/js/Container.jsx';
 window.ProtoGraph = window.ProtoGraph || {};
 window.ProtoGraph.Card = window.ProtoGraph.Card || {};
 
-ProtoGraph.Card.toArticle = function () {
-  this.cardType = 'toArticleCard';
+ProtoGraph.Card.toStory = function () {
+  this.cardType = 'toStoryCard';
 }
 
-ProtoGraph.Card.toArticle.prototype.init = function (options) {
+ProtoGraph.Card.toStory.prototype.init = function (options) {
   this.options = options;
 }
 
-ProtoGraph.Card.toArticle.prototype.getData = function (data) {
+ProtoGraph.Card.toStory.prototype.getData = function (data) {
   return this.containerInstance.exportData();
 }
 
-ProtoGraph.Card.toArticle.prototype.renderSixteenCol= function (data) {
+ProtoGraph.Card.toStory.prototype.renderSixteenCol= function (data) {
   this.mode = '16_col';
   ReactDOM.render(
     <ArticleCard
@@ -32,7 +32,7 @@ ProtoGraph.Card.toArticle.prototype.renderSixteenCol= function (data) {
       }}/>,
     this.options.selector);
 }
-ProtoGraph.Card.toArticle.prototype.renderSevenCol= function (data) {
+ProtoGraph.Card.toStory.prototype.renderSevenCol= function (data) {
   this.mode = '7_col';
   ReactDOM.render(
     <ArticleCard
@@ -48,7 +48,7 @@ ProtoGraph.Card.toArticle.prototype.renderSevenCol= function (data) {
     this.options.selector);
 }
 
-ProtoGraph.Card.toArticle.prototype.renderFourCol= function (data) {
+ProtoGraph.Card.toStory.prototype.renderFourCol= function (data) {
   this.mode = '4_col';
   ReactDOM.render(
     <ArticleCard
@@ -65,7 +65,7 @@ ProtoGraph.Card.toArticle.prototype.renderFourCol= function (data) {
 }
 
 
-ProtoGraph.Card.toArticle.prototype.renderThreeCol= function (data) {
+ProtoGraph.Card.toStory.prototype.renderThreeCol= function (data) {
   this.mode = '3_col';
   ReactDOM.render(
     <ArticleCard
@@ -81,7 +81,7 @@ ProtoGraph.Card.toArticle.prototype.renderThreeCol= function (data) {
     this.options.selector);
 }
 
-ProtoGraph.Card.toArticle.prototype.renderTwoCol= function (data) {
+ProtoGraph.Card.toStory.prototype.renderTwoCol= function (data) {
   this.mode = '2_col';
   ReactDOM.render(
     <ArticleCard

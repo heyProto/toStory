@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import ArticleCard from './Container.jsx';
+import StoryCard from './Container.jsx';
 import JSONSchemaForm from '../../lib/js/react-jsonschema-form';
 
-export default class EditArticleCard extends React.Component {
+export default class EditStoryCard extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -186,7 +186,7 @@ export default class EditArticleCard extends React.Component {
                 <div>
                   <div className="section-title-text">Fill the form</div>
                   <div className="ui label proto-pull-right">
-                    toArticle
+                    toStory
                   </div>
                 </div>
                 <JSONSchemaForm schema={this.renderSchemaJSON()}
@@ -205,35 +205,35 @@ export default class EditArticleCard extends React.Component {
                       data-mode='16_col'
                       onClick={this.toggleMode}
                     >
-                      <i className="block layout icon"></i>
+                      col-16
                     </a>
                     <a className={`item ${this.state.mode === '7_col' ? 'active' : ''}`}
                       data-mode='7_col'
                       onClick={this.toggleMode}
                     >
-                      <i className="block layout icon"></i>
+                      col-7
                     </a>
                     <a className={`item ${this.state.mode === '4_col' ? 'active' : ''}`}
                       data-mode='4_col'
                       onClick={this.toggleMode}
                     >
-                      <i className="block layout icon"></i>
+                      col-4
                     </a>
                     <a className={`item ${this.state.mode === '3_col' ? 'active' : ''}`}
                       data-mode='3_col'
                       onClick={this.toggleMode}
                     >
-                      <i className="block layout icon"></i>
+                      col-3
                     </a>
                     <a className={`item ${this.state.mode === '2_col' ? 'active' : ''}`}
                       data-mode='2_col'
                       onClick={this.toggleMode}
                     >
-                      <i className="block layout icon"></i>
+                      col-2
                     </a>
                   </div>
                 </div>
-                <ArticleCard
+                <StoryCard
                   mode={this.state.mode}
                   dataJSON={this.state.dataJSON}
                   houseColors={this.props.houseColors}

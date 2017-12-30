@@ -1,1 +1,1 @@
-# ProtoGraph.Card.toArticle
+# ProtoGraph.Card.toStory

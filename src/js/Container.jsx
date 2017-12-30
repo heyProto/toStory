@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import ta from 'time-ago';
-export default class ToArticleCard extends React.Component {
+export default class toStoryCard extends React.Component {
   constructor(props) {
     super(props)
     let stateVar = {
