@@ -32,13 +32,11 @@ export default class toStoryCard extends React.Component {
       stateVar.optionalConfigSchemaJSON = this.props.optionalConfigSchemaJSON;
     }
     if(this.props.houseColors){
-      console.log("HEll");
       stateVar.optionalConfigJSON.house_color = this.props.houseColors.house_color;
       stateVar.optionalConfigJSON.inverse_house_color = this.props.houseColors.inverse_house_color;
       stateVar.optionalConfigJSON.house_font_color = this.props.houseColors.house_font_color;
       stateVar.optionalConfigJSON.inverse_house_font_color = this.props.houseColors.inverse_house_font_color;
     }
-    console.log(this.props);
     this.state = stateVar;
   }
 
@@ -97,12 +95,12 @@ export default class toStoryCard extends React.Component {
       let genreColor = "rgba(51, 51, 51, 0.75)",
       genreFontColor = "#fff";
       if(this.state.dataJSON.card_data.data.interactive){
-        genreColor = this.props.optionalConfigJSON.house_color;
-        genreFontColor = this.props.optionalConfigJSON.house_font_color;
+        genreColor = this.state.optionalConfigJSON.house_color;
+        genreFontColor = this.state.optionalConfigJSON.house_font_color;
       }
       if(this.state.dataJSON.card_data.data.sponsored){
-        genreColor = this.props.optionalConfigJSON.inverse_house_color;
-        genreFontColor = this.props.optionalConfigJSON.inverse_house_font_color;
+        genreColor = this.state.optionalConfigJSON.inverse_house_color;
+        genreFontColor = this.state.optionalConfigJSON.inverse_house_font_color;
       }
       return(
         <div className="proto-col col-16">
@@ -138,12 +136,12 @@ export default class toStoryCard extends React.Component {
       let genreColor = "rgba(51, 51, 51, 0.75)",
           genreFontColor = "#fff";
       if(this.state.dataJSON.card_data.data.interactive){
-        genreColor = this.props.optionalConfigJSON.house_color;
-        genreFontColor = this.props.optionalConfigJSON.house_font_color;
+        genreColor = this.state.optionalConfigJSON.house_color;
+        genreFontColor = this.state.optionalConfigJSON.house_font_color;
       }
       if(this.state.dataJSON.card_data.data.sponsored){
-        genreColor = this.props.optionalConfigJSON.inverse_house_color;
-        genreFontColor = this.props.optionalConfigJSON.inverse_house_font_color;
+        genreColor = this.state.optionalConfigJSON.inverse_house_color;
+        genreFontColor = this.state.optionalConfigJSON.inverse_house_font_color;
       }
       let light = this.state.dataJSON.card_data.data.imageurl;
       return(
@@ -180,12 +178,12 @@ export default class toStoryCard extends React.Component {
       let genreColor = "rgba(51, 51, 51, 0.75)",
           genreFontColor = "#fff";
       if(this.state.dataJSON.card_data.data.interactive){
-        genreColor = this.props.optionalConfigJSON.house_color;
-        genreFontColor = this.props.optionalConfigJSON.house_font_color;
+        genreColor = this.state.optionalConfigJSON.house_color;
+        genreFontColor = this.state.optionalConfigJSON.house_font_color;
       }
       if(this.state.dataJSON.card_data.data.sponsored){
-        genreColor = this.props.optionalConfigJSON.inverse_house_color;
-        genreFontColor = this.props.optionalConfigJSON.inverse_house_font_color;
+        genreColor = this.state.optionalConfigJSON.inverse_house_color;
+        genreFontColor = this.state.optionalConfigJSON.inverse_house_font_color;
       }
       let light = this.state.dataJSON.card_data.data.imageurl;
       return(
@@ -222,12 +220,12 @@ export default class toStoryCard extends React.Component {
       let genreColor = "rgba(51, 51, 51, 0.75)",
       genreFontColor = "#fff";
       if(this.state.dataJSON.card_data.data.interactive){
-        genreColor = this.props.optionalConfigJSON.house_color;
-        genreFontColor = this.props.optionalConfigJSON.house_font_color;
+        genreColor = this.state.optionalConfigJSON.house_color;
+        genreFontColor = this.state.optionalConfigJSON.house_font_color;
       }
       if(this.state.dataJSON.card_data.data.sponsored){
-        genreColor = this.props.optionalConfigJSON.inverse_house_color;
-        genreFontColor = this.props.optionalConfigJSON.inverse_house_font_color;
+        genreColor = this.state.optionalConfigJSON.inverse_house_color;
+        genreFontColor = this.state.optionalConfigJSON.inverse_house_font_color;
       }
       let light = this.state.dataJSON.card_data.data.imageurl;
       return(
@@ -264,12 +262,12 @@ export default class toStoryCard extends React.Component {
       let genreColor = "rgba(51, 51, 51, 0.75)",
       genreFontColor = "#fff";
       if(this.state.dataJSON.card_data.data.interactive){
-        genreColor = this.props.optionalConfigJSON.house_color;
-        genreFontColor = this.props.optionalConfigJSON.house_font_color;
+        genreColor = this.state.optionalConfigJSON.house_color;
+        genreFontColor = this.state.optionalConfigJSON.house_font_color;
       }
       if(this.state.dataJSON.card_data.data.sponsored){
-        genreColor = this.props.optionalConfigJSON.inverse_house_color;
-        genreFontColor = this.props.optionalConfigJSON.inverse_house_font_color;
+        genreColor = this.state.optionalConfigJSON.inverse_house_color;
+        genreFontColor = this.state.optionalConfigJSON.inverse_house_font_color;
       }
       let light = this.state.dataJSON.card_data.data.imageurl;
       return(
