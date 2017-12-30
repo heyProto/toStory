@@ -22,6 +22,7 @@ ProtoGraph.Card.toStory.prototype.renderSixteenCol= function (data) {
   ReactDOM.render(
     <StoryCard
       dataURL={this.options.data_url}
+      selector={this.options.selector}
       domain= {this.options.domain}
       schemaURL={this.options.schema_url}
       optionalConfigURL={this.options.configuration_url}
@@ -38,6 +39,7 @@ ProtoGraph.Card.toStory.prototype.renderSevenCol= function (data) {
   ReactDOM.render(
     <StoryCard
       dataURL={this.options.data_url}
+      selector={this.options.selector}
       domain= {this.options.domain}
       schemaURL={this.options.schema_url}
       optionalConfigURL={this.options.configuration_url}
@@ -55,6 +57,7 @@ ProtoGraph.Card.toStory.prototype.renderFourCol= function (data) {
   ReactDOM.render(
     <StoryCard
       dataURL={this.options.data_url}
+      selector={this.options.selector}
       domain= {this.options.domain}
       schemaURL={this.options.schema_url}
       optionalConfigURL={this.options.configuration_url}
@@ -73,6 +76,7 @@ ProtoGraph.Card.toStory.prototype.renderThreeCol= function (data) {
   ReactDOM.render(
     <StoryCard
       dataURL={this.options.data_url}
+      selector={this.options.selector}
       domain= {this.options.domain}
       schemaURL={this.options.schema_url}
       optionalConfigURL={this.options.configuration_url}
@@ -90,6 +94,7 @@ ProtoGraph.Card.toStory.prototype.renderTwoCol= function (data) {
   ReactDOM.render(
     <StoryCard
       dataURL={this.options.data_url}
+      selector={this.options.selector}
       domain= {this.options.domain}
       schemaURL={this.options.schema_url}
       optionalConfigURL={this.options.configuration_url}

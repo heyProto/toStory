@@ -69,7 +69,7 @@ export default class toStoryCard extends React.Component {
 
 
   exportData() {
-    return document.querySelector('#protograph-div').getBoundingClientRect();
+    return this.props.selector.getBoundingClientRect();
   }
 
   calculateDateTime() {
@@ -95,6 +95,10 @@ export default class toStoryCard extends React.Component {
     }
   }
 
+  handleClick(){
+    window.open(this.state.dataJSON.card_data.data.url,'_blank');
+  }
+
   renderSixteenCol(){
     if(!this.state.schemaJSON){
       return(
@@ -112,13 +116,19 @@ export default class toStoryCard extends React.Component {
         genreFontColor = this.state.optionalConfigJSON.inverse_house_font_color;
       }
       let fav = undefined;
-      this.state.linkDetails.forEach((link)=>{
-        if(link.url === this.state.domain){
-          fav = link.favicon_url;
-        }
-      });
+      let str = this.state.dataJSON.card_data.data.url;
+      var arr = str.split("/");
+      let dom = arr[0] + "//" + arr[2];
+      console.log(this.state.domain === dom);
+      if(this.state.domain != dom){
+        this.state.linkDetails.forEach((link)=>{
+          if(link.url === dom){
+            fav = link.favicon_url;
+          }
+        });
+      }
       return(
-        <div className="proto-col col-16">
+        <div className="proto-col col-16" onClick={()=>{ this.handleClick() }}>
           <div className="col-16-story-card">
           {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:430, width: 1260}} src={this.state.dataJSON.card_data.data.imageurl}></img>: null}
             <div className="bottom-pull-div">
@@ -162,14 +172,20 @@ export default class toStoryCard extends React.Component {
         genreFontColor = this.state.optionalConfigJSON.inverse_house_font_color;
       }
       let fav = undefined;
-      this.state.linkDetails.forEach((link)=>{
-        if(link.url === this.state.domain){
-          fav = link.favicon_url;
-        }
-      })
+      let str = this.state.dataJSON.card_data.data.url;
+      var arr = str.split("/");
+      let dom = arr[0] + "//" + arr[2]+'/';
+      if(this.state.domain != dom){
+        this.state.linkDetails.forEach((link)=>{
+          if(link.url === dom){
+            fav = link.favicon_url;
+          }
+        });
+      }
       let light = this.state.dataJSON.card_data.data.imageurl;
+
       return(
-        <div className="proto-col col-7">
+        <div className="proto-col col-7" onClick={()=>{ this.handleClick() }}>
           {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:250, width:540 }} src={this.state.dataJSON.card_data.data.imageurl}></img>: <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:540}}></div>}
           <div className="col-7-story-card">
             <div className="card-tags">
@@ -213,14 +229,20 @@ export default class toStoryCard extends React.Component {
         genreFontColor = this.state.optionalConfigJSON.inverse_house_font_color;
       }
       let fav = undefined;
-      this.state.linkDetails.forEach((link)=>{
-        if(link.url === this.state.domain){
-          fav = link.favicon_url;
-        }
-      })
+      let str = this.state.dataJSON.card_data.data.url;
+      var arr = str.split("/");
+      let dom = arr[0] + "//" + arr[2]+'/';
+      if(this.state.domain != dom){
+        this.state.linkDetails.forEach((link)=>{
+          if(link.url === dom){
+            fav = link.favicon_url;
+          }
+        });
+      }
       let light = this.state.dataJSON.card_data.data.imageurl;
+
       return(
-        <div className="proto-col col-4">
+        <div className="proto-col col-4" onClick={()=>{ this.handleClick() }}>
           {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:250, width:300 }} src={this.state.dataJSON.card_data.data.imageurl}></img>: <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:300}}></div>}
           <div className="col-4-story-card">
             <div className="card-tags">
@@ -264,14 +286,20 @@ export default class toStoryCard extends React.Component {
         genreFontColor = this.state.optionalConfigJSON.inverse_house_font_color;
       }
       let fav = undefined;
-      this.state.linkDetails.forEach((link)=>{
-        if(link.url === this.state.domain){
-          fav = link.favicon_url;
-        }
-      })
+      let str = this.state.dataJSON.card_data.data.url;
+      var arr = str.split("/");
+      let dom = arr[0] + "//" + arr[2]+'/';
+      if(this.state.domain != dom){
+        this.state.linkDetails.forEach((link)=>{
+          if(link.url === dom){
+            fav = link.favicon_url;
+          }
+        });
+      }
       let light = this.state.dataJSON.card_data.data.imageurl;
+
       return(
-        <div className="proto-col col-3">
+        <div className="proto-col col-3" onClick={()=>{ this.handleClick() }}>
           {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:250, width:220 }} src={this.state.dataJSON.card_data.data.imageurl}></img>: <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:220}}></div>}
           <div className="col-3-story-card" >
             <div className="card-tags">
@@ -315,14 +343,20 @@ export default class toStoryCard extends React.Component {
         genreFontColor = this.state.optionalConfigJSON.inverse_house_font_color;
       }
       let fav = undefined;
-      this.state.linkDetails.forEach((link)=>{
-        if(link.url === this.state.domain){
-          fav = link.favicon_url;
-        }
-      })
+      let str = this.state.dataJSON.card_data.data.url;
+      var arr = str.split("/");
+      let dom = arr[0] + "//" + arr[2]+'/';
+      if(this.state.domain != dom){
+        this.state.linkDetails.forEach((link)=>{
+          if(link.url === dom){
+            fav = link.favicon_url;
+          }
+        });
+      }
       let light = this.state.dataJSON.card_data.data.imageurl;
+
       return(
-        <div className="proto-col col-2">
+        <div className="proto-col col-2" onClick={()=>{ this.handleClick() }}>
           {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:250, width:140 }} src={this.state.dataJSON.card_data.data.imageurl}></img>: <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:140}}></div>}
           <div className="col-2-story-card">
             <div className="card-tags">

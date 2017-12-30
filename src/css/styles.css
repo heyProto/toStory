@@ -617,6 +617,7 @@ body {
 
 .proto-col {
   display: inline-table;
+  cursor: pointer;
   margin-right: 20px;
   position: relative;
   float: left;
