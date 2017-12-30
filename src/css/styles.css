@@ -326,7 +326,7 @@ body{
 }
 
 .col-3-story-card{
-	background: #fafafa;
+	background: transparent;
 	height: 250px;
 	position: relative;
 	padding: 12px;
@@ -367,7 +367,7 @@ body{
 }
 
 .col-4-story-card{
-	background: #fafafa;
+	background: transparent;
 	height: 250px;
 	position: relative;
 	padding: 12px;
@@ -404,12 +404,12 @@ body{
 	letter-spacing: 0.5px;
 }
 .col-7-story-card{
-	background: #fafafa;
+	background: transparent;
 	height: 250px;
 	position: relative;
 	padding: 12px;
 	box-sizing: border-box;
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .bottom-pull-div{
@@ -441,7 +441,7 @@ body{
 	letter-spacing: 0.5px;
 }
 .col-2-story-card{
-	background: #fafafa;
+	background: transparent;
 	height: 250px;
 	width: 140px;
 	display: inline-block;

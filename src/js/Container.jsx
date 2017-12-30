@@ -32,9 +32,13 @@ export default class toStoryCard extends React.Component {
       stateVar.optionalConfigSchemaJSON = this.props.optionalConfigSchemaJSON;
     }
     if(this.props.houseColors){
+      console.log("HEll");
       stateVar.optionalConfigJSON.house_color = this.props.houseColors.house_color;
       stateVar.optionalConfigJSON.inverse_house_color = this.props.houseColors.inverse_house_color;
+      stateVar.optionalConfigJSON.house_font_color = this.props.houseColors.house_font_color;
+      stateVar.optionalConfigJSON.inverse_house_font_color = this.props.houseColors.inverse_house_font_color;
     }
+    console.log(this.props);
     this.state = stateVar;
   }
 
@@ -90,23 +94,24 @@ export default class toStoryCard extends React.Component {
         <div>Loading</div>
       )
     }else{
-      let genreColor = "rgba(51, 51, 51, 0.75)";
-      console.log(this.state);
+      let genreColor = "rgba(51, 51, 51, 0.75)",
+      genreFontColor = "#fff";
       if(this.state.dataJSON.card_data.data.interactive){
         genreColor = this.props.optionalConfigJSON.house_color;
+        genreFontColor = this.props.optionalConfigJSON.house_font_color;
       }
       if(this.state.dataJSON.card_data.data.sponsored){
         genreColor = this.props.optionalConfigJSON.inverse_house_color;
+        genreFontColor = this.props.optionalConfigJSON.inverse_house_font_color;
       }
-      console.log(genreColor);
       return(
         <div className="proto-col col-16">
           <div className="col-16-story-card">
-          {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:430}} src={this.state.dataJSON.card_data.data.imageurl}></img>: null}
+          {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:430, width: 1260}} src={this.state.dataJSON.card_data.data.imageurl}></img>: null}
             <div className="bottom-pull-div">
               <div className="card-tags">
-                <div class="publisher-icon"></div>
-                {this.state.dataJSON.card_data.data.genre ? <div className="series-name">GenderAnd<div className="gener" style={{backgroundColor: genreColor}}>
+                <div className="publisher-icon"></div>
+                {this.state.dataJSON.card_data.data.genre ? <div className="series-name">GenderAnd<div className="gener" style={{backgroundColor: genreColor, color: genreFontColor}}>
                   {this.state.dataJSON.card_data.data.genre } </div></div> : null}
                 {
                   this.state.dataJSON.card_data.data.sponsored ? <div className="sub-gener-light">Sponsored</div> : null
@@ -130,30 +135,34 @@ export default class toStoryCard extends React.Component {
         <div>Loading</div>
       )
     }else{
-      let genreColor = "rgba(51, 51, 51, 0.75)";
+      let genreColor = "rgba(51, 51, 51, 0.75)",
+          genreFontColor = "#fff";
       if(this.state.dataJSON.card_data.data.interactive){
         genreColor = this.props.optionalConfigJSON.house_color;
+        genreFontColor = this.props.optionalConfigJSON.house_font_color;
       }
       if(this.state.dataJSON.card_data.data.sponsored){
         genreColor = this.props.optionalConfigJSON.inverse_house_color;
+        genreFontColor = this.props.optionalConfigJSON.inverse_house_font_color;
       }
+      let light = this.state.dataJSON.card_data.data.imageurl;
       return(
         <div className="proto-col col-7">
+          {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:250, width:540 }} src={this.state.dataJSON.card_data.data.imageurl}></img>: <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:540}}></div>}
           <div className="col-7-story-card">
-          {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:250}} src={this.state.dataJSON.card_data.data.imageurl}></img>: null}
             <div className="card-tags">
-                <div class="publisher-icon"></div>
-                {this.state.dataJSON.card_data.data.genre ? <div className="series-name">GenderAnd<div className="gener" style={{backgroundColor: genreColor}}>
+                <div className="publisher-icon"></div>
+                {this.state.dataJSON.card_data.data.genre ? <div className="series-name">GenderAnd<div className="gener" style={{backgroundColor: genreColor,  color: genreFontColor}}>
                   {this.state.dataJSON.card_data.data.genre } </div></div> : null}
                 {
-                  this.state.dataJSON.card_data.data.sponsored ? <div className="sub-gener-dark">Sponsored</div> : null
+                  this.state.dataJSON.card_data.data.sponsored ? <div className="sub-gener-dark" style={{color: light ?'white' :'black' }}>Sponsored</div> : null
                 }
             </div>
             <div className="bottom-pull-div">
-              <div className="article-title">
+              <div className="article-title" style={{color: light ?'white' :'black' }}>
                 {this.state.dataJSON.card_data.data.headline}
               </div>
-              <div className="by-line">
+              <div className="by-line" style={{color: light ?'white' :'black' }}>
                 {this.state.dataJSON.card_data.data.byline + ' . ' + ta.ago(this.state.dataJSON.card_data.data.publishedat)}
               </div>
             </div>
@@ -168,30 +177,34 @@ export default class toStoryCard extends React.Component {
         <div>Loading</div>
       )
     }else{
-      let genreColor = "rgba(51, 51, 51, 0.75)";
+      let genreColor = "rgba(51, 51, 51, 0.75)",
+          genreFontColor = "#fff";
       if(this.state.dataJSON.card_data.data.interactive){
         genreColor = this.props.optionalConfigJSON.house_color;
+        genreFontColor = this.props.optionalConfigJSON.house_font_color;
       }
       if(this.state.dataJSON.card_data.data.sponsored){
         genreColor = this.props.optionalConfigJSON.inverse_house_color;
+        genreFontColor = this.props.optionalConfigJSON.inverse_house_font_color;
       }
+      let light = this.state.dataJSON.card_data.data.imageurl;
       return(
         <div className="proto-col col-4">
+          {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:250, width:300 }} src={this.state.dataJSON.card_data.data.imageurl}></img>: <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:300}}></div>}
           <div className="col-4-story-card">
-          {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:250}} src={this.state.dataJSON.card_data.data.imageurl}></img>: null}
             <div className="card-tags">
-                <div class="publisher-icon"></div>
-                {this.state.dataJSON.card_data.data.genre ? <div className="series-name">GenderAnd<div className="gener" style={{backgroundColor: genreColor}}>
+                <div className="publisher-icon"></div>
+                {this.state.dataJSON.card_data.data.genre ? <div className="series-name">GenderAnd<div className="gener" style={{backgroundColor: genreColor, color: genreFontColor}}>
                   {this.state.dataJSON.card_data.data.genre } </div></div> : null}
                 {
-                  this.state.dataJSON.card_data.data.sponsored ? <div className="sub-gener-dark">Sponsored</div> : null
+                  this.state.dataJSON.card_data.data.sponsored ? <div className="sub-gener-dark" style={{color: light ?'white' :'black' }}>Sponsored</div> : null
                 }
             </div>
             <div className="bottom-pull-div">
-              <div className="article-title">
+              <div className="article-title" style={{color: light ?'white' :'black' }}>
                 {this.state.dataJSON.card_data.data.headline}
               </div>
-              <div className="by-line">
+              <div className="by-line" style={{color: light ?'white' :'black' }}>
                 {this.state.dataJSON.card_data.data.byline + ' . ' + ta.ago(this.state.dataJSON.card_data.data.publishedat)}
               </div>
             </div>
@@ -206,30 +219,34 @@ export default class toStoryCard extends React.Component {
         <div>Loading</div>
       )
     }else{
-      let genreColor = "rgba(51, 51, 51, 0.75)";
+      let genreColor = "rgba(51, 51, 51, 0.75)",
+      genreFontColor = "#fff";
       if(this.state.dataJSON.card_data.data.interactive){
         genreColor = this.props.optionalConfigJSON.house_color;
+        genreFontColor = this.props.optionalConfigJSON.house_font_color;
       }
       if(this.state.dataJSON.card_data.data.sponsored){
         genreColor = this.props.optionalConfigJSON.inverse_house_color;
+        genreFontColor = this.props.optionalConfigJSON.inverse_house_font_color;
       }
+      let light = this.state.dataJSON.card_data.data.imageurl;
       return(
         <div className="proto-col col-3">
-          <div className="col-3-story-card">
-          {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:250}} src={this.state.dataJSON.card_data.data.imageurl}></img>: null}
+          {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:250, width:220 }} src={this.state.dataJSON.card_data.data.imageurl}></img>: <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:220}}></div>}
+          <div className="col-3-story-card" >
             <div className="card-tags">
-                <div class="publisher-icon"></div>
-                {this.state.dataJSON.card_data.data.genre ? <div className="series-name">GenderAnd<div className="gener" style={{backgroundColor: genreColor}}>
+                <div className="publisher-icon"></div>
+                {this.state.dataJSON.card_data.data.genre ? <div className="series-name">GenderAnd<div className="gener" style={{backgroundColor: genreColor,  color: genreFontColor}}>
                   {this.state.dataJSON.card_data.data.genre } </div></div> : null}
                 {
-                  this.state.dataJSON.card_data.data.sponsored ? <div className="sub-gener-dark">Sponsored</div> : null
+                  this.state.dataJSON.card_data.data.sponsored ? <div className="sub-gener-dark" style={{color: light ?'white' :'black' }}>Sponsored</div> : null
                 }
             </div>
             <div className="bottom-pull-div">
-              <div className="article-title">
+              <div className="article-title" style={{color: light ?'white' :'black' }}>
                 {this.state.dataJSON.card_data.data.headline}
               </div>
-              <div className="by-line">
+              <div className="by-line" style={{color: light ?'white' :'black' }}>
                 {this.state.dataJSON.card_data.data.byline + ' . ' + ta.ago(this.state.dataJSON.card_data.data.publishedat)}
               </div>
             </div>
@@ -244,30 +261,30 @@ export default class toStoryCard extends React.Component {
         <div>Loading</div>
       )
     }else{
-      let genreColor = "rgba(51, 51, 51, 0.75)";
+      let genreColor = "rgba(51, 51, 51, 0.75)",
+      genreFontColor = "#fff";
       if(this.state.dataJSON.card_data.data.interactive){
         genreColor = this.props.optionalConfigJSON.house_color;
+        genreFontColor = this.props.optionalConfigJSON.house_font_color;
       }
       if(this.state.dataJSON.card_data.data.sponsored){
         genreColor = this.props.optionalConfigJSON.inverse_house_color;
+        genreFontColor = this.props.optionalConfigJSON.inverse_house_font_color;
       }
+      let light = this.state.dataJSON.card_data.data.imageurl;
       return(
         <div className="proto-col col-2">
+          {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:250, width:140 }} src={this.state.dataJSON.card_data.data.imageurl}></img>: <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:140}}></div>}
           <div className="col-2-story-card">
-          {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:250}} src={this.state.dataJSON.card_data.data.imageurl}></img>: null}
             <div className="card-tags">
-                <div class="publisher-icon"></div>
-                {this.state.dataJSON.card_data.data.genre ? <div className="series-name">GenderAnd<div className="gener" style={{backgroundColor: genreColor}}>
+                {this.state.dataJSON.card_data.data.genre ? <div className="series-name"><div className="gener" style={{backgroundColor: genreColor, color: genreFontColor}}>
                   {this.state.dataJSON.card_data.data.genre } </div></div> : null}
-                {
-                  this.state.dataJSON.card_data.data.sponsored ? <div className="sub-gener-dark">Sponsored</div> : null
-                }
             </div>
             <div className="bottom-pull-div">
-              <div className="article-title">
+              <div className="article-title" style={{color: light ?'white' :'black' }}>
                 {this.state.dataJSON.card_data.data.headline}
               </div>
-              <div className="by-line">
+              <div className="by-line" style={{color: light ?'white' :'black' }}>
                 {this.state.dataJSON.card_data.data.byline + ' . ' + ta.ago(this.state.dataJSON.card_data.data.publishedat)}
               </div>
             </div>
