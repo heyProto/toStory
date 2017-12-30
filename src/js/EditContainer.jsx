@@ -19,8 +19,10 @@ export default class EditStoryCard extends React.Component {
       uiSchemaJSON: {},
       schemaJSON: undefined,
       optionalConfigJSON: {},
-      optionalConfigSchemaJSON: undefined
+      optionalConfigSchemaJSON: undefined,
+      refLinkDetails: undefined
     }
+    this.refLinkSourcesURL = window.ref_link_sources_url;
     this.toggleMode = this.toggleMode.bind(this);
   }
 
@@ -38,8 +40,8 @@ export default class EditStoryCard extends React.Component {
 
   componentDidMount() {
     if (typeof this.props.dataURL === "string"){
-      axios.all([axios.get(this.props.dataURL), axios.get(this.props.schemaURL), axios.get(this.props.optionalConfigURL), axios.get(this.props.optionalConfigSchemaURL)])
-        .then(axios.spread((card, schema, opt_config, opt_config_schema) => {
+      axios.all([axios.get(this.props.dataURL), axios.get(this.props.schemaURL), axios.get(this.props.optionalConfigURL), axios.get(this.props.optionalConfigSchemaURL), axios.get(this.refLinkSourcesURL)])
+        .then(axios.spread((card, schema, opt_config, opt_config_schema, linkSources) => {
           this.setState({
             dataJSON: {
               card_data: card.data,
@@ -47,8 +49,12 @@ export default class EditStoryCard extends React.Component {
             },
             schemaJSON: schema.data,
             optionalConfigJSON: opt_config.data,
-            optionalConfigSchemaJSON: opt_config_schema.data
+            optionalConfigSchemaJSON: opt_config_schema.data,
+            refLinkDetails:linkSources.data
           });
+          if (links.length) {
+            this.checkAndUpdateLinkInfo(links, stateVars.refLinkDetails);
+          }
         }))
         .catch((error) => {
           this.setState({
@@ -98,6 +104,26 @@ export default class EditStoryCard extends React.Component {
         }
         break;
     }
+  }
+  checkAndUpdateLinkInfo(links, refLinkDetails) {
+    links.forEach((e,i) => {
+      let linkDetails = this.lookUpLinkDetail(e.link, refLinkDetails);
+      if (linkDetails) {
+        e.favicon_url = linkDetails.favicon_url;
+        e.publication_name = linkDetails.name;
+      }
+    });
+  }
+
+  lookUpLinkDetail(link, refLinkDetails) {
+    refLinkDetails = refLinkDetails || this.state.refLinkDetails;
+
+    let linkParams = this.parseUrl(link),
+      lookupLink = refLinkDetails.filter((e, i) => {
+        return e.url === linkParams.origin;
+      })[0];
+
+      return lookupLink;
   }
 
   renderSEO() {
@@ -237,9 +263,11 @@ export default class EditStoryCard extends React.Component {
                   mode={this.state.mode}
                   dataJSON={this.state.dataJSON}
                   houseColors={this.props.houseColors}
+                  domain={this.props.domain}
                   schemaJSON={this.state.schemaJSON}
                   optionalConfigJSON={this.state.optionalConfigJSON}
                   optionalConfigSchemaJSON={this.state.optionalConfigSchemaJSON}
+                  linkDetails={this.state.refLinkDetails}
                 />
               </div>
             </div>

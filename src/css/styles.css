@@ -535,10 +535,15 @@ body{
 .card-tags .publisher-icon{
 	height: 25px;
 	width: 25px;
-	background: red;
 	float: left;
 	margin-right: 10px;
 	border-radius: 50px;
+}
+
+.favicon{
+  height: 25px;
+  width: 25px;
+  border-radius: 50px;
 }
 
 .card-tags .series-name{

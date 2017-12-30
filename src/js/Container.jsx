@@ -12,6 +12,8 @@ export default class toStoryCard extends React.Component {
         configs: {}
       },
       schemaJSON: undefined,
+      linkDetails: undefined,
+      domain: undefined,
       optionalConfigJSON: {},
       optionalConfigSchemaJSON: undefined
     };
@@ -31,6 +33,12 @@ export default class toStoryCard extends React.Component {
     if (this.props.optionalConfigSchemaJSON) {
       stateVar.optionalConfigSchemaJSON = this.props.optionalConfigSchemaJSON;
     }
+    if(this.props.linkDetails){
+      stateVar.linkDetails = this.props.linkDetails;
+    }
+    if(this.props.domain){
+      stateVar.domain = this.props.domain;
+    }
     if(this.props.houseColors){
       stateVar.optionalConfigJSON.house_color = this.props.houseColors.house_color;
       stateVar.optionalConfigJSON.inverse_house_color = this.props.houseColors.inverse_house_color;
@@ -42,14 +50,15 @@ export default class toStoryCard extends React.Component {
 
   componentDidMount() {
     if (this.state.fetchingData){
-      axios.all([axios.get(this.props.dataURL), axios.get(this.props.schemaURL), axios.get(this.props.optionalConfigURL), axios.get(this.props.optionalConfigSchemaURL)])
-        .then(axios.spread((card, schema, opt_config, opt_config_schema) => {
+      axios.all([axios.get(this.props.dataURL), axios.get(this.props.schemaURL), axios.get(this.props.optionalConfigURL), axios.get(this.props.optionalConfigSchemaURL), axios.get(window.ref_link_sources_url)])
+        .then(axios.spread((card, schema, opt_config, opt_config_schema, links) => {
           this.setState({
             fetchingData: false,
             dataJSON: {
               card_data: card.data,
               configs: opt_config.data
             },
+            linkDetails:links.data,
             schemaJSON: schema.data,
             optionalConfigJSON: opt_config.data,
             optionalConfigSchemaJSON: opt_config_schema.data
@@ -102,13 +111,22 @@ export default class toStoryCard extends React.Component {
         genreColor = this.state.optionalConfigJSON.inverse_house_color;
         genreFontColor = this.state.optionalConfigJSON.inverse_house_font_color;
       }
+      let fav = undefined;
+      this.state.linkDetails.forEach((link)=>{
+        if(link.url === this.state.domain){
+          fav = link.favicon_url;
+        }
+      });
       return(
         <div className="proto-col col-16">
           <div className="col-16-story-card">
           {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:430, width: 1260}} src={this.state.dataJSON.card_data.data.imageurl}></img>: null}
             <div className="bottom-pull-div">
               <div className="card-tags">
-                <div className="publisher-icon"></div>
+                {fav ? 
+                <div className="publisher-icon">
+                  <img className="favicon" src = {fav}/>
+                </div> : null}
                 {this.state.dataJSON.card_data.data.genre ? <div className="series-name">GenderAnd<div className="gener" style={{backgroundColor: genreColor, color: genreFontColor}}>
                   {this.state.dataJSON.card_data.data.genre } </div></div> : null}
                 {
@@ -143,13 +161,22 @@ export default class toStoryCard extends React.Component {
         genreColor = this.state.optionalConfigJSON.inverse_house_color;
         genreFontColor = this.state.optionalConfigJSON.inverse_house_font_color;
       }
+      let fav = undefined;
+      this.state.linkDetails.forEach((link)=>{
+        if(link.url === this.state.domain){
+          fav = link.favicon_url;
+        }
+      })
       let light = this.state.dataJSON.card_data.data.imageurl;
       return(
         <div className="proto-col col-7">
           {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:250, width:540 }} src={this.state.dataJSON.card_data.data.imageurl}></img>: <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:540}}></div>}
           <div className="col-7-story-card">
             <div className="card-tags">
-                <div className="publisher-icon"></div>
+            {fav ? 
+                <div className="publisher-icon">
+                  <img className="favicon" src = {fav}/>
+                </div> : null}
                 {this.state.dataJSON.card_data.data.genre ? <div className="series-name">GenderAnd<div className="gener" style={{backgroundColor: genreColor,  color: genreFontColor}}>
                   {this.state.dataJSON.card_data.data.genre } </div></div> : null}
                 {
@@ -185,13 +212,22 @@ export default class toStoryCard extends React.Component {
         genreColor = this.state.optionalConfigJSON.inverse_house_color;
         genreFontColor = this.state.optionalConfigJSON.inverse_house_font_color;
       }
+      let fav = undefined;
+      this.state.linkDetails.forEach((link)=>{
+        if(link.url === this.state.domain){
+          fav = link.favicon_url;
+        }
+      })
       let light = this.state.dataJSON.card_data.data.imageurl;
       return(
         <div className="proto-col col-4">
           {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:250, width:300 }} src={this.state.dataJSON.card_data.data.imageurl}></img>: <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:300}}></div>}
           <div className="col-4-story-card">
             <div className="card-tags">
-                <div className="publisher-icon"></div>
+            {fav ? 
+                <div className="publisher-icon">
+                  <img className="favicon" src = {fav}/>
+                </div> : null}
                 {this.state.dataJSON.card_data.data.genre ? <div className="series-name">GenderAnd<div className="gener" style={{backgroundColor: genreColor, color: genreFontColor}}>
                   {this.state.dataJSON.card_data.data.genre } </div></div> : null}
                 {
@@ -227,13 +263,22 @@ export default class toStoryCard extends React.Component {
         genreColor = this.state.optionalConfigJSON.inverse_house_color;
         genreFontColor = this.state.optionalConfigJSON.inverse_house_font_color;
       }
+      let fav = undefined;
+      this.state.linkDetails.forEach((link)=>{
+        if(link.url === this.state.domain){
+          fav = link.favicon_url;
+        }
+      })
       let light = this.state.dataJSON.card_data.data.imageurl;
       return(
         <div className="proto-col col-3">
           {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:250, width:220 }} src={this.state.dataJSON.card_data.data.imageurl}></img>: <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:220}}></div>}
           <div className="col-3-story-card" >
             <div className="card-tags">
-                <div className="publisher-icon"></div>
+            {fav ? 
+                <div className="publisher-icon">
+                  <img className="favicon" src = {fav}/>
+                </div> : null}
                 {this.state.dataJSON.card_data.data.genre ? <div className="series-name">GenderAnd<div className="gener" style={{backgroundColor: genreColor,  color: genreFontColor}}>
                   {this.state.dataJSON.card_data.data.genre } </div></div> : null}
                 {
@@ -269,6 +314,12 @@ export default class toStoryCard extends React.Component {
         genreColor = this.state.optionalConfigJSON.inverse_house_color;
         genreFontColor = this.state.optionalConfigJSON.inverse_house_font_color;
       }
+      let fav = undefined;
+      this.state.linkDetails.forEach((link)=>{
+        if(link.url === this.state.domain){
+          fav = link.favicon_url;
+        }
+      })
       let light = this.state.dataJSON.card_data.data.imageurl;
       return(
         <div className="proto-col col-2">

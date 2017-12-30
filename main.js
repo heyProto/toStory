@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ArticleCard from './src/js/Container.jsx';
+import StoryCard from './src/js/Container.jsx';
 
 window.ProtoGraph = window.ProtoGraph || {};
 window.ProtoGraph.Card = window.ProtoGraph.Card || {};
@@ -20,8 +20,9 @@ ProtoGraph.Card.toStory.prototype.getData = function (data) {
 ProtoGraph.Card.toStory.prototype.renderSixteenCol= function (data) {
   this.mode = '16_col';
   ReactDOM.render(
-    <ArticleCard
+    <StoryCard
       dataURL={this.options.data_url}
+      domain= {this.options.domain}
       schemaURL={this.options.schema_url}
       optionalConfigURL={this.options.configuration_url}
       optionalConfigSchemaURL={this.options.configuration_schema_url}
@@ -35,8 +36,9 @@ ProtoGraph.Card.toStory.prototype.renderSixteenCol= function (data) {
 ProtoGraph.Card.toStory.prototype.renderSevenCol= function (data) {
   this.mode = '7_col';
   ReactDOM.render(
-    <ArticleCard
+    <StoryCard
       dataURL={this.options.data_url}
+      domain= {this.options.domain}
       schemaURL={this.options.schema_url}
       optionalConfigURL={this.options.configuration_url}
       optionalConfigSchemaURL={this.options.configuration_schema_url}
@@ -51,8 +53,9 @@ ProtoGraph.Card.toStory.prototype.renderSevenCol= function (data) {
 ProtoGraph.Card.toStory.prototype.renderFourCol= function (data) {
   this.mode = '4_col';
   ReactDOM.render(
-    <ArticleCard
+    <StoryCard
       dataURL={this.options.data_url}
+      domain= {this.options.domain}
       schemaURL={this.options.schema_url}
       optionalConfigURL={this.options.configuration_url}
       optionalConfigSchemaURL={this.options.configuration_schema_url}
@@ -68,8 +71,9 @@ ProtoGraph.Card.toStory.prototype.renderFourCol= function (data) {
 ProtoGraph.Card.toStory.prototype.renderThreeCol= function (data) {
   this.mode = '3_col';
   ReactDOM.render(
-    <ArticleCard
+    <StoryCard
       dataURL={this.options.data_url}
+      domain= {this.options.domain}
       schemaURL={this.options.schema_url}
       optionalConfigURL={this.options.configuration_url}
       optionalConfigSchemaURL={this.options.configuration_schema_url}
@@ -84,8 +88,9 @@ ProtoGraph.Card.toStory.prototype.renderThreeCol= function (data) {
 ProtoGraph.Card.toStory.prototype.renderTwoCol= function (data) {
   this.mode = '2_col';
   ReactDOM.render(
-    <ArticleCard
+    <StoryCard
       dataURL={this.options.data_url}
+      domain= {this.options.domain}
       schemaURL={this.options.schema_url}
       optionalConfigURL={this.options.configuration_url}
       optionalConfigSchemaURL={this.options.configuration_schema_url}

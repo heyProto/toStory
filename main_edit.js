@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import EditArticleCard from './src/js/EditContainer.jsx';
+import EditStoryCard from './src/js/EditContainer.jsx';
 
 ProtoGraph.Card.toStory.prototype.getData = function (data) {
   return this.containerInstance.exportData();
@@ -15,9 +15,10 @@ ProtoGraph.Card.toStory.prototype.renderEdit = function (onPublishCallback) {
   this.mode = 'edit';
   this.onPublishCallback = onPublishCallback;
   ReactDOM.render(
-    <EditArticleCard
+    <EditStoryCard
       dataURL={this.options.data_url}
       schemaURL={this.options.schema_url}
+      domain={this.options.domain}
       optionalConfigURL={this.options.configuration_url}
       optionalConfigSchemaURL={this.options.configuration_schema_url}
       onPublishCallback={this.onPublishCallback}
