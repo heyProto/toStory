@@ -69,15 +69,6 @@ export default class EditStoryCard extends React.Component {
       case 1:
         this.setState((prevStep, prop) => {
           let dataJSON = prevStep.dataJSON;
-          dataJSON.card_data = formData
-          return {
-            dataJSON: dataJSON
-          }
-        })
-        break;
-      case 2:
-        this.setState((prevStep, prop) => {
-          let dataJSON = prevStep.dataJSON;
           dataJSON.configs = formData
           return {
             dataJSON: dataJSON
@@ -90,11 +81,6 @@ export default class EditStoryCard extends React.Component {
   onSubmitHandler({formData}) {
     switch(this.state.step) {
       case 1:
-        this.setState({
-          step: 2
-        });
-        break;
-      case 2:
         if (typeof this.props.onPublishCallback === "function") {
           this.setState({ publishing: true });
           let publishCallback = this.props.onPublishCallback();
@@ -169,9 +155,6 @@ export default class EditStoryCard extends React.Component {
   showButtonText() {
     switch(this.state.step) {
       case 1:
-        return 'Next';
-        break;
-      case 2:
         return 'Publish';
         break;
     }

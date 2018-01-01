@@ -73,6 +73,7 @@
           "default":"h"
         }
       }, 
+      "title":"Card Data",
       "type": "object",
       "required": [
         "url","headline","byline","publishedat"

@@ -20,6 +20,10 @@
   height: 100vh;
   padding-top: 15px; }
 
+.form-container{
+  overflow: auto;
+  height:85vh;
+}
 .form-textbox{
   font-family: 'Lato',Helvetica Neue,Arial,Helvetica,sans-serif !important;
 }
