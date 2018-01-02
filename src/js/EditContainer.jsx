@@ -27,27 +27,31 @@ export default class EditStoryCard extends React.Component {
   }
 
   exportData() {
+    let data = this.state.dataJSON;
     let getDataObj = {
       step: this.state.step,
-      dataJSON: this.state.dataJSON.card_data,
+      dataJSON: data.card_data,
       schemaJSON: this.state.schemaJSON,
+      uiSchemaJSON: this.state.uiSchemaJSON,
       optionalConfigJSON: this.state.dataJSON.configs,
       optionalConfigSchemaJSON: this.state.optionalConfigSchemaJSON
     }
-    getDataObj["name"] = getDataObj.dataJSON.data.title.substr(0,225); // Reduces the name to ensure the slug does not get too long
+    console.log(getDataObj);
+    getDataObj["name"] = getDataObj.dataJSON.data.headline.substr(0,225); // Reduces the name to ensure the slug does not get too long
     return getDataObj;
   }
 
   componentDidMount() {
     if (typeof this.props.dataURL === "string"){
-      axios.all([axios.get(this.props.dataURL), axios.get(this.props.schemaURL), axios.get(this.props.optionalConfigURL), axios.get(this.props.optionalConfigSchemaURL), axios.get(this.refLinkSourcesURL)])
-        .then(axios.spread((card, schema, opt_config, opt_config_schema, linkSources) => {
+      axios.all([axios.get(this.props.dataURL), axios.get(this.props.schemaURL), axios.get(this.props.optionalConfigURL), axios.get(this.props.optionalConfigSchemaURL), axios.get(this.refLinkSourcesURL), axios.get(this.props.uiSchemaURL)])
+        .then(axios.spread((card, schema, opt_config, opt_config_schema, linkSources, uiSchema) => {
           this.setState({
             dataJSON: {
               card_data: card.data,
               configs: opt_config.data
             },
             schemaJSON: schema.data,
+            uiSchemaJSON: uiSchema.data,
             optionalConfigJSON: opt_config.data,
             optionalConfigSchemaJSON: opt_config_schema.data,
             refLinkDetails:linkSources.data
@@ -113,7 +117,7 @@ export default class EditStoryCard extends React.Component {
   }
 
   renderSEO() {
-    let seo_blockquote = `<blockquote><h3>${this.state.dataJSON.card_data.data.title}</h3><p>${this.state.dataJSON.card_data.data.description}</p></blockquote>`
+    let seo_blockquote = `<blockquote><h3>${this.state.dataJSON.card_data.data.headline}</h3><p>${this.state.dataJSON.card_data.data.description}</p></blockquote>`
     return seo_blockquote;
   }
 
@@ -198,7 +202,9 @@ export default class EditStoryCard extends React.Component {
                     toStory
                   </div>
                 </div>
-                <JSONSchemaForm schema={this.renderSchemaJSON()}
+                <JSONSchemaForm 
+                  uiSchema={this.state.uiSchemaJSON}
+                  schema={this.renderSchemaJSON()}
                   onSubmit={((e) => this.onSubmitHandler(e))}
                   onChange={((e) => this.onChangeHandler(e))}
                   formData={this.renderFormData()}

@@ -1,3 +1,13 @@
 {
-   
+   "data":{
+    "publishername":{
+        "ui:widget":"hidden"
+    },
+    "domainurl":{
+        "ui:widget":"hidden"
+    },
+    "faviconurl":{
+        "ui:widget":"hidden"
+    }
+   }
 }

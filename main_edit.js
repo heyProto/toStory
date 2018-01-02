@@ -18,6 +18,7 @@ ProtoGraph.Card.toStory.prototype.renderEdit = function (onPublishCallback) {
     <EditStoryCard
       dataURL={this.options.data_url}
       schemaURL={this.options.schema_url}
+      uiSchemaURL={this.options.ui_schema_url}
       domain={this.options.domain}
       optionalConfigURL={this.options.configuration_url}
       optionalConfigSchemaURL={this.options.configuration_schema_url}

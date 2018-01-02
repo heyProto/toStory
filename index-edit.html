@@ -24,6 +24,7 @@
       selector: document.querySelector('#link-div'),
       data_url: './dist/0.0.1/sample.json',
       schema_url: './dist/0.0.1/schema.json',
+      ui_schema_url:'./dist/0.0.1/ui_schema.json',
       domain: 'http://indianexpress.com',
       configuration_url: './dist/0.0.1/configuration_sample.json', //will come from local folder
       configuration_schema_url: './dist/0.0.1/configuration_schema.json', //will come from local folder
@@ -32,6 +33,8 @@
     });
     // x.renderScreenshot();
     x.renderEdit();
+    // setTimeout(function(){ x.getData();},1000);
+    setTimeout(function(){ x.renderSEO();},1000);
     </script>
   </body>
 </html>
