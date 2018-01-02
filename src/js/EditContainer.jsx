@@ -69,7 +69,7 @@ export default class EditStoryCard extends React.Component {
       case 1:
         this.setState((prevStep, prop) => {
           let dataJSON = prevStep.dataJSON;
-          dataJSON.configs = formData
+          dataJSON.card_data = formData
           return {
             dataJSON: dataJSON
           }

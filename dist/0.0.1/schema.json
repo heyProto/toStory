@@ -71,6 +71,15 @@
           "enum":["h","v"],
           "enumNames":["Vertically focused","Horizontally focused"],
           "default":"h"
+        },
+        "publishername":{
+          "type":"string"
+        },
+        "domainurl":{
+          "type":"string"
+        },
+        "faviconurl":{
+          "type":"string"
         }
       }, 
       "title":"Card Data",
