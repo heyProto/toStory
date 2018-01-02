@@ -45,9 +45,25 @@ export default class EditStoryCard extends React.Component {
     if (typeof this.props.dataURL === "string"){
       axios.all([axios.get(this.props.dataURL), axios.get(this.props.schemaURL), axios.get(this.props.optionalConfigURL), axios.get(this.props.optionalConfigSchemaURL), axios.get(this.refLinkSourcesURL), axios.get(this.props.uiSchemaURL)])
         .then(axios.spread((card, schema, opt_config, opt_config_schema, linkSources, uiSchema) => {
+          let formData = card.data;
+          let fav = undefined;
+          let str = formData.data.url;
+          let arr = str.split("/");
+          let name = undefined;
+          let dom = arr[0] + "//" + arr[2];
+          linkSources.data.forEach((link)=>{
+            if(link.url === dom){
+              fav = link.favicon_url;
+              name = link.name;
+            }
+          });
+          formData.data.faviconurl = fav;
+          formData.data.domainurl = dom;
+          formData.data.publishername = name;
+          console.log(formData);
           this.setState({
             dataJSON: {
-              card_data: card.data,
+              card_data: formData,
               configs: opt_config.data
             },
             schemaJSON: schema.data,
@@ -71,9 +87,25 @@ export default class EditStoryCard extends React.Component {
   onChangeHandler({formData}) {
     switch (this.state.step) {
       case 1:
+        
         this.setState((prevStep, prop) => {
           let dataJSON = prevStep.dataJSON;
-          dataJSON.card_data = formData
+          let fav = undefined;
+          let str = formData.data.url;
+          let arr = str.split("/");
+          let name = undefined;
+          let dom = arr[0] + "//" + arr[2];
+          this.state.refLinkDetails.forEach((link)=>{
+            if(link.url === dom){
+              fav = link.favicon_url;
+              name = link.name;
+            }
+          });
+          formData.data.faviconurl = fav;
+          formData.data.domainurl = dom;
+          formData.data.publishername = name;
+          dataJSON.card_data = formData;
+          
           return {
             dataJSON: dataJSON
           }

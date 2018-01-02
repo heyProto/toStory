@@ -115,17 +115,13 @@ export default class toStoryCard extends React.Component {
         genreColor = this.state.optionalConfigJSON.inverse_house_color;
         genreFontColor = this.state.optionalConfigJSON.inverse_house_font_color;
       }
-      let fav = undefined;
+      let fav = this.state.dataJSON.card_data.data.faviconurl;
       let str = this.state.dataJSON.card_data.data.url;
-      var arr = str.split("/");
+      let arr = str.split("/");
+      let name = undefined;
       let dom = arr[0] + "//" + arr[2];
-      console.log(this.state.domain === dom);
-      if(this.state.domain != dom){
-        this.state.linkDetails.forEach((link)=>{
-          if(link.url === dom){
-            fav = link.favicon_url;
-          }
-        });
+      if(this.state.domain === dom){
+        fav = undefined;
       }
       return(
         <div className="proto-col col-16" onClick={()=>{ this.handleClick() }}>
@@ -171,16 +167,13 @@ export default class toStoryCard extends React.Component {
         genreColor = this.state.optionalConfigJSON.inverse_house_color;
         genreFontColor = this.state.optionalConfigJSON.inverse_house_font_color;
       }
-      let fav = undefined;
+      let fav = this.state.dataJSON.card_data.data.faviconurl;
       let str = this.state.dataJSON.card_data.data.url;
-      var arr = str.split("/");
-      let dom = arr[0] + "//" + arr[2]+'/';
-      if(this.state.domain != dom){
-        this.state.linkDetails.forEach((link)=>{
-          if(link.url === dom){
-            fav = link.favicon_url;
-          }
-        });
+      let arr = str.split("/");
+      let name = undefined;
+      let dom = arr[0] + "//" + arr[2];
+      if(this.state.domain === dom){
+        fav = undefined;
       }
       let light = this.state.dataJSON.card_data.data.imageurl;
 
@@ -228,16 +221,13 @@ export default class toStoryCard extends React.Component {
         genreColor = this.state.optionalConfigJSON.inverse_house_color;
         genreFontColor = this.state.optionalConfigJSON.inverse_house_font_color;
       }
-      let fav = undefined;
+      let fav = this.state.dataJSON.card_data.data.faviconurl;
       let str = this.state.dataJSON.card_data.data.url;
-      var arr = str.split("/");
-      let dom = arr[0] + "//" + arr[2]+'/';
-      if(this.state.domain != dom){
-        this.state.linkDetails.forEach((link)=>{
-          if(link.url === dom){
-            fav = link.favicon_url;
-          }
-        });
+      let arr = str.split("/");
+      let name = undefined;
+      let dom = arr[0] + "//" + arr[2];
+      if(this.state.domain === dom){
+        fav = undefined;
       }
       let light = this.state.dataJSON.card_data.data.imageurl;
 
@@ -285,16 +275,13 @@ export default class toStoryCard extends React.Component {
         genreColor = this.state.optionalConfigJSON.inverse_house_color;
         genreFontColor = this.state.optionalConfigJSON.inverse_house_font_color;
       }
-      let fav = undefined;
+      let fav = this.state.dataJSON.card_data.data.faviconurl;
       let str = this.state.dataJSON.card_data.data.url;
-      var arr = str.split("/");
-      let dom = arr[0] + "//" + arr[2]+'/';
-      if(this.state.domain != dom){
-        this.state.linkDetails.forEach((link)=>{
-          if(link.url === dom){
-            fav = link.favicon_url;
-          }
-        });
+      let arr = str.split("/");
+      let name = undefined;
+      let dom = arr[0] + "//" + arr[2];
+      if(this.state.domain === dom){
+        fav = undefined;
       }
       let light = this.state.dataJSON.card_data.data.imageurl;
 
@@ -342,16 +329,13 @@ export default class toStoryCard extends React.Component {
         genreColor = this.state.optionalConfigJSON.inverse_house_color;
         genreFontColor = this.state.optionalConfigJSON.inverse_house_font_color;
       }
-      let fav = undefined;
+      let fav = this.state.dataJSON.card_data.data.faviconurl;
       let str = this.state.dataJSON.card_data.data.url;
-      var arr = str.split("/");
-      let dom = arr[0] + "//" + arr[2]+'/';
-      if(this.state.domain != dom){
-        this.state.linkDetails.forEach((link)=>{
-          if(link.url === dom){
-            fav = link.favicon_url;
-          }
-        });
+      let arr = str.split("/");
+      let name = undefined;
+      let dom = arr[0] + "//" + arr[2];
+      if(this.state.domain === dom){
+        fav = undefined;
       }
       let light = this.state.dataJSON.card_data.data.imageurl;
 
