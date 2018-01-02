@@ -1,10 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Noto+Serif:400,400i,700,700i|Roboto:400,700");
 @import url('https://fonts.googleapis.com/css?family=Bitter|Cabin');
-body{
-  margin: 0px;
-  overflow: hidden;
-}
-
 #protograph-div {
   overflow: hidden;
 }
@@ -296,7 +291,7 @@ body{
 	font-size: 10px;
 	text-transform: uppercase;
 	color: black;
-	background: white; 
+	background: white;
 	float: left;
 	height: 20px;
 	display: inline-block;
@@ -312,7 +307,7 @@ body{
 	font-size: 10px;
 	text-transform: uppercase;
 	color: white;
-	background: red; 
+	background: red;
 	/*float: left;*/
 	height: 18px;
 	display: inline-block;
@@ -385,7 +380,7 @@ body{
   .col-2 {
     width: 300px;
     margin-left: 50%;
-    transform: translate(-50%, 0); } 
+    transform: translate(-50%, 0); }
 }
 
 @media only screen and (max-width: 450px){
