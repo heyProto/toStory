@@ -198,14 +198,16 @@ export default class EditStoryCard extends React.Component {
                     toStory
                   </div>
                 </div>
-                <JSONSchemaForm schema={this.renderSchemaJSON()}
-                  onSubmit={((e) => this.onSubmitHandler(e))}
-                  onChange={((e) => this.onChangeHandler(e))}
-                  formData={this.renderFormData()}
-                  >
-                  <a id="protograph-prev-link" className={`${this.state.publishing ? 'protograph-disable' : ''}`} onClick={((e) => this.onPrevHandler(e))}>{this.showLinkText()} </a>
-                  <button type="submit" className={`${this.state.publishing ? 'ui primary loading disabled button' : ''} default-button protograph-primary-button`}>{this.showButtonText()}</button>
-                </JSONSchemaForm>
+                <div className="protograph-scroll-form">
+                  <JSONSchemaForm schema={this.renderSchemaJSON()}
+                    onSubmit={((e) => this.onSubmitHandler(e))}
+                    onChange={((e) => this.onChangeHandler(e))}
+                    formData={this.renderFormData()}
+                    >
+                    <a id="protograph-prev-link" className={`${this.state.publishing ? 'protograph-disable' : ''}`} onClick={((e) => this.onPrevHandler(e))}>{this.showLinkText()} </a>
+                    <button type="submit" className={`${this.state.publishing ? 'ui primary loading disabled button' : ''} default-button protograph-primary-button`}>{this.showButtonText()}</button>
+                  </JSONSchemaForm>
+                </div>
               </div>
               <div className="twelve wide column proto-card-preview proto-share-card-div">
                 <div className="protograph-menu-container">
