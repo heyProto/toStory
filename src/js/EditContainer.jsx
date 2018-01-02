@@ -191,23 +191,21 @@ export default class EditStoryCard extends React.Component {
         <div className="proto-container">
           <div className="ui grid form-layout">
             <div className="row">
-              <div className="four wide column proto-card-form">
+              <div className="four wide column proto-card-form protograph-scroll-form">
                 <div>
                   <div className="section-title-text">Fill the form</div>
                   <div className="ui label proto-pull-right">
                     toStory
                   </div>
                 </div>
-                <div className="protograph-scroll-form">
-                  <JSONSchemaForm schema={this.renderSchemaJSON()}
-                    onSubmit={((e) => this.onSubmitHandler(e))}
-                    onChange={((e) => this.onChangeHandler(e))}
-                    formData={this.renderFormData()}
-                    >
-                    <a id="protograph-prev-link" className={`${this.state.publishing ? 'protograph-disable' : ''}`} onClick={((e) => this.onPrevHandler(e))}>{this.showLinkText()} </a>
-                    <button type="submit" className={`${this.state.publishing ? 'ui primary loading disabled button' : ''} default-button protograph-primary-button`}>{this.showButtonText()}</button>
-                  </JSONSchemaForm>
-                </div>
+                <JSONSchemaForm schema={this.renderSchemaJSON()}
+                  onSubmit={((e) => this.onSubmitHandler(e))}
+                  onChange={((e) => this.onChangeHandler(e))}
+                  formData={this.renderFormData()}
+                  >
+                  <a id="protograph-prev-link" className={`${this.state.publishing ? 'protograph-disable' : ''}`} onClick={((e) => this.onPrevHandler(e))}>{this.showLinkText()} </a>
+                  <button type="submit" className={`${this.state.publishing ? 'ui primary loading disabled button' : ''} default-button protograph-primary-button`}>{this.showButtonText()}</button>
+                </JSONSchemaForm>
               </div>
               <div className="twelve wide column proto-card-preview proto-share-card-div">
                 <div className="protograph-menu-container">

@@ -63,7 +63,7 @@
 
 .protograph-scroll-form {
   overflow: auto;
-  height: 85vh;
+  height: 100vh;
 }
 
 .ui.styled.fluid.accordion:empty {
@@ -107,40 +107,40 @@
 }
 
 .protograph-loader-container {
-margin: 0 auto;
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%,-50%);
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
 .list-inline {
-padding-left: 0;
+  padding-left: 0;
 }
 
 .list-inline > li {
-list-style: none;
+  list-style: none;
 }
 
 .btn.btn-info.btn-now, .btn.btn-warning.btn-clear {
-display: none;
+  display: none;
 }
 
 .protograph-imagebank-button {
-float: right;
-display: none;
+  float: right;
+  display: none;
 }
 .protograph-new-image {
-display: none;
+  display: none;
 }
 .image-url-container {
-display: none;
+  display: none;
 }
 .protograph-disabled-button {
-pointer-events: none;
-opacity: 0.4;
+  pointer-events: none;
+  opacity: 0.4;
 }
 .protograph-app-holder {
-display: table;
-margin: 40px auto;
+  display: table;
+  margin: 40px auto;
 }
 /*# sourceMappingURL=master-style.css.map */
