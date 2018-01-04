@@ -73,6 +73,7 @@
 	padding: 12px;
 	box-sizing: border-box;
 	margin-bottom: 20px;
+	overflow: hidden;
 }
 
 .bottom-pull-div{
@@ -114,6 +115,7 @@
 	padding: 12px;
 	box-sizing: border-box;
 	margin-bottom: 20px;
+	overflow: hidden;
 }
 
 .bottom-pull-div{
@@ -150,7 +152,8 @@
 	position: relative;
 	padding: 12px;
 	box-sizing: border-box;
-  margin-bottom: 20px;
+  	margin-bottom: 20px;
+  	overflow: hidden;
 }
 
 .bottom-pull-div{
@@ -191,6 +194,7 @@
 	position: relative;
 	padding: 12px;
 	box-sizing: border-box;
+	overflow: hidden;
 }
 
 .bottom-pull-div{
@@ -231,7 +235,7 @@
 	padding-left: 0px;
 }
 
-.col-2-story-card .card-tags .series-name .gener{
+.col-2-story-card .card-tags .series-name .genre{
 	margin-left: 0px;
 }
 
@@ -243,6 +247,7 @@
 	position: relative;
 	box-sizing: border-box;
 	margin-bottom: 20px;
+	overflow: hidden;
 }
 
 .bottom-pull-div{
@@ -264,6 +269,19 @@
 	margin-top: 12px;
 	margin-bottom: 12px;
 	max-width: 860px;
+}
+
+.title-background{
+	height: 200px;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    background: linear-gradient(#3360, #1d1d1d);
+}
+
+.col-16-story-card .title-background{
+	height: 250px;
 }
 
 .by-line{
@@ -303,7 +321,7 @@
 	margin-top: 2px;
 }
 
-.card-tags .series-name .gener{
+.card-tags .series-name .genre{
 	font-size: 10px;
 	text-transform: uppercase;
 	color: white;
@@ -318,7 +336,7 @@
 	border-radius: 4px;
 }
 
-.card-tags .sub-gener-light{
+.card-tags .sub-genre-light{
 	font-size: 12px;
 	text-transform: uppercase;
 	color: white;
@@ -331,7 +349,7 @@
 	font-family: cabin;
 }
 
-.card-tags .sub-gener-dark{
+.card-tags .sub-genre-dark{
 	font-size: 12px;
 	text-transform: uppercase;
 	color: #333;

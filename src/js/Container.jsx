@@ -126,17 +126,18 @@ export default class toStoryCard extends React.Component {
       return(
         <div className="proto-col col-16" onClick={()=>{ this.handleClick() }}>
           <div className="col-16-story-card">
-          {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:430, width: 1260}} src={this.state.dataJSON.card_data.data.imageurl}></img>: null}
+          {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, width: 1260}} src={this.state.dataJSON.card_data.data.imageurl}></img>: null}
+            <div className="title-background"></div>
             <div className="bottom-pull-div">
               <div className="card-tags">
                 {fav ? 
                 <div className="publisher-icon">
                   <img className="favicon" src = {fav}/>
                 </div> : null}
-                {this.state.dataJSON.card_data.data.genre ? <div className="series-name">GenderAnd<div className="gener" style={{backgroundColor: genreColor, color: genreFontColor}}>
+                {this.state.dataJSON.card_data.data.genre ? <div className="series-name">GenderAnd<div className="genre" style={{backgroundColor: genreColor, color: genreFontColor}}>
                   {this.state.dataJSON.card_data.data.genre } </div></div> : null}
                 {
-                  this.state.dataJSON.card_data.data.sponsored ? <div className="sub-gener-light">Sponsored</div> : null
+                  this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-light">Sponsored</div> : null
                 }
               </div>
               <div className="article-title">
@@ -179,17 +180,18 @@ export default class toStoryCard extends React.Component {
 
       return(
         <div className="proto-col col-7" onClick={()=>{ this.handleClick() }}>
-          {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:250, width:540 }} src={this.state.dataJSON.card_data.data.imageurl}></img>: <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:540}}></div>}
           <div className="col-7-story-card">
+            {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, width: 540, zIndex: -1 }} src={this.state.dataJSON.card_data.data.imageurl}></img>: <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:540}}></div>}{this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, width: 540, zIndex: -1 }} src={this.state.dataJSON.card_data.data.imageurl}></img>: <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:540}}></div>}{this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, width: 540, zIndex: -1 }} src={this.state.dataJSON.card_data.data.imageurl}></img>: <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:540}}></div>}
+            <div className="title-background"></div>
             <div className="card-tags">
             {fav ? 
                 <div className="publisher-icon">
                   <img className="favicon" src = {fav}/>
                 </div> : null}
-                {this.state.dataJSON.card_data.data.genre ? <div className="series-name">GenderAnd<div className="gener" style={{backgroundColor: genreColor,  color: genreFontColor}}>
+                {this.state.dataJSON.card_data.data.genre ? <div className="series-name">GenderAnd<div className="genre" style={{backgroundColor: genreColor,  color: genreFontColor}}>
                   {this.state.dataJSON.card_data.data.genre } </div></div> : null}
                 {
-                  this.state.dataJSON.card_data.data.sponsored ? <div className="sub-gener-dark" style={{color: light ?'white' :'black' }}>Sponsored</div> : null
+                  this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black' }}>Sponsored</div> : null
                 }
             </div>
             <div className="bottom-pull-div">
@@ -233,17 +235,18 @@ export default class toStoryCard extends React.Component {
 
       return(
         <div className="proto-col col-4" onClick={()=>{ this.handleClick() }}>
-          {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:250, width:300 }} src={this.state.dataJSON.card_data.data.imageurl}></img>: <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:300}}></div>}
           <div className="col-4-story-card">
+            {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:250, zIndex: -1}} src={this.state.dataJSON.card_data.data.imageurl}></img>: <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:300}}></div>}
+            <div className="title-background"></div>
             <div className="card-tags">
             {fav ? 
                 <div className="publisher-icon">
                   <img className="favicon" src = {fav}/>
                 </div> : null}
-                {this.state.dataJSON.card_data.data.genre ? <div className="series-name">GenderAnd<div className="gener" style={{backgroundColor: genreColor, color: genreFontColor}}>
+                {this.state.dataJSON.card_data.data.genre ? <div className="series-name">GenderAnd<div className="genre" style={{backgroundColor: genreColor, color: genreFontColor}}>
                   {this.state.dataJSON.card_data.data.genre } </div></div> : null}
                 {
-                  this.state.dataJSON.card_data.data.sponsored ? <div className="sub-gener-dark" style={{color: light ?'white' :'black' }}>Sponsored</div> : null
+                  this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black' }}>Sponsored</div> : null
                 }
             </div>
             <div className="bottom-pull-div">
@@ -287,17 +290,18 @@ export default class toStoryCard extends React.Component {
 
       return(
         <div className="proto-col col-3" onClick={()=>{ this.handleClick() }}>
-          {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:250, width:220 }} src={this.state.dataJSON.card_data.data.imageurl}></img>: <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:220}}></div>}
           <div className="col-3-story-card" >
+            {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:250, zIndex:-1}} src={this.state.dataJSON.card_data.data.imageurl}></img>: <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:220}}></div>}
+            <div className="title-background"></div>
             <div className="card-tags">
             {fav ? 
                 <div className="publisher-icon">
                   <img className="favicon" src = {fav}/>
                 </div> : null}
-                {this.state.dataJSON.card_data.data.genre ? <div className="series-name">GenderAnd<div className="gener" style={{backgroundColor: genreColor,  color: genreFontColor}}>
+                {this.state.dataJSON.card_data.data.genre ? <div className="series-name">GenderAnd<div className="genre" style={{backgroundColor: genreColor,  color: genreFontColor}}>
                   {this.state.dataJSON.card_data.data.genre } </div></div> : null}
                 {
-                  this.state.dataJSON.card_data.data.sponsored ? <div className="sub-gener-dark" style={{color: light ?'white' :'black' }}>Sponsored</div> : null
+                  this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black' }}>Sponsored</div> : null
                 }
             </div>
             <div className="bottom-pull-div">
@@ -341,10 +345,11 @@ export default class toStoryCard extends React.Component {
 
       return(
         <div className="proto-col col-2" onClick={()=>{ this.handleClick() }}>
-          {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:250, width:140 }} src={this.state.dataJSON.card_data.data.imageurl}></img>: <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:140}}></div>}
           <div className="col-2-story-card">
+            {this.state.dataJSON.card_data.data.imageurl ? <img style={{position:'absolute', left:0, top:0, height:250, zIndex: -1}} src={this.state.dataJSON.card_data.data.imageurl}></img>: <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:140}}></div>}
+            <div className="title-background"></div>
             <div className="card-tags">
-                {this.state.dataJSON.card_data.data.genre ? <div className="series-name"><div className="gener" style={{backgroundColor: genreColor, color: genreFontColor}}>
+                {this.state.dataJSON.card_data.data.genre ? <div className="series-name"><div className="genre" style={{backgroundColor: genreColor, color: genreFontColor}}>
                   {this.state.dataJSON.card_data.data.genre } </div></div> : null}
             </div>
             <div className="bottom-pull-div">
