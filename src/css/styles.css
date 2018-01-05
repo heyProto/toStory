@@ -403,6 +403,13 @@
     width: 300px;
     margin-left: 50%;
     transform: translate(-50%, 0); }
+
+  .col-2-story-card{
+		margin-right: 20px;
+	}
+	div.col-2> div:nth-of-type(even) {
+	    margin-right: 0px;
+	}
 }
 
 @media only screen and (max-width: 450px){
