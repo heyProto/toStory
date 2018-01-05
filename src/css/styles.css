@@ -403,6 +403,22 @@
     width: 300px;
     margin-left: 50%;
     transform: translate(-50%, 0); }
+
+
+    .col-16-story-card{
+        margin-top: 0px;
+        width: 100%;
+    }
+
+    .col-16-story-card .article-title{
+        font-size: 22px;
+        max-width: 100%;
+        font-weight: 600;
+        line-height: 30px;
+        letter-spacing: 0.5px;
+        padding-right: 20px;
+        margin-left: 0px;
+    }
 }
 
 @media only screen and (max-width: 450px){
