@@ -222,6 +222,7 @@ export default class toStoryCard extends React.Component {
             {light ? <img className="image-styling" style={{width: 540}} src={light}></img> : <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:540}}></div>}
             {light ? <div className="title-background"></div> : null}
             <div className="card-tags">
+            {fav ?
                 <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
                   <img className="favicon" src = {fav}/>
                 </div> : null}
