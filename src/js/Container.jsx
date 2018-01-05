@@ -73,7 +73,7 @@ export default class toStoryCard extends React.Component {
   }
   checkURL(url){
     var re = /^(http[s]?:\/\/){0,1}(www\.){0,1}[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,5}[\.]{0,1}/;
-    if (!re.test(url)) { 
+    if (!re.test(url)) {
         return false;
     }
     return true;
@@ -147,13 +147,13 @@ export default class toStoryCard extends React.Component {
         light = undefined;
       }
       return(
-        <div className="proto-col col-16" onClick={()=>{ this.handleClick() }}>
+        <div onClick={()=>{ this.handleClick() }}>
           <div className="col-16-story-card">
           {light ? <img className="image-styling" style={{width: 1260}} src={light}></img>: null}
             {light ? <div className="title-background"></div> : null}
             <div className="bottom-pull-div">
               <div className="card-tags">
-                {fav ? 
+                {fav ?
                 <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
                   <img className="favicon" src = {fav}/>
                 </div> : null}
@@ -217,12 +217,11 @@ export default class toStoryCard extends React.Component {
         show = show+ta.ago(date);
       }
       return(
-        <div className="proto-col col-7" onClick={()=>{ this.handleClick() }}>
+        <div onClick={()=>{ this.handleClick() }}>
           <div className="col-7-story-card">
             {light ? <img className="image-styling" style={{width: 540}} src={light}></img> : <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:540}}></div>}
             {light ? <div className="title-background"></div> : null}
             <div className="card-tags">
-            {fav ? 
                 <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
                   <img className="favicon" src = {fav}/>
                 </div> : null}
@@ -286,12 +285,12 @@ export default class toStoryCard extends React.Component {
         show = show+ta.ago(date);
       }
       return(
-        <div className="proto-col col-4" onClick={()=>{ this.handleClick() }}>
+        <div onClick={()=>{ this.handleClick() }}>
           <div className="col-4-story-card">
             {light ? <img className="image-styling" style={{height:250}} src={light}></img>: <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:300}}></div>}
             {light ? <div className="title-background"></div> : null}
             <div className="card-tags">
-            {fav ? 
+            {fav ?
                 <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
                   <img className="favicon" src = {fav}/>
                 </div> : null}
@@ -355,12 +354,12 @@ export default class toStoryCard extends React.Component {
         show = show+ta.ago(date);
       }
       return(
-        <div className="proto-col col-3" onClick={()=>{ this.handleClick() }}>
+        <div onClick={()=>{ this.handleClick() }}>
           <div className="col-3-story-card" >
             {light ? <img className="image-styling" style={{height:250,}} src={light}></img>: <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:220}}></div>}
             {light ? <div className="title-background"></div> : null}
             <div className="card-tags">
-            {fav ? 
+            {fav ?
                 <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
                   <img className="favicon" src = {fav}/>
                 </div> : null}
@@ -424,7 +423,7 @@ export default class toStoryCard extends React.Component {
         show = show+ta.ago(date);
       }
       return(
-        <div className="proto-col col-2" onClick={()=>{ this.handleClick() }}>
+        <div onClick={()=>{ this.handleClick() }}>
           <div className="col-2-story-card">
             {light ? <img className="image-styling" style={{height:250}} src={light}></img>: <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:140}}></div>}
             {light ? <div className="title-background"></div> : null}
