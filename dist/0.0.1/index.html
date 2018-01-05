@@ -104,7 +104,7 @@
                 that.send('resize_frame', { width: w, height: h })
               }
             })
-            x.renderSevenCol();
+            renderWithMode(mode);
           }
         }
       },
@@ -152,7 +152,7 @@
           break;
         case 'col3':
           x.renderThreeCol();
-          break
+          break;
         case 'col2':
           x.renderTwoCol();
           break;
