@@ -134,7 +134,7 @@ export default class toStoryCard extends React.Component {
       let date=this.state.dataJSON.card_data.data.publishedat;
       let show = '';
       if(byline){
-        show=show+'By: '+byline;
+        show=show+'By '+byline;
       }
       if(byline && date && date != NaN){
         show=show+' . ';
@@ -208,7 +208,7 @@ export default class toStoryCard extends React.Component {
       let date=this.state.dataJSON.card_data.data.publishedat;
       let show = '';
       if(byline){
-        show=show+'By: '+byline;
+        show=show+'By '+byline;
       }
       if(byline && date && date != NaN){
         show=show+' . ';
@@ -277,7 +277,7 @@ export default class toStoryCard extends React.Component {
       let date=this.state.dataJSON.card_data.data.publishedat;
       let show = '';
       if(byline){
-        show=show+'By: '+byline;
+        show=show+'By '+byline;
       }
       if(byline && date && date != NaN){
         show=show+' . ';
@@ -346,7 +346,7 @@ export default class toStoryCard extends React.Component {
       let date=this.state.dataJSON.card_data.data.publishedat;
       let show = '';
       if(byline){
-        show=show+'By: '+byline;
+        show=show+'By '+byline;
       }
       if(byline && date && date != NaN){
         show=show+' . ';
