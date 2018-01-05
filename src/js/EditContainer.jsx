@@ -48,9 +48,9 @@ export default class EditStoryCard extends React.Component {
           let formData = card.data;
           let fav = undefined;
           let str = formData.data.url;
-          let arr = str.split("/");
+          let arr = str && str.split("/");
           let name = undefined;
-          let dom = arr[0] + "//" + arr[2];
+          let dom = arr && (arr[0] + "//" + arr[2]);
           linkSources.data.forEach((link)=>{
             if(link.url === dom){
               fav = link.favicon_url;
@@ -92,9 +92,9 @@ export default class EditStoryCard extends React.Component {
           let dataJSON = prevStep.dataJSON;
           let fav = undefined;
           let str = formData.data.url;
-          let arr = str.split("/");
+          let arr = str && str.split("/");
           let name = undefined;
-          let dom = arr[0] + "//" + arr[2];
+          let dom = arr && (arr[0] + "//" + arr[2]);
           this.state.refLinkDetails.forEach((link)=>{
             if(link.url === dom){
               fav = link.favicon_url;

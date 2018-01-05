@@ -9,7 +9,8 @@
         "url": {
           "id": "/properties/data/properties/url", 
           "title": "Story URL", 
-          "type": "string"
+          "type": "string",
+          "format":"uri"
         },
         "headline":{
           "title": "Headline", 
@@ -45,6 +46,12 @@
           "type": "string",
           "minLength":3,
           "maxLength": 15
+        },
+        "iconbgcolor":{
+          "title":"Background color of icon",
+          "type":"string",
+          "format":"color",
+          "default":"white"
         },
         "sponsored":{
           "title":"Is it sponsored?",
