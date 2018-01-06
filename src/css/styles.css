@@ -227,6 +227,7 @@
 .col-16-story-card{
 	height: 430px;
 	padding: 20px;
+	background:rgba(51,51,51,0.75);
 	z-index: 1;
 	width: 1260px;
 	position: relative;
