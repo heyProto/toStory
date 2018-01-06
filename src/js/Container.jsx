@@ -125,8 +125,9 @@ export default class toStoryCard extends React.Component {
       let fav = this.state.dataJSON.card_data.data.faviconurl;
       let str = this.state.dataJSON.card_data.data.url;
       let arr = str && str.split("/");
+      console.log(arr);
       let name = undefined;
-      let dom = arr && (arr[0] + "//" + arr[2]);
+      let dom = arr && arr[2];
       if(this.state.domain === dom){
         fav = undefined;
       }
@@ -205,7 +206,7 @@ export default class toStoryCard extends React.Component {
       let str = this.state.dataJSON.card_data.data.url;
       let arr = str && str.split("/");
       let name = undefined;
-      let dom = arr && (arr[0] + "//" + arr[2]);
+      let dom = arr && (arr[2]);
       if(this.state.domain === dom){
         fav = undefined;
       }
@@ -283,7 +284,7 @@ export default class toStoryCard extends React.Component {
       let str = this.state.dataJSON.card_data.data.url;
       let arr = str && str.split("/");
       let name = undefined;
-      let dom = arr && (arr[0] + "//" + arr[2]);
+      let dom = arr && (arr[2]);
       if(this.state.domain === dom){
         fav = undefined;
       }
@@ -361,7 +362,7 @@ export default class toStoryCard extends React.Component {
       let str = this.state.dataJSON.card_data.data.url;
       let arr = str && str.split("/");
       let name = undefined;
-      let dom = arr && (arr[0] + "//" + arr[2]);
+      let dom = arr && (arr[2]);
       if(this.state.domain === dom){
         fav = undefined;
       }
@@ -439,10 +440,7 @@ export default class toStoryCard extends React.Component {
       let str = this.state.dataJSON.card_data.data.url;
       let arr = str && str.split("/");
       let name = undefined;
-      let dom = arr && (arr[0] + "//" + arr[2]);
-      if(this.state.domain === dom){
-        fav = undefined;
-      }
+      let dom = arr && (arr[2]);
       let light = this.state.dataJSON.card_data.data.imageurl;
       if(!this.checkURL(light)){
         light = undefined;

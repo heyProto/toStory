@@ -13,12 +13,12 @@
     <div id="tolink-div"></div>
     <script src = "dist/0.0.1/card.min.js"></script>
     <script type="text/javascript">
-      window.ref_link_sources_url = "https://dnt71st2q6cqr.cloudfront.net/Assets/ref_link_sources.json"
+      window.ref_link_sources_url = "https://cdn.protograph.pykih.com/Assets/ref_link_sources.json"
       var x = new ProtoGraph.Card.toStory()
       x.init({
         selector: document.querySelector('#tolink-div'),
         data_url: '/dist/0.0.1/sample.json',
-        domain: 'http://indianexpress.com',
+        domain: 'indianexpress.com',
         schema_url: '/dist/0.0.1/schema.json',
         configuration_url: 'dist/0.0.1/configuration_sample.json', //will come from local folder
         configuration_schema_url: 'dist/0.0.1/configuration_schema.json', //will come from local folder
@@ -26,7 +26,7 @@
           console.log("loaded")
         }
       })
-      // x.renderSixteenCol();
+      x.renderSixteenCol();
       // x.renderSevenCol();
       // x.renderFourCol();
       // x.renderThreeCol();
