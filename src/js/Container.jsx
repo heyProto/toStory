@@ -238,7 +238,7 @@ export default class toStoryCard extends React.Component {
       return(
         <div onClick={()=>{ this.handleClick() }}>
           <div className="col-7-story-card">
-            {light ? <img className="image-styling" style={{width: 540}} src={light}></img> : <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:540}}></div>}
+            {light ? <img className="image-styling" style={{width: 540}} src={light}></img> : <div  className="image-styling" style={{backgroundColor:'#fafafa', height:250, width:540}}></div>}
             {light ? <div className="title-background"></div> : null}
             <div className="card-tags">
             {fav ?
@@ -316,7 +316,7 @@ export default class toStoryCard extends React.Component {
       return(
         <div onClick={()=>{ this.handleClick() }}>
           <div className="col-4-story-card">
-            {light ? <img className="image-styling" style={{height:250}} src={light}></img>: <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:300}}></div>}
+            {light ? <img className="image-styling" style={{height:250}} src={light}></img>: <div  className="image-styling" style={{backgroundColor:'#fafafa', height:250, width:300}}></div>}
             {light ? <div className="title-background"></div> : null}
             <div className="card-tags">
             {fav ?
@@ -394,7 +394,7 @@ export default class toStoryCard extends React.Component {
       return(
         <div onClick={()=>{ this.handleClick() }}>
           <div className="col-3-story-card" >
-            {light ? <img className="image-styling" style={{height:250,}} src={light}></img>: <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:220}}></div>}
+            {light ? <img className="image-styling" style={{height:250}} src={light}></img>: <div className="image-styling" style={{backgroundColor:'#fafafa',height:250, width:220}}></div>}
             {light ? <div className="title-background"></div> : null}
             <div className="card-tags">
             {fav ?
@@ -460,7 +460,7 @@ export default class toStoryCard extends React.Component {
       return(
         <div onClick={()=>{ this.handleClick() }}>
           <div className="col-2-story-card">
-            {light ? <img className="image-styling" style={{height:250}} src={light}></img>: <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:140}}></div>}
+            {light ? <img className="image-styling" style={{height:250}} src={light}></img>: <div className="image-styling" style={{zIndex:'-1',backgroundColor:'#fafafa',height:250, width:140}}></div>}
             {light ? <div className="title-background"></div> : null}
             <div className="card-tags">
             {fav ? 
