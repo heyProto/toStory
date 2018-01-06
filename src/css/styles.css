@@ -76,11 +76,6 @@
 	overflow: hidden;
 }
 
-.bottom-pull-div{
-	position: absolute;
-	bottom: 12px;
-}
-
 .col-3-story-card .article-title{
 	font-size: 18px;
 	color: #333;
@@ -118,10 +113,6 @@
 	overflow: hidden;
 }
 
-.bottom-pull-div{
-	position: absolute;
-	bottom: 12px;
-}
 
 .col-4-story-card .article-title{
 	font-size: 18px;
@@ -156,10 +147,6 @@
   	overflow: hidden;
 }
 
-.bottom-pull-div{
-	position: absolute;
-	bottom: 12px;
-}
 
 .col-7-story-card .article-title{
 	font-size: 18px;
@@ -194,11 +181,6 @@
 	padding: 12px;
 	box-sizing: border-box;
 	overflow: hidden;
-}
-
-.bottom-pull-div{
-	position: absolute;
-	bottom: 12px;
 }
 
 .col-2-story-card .article-title{
