@@ -70,6 +70,7 @@
 	background: transparent;
 	height: 250px;
 	width: 220px;
+	z-index: 1;
 	position: relative;
 	padding: 12px;
 	box-sizing: border-box;
@@ -106,6 +107,7 @@
 .col-4-story-card{
 	background: transparent;
 	height: 250px;
+	z-index: 1;
 	width: 300px;
 	position: relative;
 	padding: 12px;
@@ -140,6 +142,7 @@
 .col-7-story-card{
 	background: transparent;
 	height: 250px;
+	z-index: 1;
 	position: relative;
 	width: 540px;
 	padding: 12px;
@@ -174,6 +177,7 @@
 .col-2-story-card{
 	background: transparent;
 	height: 250px;
+	z-index: 1;
 	width: 140px;
 	display: inline-block;
 	float: left;
@@ -221,9 +225,9 @@
 }
 
 .col-16-story-card{
-	background-image: linear-gradient(253deg, rgba(51, 51, 51, 0.2), rgba(51, 51, 51, 0.8));
 	height: 430px;
 	padding: 20px;
+	z-index: 1;
 	width: 1260px;
 	position: relative;
 	box-sizing: border-box;
@@ -251,13 +255,22 @@
 	max-width: 860px;
 }
 
+.col-16-diag-grad{
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	background-image: linear-gradient(253deg, rgba(51, 51, 51, 0.2), rgba(51, 51, 51, 0.8));
+}
+
 .title-background{
 	height: 250px;
-    width: 100%;
-    position: absolute;
-    left: 0px;
-    bottom: 0px;
-    background: linear-gradient(#3360, #1d1d1d);
+	width: 100%;
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+	background: linear-gradient(#3360, #1d1d1d);
 }
 
 .by-line{

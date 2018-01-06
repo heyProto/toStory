@@ -285,16 +285,18 @@ export default class EditStoryCard extends React.Component {
                     </a>
                   </div>
                 </div>
-                <StoryCard
-                  mode={this.state.mode}
-                  dataJSON={this.state.dataJSON}
-                  houseColors={this.props.houseColors}
-                  domain={this.props.domain}
-                  schemaJSON={this.state.schemaJSON}
-                  optionalConfigJSON={this.state.optionalConfigJSON}
-                  optionalConfigSchemaJSON={this.state.optionalConfigSchemaJSON}
-                  linkDetails={this.state.refLinkDetails}
-                />
+                <div className="protograph-app-holder">
+                  <StoryCard
+                    mode={this.state.mode}
+                    dataJSON={this.state.dataJSON}
+                    houseColors={this.props.houseColors}
+                    domain={this.props.domain}
+                    schemaJSON={this.state.schemaJSON}
+                    optionalConfigJSON={this.state.optionalConfigJSON}
+                    optionalConfigSchemaJSON={this.state.optionalConfigSchemaJSON}
+                    linkDetails={this.state.refLinkDetails}
+                  />
+                </div>
               </div>
             </div>
           </div>

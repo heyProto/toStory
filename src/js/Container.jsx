@@ -156,11 +156,13 @@ export default class toStoryCard extends React.Component {
       if(!series && !genre){
         leftPadding = '0px';
       }
+      
       return(
         <div onClick={()=>{ this.handleClick() }}>
           <div className="col-16-story-card">
           {light ? <img className="image-styling" style={{width: 1260}} src={light}></img>: null}
             {light ? <div className="title-background"></div> : null}
+            {light ? <div className="col-16-diag-grad"></div> : null}
             <div className="bottom-pull-div">
               <div className="card-tags">
                 {fav ?
