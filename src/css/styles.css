@@ -3,6 +3,9 @@
 #protograph-div {
   overflow: hidden;
 }
+.col-16-story-card, .col-7-story-card, .col-4-story-card, .col-3-story-card, .col-2-story-card {
+	cursor: pointer;
+}
 .card-content{
   padding-left: 10px !important;
   padding-right: 10px !important;
