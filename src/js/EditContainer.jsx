@@ -109,8 +109,9 @@ export default class EditStoryCard extends React.Component {
           formData.data.faviconurl = fav;
           formData.data.domainurl = dom;
           formData.data.publishername = name;
+          formData.data.interactive = (formData.data.hasimage || formData.data.hasvideo || formData.data.hasdata) ? true : false
           dataJSON.card_data = formData;
-          
+          console.log(dataJSON, formData, "---------------")
           return {
             dataJSON: dataJSON
           }

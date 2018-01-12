@@ -57,8 +57,19 @@
           "title":"Is it sponsored?",
           "type":"boolean"
         },
+        "hasimage": {
+          "title": "Does the article have an image other than cover image?",
+          "type": "boolean"
+        },
+        "hasvideo": {
+          "title": "Does the article have a video?",
+          "type": "boolean"
+        },
+        "hasdata": {
+          "title": "Does the article have data?",
+          "type": "boolean"
+        },
         "interactive":{
-          "title":"Does it have an interactive?",
           "type":"boolean"
         },
         "summary":{
@@ -78,6 +89,18 @@
           "enum":["h","v"],
           "enumNames":["Vertically focused","Horizontally focused"],
           "default":"h"
+        },
+        "country": {
+          "title": "Country",
+          "type": "string"
+        },
+        "state": {
+          "title": "State",
+          "type": "string"
+        },
+        "city": {
+          "title": "City",
+          "type": "string"
         },
         "publishername":{
           "type":"string"
