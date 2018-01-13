@@ -64,13 +64,29 @@ export default class toStoryCard extends React.Component {
             optionalConfigSchemaJSON: opt_config_schema.data
           });
         }));
+    } else {
+      this.componentDidUpdate();
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.dataJSON) {
+      this.setState({
+        dataJSON: nextProps.dataJSON
+      });
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.props.mode === '2_col'){
+      this.ellipsizeTextBox();
+    }   
+  }
 
   exportData() {
     return this.props.selector.getBoundingClientRect();
   }
+
   checkURL(url){
     var re = /^(http[s]?:\/\/){0,1}(www\.){0,1}[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,5}[\.]{0,1}/;
     if (!re.test(url)) {
@@ -78,6 +94,7 @@ export default class toStoryCard extends React.Component {
     }
     return true;
   }
+
   calculateDateTime() {
     const data = this.state.dataJSON.card_data;
     let date_split, date_split_by_hyphen, new_date, month, time;
@@ -98,6 +115,22 @@ export default class toStoryCard extends React.Component {
       am_pm: am_pm,
       date: date_split_by_hyphen,
       time: time
+    }
+  }
+
+  ellipsizeTextBox() {
+    let container = document.querySelector('.article-title'),
+    text = document.querySelector('.article-title'),
+      // text = document.querySelector(`.protograph-${this.props.mode}-mode .protograph-tocluster-title`),
+      wordArray;
+
+    // Setting the string to work with edit mode.
+    text.innerHTML = this.state.dataJSON.card_data.data.headline;
+    console.log(this.state.dataJSON.card_data, "data", container.offsetHeight)
+    wordArray = this.state.dataJSON.card_data.data.headline.split(' ');
+    while (container.offsetHeight > 100) {
+      wordArray.pop();
+      text.innerHTML = wordArray.join(' ') + '...';
     }
   }
 
@@ -188,6 +221,7 @@ export default class toStoryCard extends React.Component {
       )
     }
   }
+
   renderSevenCol(){
     if(!this.state.schemaJSON){
       return(
@@ -266,6 +300,7 @@ export default class toStoryCard extends React.Component {
       )
     }
   }
+
   renderFourCol(){
     if(!this.state.schemaJSON){
       return(
@@ -344,6 +379,7 @@ export default class toStoryCard extends React.Component {
       )
     }
   }
+
   renderThreeCol(){
     if(!this.state.schemaJSON){
       return(
@@ -422,6 +458,7 @@ export default class toStoryCard extends React.Component {
       )
     }
   }
+
   renderTwoCol(){
     if(!this.state.schemaJSON){
       return(
