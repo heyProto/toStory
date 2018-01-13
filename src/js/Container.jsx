@@ -129,10 +129,9 @@ export default class toStoryCard extends React.Component {
     }else{
       // Setting the string to work with edit mode.
       text.innerHTML = this.state.dataJSON.card_data.data.headline;
-      console.log(this.state.dataJSON.card_data, "data", container.offsetHeight)
+      // console.log(this.state.dataJSON.card_data, "data", container.offsetHeight)
       wordArray = this.state.dataJSON.card_data.data.headline.split(' ');
-      while (container.offsetHeight > 100) {
-        console.log("????");
+      while (container.offsetHeight > 80) {
         wordArray.pop();
         text.innerHTML = wordArray.join(' ') + '...';
       }
