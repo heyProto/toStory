@@ -123,14 +123,19 @@ export default class toStoryCard extends React.Component {
     text = document.querySelector('.article-title'),
       // text = document.querySelector(`.protograph-${this.props.mode}-mode .protograph-tocluster-title`),
       wordArray;
-
-    // Setting the string to work with edit mode.
-    text.innerHTML = this.state.dataJSON.card_data.data.headline;
-    console.log(this.state.dataJSON.card_data, "data", container.offsetHeight)
-    wordArray = this.state.dataJSON.card_data.data.headline.split(' ');
-    while (container.offsetHeight > 100) {
-      wordArray.pop();
-      text.innerHTML = wordArray.join(' ') + '...';
+    let headline = this.state.dataJSON.card_data.data.headline;
+    if(headline === '' || headline === undefined){
+      text.innerHTML='';
+    }else{
+      // Setting the string to work with edit mode.
+      text.innerHTML = this.state.dataJSON.card_data.data.headline;
+      console.log(this.state.dataJSON.card_data, "data", container.offsetHeight)
+      wordArray = this.state.dataJSON.card_data.data.headline.split(' ');
+      while (container.offsetHeight > 100) {
+        console.log("????");
+        wordArray.pop();
+        text.innerHTML = wordArray.join(' ') + '...';
+      }
     }
   }
 

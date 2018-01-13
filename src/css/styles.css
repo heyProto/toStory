@@ -83,6 +83,7 @@
 .col-3-story-card .article-title{
 	font-size: 18px;
 	color: #333;
+	word-wrap:break-word;
 	font-family: bitter;
 	font-weight: 900;
   display: inline-block;
@@ -123,6 +124,7 @@
 	font-size: 18px;
 	color: #333;
 	font-family: bitter;
+	word-wrap:break-word;
   font-weight: 900;
   font-style: normal;
   font-stretch: normal;
@@ -159,7 +161,8 @@
 	color: #333;
 	font-family: bitter;
   font-weight: 900;
-  font-style: normal;
+	font-style: normal;
+	word-wrap:break-word;
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
@@ -197,7 +200,8 @@
   font-weight: 900;
   font-style: normal;
   font-stretch: normal;
-  line-height: normal;
+	line-height: normal;
+	word-wrap:break-word;
   letter-spacing: normal;
   text-align: left;
 	display: inline-block;
@@ -206,7 +210,6 @@
 	max-width: 116px;
 	max-height: 125px;
     overflow: hidden;
-    text-overflow: ellipsis;
     line-height: 19px;
 }
 
@@ -245,6 +248,7 @@
 
 .col-16-story-card .article-title{
 	font-size: 32px;
+	word-wrap:break-word;
 	color: white;
 	font-family: bitter;
   font-weight: 900;
