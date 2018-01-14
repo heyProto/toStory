@@ -7,7 +7,7 @@
     <!-- <link rel="stylesheet" type="text/css" href="https://cdn.protograph.pykih.com/Assets/bootstrap.min.css"> -->
     <link rel="stylesheet" type="text/css" href="card.min.css">
     <script type="text/javascript">
-      var siteId, origin, base_url;
+      var origin, base_url;
       // Setting variables from environment
       origin = window.location.origin;
       if (origin == 'https://s3.ap-south-1.amazonaws.com') {
@@ -15,41 +15,22 @@
         base_url = origin + "/" + bucket_name;
         switch(bucket_name){
           case "cdn.protograph":
-            siteId = '1';
             window.ref_link_sources_url = "https://cdn.protograph.pykih.com/Assets/ref_link_sources.json"
             break;
           case "staging.cdn.protograph":
-            siteId = '2';
             window.ref_link_sources_url = "https://dkqrqc7q64awx.cloudfront.net/Assets/ref_link_sources.json"
             break;
         }
       } else if (origin === 'https://dkqrqc7q64awx.cloudfront.net') {
-        siteId = '2';
         base_url = origin;
         window.ref_link_sources_url = "https://dkqrqc7q64awx.cloudfront.net/Assets/ref_link_sources.json"
       } else {
-        siteId = '1';
         base_url = origin;
         window.ref_link_sources_url = "https://cdn.protograph.pykih.com/Assets/ref_link_sources.json"
       }
 
       if(!window.ref_link_sources_url){
         window.ref_link_sources_url = "https://s3.ap-south-1.amazonaws.com/dev.cdn.protograph/Assets/ref_link_sources.json"
-      }
-
-
-      if(siteId){
-        var _paq = _paq || [];
-        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-        _paq.push(['trackPageView']);
-        _paq.push(['enableLinkTracking']);
-        (function() {
-          var u="//protograph.innocraft.cloud/";
-          _paq.push(['setTrackerUrl', u+'piwik.php']);
-          _paq.push(['setSiteId', siteId]);
-          var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-          g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-        })();
       }
     </script>
 
@@ -78,10 +59,6 @@
     let view_cast_id = findGetParameter('view_cast_id'),
       schema_id = findGetParameter('schema_id'),
       domain_name = (findGetParameter('domain') || "");
-
-    if (siteId && view_cast_id) {
-      _paq.push(['trackEvent', 'toStory', 'page_view', view_cast_id]);
-    }
 
     var ReceiverConsumer = Oasis.Consumer.extend({
       requests: {
