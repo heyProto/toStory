@@ -80,7 +80,7 @@ export default class toStoryCard extends React.Component {
   componentDidUpdate() {
     if (this.props.mode === '2_col'){
       this.ellipsizeTextBox();
-    }   
+    }
   }
 
   exportData() {
@@ -193,7 +193,7 @@ export default class toStoryCard extends React.Component {
       if(!series && !genre){
         leftPadding = '0px';
       }
-      
+
       return(
         <div onClick={()=>{ this.handleClick() }}>
           <div className="col-16-story-card">
@@ -250,7 +250,10 @@ export default class toStoryCard extends React.Component {
       if(this.state.domain === dom){
         fav = undefined;
       }
-      let light = this.state.dataJSON.card_data.data.imageurl;
+      let light = this.state.dataJSON.card_data.data.col7imageurl;
+      if (!this.state.dataJSON.card_data.data.col7imageurl) {
+        light = this.state.dataJSON.card_data.data.imageurl;
+      }
       if(!this.checkURL(light)){
         light = undefined;
       }
@@ -329,7 +332,10 @@ export default class toStoryCard extends React.Component {
       if(this.state.domain === dom){
         fav = undefined;
       }
-      let light = this.state.dataJSON.card_data.data.imageurl;
+      let light = this.state.dataJSON.card_data.data.col7imageurl;
+      if (!this.state.dataJSON.card_data.data.col7imageurl) {
+        light = this.state.dataJSON.card_data.data.imageurl;
+      }
       if(!this.checkURL(light)){
         light = undefined;
       }
@@ -408,7 +414,10 @@ export default class toStoryCard extends React.Component {
       if(this.state.domain === dom){
         fav = undefined;
       }
-      let light = this.state.dataJSON.card_data.data.imageurl;
+      let light = this.state.dataJSON.card_data.data.col7imageurl;
+      if (!this.state.dataJSON.card_data.data.col7imageurl) {
+        light = this.state.dataJSON.card_data.data.imageurl;
+      }
       if(!this.checkURL(light)){
         light = undefined;
       }
@@ -484,7 +493,10 @@ export default class toStoryCard extends React.Component {
       let arr = str && str.split("/");
       let name = undefined;
       let dom = arr && (arr[2]);
-      let light = this.state.dataJSON.card_data.data.imageurl;
+      let light = this.state.dataJSON.card_data.data.col7imageurl;
+      if (!this.state.dataJSON.card_data.data.col7imageurl) {
+        light = this.state.dataJSON.card_data.data.imageurl;
+      }
       if(!this.checkURL(light)){
         light = undefined;
       }
@@ -506,7 +518,7 @@ export default class toStoryCard extends React.Component {
             {light ? <img className="image-styling" style={{height:250}} src={light}></img>: <div className="image-styling" style={{zIndex:'-1',backgroundColor:'#fafafa',height:250, width:140}}></div>}
             {light ? <div className="title-background"></div> : null}
             <div className="card-tags">
-            {fav ? 
+            {fav ?
                 <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white', marginRight:'4px'}}>
                   <img className="favicon" src = {fav}/>
                 </div> : null}

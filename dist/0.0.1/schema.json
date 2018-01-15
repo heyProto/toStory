@@ -1,48 +1,48 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#", 
-  "definitions": {}, 
-  "id": "http://example.com/example.json", 
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {},
+  "id": "http://example.com/example.json",
   "properties": {
     "data": {
-      "id": "/properties/data", 
+      "id": "/properties/data",
       "properties": {
         "url": {
-          "id": "/properties/data/properties/url", 
-          "title": "Story URL", 
+          "id": "/properties/data/properties/url",
+          "title": "Story URL",
           "type": "string",
           "format":"uri"
         },
         "headline":{
-          "title": "Headline", 
+          "title": "Headline",
           "type": "string",
           "minLength":50,
           "maxLength": 90
         },
         "byline":{
-          "title": "By line", 
+          "title": "By line",
           "type": "string",
           "minLength":3,
           "maxLength": 25
         },
         "publishedat":{
-          "title": "Publish Date", 
+          "title": "Publish Date",
           "type": "string",
           "format":"date-time"
         },
         "series":{
-          "title": "Series", 
+          "title": "Series",
           "type": "string",
           "minLength":3,
           "maxLength": 15
         },
         "genre":{
-          "title": "Genre", 
+          "title": "Genre",
           "type": "string",
           "minLength":3,
           "maxLength": 15
         },
         "subgenre":{
-          "title": "Sub-Genre", 
+          "title": "Sub-Genre",
           "type": "string",
           "minLength":3,
           "maxLength": 15
@@ -73,13 +73,18 @@
           "type":"boolean"
         },
         "summary":{
-          "title": "Summary", 
+          "title": "Summary",
           "type": "string",
           "minLength":100,
           "maxLength": 220
         },
         "imageurl":{
           "title":"Image URL",
+          "type":"string",
+          "format":"uri"
+        },
+        "col7imageurl":{
+          "title":"Col 7 Image URL",
           "type":"string",
           "format":"uri"
         },
@@ -111,13 +116,13 @@
         "faviconurl":{
           "type":"string"
         }
-      }, 
+      },
       "title":"Card Data",
       "type": "object",
       "required": [
         "url","headline","byline","publishedat"
       ]
     }
-  }, 
+  },
   "type": "object"
 }
