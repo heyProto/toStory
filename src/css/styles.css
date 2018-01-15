@@ -221,9 +221,9 @@
 	letter-spacing: 0.5px;
 }
 
-.col-2-story-card .card-tags .series-name{
-	background: transparent;
-	padding-left: 0px;
+.col-16-story-card .card-tags .series-name, .col-7-story-card .card-tags .series-name, .col-4-story-card .card-tags .series-name, .col-3-story-card .card-tags .series-name, .col-2-story-card .card-tags .series-name{
+	/* background: transparent; */
+	padding-left: 1px;
 }
 
 .col-2-story-card .card-tags .series-name .genre{
