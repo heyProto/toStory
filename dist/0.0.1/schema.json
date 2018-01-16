@@ -19,7 +19,7 @@
           "maxLength": 90
         },
         "byline":{
-          "title": "By line",
+          "title": "Byline",
           "type": "string",
           "minLength":3,
           "maxLength": 25
@@ -36,13 +36,13 @@
           "maxLength": 15
         },
         "genre":{
-          "title": "Genre",
+          "title": "Intersection",
           "type": "string",
           "minLength":3,
           "maxLength": 15
         },
         "subgenre":{
-          "title": "Sub-Genre",
+          "title": "Sub Intersection",
           "type": "string",
           "minLength":3,
           "maxLength": 15
@@ -79,12 +79,12 @@
           "maxLength": 220
         },
         "imageurl":{
-          "title":"Image URL",
+          "title":"16 col Image URL",
           "type":"string",
           "format":"uri"
         },
         "col7imageurl":{
-          "title":"Col 7 Image URL",
+          "title":"7 col Image URL",
           "type":"string",
           "format":"uri"
         },
