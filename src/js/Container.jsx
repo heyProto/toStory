@@ -64,13 +64,29 @@ export default class toStoryCard extends React.Component {
             optionalConfigSchemaJSON: opt_config_schema.data
           });
         }));
+    } else {
+      this.componentDidUpdate();
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.dataJSON) {
+      this.setState({
+        dataJSON: nextProps.dataJSON
+      });
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.props.mode === '2_col'){
+      this.ellipsizeTextBox();
+    }
+  }
 
   exportData() {
     return this.props.selector.getBoundingClientRect();
   }
+
   checkURL(url){
     var re = /^(http[s]?:\/\/){0,1}(www\.){0,1}[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,5}[\.]{0,1}/;
     if (!re.test(url)) {
@@ -78,6 +94,7 @@ export default class toStoryCard extends React.Component {
     }
     return true;
   }
+
   calculateDateTime() {
     const data = this.state.dataJSON.card_data;
     let date_split, date_split_by_hyphen, new_date, month, time;
@@ -98,6 +115,26 @@ export default class toStoryCard extends React.Component {
       am_pm: am_pm,
       date: date_split_by_hyphen,
       time: time
+    }
+  }
+
+  ellipsizeTextBox() {
+    let container = document.querySelector('.article-title'),
+    text = document.querySelector('.article-title'),
+      // text = document.querySelector(`.protograph-${this.props.mode}-mode .protograph-tocluster-title`),
+      wordArray;
+    let headline = this.state.dataJSON.card_data.data.headline;
+    if(headline === '' || headline === undefined){
+      text.innerHTML='';
+    }else{
+      // Setting the string to work with edit mode.
+      text.innerHTML = this.state.dataJSON.card_data.data.headline;
+      // console.log(this.state.dataJSON.card_data, "data", container.offsetHeight)
+      wordArray = this.state.dataJSON.card_data.data.headline.split(' ');
+      while (container.offsetHeight > 80) {
+        wordArray.pop();
+        text.innerHTML = wordArray.join(' ') + '...';
+      }
     }
   }
 
@@ -125,8 +162,9 @@ export default class toStoryCard extends React.Component {
       let fav = this.state.dataJSON.card_data.data.faviconurl;
       let str = this.state.dataJSON.card_data.data.url;
       let arr = str && str.split("/");
+      console.log(arr);
       let name = undefined;
-      let dom = arr && (arr[0] + "//" + arr[2]);
+      let dom = arr && arr[2];
       if(this.state.domain === dom){
         fav = undefined;
       }
@@ -148,25 +186,30 @@ export default class toStoryCard extends React.Component {
       }
       let series = this.state.dataJSON.card_data.data.series,
       genre = this.state.dataJSON.card_data.data.genre;
-      let leftPadding = '1px';
-      if(series){
-        leftPadding = '5px';
+      let padding = "1px 1px 1px 5px";
+      if (!genre && series) {
+        padding = "2.5px 5px";
       }
-      if(!series && !genre){
-        leftPadding = '0px';
+      if (!series && !genre) {
+        padding = '0px';
       }
+      if (genre && !series) {
+        padding = "1px";
+      }
+
       return(
         <div onClick={()=>{ this.handleClick() }}>
           <div className="col-16-story-card">
           {light ? <img className="image-styling" style={{width: 1260}} src={light}></img>: null}
             {light ? <div className="title-background"></div> : null}
+            {light ? <div className="col-16-diag-grad"></div> : null}
             <div className="bottom-pull-div">
               <div className="card-tags">
                 {fav ?
                 <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
                   <img className="favicon" src = {fav}/>
                 </div> : null}
-                <div className="series-name" style={{ padding: series || genre ? '1px' : '0px',paddingLeft: leftPadding}}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
+                <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                   {genre } </div> : null}
                   </div>
                     <div className="sub-genre-light" style={{fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none'}}>
@@ -185,6 +228,7 @@ export default class toStoryCard extends React.Component {
       )
     }
   }
+
   renderSevenCol(){
     if(!this.state.schemaJSON){
       return(
@@ -205,11 +249,14 @@ export default class toStoryCard extends React.Component {
       let str = this.state.dataJSON.card_data.data.url;
       let arr = str && str.split("/");
       let name = undefined;
-      let dom = arr && (arr[0] + "//" + arr[2]);
+      let dom = arr && (arr[2]);
       if(this.state.domain === dom){
         fav = undefined;
       }
-      let light = this.state.dataJSON.card_data.data.imageurl;
+      let light = this.state.dataJSON.card_data.data.col7imageurl;
+      if (!this.state.dataJSON.card_data.data.col7imageurl) {
+        light = this.state.dataJSON.card_data.data.imageurl;
+      }
       if(!this.checkURL(light)){
         light = undefined;
       }
@@ -227,24 +274,27 @@ export default class toStoryCard extends React.Component {
       }
       let series = this.state.dataJSON.card_data.data.series,
       genre = this.state.dataJSON.card_data.data.genre;
-      let leftPadding = '1px';
-      if(series){
-        leftPadding = '5px';
+      let padding = "1px 1px 1px 5px";
+      if (!genre && series) {
+        padding = "2.5px 5px";
       }
-      if(!series && !genre){
-        leftPadding = '0px';
+      if (!series && !genre) {
+        padding = '0px';
+      }
+      if (genre && !series) {
+        padding = "1px";
       }
       return(
         <div onClick={()=>{ this.handleClick() }}>
           <div className="col-7-story-card">
-            {light ? <img className="image-styling" style={{width: 540}} src={light}></img> : <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:540}}></div>}
+            {light ? <img className="image-styling" style={{width: 540}} src={light}></img> : <div  className="image-styling" style={{backgroundColor:'#fafafa', height:250, width:540}}></div>}
             {light ? <div className="title-background"></div> : null}
             <div className="card-tags">
             {fav ?
                 <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
                   <img className="favicon" src = {fav}/>
                 </div> : null}
-                <div className="series-name" style={{ padding: series || genre ? '1px' : '0px',paddingLeft: leftPadding}}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
+            <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                   {genre } </div> : null}</div>
                 {
                   this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
@@ -263,6 +313,7 @@ export default class toStoryCard extends React.Component {
       )
     }
   }
+
   renderFourCol(){
     if(!this.state.schemaJSON){
       return(
@@ -283,11 +334,14 @@ export default class toStoryCard extends React.Component {
       let str = this.state.dataJSON.card_data.data.url;
       let arr = str && str.split("/");
       let name = undefined;
-      let dom = arr && (arr[0] + "//" + arr[2]);
+      let dom = arr && (arr[2]);
       if(this.state.domain === dom){
         fav = undefined;
       }
-      let light = this.state.dataJSON.card_data.data.imageurl;
+      let light = this.state.dataJSON.card_data.data.col7imageurl;
+      if (!this.state.dataJSON.card_data.data.col7imageurl) {
+        light = this.state.dataJSON.card_data.data.imageurl;
+      }
       if(!this.checkURL(light)){
         light = undefined;
       }
@@ -305,24 +359,27 @@ export default class toStoryCard extends React.Component {
       }
       let series = this.state.dataJSON.card_data.data.series,
       genre = this.state.dataJSON.card_data.data.genre;
-      let leftPadding = '1px';
-      if(series){
-        leftPadding = '5px';
+      let padding = "1px 1px 1px 5px";
+      if (!genre && series) {
+        padding = "2.5px 5px";
       }
-      if(!series && !genre){
-        leftPadding = '0px';
+      if (!series && !genre) {
+        padding = '0px';
+      }
+      if (genre && !series) {
+        padding = "1px";
       }
       return(
         <div onClick={()=>{ this.handleClick() }}>
           <div className="col-4-story-card">
-            {light ? <img className="image-styling" style={{height:250}} src={light}></img>: <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:300}}></div>}
+            {light ? <img className="image-styling" style={{height:250}} src={light}></img>: <div  className="image-styling" style={{backgroundColor:'#fafafa', height:250, width:300}}></div>}
             {light ? <div className="title-background"></div> : null}
             <div className="card-tags">
             {fav ?
                 <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
                   <img className="favicon" src = {fav}/>
                 </div> : null}
-                <div className="series-name" style={{ padding: series || genre ? '1px' : '0px',paddingLeft: leftPadding}}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
+            <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                   {genre } </div> : null}</div>
                 {
                   this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
@@ -341,6 +398,7 @@ export default class toStoryCard extends React.Component {
       )
     }
   }
+
   renderThreeCol(){
     if(!this.state.schemaJSON){
       return(
@@ -361,11 +419,14 @@ export default class toStoryCard extends React.Component {
       let str = this.state.dataJSON.card_data.data.url;
       let arr = str && str.split("/");
       let name = undefined;
-      let dom = arr && (arr[0] + "//" + arr[2]);
+      let dom = arr && (arr[2]);
       if(this.state.domain === dom){
         fav = undefined;
       }
-      let light = this.state.dataJSON.card_data.data.imageurl;
+      let light = this.state.dataJSON.card_data.data.col7imageurl;
+      if (!this.state.dataJSON.card_data.data.col7imageurl) {
+        light = this.state.dataJSON.card_data.data.imageurl;
+      }
       if(!this.checkURL(light)){
         light = undefined;
       }
@@ -383,24 +444,27 @@ export default class toStoryCard extends React.Component {
       }
       let series = this.state.dataJSON.card_data.data.series,
       genre = this.state.dataJSON.card_data.data.genre;
-      let leftPadding = '1px';
-      if(series){
-        leftPadding = '5px';
+      let padding = "1px 1px 1px 5px";
+      if (!genre && series) {
+        padding = "2.5px 5px";
       }
-      if(!series && !genre){
-        leftPadding = '0px';
+      if (!series && !genre) {
+        padding = '0px';
+      }
+      if (genre && !series) {
+        padding = "1px";
       }
       return(
         <div onClick={()=>{ this.handleClick() }}>
           <div className="col-3-story-card" >
-            {light ? <img className="image-styling" style={{height:250,}} src={light}></img>: <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:220}}></div>}
+            {light ? <img className="image-styling" style={{height:250}} src={light}></img>: <div className="image-styling" style={{backgroundColor:'#fafafa',height:250, width:220}}></div>}
             {light ? <div className="title-background"></div> : null}
             <div className="card-tags">
             {fav ?
                 <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
                   <img className="favicon" src = {fav}/>
                 </div> : null}
-                <div className="series-name" style={{ padding: series || genre ? '1px' : '0px',paddingLeft: leftPadding}}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
+            <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                   {genre } </div> : null}</div>
                 {
                   this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
@@ -419,6 +483,7 @@ export default class toStoryCard extends React.Component {
       )
     }
   }
+
   renderTwoCol(){
     if(!this.state.schemaJSON){
       return(
@@ -439,11 +504,11 @@ export default class toStoryCard extends React.Component {
       let str = this.state.dataJSON.card_data.data.url;
       let arr = str && str.split("/");
       let name = undefined;
-      let dom = arr && (arr[0] + "//" + arr[2]);
-      if(this.state.domain === dom){
-        fav = undefined;
+      let dom = arr && (arr[2]);
+      let light = this.state.dataJSON.card_data.data.col7imageurl;
+      if (!this.state.dataJSON.card_data.data.col7imageurl) {
+        light = this.state.dataJSON.card_data.data.imageurl;
       }
-      let light = this.state.dataJSON.card_data.data.imageurl;
       if(!this.checkURL(light)){
         light = undefined;
       }
@@ -459,17 +524,20 @@ export default class toStoryCard extends React.Component {
       if(date && date != NaN){
         show = show+ta.ago(date);
       }
+      let series = this.state.dataJSON.card_data.data.series,
+        genre = this.state.dataJSON.card_data.data.genre;
+      let padding = genre ? "1px" : "0px" ;
       return(
         <div onClick={()=>{ this.handleClick() }}>
           <div className="col-2-story-card">
-            {light ? <img className="image-styling" style={{height:250}} src={light}></img>: <div style={{backgroundColor:'#fafafa',position:'absolute',left:0, top:0, height:250, width:140}}></div>}
+            {light ? <img className="image-styling" style={{height:250}} src={light}></img>: <div className="image-styling" style={{zIndex:'-1',backgroundColor:'#fafafa',height:250, width:140}}></div>}
             {light ? <div className="title-background"></div> : null}
             <div className="card-tags">
-            {fav ? 
+            {fav ?
                 <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white', marginRight:'4px'}}>
                   <img className="favicon" src = {fav}/>
                 </div> : null}
-                <div className="series-name">{this.state.dataJSON.card_data.data.genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor}}>
+            <div className="series-name" style={{ padding: padding }}>{this.state.dataJSON.card_data.data.genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor}}>
                   {this.state.dataJSON.card_data.data.genre } </div> : null}</div>
             </div>
             <div className="bottom-pull-div">

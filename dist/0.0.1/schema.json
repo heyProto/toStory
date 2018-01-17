@@ -1,48 +1,48 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#", 
-  "definitions": {}, 
-  "id": "http://example.com/example.json", 
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {},
+  "id": "http://example.com/example.json",
   "properties": {
     "data": {
-      "id": "/properties/data", 
+      "id": "/properties/data",
       "properties": {
         "url": {
-          "id": "/properties/data/properties/url", 
-          "title": "Story URL", 
+          "id": "/properties/data/properties/url",
+          "title": "Story URL",
           "type": "string",
           "format":"uri"
         },
         "headline":{
-          "title": "Headline", 
+          "title": "Headline",
           "type": "string",
           "minLength":50,
           "maxLength": 90
         },
         "byline":{
-          "title": "By line", 
+          "title": "Byline",
           "type": "string",
           "minLength":3,
           "maxLength": 25
         },
         "publishedat":{
-          "title": "Publish Date", 
+          "title": "Publish Date",
           "type": "string",
           "format":"date-time"
         },
         "series":{
-          "title": "Series", 
+          "title": "Series",
           "type": "string",
           "minLength":3,
           "maxLength": 15
         },
         "genre":{
-          "title": "Genre", 
+          "title": "Intersection",
           "type": "string",
           "minLength":3,
           "maxLength": 15
         },
         "subgenre":{
-          "title": "Sub-Genre", 
+          "title": "Sub Intersection",
           "type": "string",
           "minLength":3,
           "maxLength": 15
@@ -57,18 +57,34 @@
           "title":"Is it sponsored?",
           "type":"boolean"
         },
+        "hasimage": {
+          "title": "Does the article have an image other than cover image?",
+          "type": "boolean"
+        },
+        "hasvideo": {
+          "title": "Does the article have a video?",
+          "type": "boolean"
+        },
+        "hasdata": {
+          "title": "Does the article have data?",
+          "type": "boolean"
+        },
         "interactive":{
-          "title":"Does it have an interactive?",
           "type":"boolean"
         },
         "summary":{
-          "title": "Summary", 
+          "title": "Summary",
           "type": "string",
           "minLength":100,
           "maxLength": 220
         },
         "imageurl":{
-          "title":"Image URL",
+          "title":"16 col Image URL",
+          "type":"string",
+          "format":"uri"
+        },
+        "col7imageurl":{
+          "title":"7 col Image URL",
           "type":"string",
           "format":"uri"
         },
@@ -79,6 +95,18 @@
           "enumNames":["Vertically focused","Horizontally focused"],
           "default":"h"
         },
+        "country": {
+          "title": "Country",
+          "type": "string"
+        },
+        "state": {
+          "title": "State",
+          "type": "string"
+        },
+        "city": {
+          "title": "City",
+          "type": "string"
+        },
         "publishername":{
           "type":"string"
         },
@@ -88,13 +116,13 @@
         "faviconurl":{
           "type":"string"
         }
-      }, 
+      },
       "title":"Card Data",
       "type": "object",
       "required": [
         "url","headline","byline","publishedat"
       ]
     }
-  }, 
+  },
   "type": "object"
 }

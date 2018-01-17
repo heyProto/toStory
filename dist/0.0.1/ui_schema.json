@@ -1,13 +1,22 @@
 {
    "data":{
-    "publishername":{
-        "ui:widget":"hidden"
-    },
-    "domainurl":{
-        "ui:widget":"hidden"
-    },
-    "faviconurl":{
-        "ui:widget":"hidden"
-    }
+        "publishername":{
+            "ui:widget":"hidden"
+        },
+        "domainurl":{
+            "ui:widget":"hidden"
+        },
+        "faviconurl":{
+            "ui:widget":"hidden"
+        },
+        "interactive":{
+            "ui:widget":"hidden"
+        },
+        "imageurl": {
+            "ui:help": "Hint: 1260px width. 5:3 aspect ratio."
+        },
+        "col7imageurl": {
+            "ui:help": "Hint: 540px width. 5:3 aspect ratio."
+        }
    }
 }

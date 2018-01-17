@@ -3,6 +3,9 @@
 #protograph-div {
   overflow: hidden;
 }
+.col-16-story-card, .col-7-story-card, .col-4-story-card, .col-3-story-card, .col-2-story-card {
+	cursor: pointer;
+}
 .card-content{
   padding-left: 10px !important;
   padding-right: 10px !important;
@@ -70,20 +73,17 @@
 	background: transparent;
 	height: 250px;
 	width: 220px;
+	z-index: 1;
 	position: relative;
 	padding: 12px;
 	box-sizing: border-box;
 	overflow: hidden;
 }
 
-.bottom-pull-div{
-	position: absolute;
-	bottom: 12px;
-}
-
 .col-3-story-card .article-title{
 	font-size: 18px;
 	color: #333;
+	word-wrap:break-word;
 	font-family: bitter;
 	font-weight: 900;
   display: inline-block;
@@ -111,6 +111,7 @@
 .col-4-story-card{
 	background: transparent;
 	height: 250px;
+	z-index: 1;
 	width: 300px;
 	position: relative;
 	padding: 12px;
@@ -118,15 +119,12 @@
 	overflow: hidden;
 }
 
-.bottom-pull-div{
-	position: absolute;
-	bottom: 12px;
-}
 
 .col-4-story-card .article-title{
 	font-size: 18px;
 	color: #333;
 	font-family: bitter;
+	word-wrap:break-word;
   font-weight: 900;
   font-style: normal;
   font-stretch: normal;
@@ -149,6 +147,7 @@
 .col-7-story-card{
 	background: transparent;
 	height: 250px;
+	z-index: 1;
 	position: relative;
 	width: 540px;
 	padding: 12px;
@@ -156,17 +155,14 @@
   	overflow: hidden;
 }
 
-.bottom-pull-div{
-	position: absolute;
-	bottom: 12px;
-}
 
 .col-7-story-card .article-title{
 	font-size: 18px;
 	color: #333;
 	font-family: bitter;
   font-weight: 900;
-  font-style: normal;
+	font-style: normal;
+	word-wrap:break-word;
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
@@ -187,6 +183,7 @@
 .col-2-story-card{
 	background: transparent;
 	height: 250px;
+	z-index: 1;
 	width: 140px;
 	display: inline-block;
 	float: left;
@@ -196,11 +193,6 @@
 	overflow: hidden;
 }
 
-.bottom-pull-div{
-	position: absolute;
-	bottom: 12px;
-}
-
 .col-2-story-card .article-title{
 	font-size: 14px;
 	color: #333;
@@ -208,7 +200,8 @@
   font-weight: 900;
   font-style: normal;
   font-stretch: normal;
-  line-height: normal;
+	line-height: normal;
+	word-wrap:break-word;
   letter-spacing: normal;
   text-align: left;
 	display: inline-block;
@@ -217,7 +210,6 @@
 	max-width: 116px;
 	max-height: 125px;
     overflow: hidden;
-    text-overflow: ellipsis;
     line-height: 19px;
 }
 
@@ -229,9 +221,9 @@
 	letter-spacing: 0.5px;
 }
 
-.col-2-story-card .card-tags .series-name{
-	background: transparent;
-	padding-left: 0px;
+.col-16-story-card .card-tags .series-name, .col-7-story-card .card-tags .series-name, .col-4-story-card .card-tags .series-name, .col-3-story-card .card-tags .series-name, .col-2-story-card .card-tags .series-name{
+	/* background: transparent; */
+	padding-left: 1px;
 }
 
 .col-2-story-card .card-tags .series-name .genre{
@@ -239,9 +231,10 @@
 }
 
 .col-16-story-card{
-	background-image: linear-gradient(253deg, rgba(51, 51, 51, 0.2), rgba(51, 51, 51, 0.8));
 	height: 430px;
 	padding: 20px;
+	background:rgba(51,51,51,0.75);
+	z-index: 1;
 	width: 1260px;
 	position: relative;
 	box-sizing: border-box;
@@ -255,6 +248,7 @@
 
 .col-16-story-card .article-title{
 	font-size: 32px;
+	word-wrap:break-word;
 	color: white;
 	font-family: bitter;
   font-weight: 900;
@@ -269,13 +263,22 @@
 	max-width: 860px;
 }
 
+.col-16-diag-grad{
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	background-image: linear-gradient(253deg, rgba(51, 51, 51, 0.2), rgba(51, 51, 51, 0.8));
+}
+
 .title-background{
 	height: 250px;
-    width: 100%;
-    position: absolute;
-    left: 0px;
-    bottom: 0px;
-    background: linear-gradient(#3360, #1d1d1d);
+	width: 100%;
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+	background: linear-gradient(#3360, #1d1d1d);
 }
 
 .by-line{
@@ -407,6 +410,21 @@
     width: 300px;
     margin-left: 50%;
     transform: translate(-50%, 0); }
+
+    .col-16-story-card{
+        margin-top: 0px;
+        width: 100%;
+    }
+
+    .col-16-story-card .article-title{
+        font-size: 22px;
+        max-width: 100%;
+        font-weight: 600;
+        line-height: 30px;
+        letter-spacing: 0.5px;
+        padding-right: 20px;
+        margin-left: 0px;
+    }
 
   .col-2-story-card{
 		margin-right: 20px;

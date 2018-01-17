@@ -50,9 +50,12 @@ export default class EditStoryCard extends React.Component {
           let str = formData.data.url;
           let arr = str && str.split("/");
           let name = undefined;
-          let dom = arr && (arr[0] + "//" + arr[2]);
+          let dom = arr && (arr[2]);
           linkSources.data.forEach((link)=>{
-            if(link.url === dom){
+            let arr2 = link.url && link.url.split("/");
+            let linkc = arr2 && (arr2[2]);
+            console.log(linkc, dom, '...');
+            if(linkc === dom){
               fav = link.favicon_url;
               name = link.name;
             }
@@ -94,9 +97,11 @@ export default class EditStoryCard extends React.Component {
           let str = formData.data.url;
           let arr = str && str.split("/");
           let name = undefined;
-          let dom = arr && (arr[0] + "//" + arr[2]);
+          let dom = arr && (arr[2]);
           this.state.refLinkDetails.forEach((link)=>{
-            if(link.url === dom){
+            let arr2 = link.url && link.url.split("/");
+            let linkc = arr2 && (arr2[2]);
+            if(linkc === dom){
               fav = link.favicon_url;
               name = link.name;
             }
@@ -104,8 +109,9 @@ export default class EditStoryCard extends React.Component {
           formData.data.faviconurl = fav;
           formData.data.domainurl = dom;
           formData.data.publishername = name;
+          formData.data.interactive = (formData.data.hasimage || formData.data.hasvideo || formData.data.hasdata) ? true : false
           dataJSON.card_data = formData;
-          
+          console.log(dataJSON, formData, "---------------")
           return {
             dataJSON: dataJSON
           }
@@ -252,44 +258,46 @@ export default class EditStoryCard extends React.Component {
                       data-mode='16_col'
                       onClick={this.toggleMode}
                     >
-                      col-16
+                      16c-cover
                     </a>
                     <a className={`item ${this.state.mode === '7_col' ? 'active' : ''}`}
                       data-mode='7_col'
                       onClick={this.toggleMode}
                     >
-                      col-7
+                      7c
                     </a>
                     <a className={`item ${this.state.mode === '4_col' ? 'active' : ''}`}
                       data-mode='4_col'
                       onClick={this.toggleMode}
                     >
-                      col-4
+                      4c
                     </a>
                     <a className={`item ${this.state.mode === '3_col' ? 'active' : ''}`}
                       data-mode='3_col'
                       onClick={this.toggleMode}
                     >
-                      col-3
+                      3c
                     </a>
                     <a className={`item ${this.state.mode === '2_col' ? 'active' : ''}`}
                       data-mode='2_col'
                       onClick={this.toggleMode}
                     >
-                      col-2
+                      2c
                     </a>
                   </div>
                 </div>
-                <StoryCard
-                  mode={this.state.mode}
-                  dataJSON={this.state.dataJSON}
-                  houseColors={this.props.houseColors}
-                  domain={this.props.domain}
-                  schemaJSON={this.state.schemaJSON}
-                  optionalConfigJSON={this.state.optionalConfigJSON}
-                  optionalConfigSchemaJSON={this.state.optionalConfigSchemaJSON}
-                  linkDetails={this.state.refLinkDetails}
-                />
+                <div className="protograph-app-holder">
+                  <StoryCard
+                    mode={this.state.mode}
+                    dataJSON={this.state.dataJSON}
+                    houseColors={this.props.houseColors}
+                    domain={this.props.domain}
+                    schemaJSON={this.state.schemaJSON}
+                    optionalConfigJSON={this.state.optionalConfigJSON}
+                    optionalConfigSchemaJSON={this.state.optionalConfigSchemaJSON}
+                    linkDetails={this.state.refLinkDetails}
+                  />
+                </div>
               </div>
             </div>
           </div>
