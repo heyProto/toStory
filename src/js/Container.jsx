@@ -524,16 +524,9 @@ export default class toStoryCard extends React.Component {
       if(date && date != NaN){
         show = show+ta.ago(date);
       }
-      let padding = "1px 1px 1px 5px";
-      if (!genre && series) {
-        padding = "2.5px 5px";
-      }
-      if (!series && !genre) {
-        padding = '0px';
-      }
-      if (genre && !series) {
-        padding = "1px";
-      }
+      let series = this.state.dataJSON.card_data.data.series,
+        genre = this.state.dataJSON.card_data.data.genre;
+      let padding = genre ? "1px" : "0px" ;
       return(
         <div onClick={()=>{ this.handleClick() }}>
           <div className="col-2-story-card">
