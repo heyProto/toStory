@@ -301,6 +301,10 @@
   border-radius: 50px;
 }
 
+.col-16-story-card .card-tags{
+	height: 22px;
+}
+
 .card-tags .series-name{
 	font-size: 10px;
 	text-transform: uppercase;
