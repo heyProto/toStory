@@ -184,7 +184,7 @@ export default class toStoryCard extends React.Component {
       if(!this.checkURL(light)){
         light = undefined;
       }
-      let series = this.state.dataJSON.card_data.data.series,
+      let series = window.vertical_name || this.state.dataJSON.card_data.data.series,
       genre = this.state.dataJSON.card_data.data.genre;
       let padding = "1px 1px 1px 5px";
       if (!genre && series) {
@@ -272,7 +272,7 @@ export default class toStoryCard extends React.Component {
       if(date && date != NaN){
         show = show+ta.ago(date);
       }
-      let series = this.state.dataJSON.card_data.data.series,
+      let series = window.vertical_name || this.state.dataJSON.card_data.data.series,
       genre = this.state.dataJSON.card_data.data.genre;
       let padding = "1px 1px 1px 5px";
       if (!genre && series) {
@@ -357,7 +357,7 @@ export default class toStoryCard extends React.Component {
       if(date && date != NaN){
         show = show+ta.ago(date);
       }
-      let series = this.state.dataJSON.card_data.data.series,
+      let series = window.vertical_name || this.state.dataJSON.card_data.data.series,
       genre = this.state.dataJSON.card_data.data.genre;
       let padding = "1px 1px 1px 5px";
       if (!genre && series) {
@@ -442,7 +442,7 @@ export default class toStoryCard extends React.Component {
       if(date && date != NaN){
         show = show+ta.ago(date);
       }
-      let series = this.state.dataJSON.card_data.data.series,
+      let series = window.vertical_name || this.state.dataJSON.card_data.data.series,
       genre = this.state.dataJSON.card_data.data.genre;
       let padding = "1px 1px 1px 5px";
       if (!genre && series) {
@@ -524,7 +524,7 @@ export default class toStoryCard extends React.Component {
       if(date && date != NaN){
         show = show+ta.ago(date);
       }
-      let series = this.state.dataJSON.card_data.data.series,
+      let series = window.vertical_name || this.state.dataJSON.card_data.data.series,
         genre = this.state.dataJSON.card_data.data.genre;
       let padding = genre ? "1px" : "0px" ;
       return(

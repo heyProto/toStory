@@ -9,6 +9,9 @@
         "faviconurl":{
             "ui:widget":"hidden"
         },
+        "series":{
+            "ui:widget":"hidden"
+        },
         "interactive":{
             "ui:widget":"hidden"
         },
