@@ -139,8 +139,7 @@ export default class toStoryCard extends React.Component {
   }
 
   handleClick(){
-    console.log(this.state);
-    window.open(this.state.dataJSON.card_data.data.url,'_blank');
+    window.open(this.state.dataJSON.card_data.data.url,'_top');
   }
 
   renderSixteenCol(){
