@@ -36,25 +36,33 @@ export default class EditStoryCard extends React.Component {
       optionalConfigJSON: this.state.dataJSON.configs,
       optionalConfigSchemaJSON: this.state.optionalConfigSchemaJSON
     }
-    console.log(getDataObj);
     getDataObj["name"] = getDataObj.dataJSON.data.headline.substr(0,225); // Reduces the name to ensure the slug does not get too long
     return getDataObj;
   }
 
   componentDidMount() {
     if (typeof this.props.dataURL === "string"){
-      axios.all([axios.get(this.props.dataURL), axios.get(this.props.schemaURL), axios.get(this.props.optionalConfigURL), axios.get(this.props.optionalConfigSchemaURL), axios.get(this.refLinkSourcesURL), axios.get(this.props.uiSchemaURL)])
-        .then(axios.spread((card, schema, opt_config, opt_config_schema, linkSources, uiSchema) => {
-          let formData = card.data;
-          let fav = undefined;
-          let str = formData.data.url;
-          let arr = str && str.split("/");
-          let name = undefined;
-          let dom = arr && (arr[2]);
+      axios.all([
+        axios.get(this.props.dataURL),
+        axios.get(this.props.schemaURL),
+        axios.get(this.props.optionalConfigURL),
+        axios.get(this.props.optionalConfigSchemaURL),
+        axios.get(this.refLinkSourcesURL),
+        axios.get(this.props.uiSchemaURL),
+        axios.get(this.props.siteConfigURL)
+      ]).then(axios.spread((card, schema, opt_config, opt_config_schema, linkSources, uiSchema, site_configs) => {
+          let formData = card.data,
+              fav = undefined,
+              str = formData.data.url,
+              arr = str && str.split("/"),
+              name = undefined,
+              dom = arr && (arr[2]),
+              stateVars;
+
           linkSources.data.forEach((link)=>{
-            let arr2 = link.url && link.url.split("/");
-            let linkc = arr2 && (arr2[2]);
-            console.log(linkc, dom, '...');
+            let arr2 = link.url && link.url.split("/"),
+               linkc = arr2 && (arr2[2]);
+
             if(linkc === dom){
               fav = link.favicon_url;
               name = link.name;
@@ -63,8 +71,8 @@ export default class EditStoryCard extends React.Component {
           formData.data.faviconurl = fav;
           formData.data.domainurl = dom;
           formData.data.publishername = name;
-          console.log(formData);
-          this.setState({
+
+          stateVars = {
             dataJSON: {
               card_data: formData,
               configs: opt_config.data
@@ -73,8 +81,15 @@ export default class EditStoryCard extends React.Component {
             uiSchemaJSON: uiSchema.data,
             optionalConfigJSON: opt_config.data,
             optionalConfigSchemaJSON: opt_config_schema.data,
-            refLinkDetails:linkSources.data
-          });
+            refLinkDetails: linkSources.data,
+            siteConfigs: site_configs.data
+          }
+
+          stateVar.optionalConfigJSON.house_colour = stateVar.siteConfigs.house_colour;
+          stateVar.optionalConfigJSON.reverse_house_colour = stateVar.siteConfigs.reverse_house_colour;
+          stateVar.optionalConfigJSON.font_colour = stateVar.siteConfigs.font_colour;
+          stateVar.optionalConfigJSON.reverse_font_colour = stateVar.siteConfigs.reverse_font_colour;
+          this.setState(stateVars);
           if (links.length) {
             this.checkAndUpdateLinkInfo(links, stateVars.refLinkDetails);
           }
@@ -90,7 +105,7 @@ export default class EditStoryCard extends React.Component {
   onChangeHandler({formData}) {
     switch (this.state.step) {
       case 1:
-        
+
         this.setState((prevStep, prop) => {
           let dataJSON = prevStep.dataJSON;
           let fav = undefined;
@@ -111,7 +126,6 @@ export default class EditStoryCard extends React.Component {
           formData.data.publishername = name;
           formData.data.interactive = (formData.data.hasimage || formData.data.hasvideo || formData.data.hasdata) ? true : false
           dataJSON.card_data = formData;
-          console.log(dataJSON, formData, "---------------")
           return {
             dataJSON: dataJSON
           }
@@ -161,7 +175,6 @@ export default class EditStoryCard extends React.Component {
 
 
   renderSchemaJSON() {
-    // console.log(this.state.schemaJSON, "this.state.schemaJSON")
     switch(this.state.step){
       case 1:
         return this.state.schemaJSON;
@@ -240,7 +253,7 @@ export default class EditStoryCard extends React.Component {
                     toStory
                   </div>
                 </div>
-                <JSONSchemaForm 
+                <JSONSchemaForm
                   uiSchema={this.state.uiSchemaJSON}
                   schema={this.renderSchemaJSON()}
                   onSubmit={((e) => this.onSubmitHandler(e))}
@@ -290,7 +303,6 @@ export default class EditStoryCard extends React.Component {
                   <StoryCard
                     mode={this.state.mode}
                     dataJSON={this.state.dataJSON}
-                    houseColors={this.props.houseColors}
                     domain={this.props.domain}
                     schemaJSON={this.state.schemaJSON}
                     optionalConfigJSON={this.state.optionalConfigJSON}
