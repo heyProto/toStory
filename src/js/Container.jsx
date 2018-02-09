@@ -129,7 +129,6 @@ export default class toStoryCard extends React.Component {
     }else{
       // Setting the string to work with edit mode.
       text.innerHTML = this.state.dataJSON.card_data.data.headline;
-      // console.log(this.state.dataJSON.card_data, "data", container.offsetHeight)
       wordArray = this.state.dataJSON.card_data.data.headline.split(' ');
       while (container.offsetHeight > 80) {
         wordArray.pop();
@@ -161,7 +160,6 @@ export default class toStoryCard extends React.Component {
       let fav = this.state.dataJSON.card_data.data.faviconurl;
       let str = this.state.dataJSON.card_data.data.url;
       let arr = str && str.split("/");
-      console.log(arr);
       let name = undefined;
       let dom = arr && arr[2];
       if(this.state.domain === dom){

@@ -36,7 +36,6 @@ export default class EditStoryCard extends React.Component {
       optionalConfigJSON: this.state.dataJSON.configs,
       optionalConfigSchemaJSON: this.state.optionalConfigSchemaJSON
     }
-    console.log(getDataObj);
     getDataObj["name"] = getDataObj.dataJSON.data.headline.substr(0,225); // Reduces the name to ensure the slug does not get too long
     return getDataObj;
   }
@@ -54,7 +53,6 @@ export default class EditStoryCard extends React.Component {
           linkSources.data.forEach((link)=>{
             let arr2 = link.url && link.url.split("/");
             let linkc = arr2 && (arr2[2]);
-            console.log(linkc, dom, '...');
             if(linkc === dom){
               fav = link.favicon_url;
               name = link.name;
@@ -63,7 +61,6 @@ export default class EditStoryCard extends React.Component {
           formData.data.faviconurl = fav;
           formData.data.domainurl = dom;
           formData.data.publishername = name;
-          console.log(formData);
           this.setState({
             dataJSON: {
               card_data: formData,
@@ -75,9 +72,6 @@ export default class EditStoryCard extends React.Component {
             optionalConfigSchemaJSON: opt_config_schema.data,
             refLinkDetails:linkSources.data
           });
-          if (links.length) {
-            this.checkAndUpdateLinkInfo(links, stateVars.refLinkDetails);
-          }
         }))
         .catch((error) => {
           this.setState({
@@ -111,7 +105,6 @@ export default class EditStoryCard extends React.Component {
           formData.data.publishername = name;
           formData.data.interactive = (formData.data.hasimage || formData.data.hasvideo || formData.data.hasdata) ? true : false
           dataJSON.card_data = formData;
-          console.log(dataJSON, formData, "---------------")
           return {
             dataJSON: dataJSON
           }
@@ -133,26 +126,6 @@ export default class EditStoryCard extends React.Component {
         break;
     }
   }
-  checkAndUpdateLinkInfo(links, refLinkDetails) {
-    links.forEach((e,i) => {
-      let linkDetails = this.lookUpLinkDetail(e.link, refLinkDetails);
-      if (linkDetails) {
-        e.favicon_url = linkDetails.favicon_url;
-        e.publication_name = linkDetails.name;
-      }
-    });
-  }
-
-  lookUpLinkDetail(link, refLinkDetails) {
-    refLinkDetails = refLinkDetails || this.state.refLinkDetails;
-
-    let linkParams = this.parseUrl(link),
-      lookupLink = refLinkDetails.filter((e, i) => {
-        return e.url === linkParams.origin;
-      })[0];
-
-      return lookupLink;
-  }
 
   renderSEO() {
     let seo_blockquote = `<blockquote><h3>${this.state.dataJSON.card_data.data.headline}</h3><p>${this.state.dataJSON.card_data.data.description}</p></blockquote>`
@@ -161,7 +134,6 @@ export default class EditStoryCard extends React.Component {
 
 
   renderSchemaJSON() {
-    // console.log(this.state.schemaJSON, "this.state.schemaJSON")
     switch(this.state.step){
       case 1:
         return this.state.schemaJSON;
