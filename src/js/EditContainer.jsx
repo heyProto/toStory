@@ -90,9 +90,6 @@ export default class EditStoryCard extends React.Component {
           stateVar.optionalConfigJSON.font_colour = stateVar.siteConfigs.font_colour;
           stateVar.optionalConfigJSON.reverse_font_colour = stateVar.siteConfigs.reverse_font_colour;
           this.setState(stateVar);
-          if (links.length) {
-            this.checkAndUpdateLinkInfo(links, stateVar.refLinkDetails);
-          }
         }))
         .catch((error) => {
           this.setState({
@@ -146,26 +143,6 @@ export default class EditStoryCard extends React.Component {
         }
         break;
     }
-  }
-  checkAndUpdateLinkInfo(links, refLinkDetails) {
-    links.forEach((e,i) => {
-      let linkDetails = this.lookUpLinkDetail(e.link, refLinkDetails);
-      if (linkDetails) {
-        e.favicon_url = linkDetails.favicon_url;
-        e.publication_name = linkDetails.name;
-      }
-    });
-  }
-
-  lookUpLinkDetail(link, refLinkDetails) {
-    refLinkDetails = refLinkDetails || this.state.refLinkDetails;
-
-    let linkParams = this.parseUrl(link),
-      lookupLink = refLinkDetails.filter((e, i) => {
-        return e.url === linkParams.origin;
-      })[0];
-
-      return lookupLink;
   }
 
   renderSEO() {
