@@ -12,11 +12,11 @@ export default class toStoryCard extends React.Component {
         configs: {}
       },
       schemaJSON: undefined,
-      linkDetails: undefined,
       domain: undefined,
       optionalConfigJSON: {},
       optionalConfigSchemaJSON: undefined
     };
+
     if (this.props.dataJSON) {
       stateVar.fetchingData = false;
       stateVar.dataJSON = this.props.dataJSON;
@@ -33,37 +33,41 @@ export default class toStoryCard extends React.Component {
     if (this.props.optionalConfigSchemaJSON) {
       stateVar.optionalConfigSchemaJSON = this.props.optionalConfigSchemaJSON;
     }
-    if(this.props.linkDetails){
-      stateVar.linkDetails = this.props.linkDetails;
-    }
+
     if(this.props.domain){
       stateVar.domain = this.props.domain;
     }
-    if(this.props.houseColors){
-      stateVar.optionalConfigJSON.house_color = this.props.houseColors.house_color;
-      stateVar.optionalConfigJSON.inverse_house_color = this.props.houseColors.inverse_house_color;
-      stateVar.optionalConfigJSON.house_font_color = this.props.houseColors.house_font_color;
-      stateVar.optionalConfigJSON.inverse_house_font_color = this.props.houseColors.inverse_house_font_color;
-    }
+
     this.state = stateVar;
   }
 
   componentDidMount() {
     if (this.state.fetchingData){
-      axios.all([axios.get(this.props.dataURL), axios.get(this.props.schemaURL), axios.get(this.props.optionalConfigURL), axios.get(this.props.optionalConfigSchemaURL), axios.get(window.ref_link_sources_url)])
-        .then(axios.spread((card, schema, opt_config, opt_config_schema, links) => {
-          this.setState({
-            fetchingData: false,
-            dataJSON: {
-              card_data: card.data,
-              configs: opt_config.data
-            },
-            linkDetails:links.data,
-            schemaJSON: schema.data,
-            optionalConfigJSON: opt_config.data,
-            optionalConfigSchemaJSON: opt_config_schema.data
-          });
-        }));
+      axios.all([
+        axios.get(this.props.dataURL),
+        axios.get(this.props.schemaURL),
+        axios.get(this.props.optionalConfigURL),
+        axios.get(this.props.optionalConfigSchemaURL),
+        axios.get(this.props.siteConfigURL)
+      ]).then(axios.spread((card, schema, opt_config, opt_config_schema, site_configs) => {
+        let stateVar = {
+          fetchingData: false,
+          dataJSON: {
+            card_data: card.data,
+            configs: opt_config.data
+          },
+          schemaJSON: schema.data,
+          optionalConfigJSON: opt_config.data,
+          optionalConfigSchemaJSON: opt_config_schema.data,
+          siteConfigs: site_configs.data
+        };
+
+        stateVar.optionalConfigJSON.house_colour = stateVar.siteConfigs.house_colour;
+        stateVar.optionalConfigJSON.reverse_house_colour = stateVar.siteConfigs.reverse_house_colour;
+        stateVar.optionalConfigJSON.font_colour = stateVar.siteConfigs.font_colour;
+        stateVar.optionalConfigJSON.reverse_font_colour = stateVar.siteConfigs.reverse_font_colour;
+        this.setState(stateVar);
+      }));
     } else {
       this.componentDidUpdate();
     }
@@ -150,12 +154,12 @@ export default class toStoryCard extends React.Component {
       let genreColor = "rgba(51, 51, 51, 0.75)",
       genreFontColor = "#fff";
       if(this.state.dataJSON.card_data.data.interactive){
-        genreColor = this.state.optionalConfigJSON.house_color;
-        genreFontColor = this.state.optionalConfigJSON.house_font_color;
+        genreColor = this.state.optionalConfigJSON.house_colour;
+        genreFontColor = this.state.optionalConfigJSON.font_colour;
       }
       if(this.state.dataJSON.card_data.data.sponsored){
-        genreColor = this.state.optionalConfigJSON.inverse_house_color;
-        genreFontColor = this.state.optionalConfigJSON.inverse_house_font_color;
+        genreColor = this.state.optionalConfigJSON.reverse_house_colour;
+        genreFontColor = this.state.optionalConfigJSON.reverse_font_colour;
       }
       let fav = this.state.dataJSON.card_data.data.faviconurl;
       let str = this.state.dataJSON.card_data.data.url;
@@ -235,12 +239,12 @@ export default class toStoryCard extends React.Component {
       let genreColor = "rgba(51, 51, 51, 0.75)",
           genreFontColor = "#fff";
       if(this.state.dataJSON.card_data.data.interactive){
-        genreColor = this.state.optionalConfigJSON.house_color;
-        genreFontColor = this.state.optionalConfigJSON.house_font_color;
+        genreColor = this.state.optionalConfigJSON.house_colour;
+        genreFontColor = this.state.optionalConfigJSON.font_colour;
       }
       if(this.state.dataJSON.card_data.data.sponsored){
-        genreColor = this.state.optionalConfigJSON.inverse_house_color;
-        genreFontColor = this.state.optionalConfigJSON.inverse_house_font_color;
+        genreColor = this.state.optionalConfigJSON.reverse_house_colour;
+        genreFontColor = this.state.optionalConfigJSON.reverse_font_colour;
       }
       let fav = this.state.dataJSON.card_data.data.faviconurl;
       let str = this.state.dataJSON.card_data.data.url;
@@ -320,12 +324,12 @@ export default class toStoryCard extends React.Component {
       let genreColor = "rgba(51, 51, 51, 0.75)",
           genreFontColor = "#fff";
       if(this.state.dataJSON.card_data.data.interactive){
-        genreColor = this.state.optionalConfigJSON.house_color;
-        genreFontColor = this.state.optionalConfigJSON.house_font_color;
+        genreColor = this.state.optionalConfigJSON.house_colour;
+        genreFontColor = this.state.optionalConfigJSON.font_colour;
       }
       if(this.state.dataJSON.card_data.data.sponsored){
-        genreColor = this.state.optionalConfigJSON.inverse_house_color;
-        genreFontColor = this.state.optionalConfigJSON.inverse_house_font_color;
+        genreColor = this.state.optionalConfigJSON.reverse_house_colour;
+        genreFontColor = this.state.optionalConfigJSON.reverse_font_colour;
       }
       let fav = this.state.dataJSON.card_data.data.faviconurl;
       let str = this.state.dataJSON.card_data.data.url;
@@ -405,12 +409,12 @@ export default class toStoryCard extends React.Component {
       let genreColor = "rgba(51, 51, 51, 0.75)",
       genreFontColor = "#fff";
       if(this.state.dataJSON.card_data.data.interactive){
-        genreColor = this.state.optionalConfigJSON.house_color;
-        genreFontColor = this.state.optionalConfigJSON.house_font_color;
+        genreColor = this.state.optionalConfigJSON.house_colour;
+        genreFontColor = this.state.optionalConfigJSON.font_colour;
       }
       if(this.state.dataJSON.card_data.data.sponsored){
-        genreColor = this.state.optionalConfigJSON.inverse_house_color;
-        genreFontColor = this.state.optionalConfigJSON.inverse_house_font_color;
+        genreColor = this.state.optionalConfigJSON.reverse_house_colour;
+        genreFontColor = this.state.optionalConfigJSON.reverse_font_colour;
       }
       let fav = this.state.dataJSON.card_data.data.faviconurl;
       let str = this.state.dataJSON.card_data.data.url;
@@ -490,12 +494,12 @@ export default class toStoryCard extends React.Component {
       let genreColor = "rgba(51, 51, 51, 0.75)",
       genreFontColor = "#fff";
       if(this.state.dataJSON.card_data.data.interactive){
-        genreColor = this.state.optionalConfigJSON.house_color;
-        genreFontColor = this.state.optionalConfigJSON.house_font_color;
+        genreColor = this.state.optionalConfigJSON.house_colour;
+        genreFontColor = this.state.optionalConfigJSON.font_colour;
       }
       if(this.state.dataJSON.card_data.data.sponsored){
-        genreColor = this.state.optionalConfigJSON.inverse_house_color;
-        genreFontColor = this.state.optionalConfigJSON.inverse_house_font_color;
+        genreColor = this.state.optionalConfigJSON.reverse_house_colour;
+        genreFontColor = this.state.optionalConfigJSON.reverse_font_colour;
       }
       let fav = this.state.dataJSON.card_data.data.faviconurl;
       let str = this.state.dataJSON.card_data.data.url;

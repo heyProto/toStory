@@ -1,15 +1,17 @@
 {
   "data": {
-    "url":"http://indianexpress.com/article/india/looking-ahead-in-2018-stories-that-will-take-center-stage-in-india-5004665/",
-    "headline":"Looking ahead in 2018: Stories that will take center stage in India",
-    "byline":"Express Web Desk",
-    "publishedat":"2017-12-30T12:51:00.000Z",
-    "genre": "Development",
-    "sponsored": true,
-    "domainurl":"http://indianexpress.com",
-    "faviconurl":"http://0.gravatar.com/blavatar/efe0300e7f891c5c802ed340f6b20b67",
-    "publishername":"IndianExpress",
-    "imageurl": "https://cdn.protograph.pykih.com/images/indianexpress/a791bd6cb7a2cf8e/1825.jpeg",
-    "col7imageurl": "http://images.indianexpress.com/2018/01/genderand-featured2.jpg?w=759"
+    "url": "https://cdn.protograph.pykih.com/jaljagran-4/evaporation-of-rain-water-draught-in-the-womb-of-mother-earth-4605.html",
+    "headline": "\u0939\u0935\u093e \u092e\u0947\u0902 \u0909\u0921\u093c\u0924\u093e \u0935\u0930\u094d\u0937\u093e \u091c\u0932, \u0938\u0942\u092c\u0947 \u092e\u0947\u0902 \u0938\u0942\u0928\u0940 \u0939\u094b \u0930\u0939\u0940 \u0927\u0930\u0924\u0940 \u0915\u0940 \u0915\u094b\u0916",
+    "byline": "Jagran",
+    "publishedat": "2018-01-29T02:30:00.000Z",
+    "series": "\u091c\u0932\u091c\u093e\u0917\u0930\u0923",
+    "genre": "\u091c\u0940\u0935\u0928",
+    "iconbgcolor": "white",
+    "sponsored": false,
+    "interactive": true,
+    "imageurl": "https://cdn.protograph.pykih.com/images/JagranNews/166900ea85610f5c/2403.jpeg",
+    "col7imageurl": "https://cdn.protograph.pykih.com/images/JagranNews/166900ea85610f5c/2403.jpeg",
+    "focus": "h",
+    "domainurl": "cdn.protograph.pykih.com"
   }
 }

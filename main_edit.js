@@ -22,6 +22,7 @@ ProtoGraph.Card.toStory.prototype.renderEdit = function (onPublishCallback) {
       domain={this.options.domain}
       optionalConfigURL={this.options.configuration_url}
       optionalConfigSchemaURL={this.options.configuration_schema_url}
+      siteConfigURL={this.options.site_config_url}
       onPublishCallback={this.onPublishCallback}
       houseColors={this.options.houseColors}
       mode={this.mode}
