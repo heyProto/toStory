@@ -20,7 +20,7 @@ export default class toStoryCard extends React.Component {
     if (this.props.dataJSON) {
       stateVar.fetchingData = false;
       stateVar.dataJSON = this.props.dataJSON;
-      stateVar.languageTexts = this.getLanguageTexts(this.props.dataJSON.data.language);
+      stateVar.languageTexts = this.getLanguageTexts(this.props.dataJSON.card_data.data.language);
     }
 
     if (this.props.schemaJSON) {
@@ -62,7 +62,7 @@ export default class toStoryCard extends React.Component {
           optionalConfigSchemaJSON: opt_config_schema.data,
           siteConfigs: site_configs.data
         };
-        console.log(stateVar.siteConfigs.primary_language.toLowerCase());
+
         stateVar.optionalConfigJSON.house_colour = stateVar.siteConfigs.house_colour;
         stateVar.optionalConfigJSON.reverse_house_colour = stateVar.siteConfigs.reverse_house_colour;
         stateVar.optionalConfigJSON.font_colour = stateVar.siteConfigs.font_colour;
