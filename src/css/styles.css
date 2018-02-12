@@ -441,6 +441,19 @@
     padding: 12px;
 }
 
+.back .padding12 {
+    background-color: #fafafa;
+    height: inherit;
+}
+
+.back .padding12 p{
+    margin: 0px;
+    font-size: 14px;
+    font-family: "cabin";
+    line-height: 19px;
+    color: #333;
+}
+
 @media only screen and (max-width: 500px){
 	.col-2-story-card{
 		margin-right: 20px;

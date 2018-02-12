@@ -95,6 +95,7 @@ export default class EditStoryCard extends React.Component {
           stateVar.optionalConfigJSON.reverse_house_colour = stateVar.siteConfigs.reverse_house_colour;
           stateVar.optionalConfigJSON.font_colour = stateVar.siteConfigs.font_colour;
           stateVar.optionalConfigJSON.reverse_font_colour = stateVar.siteConfigs.reverse_font_colour;
+          stateVar.dataJSON.data.language = stateVar.siteConfigs.primary_language.toLowerCase();
           this.setState(stateVar);
         }))
         .catch((error) => {
