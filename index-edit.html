@@ -22,7 +22,8 @@
     <script src = "./lib/js/calendar.min.js"></script>
     <script src = "./dist/0.0.1/edit-card.min.js"></script>
     <script type="text/javascript">
-    window.ref_link_sources_url = "https://cdn.protograph.pykih.com/Assets/ref_link_sources.json"
+    window.ref_link_sources_url = "https://cdn.protograph.pykih.com/Assets/ref_link_sources.json";
+    window.intersection_names = ['1'];
     var x = new ProtoGraph.Card.toStory()
     x.init({
       selector: document.querySelector('#link-div'),
@@ -32,8 +33,7 @@
       domain: 'ndianexpress.com',
       configuration_url: './dist/0.0.1/configuration_sample.json', //will come from local folder
       configuration_schema_url: './dist/0.0.1/configuration_schema.json', //will come from local folder
-      houseColors: {house_color: "#ff1f00", inverse_house_color: "#2e9d6f",house_font_color:"#ffffff",
-    inverse_house_font_color:"#ffffff"} 
+      site_config_url: './dist/0.0.1/site.json'
     });
     // x.renderScreenshot();
     x.renderEdit();

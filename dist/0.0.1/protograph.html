@@ -5,41 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>toStory</title>
     <link rel="stylesheet" type="text/css" href="card.min.css">
-    <script type="text/javascript">
-      var origin, base_url;
-      // Setting variables from environment
-      origin = window.location.origin;
-      if (origin == 'https://s3.ap-south-1.amazonaws.com') {
-        let bucket_name = window.location.pathname.split('/')['1'];
-        base_url = origin + "/" + bucket_name;
-        switch(bucket_name){
-          case "cdn.protograph":
-            window.ref_link_sources_url = "https://cdn.protograph.pykih.com/Assets/ref_link_sources.json"
-            break;
-          case "staging.cdn.protograph":
-            window.ref_link_sources_url = "https://dkqrqc7q64awx.cloudfront.net/Assets/ref_link_sources.json"
-            break;
-        }
-      } else if (origin === 'https://dkqrqc7q64awx.cloudfront.net') {
-        base_url = origin;
-        window.ref_link_sources_url = "https://dkqrqc7q64awx.cloudfront.net/Assets/ref_link_sources.json"
-      } else {
-        base_url = origin;
-        window.ref_link_sources_url = "https://cdn.protograph.pykih.com/Assets/ref_link_sources.json"
-      }
-
-      if(!window.ref_link_sources_url){
-        window.ref_link_sources_url = "https://s3.ap-south-1.amazonaws.com/dev.cdn.protograph/Assets/ref_link_sources.json"
-      }
-    </script>
-
   </head>
   <body>
     <div id="article-div"></div></br>
     <script src="card.min.js"></script>
     <script type="text/javascript">
       var x = new ProtoGraph.Card.toStory();
-
+      window.ref_link_sources_url = "https://cdn.protograph.pykih.com/Assets/ref_link_sources.json"
       function findGetParameter(parameterName) {
           var result = null,
               tmp = [],
@@ -58,11 +30,13 @@
       let view_cast_id = findGetParameter('view_cast_id'),
         schema_id = findGetParameter('schema_id'),
         mode = findGetParameter('mode'),
-      domain_name = (findGetParameter('domain') || "");
+        domain_name = (findGetParameter('domain') || ""),
+        base_url = findGetParameter('base_url') || "https://cdn.protograph.pykih.com",
+        schema_base_url = "https://cdn.protograph.pykih.com";
 
       if(typeof (view_cast_id) !== 'undefined' && typeof(schema_id) !== 'undefined'){
         var  data_base_path = base_url + "/" + view_cast_id,
-          schema_base_path = base_url + "/" + schema_id;
+          schema_base_path = schema_base_url + "/" + schema_id;
 
         x.init({
           selector: document.querySelector('#article-div'),
@@ -71,6 +45,7 @@
           configuration_url: data_base_path + "/view_cast.json",
           configuration_schema_url: 'configuration_schema.json',
           domain: domain_name,
+          site_config_url: base_url + '/header.json',
           onClickCallback: function () {
             let h = x.getData().height,
               w = x.getData().width;

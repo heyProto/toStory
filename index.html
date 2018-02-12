@@ -17,20 +17,18 @@
       var x = new ProtoGraph.Card.toStory()
       x.init({
         selector: document.querySelector('#tolink-div'),
-        data_url: 'https://cdn.protograph.pykih.com/2a68048183f3bae317b017a3/data.json',
+        data_url: './dist/0.0.1/sample.json',
         domain: 'indianexpress.com',
         schema_url: '/dist/0.0.1/schema.json',
         configuration_url: 'dist/0.0.1/configuration_sample.json', //will come from local folder
         configuration_schema_url: 'dist/0.0.1/configuration_schema.json', //will come from local folder
-        onClickCallback: function () {
-          console.log("loaded")
-        }
+        site_config_url: './dist/0.0.1/site.json'
       })
       // x.renderSixteenCol();
       // x.renderSevenCol();
       // x.renderFourCol();
-      x.renderThreeCol();
-      // x.renderTwoCol();
+      // x.renderThreeCol();
+      x.renderTwoCol();
     </script>
   </body>
 </html>
