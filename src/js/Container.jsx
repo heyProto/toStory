@@ -537,7 +537,7 @@ export default class toStoryCard extends React.Component {
                   </div>
                   <div className="back" style={{height: 250}}>
                     <div className="padding12">
-                      <p>{this.state.dataJSON.card_data.data.summary}</p>
+                      <p style={{ fontFamily: this.state.languageTexts.font }}>{this.state.dataJSON.card_data.data.summary}</p>
                     </div>
                   </div>
                 </div>
@@ -679,7 +679,7 @@ export default class toStoryCard extends React.Component {
                   </div>
                   <div className="back" style={{height: 250}}>
                     <div className="padding12">
-                      <p>{this.state.dataJSON.card_data.data.summary}</p>
+                      <p style={{ fontFamily: this.state.languageTexts.font }}>{this.state.dataJSON.card_data.data.summary}</p>
                     </div>
                   </div>
                 </div>
@@ -805,7 +805,7 @@ export default class toStoryCard extends React.Component {
                   </div>
                   <div className="back" style={{height: 250}}>
                     <div className="padding12">
-                      <p>{this.state.dataJSON.card_data.data.summary}</p>
+                      <p style={{ fontFamily: this.state.languageTexts.font }}>{this.state.dataJSON.card_data.data.summary}</p>
                     </div>
                   </div>
                 </div>
