@@ -20,6 +20,7 @@ export default class toStoryCard extends React.Component {
     if (this.props.dataJSON) {
       stateVar.fetchingData = false;
       stateVar.dataJSON = this.props.dataJSON;
+      stateVar.languageTexts = this.getLanguageTexts(this.props.dataJSON.card_data.data.language);
     }
 
     if (this.props.schemaJSON) {
@@ -61,11 +62,13 @@ export default class toStoryCard extends React.Component {
           optionalConfigSchemaJSON: opt_config_schema.data,
           siteConfigs: site_configs.data
         };
+
         stateVar.optionalConfigJSON.house_colour = stateVar.siteConfigs.house_colour;
         stateVar.optionalConfigJSON.reverse_house_colour = stateVar.siteConfigs.reverse_house_colour;
         stateVar.optionalConfigJSON.font_colour = stateVar.siteConfigs.font_colour;
         stateVar.optionalConfigJSON.reverse_font_colour = stateVar.siteConfigs.reverse_font_colour;
         stateVar.optionalConfigJSON.story_card_style = stateVar.siteConfigs.story_card_style;
+        stateVar.languageTexts = this.getLanguageTexts(stateVar.siteConfigs.primary_language.toLowerCase());
         this.setState(stateVar);
       }));
     } else {
@@ -243,9 +246,9 @@ export default class toStoryCard extends React.Component {
                       </div>
                     </div>
                   </div>
-                  <div className="back">
+                  <div className="back" style={{height: 430}}>
                     <div className="padding20">
-                      <p>{this.state.dataJSON.card_data.data.summary}</p>
+                      <p style={{ fontFamily: this.state.languageTexts.font }}>{this.state.dataJSON.card_data.data.summary}</p>
                     </div>
                   </div>
                 </div>
@@ -389,9 +392,9 @@ export default class toStoryCard extends React.Component {
                       </div>
                     </div>
                   </div>
-                  <div className="back">
+                  <div className="back" style={{height: 250}}>
                     <div className="padding12">
-                      <p>{this.state.dataJSON.card_data.data.summary}</p>
+                      <p style={{ fontFamily: this.state.languageTexts.font }}>{this.state.dataJSON.card_data.data.summary}</p>
                     </div>
                   </div>
                 </div>
@@ -532,9 +535,9 @@ export default class toStoryCard extends React.Component {
                       </div>
                     </div>
                   </div>
-                  <div className="back">
+                  <div className="back" style={{height: 250}}>
                     <div className="padding12">
-                      <p>{this.state.dataJSON.card_data.data.summary}</p>
+                      <p style={{ fontFamily: this.state.languageTexts.font }}>{this.state.dataJSON.card_data.data.summary}</p>
                     </div>
                   </div>
                 </div>
@@ -674,9 +677,9 @@ export default class toStoryCard extends React.Component {
                       </div>
                     </div>
                   </div>
-                  <div className="back">
+                  <div className="back" style={{height: 250}}>
                     <div className="padding12">
-                      <p>{this.state.dataJSON.card_data.data.summary}</p>
+                      <p style={{ fontFamily: this.state.languageTexts.font }}>{this.state.dataJSON.card_data.data.summary}</p>
                     </div>
                   </div>
                 </div>
@@ -800,9 +803,9 @@ export default class toStoryCard extends React.Component {
                       </div>
                     </div>
                   </div>
-                  <div className="back">
+                  <div className="back" style={{height: 250}}>
                     <div className="padding12">
-                      <p>{this.state.dataJSON.card_data.data.summary}</p>
+                      <p style={{ fontFamily: this.state.languageTexts.font }}>{this.state.dataJSON.card_data.data.summary}</p>
                     </div>
                   </div>
                 </div>
@@ -840,6 +843,26 @@ export default class toStoryCard extends React.Component {
       }
     }
   }
+
+  getLanguageTexts(languageConfig) {
+    let language = languageConfig ? languageConfig : "hindi",
+      text_obj;
+
+    switch(language.toLowerCase()) {
+      case "hindi":
+        text_obj = {
+          font: "'Sarala', sans-serif"
+        }
+        break;
+      default:
+        text_obj = {
+          font: undefined
+        }
+        break;
+    }
+    return text_obj;
+  }
+
   render() {
     switch(this.props.mode) {
       case '16_col':
