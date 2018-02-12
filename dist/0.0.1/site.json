@@ -3,5 +3,6 @@
     "reverse_house_colour": "#003f34",
     "font_colour": "#ffffff",
     "reverse_font_colour": "#ffffff",
-    "primary_language": "English"
+    "primary_language": "English",
+    "story_card_style": "Clear: Black & White"
 }

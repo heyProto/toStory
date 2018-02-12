@@ -71,7 +71,13 @@ export default class EditStoryCard extends React.Component {
           formData.data.faviconurl = fav;
           formData.data.domainurl = dom;
           formData.data.publishername = name;
-
+          formData.data.publishedat = new Date().toISOString();
+          if(window.intersection_names && window.intersection_names.length){
+            schema.data.properties.data.properties.genre.enum = window.intersection_names;
+          }
+          if(window.subintersection_names && window.subintersection_names.length){
+            schema.data.properties.data.properties.subgenre.enum = window.subintersection_names;
+          }
           stateVar = {
             dataJSON: {
               card_data: formData,
