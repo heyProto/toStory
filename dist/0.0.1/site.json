@@ -4,5 +4,6 @@
     "font_colour": "#ffffff",
     "reverse_font_colour": "#ffffff",
     "primary_language": "English",
-    "story_card_style": "Clear: Black & White"
+    "story_card_style": "Clear: Black & White",
+    "story_card_flip": false
 }

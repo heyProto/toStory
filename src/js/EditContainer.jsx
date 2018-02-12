@@ -95,6 +95,7 @@ export default class EditStoryCard extends React.Component {
           stateVar.optionalConfigJSON.reverse_house_colour = stateVar.siteConfigs.reverse_house_colour;
           stateVar.optionalConfigJSON.font_colour = stateVar.siteConfigs.font_colour;
           stateVar.optionalConfigJSON.reverse_font_colour = stateVar.siteConfigs.reverse_font_colour;
+          stateVar.optionalConfigJSON.story_card_flip = stateVar.siteConfigs.story_card_flip;
           stateVar.dataJSON.card_data.data.language = stateVar.siteConfigs.primary_language.toLowerCase();
           this.setState(stateVar);
         }))
@@ -211,16 +212,22 @@ export default class EditStoryCard extends React.Component {
     let element = e.target.closest('a'),
       mode = element.getAttribute('data-mode');
     this.setState((prevState, props) => {
-      let newMode;
-      if (mode !== prevState.mode) {
-        newMode = mode;
-      } else {
-        newMode = prevState.mode
-      }
       return {
-        mode: newMode
+        mode: "blank"
       }
-    })
+    }, (() => {
+          this.setState((prevState, props) => {
+            let newMode;
+            if (mode !== prevState.mode) {
+              newMode = mode;
+            } else {
+              newMode = prevState.mode
+            }
+            return {
+              mode: newMode
+            }
+          })
+        }))
   }
 
   render() {
@@ -284,17 +291,19 @@ export default class EditStoryCard extends React.Component {
                     </a>
                   </div>
                 </div>
-                <div className="protograph-app-holder">
-                  <StoryCard
-                    mode={this.state.mode}
-                    dataJSON={this.state.dataJSON}
-                    domain={this.props.domain}
-                    schemaJSON={this.state.schemaJSON}
-                    optionalConfigJSON={this.state.optionalConfigJSON}
-                    optionalConfigSchemaJSON={this.state.optionalConfigSchemaJSON}
-                    linkDetails={this.state.refLinkDetails}
-                  />
-                </div>
+                {
+                  this.state.mode == "blank" ? <div /> : <div className="protograph-app-holder">
+                    <StoryCard
+                      mode={this.state.mode}
+                      dataJSON={this.state.dataJSON}
+                      domain={this.props.domain}
+                      schemaJSON={this.state.schemaJSON}
+                      optionalConfigJSON={this.state.optionalConfigJSON}
+                      optionalConfigSchemaJSON={this.state.optionalConfigSchemaJSON}
+                      linkDetails={this.state.refLinkDetails}
+                    />
+                  </div>
+                }
               </div>
             </div>
           </div>

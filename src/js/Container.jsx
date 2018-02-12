@@ -68,6 +68,7 @@ export default class toStoryCard extends React.Component {
         stateVar.optionalConfigJSON.font_colour = stateVar.siteConfigs.font_colour;
         stateVar.optionalConfigJSON.reverse_font_colour = stateVar.siteConfigs.reverse_font_colour;
         stateVar.optionalConfigJSON.story_card_style = stateVar.siteConfigs.story_card_style;
+        stateVar.optionalConfigJSON.story_card_flip = stateVar.siteConfigs.story_card_flip;
         stateVar.languageTexts = this.getLanguageTexts(stateVar.siteConfigs.primary_language.toLowerCase());
         this.setState(stateVar);
       }));
@@ -87,6 +88,21 @@ export default class toStoryCard extends React.Component {
   componentDidUpdate() {
     if (this.props.mode === '2_col'){
       this.ellipsizeTextBox();
+    }
+    if(this.state.optionalConfigJSON.story_card_flip && this.state.dataJSON.card_data.data.summary){
+      let elem = document.querySelector('.protograph-summary-text');
+      this.multiLineTruncate(elem);
+    }
+  }
+
+  multiLineTruncate(el) {
+    let data = this.state.dataJSON.card_data.data,
+      wordArray = data.summary.split(' '),
+      props = this.props;
+
+    while(el.scrollHeight > el.offsetHeight) {
+      wordArray.pop();
+      el.innerHTML = wordArray.join(' ') + '...' + '<br><a id="read-more-button" href="#" class="protograph-read-more">Read more</a>' ;
     }
   }
 
@@ -149,11 +165,13 @@ export default class toStoryCard extends React.Component {
   }
 
   renderSixteenCol(){
+
     if(!this.state.schemaJSON){
       return(
         <div>Loading</div>
       )
     }else{
+      console.log(this.state.optionalConfigJSON.story_card_flip, this.state.optionalConfigJSON.story_card_flip && this.state.dataJSON.card_data.data.summary);
       let genreColor = "rgba(51, 51, 51, 0.75)",
       genreFontColor = "#fff";
       if(this.state.dataJSON.card_data.data.interactive){
@@ -213,82 +231,37 @@ export default class toStoryCard extends React.Component {
 
       }
 
-      if(this.state.dataJSON.card_data.data.summary){
-        return(
-          <div onClick={()=>{ this.handleClick() }}>
-            <div className="col-16-story-card">
-              <div className="flip-container" style={{position: "relative"}}>
-                <div className="flipper" style={{position: "relative",height: 430}}>
-                  <div className="front" style={{position: "relative",height: 430}}>
-                    <div className="padding20">
-                      {light ? <img className="image-styling" style={styles} src={light}></img>: null}
-                      {light ? <div className="title-background"></div> : null}
-                      {light ? <div className="col-16-diag-grad"></div> : null}
-                      <div className="bottom-pull-div">
-                        <div className="card-tags">
-                          {fav ?
-                          <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
-                            <img className="favicon" src = {fav}/>
-                          </div> : null}
-                          <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
-                            {genre } </div> : null}
-                            </div>
-                              <div className="sub-genre-light" style={{fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none'}}>
-                                {this.state.dataJSON.card_data.data.sponsored ?'Sponsored': this.state.dataJSON.card_data.data.subgenre}
-                              </div>
-                        </div>
-                        <div className="article-title">
-                          {this.state.dataJSON.card_data.data.headline}
-                        </div>
-                        <div className="by-line">
-                          {show}
-                        </div>
+      return(
+        <div onClick={()=>{ this.handleClick() }}>
+          <div className="col-16-story-card">
+            <div className="padding20">
+              {light ? <img className="image-styling" style={styles} src={light}></img>: null}
+              {light ? <div className="title-background"></div> : null}
+              {light ? <div className="col-16-diag-grad"></div> : null}
+              <div className="bottom-pull-div">
+                <div className="card-tags">
+                  {fav ?
+                  <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
+                    <img className="favicon" src = {fav}/>
+                  </div> : null}
+                  <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
+                    {genre } </div> : null}
+                    </div>
+                      <div className="sub-genre-light" style={{fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none'}}>
+                        {this.state.dataJSON.card_data.data.sponsored ?'Sponsored': this.state.dataJSON.card_data.data.subgenre}
                       </div>
-                    </div>
-                  </div>
-                  <div className="back" style={{height: 430}}>
-                    <div className="padding20">
-                      <p style={{ fontFamily: this.state.languageTexts.font }}>{this.state.dataJSON.card_data.data.summary}</p>
-                    </div>
-                  </div>
+                </div>
+                <div className="article-title">
+                  {this.state.dataJSON.card_data.data.headline}
+                </div>
+                <div className="by-line">
+                  {show}
                 </div>
               </div>
             </div>
           </div>
-        )
-      } else {
-        return(
-          <div onClick={()=>{ this.handleClick() }}>
-            <div className="col-16-story-card">
-              <div className="padding20">
-                {light ? <img className="image-styling" style={styles} src={light}></img>: null}
-                {light ? <div className="title-background"></div> : null}
-                {light ? <div className="col-16-diag-grad"></div> : null}
-                <div className="bottom-pull-div">
-                  <div className="card-tags">
-                    {fav ?
-                    <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
-                      <img className="favicon" src = {fav}/>
-                    </div> : null}
-                    <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
-                      {genre } </div> : null}
-                      </div>
-                        <div className="sub-genre-light" style={{fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none'}}>
-                          {this.state.dataJSON.card_data.data.sponsored ?'Sponsored': this.state.dataJSON.card_data.data.subgenre}
-                        </div>
-                  </div>
-                  <div className="article-title">
-                    {this.state.dataJSON.card_data.data.headline}
-                  </div>
-                  <div className="by-line">
-                    {show}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )
-      }
+        </div>
+      )
 
     }
   }
@@ -361,7 +334,7 @@ export default class toStoryCard extends React.Component {
 
       }
 
-      if(this.state.dataJSON.card_data.data.summary){
+      if(this.state.optionalConfigJSON.story_card_flip && this.state.dataJSON.card_data.data.summary){
         return(
           <div onClick={()=>{ this.handleClick() }}>
             <div className="col-7-story-card">
@@ -394,7 +367,7 @@ export default class toStoryCard extends React.Component {
                   </div>
                   <div className="back" style={{height: 250}}>
                     <div className="padding12">
-                      <p style={{ fontFamily: this.state.languageTexts.font }}>{this.state.dataJSON.card_data.data.summary}</p>
+                      <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.card_data.data.summary}</p>
                     </div>
                   </div>
                 </div>
@@ -504,7 +477,7 @@ export default class toStoryCard extends React.Component {
 
       }
 
-      if(this.state.dataJSON.card_data.data.summary){
+      if(this.state.optionalConfigJSON.story_card_flip && this.state.dataJSON.card_data.data.summary){
         return(
           <div onClick={()=>{ this.handleClick() }}>
             <div className="col-4-story-card">
@@ -537,7 +510,7 @@ export default class toStoryCard extends React.Component {
                   </div>
                   <div className="back" style={{height: 250}}>
                     <div className="padding12">
-                      <p style={{ fontFamily: this.state.languageTexts.font }}>{this.state.dataJSON.card_data.data.summary}</p>
+                      <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.card_data.data.summary}</p>
                     </div>
                   </div>
                 </div>
@@ -646,7 +619,7 @@ export default class toStoryCard extends React.Component {
         }
 
       }
-      if(this.state.dataJSON.card_data.data.summary){
+      if(this.state.optionalConfigJSON.story_card_flip && this.state.dataJSON.card_data.data.summary){
         return(
           <div onClick={()=>{ this.handleClick() }}>
             <div className="col-3-story-card">
@@ -679,7 +652,7 @@ export default class toStoryCard extends React.Component {
                   </div>
                   <div className="back" style={{height: 250}}>
                     <div className="padding12">
-                      <p style={{ fontFamily: this.state.languageTexts.font }}>{this.state.dataJSON.card_data.data.summary}</p>
+                      <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.card_data.data.summary}</p>
                     </div>
                   </div>
                 </div>
@@ -775,7 +748,7 @@ export default class toStoryCard extends React.Component {
             break;
         }
       }
-      if(this.state.dataJSON.card_data.data.summary){
+      if(this.state.optionalConfigJSON.story_card_flip && this.state.dataJSON.card_data.data.summary){
         return(
           <div onClick={()=>{ this.handleClick() }}>
             <div className="col-2-story-card">
@@ -805,7 +778,7 @@ export default class toStoryCard extends React.Component {
                   </div>
                   <div className="back" style={{height: 250}}>
                     <div className="padding12">
-                      <p style={{ fontFamily: this.state.languageTexts.font }}>{this.state.dataJSON.card_data.data.summary}</p>
+                      <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.card_data.data.summary}</p>
                     </div>
                   </div>
                 </div>
