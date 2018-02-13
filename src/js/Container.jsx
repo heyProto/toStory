@@ -165,7 +165,6 @@ export default class toStoryCard extends React.Component {
   }
 
   renderSixteenCol(){
-
     if(!this.state.schemaJSON){
       return(
         <div>Loading</div>
@@ -192,6 +191,7 @@ export default class toStoryCard extends React.Component {
       }
       let byline = this.state.dataJSON.card_data.data.byline;
       let date=this.state.dataJSON.card_data.data.publishedat;
+      let focus=this.state.dataJSON.card_data.data.focus;
       let show = '';
       if(byline){
         show=show+'By '+byline;
@@ -218,27 +218,55 @@ export default class toStoryCard extends React.Component {
       if (genre && !series) {
         padding = "1px";
       }
-      let styles = {width: 1260}
+      let styles = (focus === "h") ? {width: 1260} : {width: 680}
       if (light){
         switch(this.state.optionalConfigJSON.story_card_style){
           case "Clear: Black & White":
-            styles = {width: 1260, WebkitFilter: "grayscale(100%)", filter: "grayscale(100%);"}
+            styles = (focus === "h") ? {width: 1260, WebkitFilter: "grayscale(100%)", filter: "grayscale(100%);"} : {width: 680, WebkitFilter: "grayscale(100%)", filter: "grayscale(100%);"}
             break;
           case "Blur: Color":
-            styles = {width: 1260, WebkitFilter: "blur(5px)", filter: "blur(5px);"}
+            styles = (focus === "h") ? {width: 1260, WebkitFilter: "blur(5px)", filter: "blur(5px);"} : {width: 680, WebkitFilter: "blur(5px)", filter: "blur(5px);"}
             break;
         }
-
       }
 
-      return(
-        <div onClick={()=>{ this.handleClick() }}>
-          <div className="col-16-story-card">
-            <div className="padding20">
-              {light ? <img className="image-styling" style={styles} src={light}></img>: null}
-              {light ? <div className="title-background"></div> : null}
-              {light ? <div className="col-16-diag-grad"></div> : null}
-              <div className="bottom-pull-div">
+      if (focus === "h") {
+        return(
+          <div onClick={()=>{ this.handleClick() }}>
+            <div className="col-16-story-card">
+              <div className="padding20">
+                {light ? <img className="image-styling" style={styles} src={light}></img>: null}
+                {light ? <div className="title-background"></div> : null}
+                {light ? <div className="col-16-diag-grad"></div> : null}
+                <div className="bottom-pull-div">
+                  <div className="card-tags">
+                    {fav ?
+                    <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
+                      <img className="favicon" src = {fav}/>
+                    </div> : null}
+                    <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
+                      {genre } </div> : null}
+                      </div>
+                        <div className="sub-genre-light" style={{fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none'}}>
+                          {this.state.dataJSON.card_data.data.sponsored ?'Sponsored': this.state.dataJSON.card_data.data.subgenre}
+                        </div>
+                  </div>
+                  <div className="article-title">
+                    {this.state.dataJSON.card_data.data.headline}
+                  </div>
+                  <div className="by-line">
+                    {show}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )
+      } else {
+        return (
+          <div onClick={()=>{ this.handleClick() }}>
+            <div className="col-16-story-card">
+              <div className="col-16-block-left bottom-pull-div">
                 <div className="card-tags">
                   {fav ?
                   <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
@@ -246,10 +274,10 @@ export default class toStoryCard extends React.Component {
                   </div> : null}
                   <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                     {genre } </div> : null}
-                    </div>
-                      <div className="sub-genre-light" style={{fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none'}}>
-                        {this.state.dataJSON.card_data.data.sponsored ?'Sponsored': this.state.dataJSON.card_data.data.subgenre}
-                      </div>
+                  </div>
+                  <div className="sub-genre-light" style={{fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none'}}>
+                    {this.state.dataJSON.card_data.data.sponsored ?'Sponsored': this.state.dataJSON.card_data.data.subgenre}
+                  </div>
                 </div>
                 <div className="article-title">
                   {this.state.dataJSON.card_data.data.headline}
@@ -258,11 +286,15 @@ export default class toStoryCard extends React.Component {
                   {show}
                 </div>
               </div>
+              <div className="col-16-block-right">
+                {light ? <img className="image-styling-v" style={styles} src={light}></img>: null}
+                {light ? <div className="title-background"></div> : null}
+                {light ? <div className="col-16-diag-grad"></div> : null}
+              </div>
             </div>
           </div>
-        </div>
-      )
-
+        )
+      }
     }
   }
 
@@ -299,6 +331,7 @@ export default class toStoryCard extends React.Component {
       }
       let byline = this.state.dataJSON.card_data.data.byline;
       let date=this.state.dataJSON.card_data.data.publishedat;
+      let focus=this.state.dataJSON.card_data.data.focus;
       let show = '';
       if(byline){
         show=show+'By '+byline;
@@ -321,91 +354,171 @@ export default class toStoryCard extends React.Component {
       if (genre && !series) {
         padding = "1px";
       }
-      let styles = {width: 540}
+      let styles = (focus === "h") ? {width: 540} : {width: '100%', height: 250}
       if (light){
         switch(this.state.optionalConfigJSON.story_card_style){
           case "Clear: Black & White":
-            styles = {width: 540, WebkitFilter: "grayscale(100%)", filter: "grayscale(100%);"}
+            styles = (focus === "h") ? {width: 540, WebkitFilter: "grayscale(100%)", filter: "grayscale(100%);"} : {width: '100%', WebkitFilter: "grayscale(100%)", filter: "grayscale(100%);" , height: 250}
             break;
           case "Blur: Color":
-            styles = {width: 540, WebkitFilter: "blur(5px)", filter: "blur(5px);"}
+            styles = (focus === "h") ? {width: 540, WebkitFilter: "blur(5px)", filter: "blur(5px);"} : {width: '100%', WebkitFilter: "blur(5px)", filter: "blur(5px);" , height: 250}
             break;
         }
-
+      }
+      let left_block_width;
+      if (light){
+        left_block_width = {width: 240}
       }
 
       if(this.state.optionalConfigJSON.story_card_flip && this.state.dataJSON.card_data.data.summary){
-        return(
-          <div onClick={()=>{ this.handleClick() }}>
-            <div className="col-7-story-card">
-              <div className="flip-container" style={{position: "relative"}}>
-                <div className="flipper" style={{position: "relative",height: 250}}>
-                  <div className="front" style={{position: "relative",height: 250}}>
-                    <div className="padding12">
-                      {light ? <img className="image-styling" style={styles} src={light}></img> : <div  className="image-styling" style={{backgroundColor:'#fafafa', height:250, width:540}}></div>}
-                      {light ? <div className="title-background"></div> : null}
-                      <div className="card-tags">
-                      {fav ?
-                          <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
-                            <img className="favicon" src = {fav}/>
-                          </div> : null}
-                      <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
-                            {genre } </div> : null}</div>
-                          {
-                            this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
-                          }
+        if (focus === "h"){
+          return(
+            <div onClick={()=>{ this.handleClick() }}>
+              <div className="col-7-story-card">
+                <div className="flip-container" style={{position: "relative"}}>
+                  <div className="flipper" style={{position: "relative",height: 250}}>
+                    <div className="front" style={{position: "relative",height: 250}}>
+                      <div className="padding12">
+                        {light ? <img className="image-styling" style={styles} src={light}></img> : <div  className="image-styling" style={{backgroundColor:'#fafafa', height:250, width:540}}></div>}
+                        {light ? <div className="title-background"></div> : null}
+                        <div className="card-tags">
+                        {fav ?
+                            <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
+                              <img className="favicon" src = {fav}/>
+                            </div> : null}
+                        <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
+                              {genre } </div> : null}</div>
+                            {
+                              this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
+                            }
+                        </div>
+                        <div className="bottom-pull-div">
+                          <div className="article-title" style={{color: light ?'white' :'black' }}>
+                            {this.state.dataJSON.card_data.data.headline}
+                          </div>
+                          <div className="by-line" style={{color: light ?'white' :'black' }}>
+                            {show}
+                          </div>
+                        </div>
                       </div>
-                      <div className="bottom-pull-div">
-                        <div className="article-title" style={{color: light ?'white' :'black' }}>
+                    </div>
+                    <div className="back" style={{height: 250}}>
+                      <div className="padding12">
+                        <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.card_data.data.summary}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )
+        } 
+        else {
+          return(
+            <div onClick={()=>{ this.handleClick() }}>
+              <div className="col-7-story-card" style={{backgroundColor: "#fafafa"}}>
+                <div className="flip-container" style={{position: "relative"}}>
+                  <div className="flipper" style={{position: "relative",height: 250}}>
+                    <div className="front" style={{position: "relative",height: 250}}>
+                      <div className="col-7-block-left bottom-pull-div" style={left_block_width}>
+                        <div className="card-tags">
+                          {fav ?
+                              <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
+                                <img className="favicon" src = {fav}/>
+                              </div> : null}
+                          <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
+                                {genre } </div> : null}</div>
+                              {
+                                this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
+                              }
+                        </div>
+                        <div className="article-title" style={{color:'black' }}>
                           {this.state.dataJSON.card_data.data.headline}
                         </div>
-                        <div className="by-line" style={{color: light ?'white' :'black' }}>
+                        <div className="by-line" style={{color: '#8e8e8e' }}>
                           {show}
                         </div>
                       </div>
-                    </div>
-                  </div>
-                  <div className="back" style={{height: 250}}>
-                    <div className="padding12">
-                      <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.card_data.data.summary}</p>
+                      <div className="col-7-block-right">
+                        <img style={styles} src={light}></img>
+                        {light ? <div className="title-background"></div> : null}
+                      </div>
+                      <div className="back" style={{height: 250}}>
+                        <div className="padding12">
+                          <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.card_data.data.summary}</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        )
+          )
+        }
       } else {
-        return(
-          <div onClick={()=>{ this.handleClick() }}>
-            <div className="col-7-story-card">
-              <div className='padding12'>
-                {light ? <img className="image-styling" style={styles} src={light}></img> : <div  className="image-styling" style={{backgroundColor:'#fafafa', height:250, width:540}}></div>}
-                {light ? <div className="title-background"></div> : null}
-                <div className="card-tags">
-                {fav ?
-                    <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
-                      <img className="favicon" src = {fav}/>
-                    </div> : null}
-                <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
-                      {genre } </div> : null}</div>
-                    {
-                      this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
-                    }
+        if (focus === "h"){
+          return(
+            <div onClick={()=>{ this.handleClick() }}>
+              <div className="col-7-story-card">
+                <div className='padding12'>
+                  {light ? <img className="image-styling" style={styles} src={light}></img> : <div  className="image-styling" style={{backgroundColor:'#fafafa', height:250, width:540}}></div>}
+                  {light ? <div className="title-background"></div> : null}
+                  <div className="card-tags">
+                  {fav ?
+                      <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
+                        <img className="favicon" src = {fav}/>
+                      </div> : null}
+                  <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
+                        {genre } </div> : null}</div>
+                      {
+                        this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
+                      }
+                  </div>
+                  <div className="bottom-pull-div">
+                    <div className="article-title" style={{color: light ?'white' :'black' }}>
+                      {this.state.dataJSON.card_data.data.headline}
+                    </div>
+                    <div className="by-line" style={{color: light ?'white' :'black' }}>
+                      {show}
+                    </div>
+                  </div>
                 </div>
-                <div className="bottom-pull-div">
-                  <div className="article-title" style={{color: light ?'white' :'black' }}>
+              </div>
+            </div>
+          )
+        } else {
+          return(
+            <div onClick={()=>{ this.handleClick() }}>
+              <div className="col-7-story-card" style={{backgroundColor: "#fafafa"}}>
+                <div className="col-7-block-left bottom-pull-div" style={left_block_width}>
+                  <div className="card-tags">
+                    {fav ?
+                        <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
+                          <img className="favicon" src = {fav}/>
+                        </div> : null}
+                    <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
+                          {genre } </div> : null}</div>
+                        {
+                          this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
+                        }
+                  </div>
+                  <div className="article-title" style={{color:'black' }}>
                     {this.state.dataJSON.card_data.data.headline}
                   </div>
-                  <div className="by-line" style={{color: light ?'white' :'black' }}>
+                  <div className="by-line" style={{color: '#8e8e8e' }}>
                     {show}
                   </div>
                 </div>
+                <div className="col-7-block-right">
+                  <img style={styles} src={light}></img>
+                  {light ? <div className="title-background"></div> : null}
+                </div>
               </div>
             </div>
-          </div>
-        )
+          )
+        }
       }
+
     }
   }
 
@@ -442,6 +555,7 @@ export default class toStoryCard extends React.Component {
       }
       let byline = this.state.dataJSON.card_data.data.byline;
       let date=this.state.dataJSON.card_data.data.publishedat;
+      let focus=this.state.dataJSON.card_data.data.focus;
       let show = '';
       if(byline){
         show=show+'By '+byline;
@@ -468,86 +582,158 @@ export default class toStoryCard extends React.Component {
       if (light){
         switch(this.state.optionalConfigJSON.story_card_style){
           case "Clear: Black & White":
-            styles = {height: 250, WebkitFilter: "grayscale(100%)", filter: "grayscale(100%);"}
+            styles = (focus === "h") ? {height: 250, WebkitFilter: "grayscale(100%)", filter: "grayscale(100%);"} : {height: 150, WebkitFilter: "grayscale(100%)", filter: "grayscale(100%);"}
             break;
           case "Blur: Color":
-            styles = {height: 250, WebkitFilter: "blur(5px)", filter: "blur(5px);"}
+            styles = (focus === "h") ? {height: 250, WebkitFilter: "blur(5px)", filter: "blur(5px);"} : {height: 150, WebkitFilter: "blur(5px)", filter: "blur(5px);"}
             break;
         }
-
       }
 
       if(this.state.optionalConfigJSON.story_card_flip && this.state.dataJSON.card_data.data.summary){
-        return(
-          <div onClick={()=>{ this.handleClick() }}>
-            <div className="col-4-story-card">
-              <div className="flip-container" style={{position: "relative"}}>
-                <div className="flipper" style={{position: "relative",height: 250}}>
-                  <div className="front" style={{position: "relative",height: 250}}>
-                    <div className="padding12">
-                      {light ? <img className="image-styling" style={styles} src={light}></img>: <div  className="image-styling" style={{backgroundColor:'#fafafa', height:250, width:300}}></div>}
-                      {light ? <div className="title-background"></div> : null}
-                      <div className="card-tags">
-                      {fav ?
-                          <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
-                            <img className="favicon" src = {fav}/>
-                          </div> : null}
-                      <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
-                            {genre } </div> : null}</div>
-                          {
-                            this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
-                          }
-                      </div>
-                      <div className="bottom-pull-div">
-                        <div className="article-title" style={{color: light ?'white' :'black' }}>
-                          {this.state.dataJSON.card_data.data.headline}
+        if (focus === "h"){
+          return(
+            <div onClick={()=>{ this.handleClick() }}>
+              <div className="col-4-story-card">
+                <div className="flip-container" style={{position: "relative"}}>
+                  <div className="flipper" style={{position: "relative",height: 250}}>
+                    <div className="front" style={{position: "relative",height: 250}}>
+                      <div className="padding12">
+                        {light ? <img className="image-styling" style={styles} src={light}></img>: <div  className="image-styling" style={{backgroundColor:'#fafafa', height:250, width:300}}></div>}
+                        {light ? <div className="title-background"></div> : null}
+                        <div className="card-tags">
+                        {fav ?
+                            <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
+                              <img className="favicon" src = {fav}/>
+                            </div> : null}
+                        <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
+                              {genre } </div> : null}</div>
+                            {
+                              this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
+                            }
                         </div>
-                        <div className="by-line" style={{color: light ?'white' :'black' }}>
-                          {show}
+                        <div className="bottom-pull-div">
+                          <div className="article-title" style={{color: light ?'white' :'black' }}>
+                            {this.state.dataJSON.card_data.data.headline}
+                          </div>
+                          <div className="by-line" style={{color: light ?'white' :'black' }}>
+                            {show}
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="back" style={{height: 250}}>
-                    <div className="padding12">
-                      <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.card_data.data.summary}</p>
+                    <div className="back" style={{height: 250}}>
+                      <div className="padding12">
+                        <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.card_data.data.summary}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        )
-      } else {
-        return(
-          <div onClick={()=>{ this.handleClick() }}>
-            <div className="col-4-story-card">
-              <div className="padding12">
-                {light ? <img className="image-styling" style={styles} src={light}></img>: <div  className="image-styling" style={{backgroundColor:'#fafafa', height:250, width:300}}></div>}
-                {light ? <div className="title-background"></div> : null}
-                <div className="card-tags">
-                {fav ?
-                    <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
-                      <img className="favicon" src = {fav}/>
-                    </div> : null}
-                <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
-                      {genre } </div> : null}</div>
-                    {
-                      this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
-                    }
+          )
+        } else {
+          return(
+            <div onClick={()=>{ this.handleClick() }}>
+              <div className="col-4-story-card">
+                <div className="flip-container" style={{position: "relative"}}>
+                  <div className="flipper" style={{position: "relative",height: 250}}>
+                    <div className="front" style={{position: "relative",height: 250}}>
+                      <div className="col-4-block-top">
+                        <img className="image-centering" style={styles} src={light}></img>
+                        <div className="card-tags padding12" style={{top:0, position:'absolute'}}>
+                          {fav ?
+                              <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
+                                <img className="favicon" src = {fav}/>
+                              </div> : null}
+                          <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
+                                {genre } </div> : null}</div>
+                              {
+                                this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
+                              }
+                        </div>
+                      </div>
+                      <div className="col-4-block-bottom">
+                        <div className="article-title" style={{color: 'black' }}>
+                          {this.state.dataJSON.card_data.data.headline}
+                        </div>
+                        <div className="by-line" style={{color: '#8e8e8e' }}>
+                          {show}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="back" style={{height: 250}}>
+                      <div className="padding12">
+                        <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.card_data.data.summary}</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="bottom-pull-div">
-                  <div className="article-title" style={{color: light ?'white' :'black' }}>
+              </div>
+            </div>
+          )
+        }
+      } else {
+        if (focus === "h"){
+          return(
+            <div onClick={()=>{ this.handleClick() }}>
+              <div className="col-4-story-card">
+                <div className="padding12">
+                  {light ? <img className="image-styling" style={styles} src={light}></img>: <div  className="image-styling" style={{backgroundColor:'#fafafa', height:250, width:300}}></div>}
+                  {light ? <div className="title-background"></div> : null}
+                  <div className="card-tags">
+                  {fav ?
+                      <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
+                        <img className="favicon" src = {fav}/>
+                      </div> : null}
+                  <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
+                        {genre } </div> : null}</div>
+                      {
+                        this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
+                      }
+                  </div>
+                  <div className="bottom-pull-div">
+                    <div className="article-title" style={{color: light ?'white' :'black' }}>
+                      {this.state.dataJSON.card_data.data.headline}
+                    </div>
+                    <div className="by-line" style={{color: light ?'white' :'black' }}>
+                      {show}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )
+        } else {
+          return(
+            <div onClick={()=>{ this.handleClick() }}>
+              <div className="col-4-story-card">
+                <div className="col-4-block-top">
+                  <img className="image-centering" style={styles} src={light}></img>
+                  <div className="card-tags padding12" style={{top:0, position:'absolute'}}>
+                    {fav ?
+                        <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
+                          <img className="favicon" src = {fav}/>
+                        </div> : null}
+                    <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
+                          {genre } </div> : null}</div>
+                        {
+                          this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
+                        }
+                  </div>
+                </div>
+                <div className="col-4-block-bottom">
+                  <div className="article-title" style={{color: 'black' }}>
                     {this.state.dataJSON.card_data.data.headline}
                   </div>
-                  <div className="by-line" style={{color: light ?'white' :'black' }}>
+                  <div className="by-line" style={{color: '#8e8e8e' }}>
                     {show}
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        )
+          )
+        }
       }
     }
   }
@@ -585,6 +771,7 @@ export default class toStoryCard extends React.Component {
       }
       let byline = this.state.dataJSON.card_data.data.byline;
       let date=this.state.dataJSON.card_data.data.publishedat;
+      let focus=this.state.dataJSON.card_data.data.focus;
       let show = '';
       if(byline){
         show=show+'By '+byline;
@@ -607,89 +794,162 @@ export default class toStoryCard extends React.Component {
       if (genre && !series) {
         padding = "1px";
       }
-      let styles = {height: 250}
+      let styles = {height: 132}
       if (light){
         switch(this.state.optionalConfigJSON.story_card_style){
           case "Clear: Black & White":
-            styles = {height: 250, WebkitFilter: "grayscale(100%)", filter: "grayscale(100%);"}
+            styles = (focus === "h") ? {height: 250, WebkitFilter: "grayscale(100%)", filter: "grayscale(100%);"} : {height: 132, WebkitFilter: "grayscale(100%)", filter: "grayscale(100%);"}
             break;
           case "Blur: Color":
-            styles = {height: 250, WebkitFilter: "blur(5px)", filter: "blur(5px);"}
+            styles = (focus === "h") ? {height: 250, WebkitFilter: "blur(5px)", filter: "blur(5px);"} : {height: 132, WebkitFilter: "blur(5px)", filter: "blur(5px);"}
             break;
         }
 
       }
       if(this.state.optionalConfigJSON.story_card_flip && this.state.dataJSON.card_data.data.summary){
-        return(
-          <div onClick={()=>{ this.handleClick() }}>
-            <div className="col-3-story-card">
-              <div className="flip-container" style={{position: "relative"}}>
-                <div className="flipper" style={{position: "relative",height: 250}}>
-                  <div className="front" style={{position: "relative",height: 250}}>
-                    <div className="padding12">
-                      {light ? <img className="image-styling" style={styles} src={light}></img>: <div  className="image-styling" style={{backgroundColor:'#fafafa', height:250, width:300}}></div>}
-                      {light ? <div className="title-background"></div> : null}
-                      <div className="card-tags">
-                      {fav ?
-                          <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
-                            <img className="favicon" src = {fav}/>
-                          </div> : null}
-                      <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
-                            {genre } </div> : null}</div>
-                          {
-                            this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
-                          }
-                      </div>
-                      <div className="bottom-pull-div">
-                        <div className="article-title" style={{color: light ?'white' :'black' }}>
-                          {this.state.dataJSON.card_data.data.headline}
+        if (focus === "h"){
+          return(
+            <div onClick={()=>{ this.handleClick() }}>
+              <div className="col-3-story-card">
+                <div className="flip-container" style={{position: "relative"}}>
+                  <div className="flipper" style={{position: "relative",height: 250}}>
+                    <div className="front" style={{position: "relative",height: 250}}>
+                      <div className="padding12">
+                        {light ? <img className="image-styling" style={styles} src={light}></img>: <div  className="image-styling" style={{backgroundColor:'#fafafa', height:250, width:300}}></div>}
+                        {light ? <div className="title-background"></div> : null}
+                        <div className="card-tags">
+                        {fav ?
+                            <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
+                              <img className="favicon" src = {fav}/>
+                            </div> : null}
+                        <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
+                              {genre } </div> : null}</div>
+                            {
+                              this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
+                            }
                         </div>
-                        <div className="by-line" style={{color: light ?'white' :'black' }}>
-                          {show}
+                        <div className="bottom-pull-div">
+                          <div className="article-title" style={{color: light ?'white' :'black' }}>
+                            {this.state.dataJSON.card_data.data.headline}
+                          </div>
+                          <div className="by-line" style={{color: light ?'white' :'black' }}>
+                            {show}
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="back" style={{height: 250}}>
-                    <div className="padding12">
-                      <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.card_data.data.summary}</p>
+                    <div className="back" style={{height: 250}}>
+                      <div className="padding12">
+                        <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.card_data.data.summary}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        )
-      } else {
-        return(
-          <div onClick={()=>{ this.handleClick() }}>
-            <div className="col-3-story-card" >
-              <div className="padding12">
-                {light ? <img className="image-styling" style={styles} src={light}></img>: <div className="image-styling" style={{backgroundColor:'#fafafa',height:250, width:220}}></div>}
-                {light ? <div className="title-background"></div> : null}
-                <div className="card-tags">
-                {fav ?
-                    <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
-                      <img className="favicon" src = {fav}/>
-                    </div> : null}
-                <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
-                      {genre } </div> : null}</div>
-                    {
-                      this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
-                    }
+          )
+        } else {
+          return(
+            <div onClick={()=>{ this.handleClick() }}>
+              <div className="col-3-story-card">
+                <div className="flip-container" style={{position: "relative"}}>
+                  <div className="flipper" style={{position: "relative",height: 250}}>
+                    <div className="front" style={{position: "relative",height: 250}}>
+                      <div className="col-3-block-top">
+                        <img className="image-centering" style={styles} src={light}></img>
+                        <div className="card-tags padding12" style={{top:0, position:'absolute'}}>
+                          {fav ?
+                              <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
+                                <img className="favicon" src = {fav}/>
+                              </div> : null}
+                          <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
+                                {genre } </div> : null}</div>
+                              {
+                                this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
+                              }
+                        </div>
+                      </div>
+                      <div className="col-3-block-bottom">
+                        <div className="article-title" style={{color: 'black', maxHeight: 55}}>
+                          {this.state.dataJSON.card_data.data.headline}
+                        </div>
+                        <div className="by-line" style={{color: '#8e8e8e' }}>
+                          {show}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="back" style={{height: 250}}>
+                      <div className="padding12">
+                        <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.card_data.data.summary}</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="bottom-pull-div">
-                  <div className="article-title" style={{color: light ?'white' :'black' }}>
+              </div>
+            </div>
+          )
+        }
+      } else {
+        if (focus === "h"){
+          return(
+            <div onClick={()=>{ this.handleClick() }}>
+              <div className="col-3-story-card" >
+                <div className="padding12">
+                  {light ? <img className="image-styling" style={styles} src={light}></img>: <div className="image-styling" style={{backgroundColor:'#fafafa',height:250, width:220}}></div>}
+                  {light ? <div className="title-background"></div> : null}
+                  <div className="card-tags">
+                  {fav ?
+                      <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
+                        <img className="favicon" src = {fav}/>
+                      </div> : null}
+                  <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
+                        {genre } </div> : null}</div>
+                      {
+                        this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
+                      }
+                  </div>
+                  <div className="bottom-pull-div">
+                    <div className="article-title" style={{color: light ?'white' :'black' }}>
+                      {this.state.dataJSON.card_data.data.headline}
+                    </div>
+                    <div className="by-line" style={{color: light ?'white' :'black' }}>
+                      {show}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )
+        } else {
+          return(
+            <div onClick={()=>{ this.handleClick() }}>
+              <div className="col-3-story-card">
+                <div className="col-3-block-top">
+                  <img className="image-centering" style={styles} src={light}></img>
+                  <div className="card-tags padding12" style={{top:0, position:'absolute'}}>
+                    {fav ?
+                        <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
+                          <img className="favicon" src = {fav}/>
+                        </div> : null}
+                    <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
+                          {genre } </div> : null}</div>
+                        {
+                          this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
+                        }
+                  </div>
+                </div>
+                <div className="col-3-block-bottom">
+                  <div className="article-title" style={{color: 'black', maxHeight: 55}}>
                     {this.state.dataJSON.card_data.data.headline}
                   </div>
-                  <div className="by-line" style={{color: light ?'white' :'black' }}>
+                  <div className="by-line" style={{color: '#8e8e8e' }}>
                     {show}
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        )
+          ) 
+        }
       }
     }
   }
@@ -724,6 +984,7 @@ export default class toStoryCard extends React.Component {
       }
       let byline = this.state.dataJSON.card_data.data.byline;
       let date=this.state.dataJSON.card_data.data.publishedat;
+      let focus=this.state.dataJSON.card_data.data.focus;
       let show = '';
       if(byline){
         show=show+'By '+byline;
@@ -737,82 +998,153 @@ export default class toStoryCard extends React.Component {
       let series = window.vertical_name || this.state.dataJSON.card_data.data.series,
         genre = this.state.dataJSON.card_data.data.genre;
       let padding = genre ? "1px" : "0px" ;
-      let styles = {height: 250}
+      let styles = {height: 84}
       if (light){
         switch(this.state.optionalConfigJSON.story_card_style){
           case "Clear: Black & White":
-            styles = {height: 250, WebkitFilter: "grayscale(100%)", filter: "grayscale(100%);"}
+            styles = (focus === "h") ? {height: 250, WebkitFilter: "grayscale(100%)", filter: "grayscale(100%);"} : {height: 84, WebkitFilter: "grayscale(100%)", filter: "grayscale(100%);"}
             break;
           case "Blur: Color":
-            styles = {height: 250, WebkitFilter: "blur(5px)", filter: "blur(5px);"}
+            styles = (focus === "h") ? {height: 250, WebkitFilter: "blur(5px)", filter: "blur(5px);"} : {height: 84, WebkitFilter: "blur(5px)", filter: "blur(5px);"}
             break;
         }
       }
       if(this.state.optionalConfigJSON.story_card_flip && this.state.dataJSON.card_data.data.summary){
-        return(
-          <div onClick={()=>{ this.handleClick() }}>
-            <div className="col-2-story-card">
-              <div className="flip-container" style={{position: "relative"}}>
-                <div className="flipper" style={{position: "relative",height: 250}}>
-                  <div className="front" style={{position: "relative",height: 250}}>
-                    <div className="padding12">
-                      {light ? <img className="image-styling" style={styles} src={light}></img>: <div className="image-styling" style={{zIndex:'-1',backgroundColor:'#fafafa',height:250, width:140}}></div>}
-                      {light ? <div className="title-background"></div> : null}
-                      <div className="card-tags">
-                      {fav ?
-                          <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white', marginRight:'4px'}}>
-                            <img className="favicon" src = {fav}/>
-                          </div> : null}
-                      <div className="series-name" style={{ padding: padding }}>{this.state.dataJSON.card_data.data.genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor}}>
-                            {this.state.dataJSON.card_data.data.genre } </div> : null}</div>
-                      </div>
-                      <div className="bottom-pull-div">
-                        <div className="article-title" style={{color: light ?'white' :'black' }}>
-                          {this.state.dataJSON.card_data.data.headline}
+        if (focus === "h") {
+          return(
+            <div onClick={()=>{ this.handleClick() }}>
+              <div className="col-2-story-card">
+                <div className="flip-container" style={{position: "relative"}}>
+                  <div className="flipper" style={{position: "relative",height: 250}}>
+                    <div className="front" style={{position: "relative",height: 250}}>
+                      <div className="padding12">
+                        {light ? <img className="image-styling" style={styles} src={light}></img>: <div className="image-styling" style={{zIndex:'-1',backgroundColor:'#fafafa',height:250, width:140}}></div>}
+                        {light ? <div className="title-background"></div> : null}
+                        <div className="card-tags">
+                        {fav ?
+                            <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white', marginRight:'4px'}}>
+                              <img className="favicon" src = {fav}/>
+                            </div> : null}
+                        <div className="series-name" style={{ padding: padding }}>{this.state.dataJSON.card_data.data.genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor}}>
+                              {this.state.dataJSON.card_data.data.genre } </div> : null}</div>
                         </div>
-                        <div className="by-line" style={{color: light ?'white' :'black' }}>
-                          {show}
+                        <div className="bottom-pull-div">
+                          <div className="article-title" style={{color: light ?'white' :'black' }}>
+                            {this.state.dataJSON.card_data.data.headline}
+                          </div>
+                          <div className="by-line" style={{color: light ?'white' :'black' }}>
+                            {show}
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="back" style={{height: 250}}>
-                    <div className="padding12">
-                      <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.card_data.data.summary}</p>
+                    <div className="back" style={{height: 250}}>
+                      <div className="padding12">
+                        <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.card_data.data.summary}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        )
+          )
+        } else {
+          return(
+            <div onClick={()=>{ this.handleClick() }}>
+              <div className="col-2-story-card">
+                <div className="flip-container" style={{position: "relative"}}>
+                  <div className="flipper" style={{position: "relative",height: 250}}>
+                    <div className="front" style={{position: "relative",height: 250}}>
+                      <div className="col-2-block-top">
+                        <img className="image-centering" style={styles} src={light}></img>
+                        <div className="card-tags padding12" style={{top:0, position:'absolute'}}>
+                        {fav ?
+                            <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white', marginRight:'4px'}}>
+                              <img className="favicon" src = {fav}/>
+                            </div> : null}
+                        <div className="series-name" style={{ padding: padding }}>{this.state.dataJSON.card_data.data.genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor}}>
+                              {this.state.dataJSON.card_data.data.genre } </div> : null}</div>
+                        </div>
+                      </div>
+                      <div className="col-2-block-bottom">
+                        <div className="bottom-pull-div">
+                          <div className="article-title" style={{color: 'black'}}>
+                            {this.state.dataJSON.card_data.data.headline}
+                          </div>
+                          <div className="by-line" style={{color: '#8e8e8e' }}>
+                            {show}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="back" style={{height: 250}}>
+                      <div className="padding12">
+                        <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.card_data.data.summary}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )
+        }
       } else {
-        return(
-          <div onClick={()=>{ this.handleClick() }}>
-            <div className="col-2-story-card">
-              <div className="padding12">
-                {light ? <img className="image-styling" style={styles} src={light}></img>: <div className="image-styling" style={{zIndex:'-1',backgroundColor:'#fafafa',height:250, width:140}}></div>}
-                {light ? <div className="title-background"></div> : null}
-                <div className="card-tags">
-                {fav ?
-                    <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white', marginRight:'4px'}}>
-                      <img className="favicon" src = {fav}/>
-                    </div> : null}
-                <div className="series-name" style={{ padding: padding }}>{this.state.dataJSON.card_data.data.genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor}}>
-                      {this.state.dataJSON.card_data.data.genre } </div> : null}</div>
-                </div>
-                <div className="bottom-pull-div">
-                  <div className="article-title" style={{color: light ?'white' :'black' }}>
-                    {this.state.dataJSON.card_data.data.headline}
+        if (focus === "h") {
+          return(
+            <div onClick={()=>{ this.handleClick() }}>
+              <div className="col-2-story-card">
+                <div className="padding12">
+                  {light ? <img className="image-styling" style={styles} src={light}></img>: <div className="image-styling" style={{zIndex:'-1',backgroundColor:'#fafafa',height:250, width:140}}></div>}
+                  {light ? <div className="title-background"></div> : null}
+                  <div className="card-tags">
+                  {fav ?
+                      <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white', marginRight:'4px'}}>
+                        <img className="favicon" src = {fav}/>
+                      </div> : null}
+                  <div className="series-name" style={{ padding: padding }}>{this.state.dataJSON.card_data.data.genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor}}>
+                        {this.state.dataJSON.card_data.data.genre } </div> : null}</div>
                   </div>
-                  <div className="by-line" style={{color: light ?'white' :'black' }}>
-                    {show}
+                  <div className="bottom-pull-div">
+                    <div className="article-title" style={{color: light ?'white' :'black' }}>
+                      {this.state.dataJSON.card_data.data.headline}
+                    </div>
+                    <div className="by-line" style={{color: light ?'white' :'black' }}>
+                      {show}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        )
+          )
+        } else {
+          return(
+            <div onClick={()=>{ this.handleClick() }}>
+              <div className="col-2-story-card">
+                <div className="col-2-block-top">
+                  <img className="image-centering" style={styles} src={light}></img>
+                  <div className="card-tags padding12" style={{top:0, position:'absolute'}}>
+                  {fav ?
+                      <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white', marginRight:'4px'}}>
+                        <img className="favicon" src = {fav}/>
+                      </div> : null}
+                  <div className="series-name" style={{ padding: padding }}>{this.state.dataJSON.card_data.data.genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor}}>
+                        {this.state.dataJSON.card_data.data.genre } </div> : null}</div>
+                  </div>
+                </div>
+                <div className="col-2-block-bottom">
+                  <div className="bottom-pull-div">
+                    <div className="article-title" style={{color: 'black'}}>
+                      {this.state.dataJSON.card_data.data.headline}
+                    </div>
+                    <div className="by-line" style={{color: '#8e8e8e' }}>
+                      {show}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )
+        }
       }
     }
   }
