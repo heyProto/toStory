@@ -711,7 +711,7 @@ export default class toStoryCard extends React.Component {
             <div onClick={()=>{ this.handleClick() }}>
               <div className="col-4-story-card">
                 <div className="col-4-block-top">
-                  <img style={styles} src={light}></img>
+                  <img className="image-centering" style={styles} src={light}></img>
                   <div className="card-tags padding12" style={{top:0, position:'absolute'}}>
                     {fav ?
                         <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
