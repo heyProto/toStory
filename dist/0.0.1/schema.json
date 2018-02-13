@@ -15,8 +15,8 @@
         "headline":{
           "title": "Headline",
           "type": "string",
-          "minLength":50,
-          "maxLength": 90
+          "minLength":30,
+          "maxLength": 95
         },
         "byline":{
           "title": "Byline",
@@ -33,7 +33,7 @@
           "title": "Series",
           "type": "string",
           "minLength":3,
-          "maxLength": 15
+          "maxLength": 20
         },
         "genre":{
           "title": "Intersection",
@@ -75,8 +75,8 @@
         "summary":{
           "title": "Summary",
           "type": "string",
-          "minLength":100,
-          "maxLength": 220
+          "minLength":50,
+          "maxLength": 300
         },
         "imageurl":{
           "title":"16 col Image URL",
