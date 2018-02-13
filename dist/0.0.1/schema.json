@@ -91,7 +91,7 @@
         "focus":{
           "title":"Is the image vertically focused or horizontally focused?",
           "type":"string",
-          "enum":["h","v"],
+          "enum":["v","h"],
           "enumNames":["Vertically focused","Horizontally focused"],
           "default":"h"
         },

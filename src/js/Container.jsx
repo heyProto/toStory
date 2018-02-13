@@ -431,7 +431,7 @@ export default class toStoryCard extends React.Component {
                               {
                                 this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
                               }
-                        </div>
+                          </div>
                         <div className="article-title" style={{color:'black' }}>
                           {this.state.dataJSON.card_data.data.headline}
                         </div>
@@ -463,16 +463,16 @@ export default class toStoryCard extends React.Component {
                 <div className='padding12'>
                   {light ? <img className="image-styling" style={styles} src={light}></img> : <div  className="image-styling" style={{backgroundColor:'#fafafa', height:250, width:540}}></div>}
                   {light ? <div className="title-background"></div> : null}
-                  <div className="card-tags">
-                  {fav ?
-                      <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
-                        <img className="favicon" src = {fav}/>
-                      </div> : null}
-                  <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
-                        {genre } </div> : null}</div>
-                      {
-                        this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
-                      }
+                  <div className="card-tags">                    
+                      {fav ?
+                          <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
+                            <img className="favicon" src = {fav}/>
+                          </div> : null}
+                      <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
+                            {genre } </div> : null}</div>
+                          {
+                            this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
+                          }
                   </div>
                   <div className="bottom-pull-div">
                     <div className="article-title" style={{color: light ?'white' :'black' }}>
@@ -578,7 +578,7 @@ export default class toStoryCard extends React.Component {
       if (genre && !series) {
         padding = "1px";
       }
-      let styles = {height: 250}
+      let styles = (focus === "h") ? {height: 250} : {height: 150}
       if (light){
         switch(this.state.optionalConfigJSON.story_card_style){
           case "Clear: Black & White":
@@ -654,11 +654,13 @@ export default class toStoryCard extends React.Component {
                         </div>
                       </div>
                       <div className="col-4-block-bottom">
-                        <div className="article-title" style={{color: 'black' }}>
-                          {this.state.dataJSON.card_data.data.headline}
-                        </div>
-                        <div className="by-line" style={{color: '#8e8e8e' }}>
-                          {show}
+                        <div className="bottom-pull-div">
+                          <div className="article-title" style={{color: 'black', maxHeight:25, overflow:'hidden' }}>
+                            {this.state.dataJSON.card_data.data.headline}
+                          </div>
+                          <div className="by-line" style={{color: '#8e8e8e' }}>
+                            {show}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -723,11 +725,13 @@ export default class toStoryCard extends React.Component {
                   </div>
                 </div>
                 <div className="col-4-block-bottom">
-                  <div className="article-title" style={{color: 'black' }}>
-                    {this.state.dataJSON.card_data.data.headline}
-                  </div>
-                  <div className="by-line" style={{color: '#8e8e8e' }}>
-                    {show}
+                  <div className="bottom-pull-div">
+                    <div className="article-title" style={{color: 'black', maxHeight:25, overflow:'hidden' }}>
+                      {this.state.dataJSON.card_data.data.headline}
+                    </div>
+                    <div className="by-line" style={{color: '#8e8e8e' }}>
+                      {show}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -794,7 +798,7 @@ export default class toStoryCard extends React.Component {
       if (genre && !series) {
         padding = "1px";
       }
-      let styles = {height: 132}
+      let styles = (focus === "h") ? {height: 250} : {height: 132}
       if (light){
         switch(this.state.optionalConfigJSON.story_card_style){
           case "Clear: Black & White":
@@ -870,11 +874,13 @@ export default class toStoryCard extends React.Component {
                         </div>
                       </div>
                       <div className="col-3-block-bottom">
-                        <div className="article-title" style={{color: 'black', maxHeight: 55}}>
-                          {this.state.dataJSON.card_data.data.headline}
-                        </div>
-                        <div className="by-line" style={{color: '#8e8e8e' }}>
-                          {show}
+                        <div className="bottom-pull-div">
+                          <div className="article-title" style={{color: 'black', maxHeight: 55}}>
+                            {this.state.dataJSON.card_data.data.headline}
+                          </div>
+                          <div className="by-line" style={{color: '#8e8e8e' }}>
+                            {show}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -939,11 +945,13 @@ export default class toStoryCard extends React.Component {
                   </div>
                 </div>
                 <div className="col-3-block-bottom">
-                  <div className="article-title" style={{color: 'black', maxHeight: 55}}>
-                    {this.state.dataJSON.card_data.data.headline}
-                  </div>
-                  <div className="by-line" style={{color: '#8e8e8e' }}>
-                    {show}
+                  <div className="bottom-pull-div">
+                    <div className="article-title" style={{color: 'black', maxHeight: 55}}>
+                      {this.state.dataJSON.card_data.data.headline}
+                    </div>
+                    <div className="by-line" style={{color: '#8e8e8e' }}>
+                      {show}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -998,7 +1006,7 @@ export default class toStoryCard extends React.Component {
       let series = window.vertical_name || this.state.dataJSON.card_data.data.series,
         genre = this.state.dataJSON.card_data.data.genre;
       let padding = genre ? "1px" : "0px" ;
-      let styles = {height: 84}
+      let styles = (focus === "h") ? {height: 250} : {height: 84}
       if (light){
         switch(this.state.optionalConfigJSON.story_card_style){
           case "Clear: Black & White":
