@@ -11,10 +11,8 @@ export default class toStoryCard extends React.Component {
         card_data: {},
         configs: {}
       },
-      schemaJSON: undefined,
       domain: undefined,
       optionalConfigJSON: {},
-      optionalConfigSchemaJSON: undefined
     };
 
     if (this.props.dataJSON) {
@@ -46,20 +44,15 @@ export default class toStoryCard extends React.Component {
     if (this.state.fetchingData){
       axios.all([
         axios.get(this.props.dataURL),
-        axios.get(this.props.schemaURL),
-        axios.get(this.props.optionalConfigURL),
-        axios.get(this.props.optionalConfigSchemaURL),
         axios.get(this.props.siteConfigURL)
-      ]).then(axios.spread((card, schema, opt_config, opt_config_schema, site_configs) => {
+      ]).then(axios.spread((card, site_configs) => {
         let stateVar = {
           fetchingData: false,
           dataJSON: {
-            card_data: card.data,
-            configs: opt_config.data
+            card_data: card.data
           },
-          schemaJSON: schema.data,
-          optionalConfigJSON: opt_config.data,
-          optionalConfigSchemaJSON: opt_config_schema.data,
+          schemaJSON: true,
+          optionalConfigJSON: {},
           siteConfigs: site_configs.data
         };
 
@@ -412,7 +405,7 @@ export default class toStoryCard extends React.Component {
               </div>
             </div>
           )
-        } 
+        }
         else {
           return(
             <div onClick={()=>{ this.handleClick() }}>
@@ -463,7 +456,7 @@ export default class toStoryCard extends React.Component {
                 <div className='padding12'>
                   {light ? <img className="image-styling" style={styles} src={light}></img> : <div  className="image-styling" style={{backgroundColor:'#fafafa', height:250, width:540}}></div>}
                   {light ? <div className="title-background"></div> : null}
-                  <div className="card-tags">                    
+                  <div className="card-tags">
                       {fav ?
                           <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
                             <img className="favicon" src = {fav}/>
@@ -956,7 +949,7 @@ export default class toStoryCard extends React.Component {
                 </div>
               </div>
             </div>
-          ) 
+          )
         }
       }
     }

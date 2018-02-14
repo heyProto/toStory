@@ -47,12 +47,9 @@
 
             x.init({
               selector: document.querySelector('#tolink-div'),
-              data_url: "sample.json",
-              schema_url: "schema.json",
-              configuration_url: "configuration_sample.json",
-              configuration_schema_url: 'configuration_schema.json',
+              data_url: data_base_path + "/data.json",
               domain: domain_name,
-              site_config_url:'site.json',
+              site_config_url: base_url + '/header.json',
               onClickCallback: function () {
                 let h = x.getData().height,
                   w = x.getData().width;
