@@ -39,7 +39,9 @@
           "title": "Intersection",
           "type": "string",
           "minLength":3,
-          "maxLength": 15
+          "maxLength": 15,
+          "enum": ["", "1"],
+          "enumNames": ["Blank", "1"]
         },
         "subgenre":{
           "title": "Sub Intersection",

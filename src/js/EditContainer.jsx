@@ -74,9 +74,15 @@ export default class EditStoryCard extends React.Component {
           formData.data.publishedat = new Date().toISOString();
           if(window.intersection_names && window.intersection_names.length){
             schema.data.properties.data.properties.genre.enum = window.intersection_names;
+            let enumNames = JSON.parse(JSON.stringify(window.intersection_names));
+            enumNames[0] = 'Blank';
+            schema.data.properties.data.properties.genre.enumNames = enumNames;
           }
           if(window.subintersection_names && window.subintersection_names.length){
             schema.data.properties.data.properties.subgenre.enum = window.subintersection_names;
+            let enumNames = JSON.parse(JSON.stringify(window.subintersection_names));
+            enumNames[0] = 'Blank';
+            schema.data.properties.data.properties.subgenre.enumNames = enumNames;
           }
           stateVar = {
             dataJSON: {

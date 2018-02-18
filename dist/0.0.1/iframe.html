@@ -6,8 +6,20 @@
   <body>
     <div id="protograph_link_card">
     </div>
-    <script src="https://cdn.protograph.pykih.com/lib/protoGraph.min.js" async></script>
-    <script type="text/javascript">var ProtoCard2262 = setInterval(function(){if (window.ProtoEmbed){clearInterval(ProtoCard2262)};var mode = (window.innerWidth <= 500) ? "mobile" : "laptop";new ProtoEmbed.initFrame(document.getElementById("protograph_link_card"), "index.html" , "col16")}, 200)</script>
+    <script src="https://dnt71st2q6cqr.cloudfront.net/lib/protoGraph.min.js" async></script>
+    <script type="text/javascript">
+        var request = new XMLHttpRequest();
+        request.open('GET', 'https://d8mb500a7948r.cloudfront.net/header.json', true);
+        request.onreadystatechange = function() {
+            if (request.readyState == 4) {
+                if(request.status == 200) {
+                    var obj = JSON.parse(request.responseText);
+                    var ProtoCard2262 = setInterval(function(){if (window.ProtoEmbed){clearInterval(ProtoCard2262)};new ProtoEmbed.initFrame(document.getElementById("protograph_link_card"), "index.html?view_cast_id=35598b4990f92bb4745331d5%26schema_id=ec6c33c26b5d6015bb40%26base_url=https://dnt71st2q6cqr.cloudfront.net" , "col7", false, obj)}, 200);
+                 }
+            }
+        };
+        request.send(null);
+    </script>
   </body>
 </html>
 

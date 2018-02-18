@@ -42,19 +42,26 @@ export default class toStoryCard extends React.Component {
 
   componentDidMount() {
     if (this.state.fetchingData){
-      axios.all([
-        axios.get(this.props.dataURL),
-        axios.get(this.props.siteConfigURL)
-      ]).then(axios.spread((card, site_configs) => {
+      let axios_array
+      if (typeof this.props.siteConfigURL !== "object"){
+        axios_array = [
+          axios.get(this.props.dataURL),
+          axios.get(this.props.siteConfigURL)
+        ]
+      } else {
+        axios_array = [axios.get(this.props.dataURL)]
+      }
+      axios.all(axios_array).then(axios.spread((card, site_configs) => {
         let stateVar = {
           fetchingData: false,
           dataJSON: {
             card_data: card.data
           },
           schemaJSON: true,
-          optionalConfigJSON: {},
-          siteConfigs: site_configs.data
+          optionalConfigJSON: {}
         };
+
+        stateVar["siteConfigs"] =  (typeof this.props.siteConfigURL !== "object") ? site_configs.data : this.props.siteConfigURL;
 
         stateVar.optionalConfigJSON.house_colour = stateVar.siteConfigs.house_colour;
         stateVar.optionalConfigJSON.reverse_house_colour = stateVar.siteConfigs.reverse_house_colour;
@@ -436,10 +443,10 @@ export default class toStoryCard extends React.Component {
                         <img style={styles} src={light}></img>
                         {light ? <div className="title-background"></div> : null}
                       </div>
-                      <div className="back" style={{height: 250}}>
-                        <div className="padding12">
-                          <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.card_data.data.summary}</p>
-                        </div>
+                    </div>
+                    <div className="back" style={{height: 250}}>
+                      <div className="padding12">
+                        <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.card_data.data.summary}</p>
                       </div>
                     </div>
                   </div>

@@ -30,18 +30,15 @@
     }
 
     let view_cast_id = findGetParameter('view_cast_id'),
-      schema_id = findGetParameter('schema_id'),
       domain_name = (findGetParameter('domain') || ""),
-      base_url = findGetParameter('base_url') || "https://cdn.protograph.pykih.com",
-      schema_base_url = "https://cdn.protograph.pykih.com";
+      base_url = findGetParameter('base_url') || "https://cdn.protograph.pykih.com";
 
     var ReceiverConsumer = Oasis.Consumer.extend({
       requests: {
-        receive: function(mode) {
-          if(typeof (view_cast_id) !== 'undefined' && typeof(schema_id) !== 'undefined'){
+        receive: function(mode, readMoreEnabled,headerJSON) {
+          if(typeof (view_cast_id) !== 'undefined'){
             var that = this,
-              data_base_path = base_url + "/" + view_cast_id,
-              schema_base_path = schema_base_url + "/" + schema_id;
+              data_base_path = base_url + "/" + view_cast_id;
 
             document.querySelector('#tolink-div').style.minHeight = (mode == "col16") ? "430px" : "250px"
 
@@ -49,7 +46,7 @@
               selector: document.querySelector('#tolink-div'),
               data_url: data_base_path + "/data.json",
               domain: domain_name,
-              site_config_url: base_url + '/header.json',
+              site_config_url: (headerJSON || base_url + '/header.json'),
               onClickCallback: function () {
                 let h = x.getData().height,
                   w = x.getData().width;

@@ -1,18 +1,16 @@
 {
-  "data": {
-    "url": "https://cdn.protograph.pykih.com/jaljagran-4/evaporation-of-rain-water-draught-in-the-womb-of-mother-earth-4605.html",
-    "headline": "\u0939\u0935\u093e \u092e\u0947\u0902 \u0909\u0921\u093c\u0924\u093e \u0935\u0930\u094d\u0937\u093e \u091c\u0932, \u0938\u0942\u092c\u0947 \u092e\u0947\u0902 \u0938\u0942\u0928\u0940 \u0939\u094b \u0930\u0939\u0940 \u0927\u0930\u0924\u0940 \u0915\u0940 \u0915\u094b\u0916",
-    "byline": "Jagran",
-    "publishedat": "2018-01-29T02:30:00.000Z",
-    "series": "\u091c\u0932\u091c\u093e\u0917\u0930\u0923",
-    "genre": "\u091c\u0940\u0935\u0928",
-    "iconbgcolor": "white",
-    "sponsored": false,
-    "interactive": true,
-    "imageurl": "https://d2jco8ydyctdne.cloudfront.net/images/indianexpress/bbce74b86d2f8d99/2095.jpeg",
-    "col7imageurl": "https://d2jco8ydyctdne.cloudfront.net/images/indianexpress/bbce74b86d2f8d99/2095.jpeg",
-    "focus": "h",
-    "domainurl": "cdn.protograph.pykih.com",
-    "summary": " It's a carnage for the ages. The Wanderers, in the pink of its glory refuses to disappoint. Thank the rain, thank the lightning, thank Duckworth-Lewis, thank Chahal and his foot, thank the sloppy fielding, but South Africa have finally found a way to reverse the trend, to reverse the slide. No, don't get fooled by Phehlukwayo's 23 off 5, the game was in their bag much before. Perhaps even during the first lightning break that sucked away all of India's batting momentum. And then when it looked like Miller was getting schooled while batting, Chahal's no ball was just the diploma he needed to pass out. And how."
-  }
+    "data":
+    {
+        "publishedat": "2017-11-02T12:00:00",
+        "byline": "Nidhi Sethi ",
+        "hasdata": false,
+        "hasimage": true,
+        "hasvideo": false,
+        "headline": "Police Create Green Corridor In Lucknow To Fly Boiler Blast Victims To Delhi's AIIMS",
+        "imageurl": "https://i.ndtvimg.com/i/2017-11/ntpc-injured-taken-to-aiims_650x400_41509606413.jpg",
+        "series": "\u0905\u0902\u0917\u0926\u093e\u0928 \u0915\u0940 \u0928\u0908 \u0926\u0941\u0928\u093f\u092f\u093e",
+        "summary": "A \"green corridor\" is a special route to enable immediate medical care and facilitate timely travel of harvested organs from one hospital to another. The street signals are manually operated to avoid red lights and peak traffic.",
+        "url": "https://www.ndtv.com/india-news/up-police-create-green-corridor-in-lucknow-to-fly-boiler-blast-victims-to-delhis-aiims-1770186",
+        "isinteractive": true
+    }
 }
