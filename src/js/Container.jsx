@@ -86,7 +86,7 @@ export default class toStoryCard extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.props.mode === '2_col'){
+    if (this.props.mode === 'col2'){
       this.ellipsizeTextBox();
     }
     if(this.state.optionalConfigJSON.story_card_flip && this.state.dataJSON.card_data.data.summary){
@@ -1178,15 +1178,15 @@ export default class toStoryCard extends React.Component {
 
   render() {
     switch(this.props.mode) {
-      case '16_col':
+      case 'col16':
         return this.renderSixteenCol();
-      case '7_col':
+      case 'col7':
         return this.renderSevenCol();
-      case '4_col':
+      case 'col4':
         return this.renderFourCol();
-      case '3_col':
+      case 'col3':
         return this.renderThreeCol();
-      case '2_col':
+      case 'col2':
         return this.renderTwoCol();
     }
   }

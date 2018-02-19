@@ -18,27 +18,27 @@ ProtoGraph.Card.toStory.prototype.getData = function (data) {
 }
 
 ProtoGraph.Card.toStory.prototype.renderSixteenCol= function (data) {
-  this.mode = '16_col';
+  this.mode = 'col16';
   this.render();
 }
 
 ProtoGraph.Card.toStory.prototype.renderSevenCol= function (data) {
-  this.mode = '7_col';
+  this.mode = 'col7';
   this.render();
 }
 
 ProtoGraph.Card.toStory.prototype.renderFourCol= function (data) {
-  this.mode = '4_col';
+  this.mode = 'col4';
   this.render();
 }
 
 ProtoGraph.Card.toStory.prototype.renderThreeCol= function (data) {
-  this.mode = '3_col';
+  this.mode = 'col3';
   this.render();
 }
 
 ProtoGraph.Card.toStory.prototype.renderTwoCol= function (data) {
-  this.mode = '2_col';
+  this.mode = 'col2';
   this.render();
 }
 

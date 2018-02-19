@@ -13,7 +13,7 @@ export default class EditStoryCard extends React.Component {
         card_data: {},
         configs: {}
       },
-      mode: "16_col",
+      mode: "col16",
       loading: true,
       publishing: false,
       uiSchemaJSON: {},
@@ -265,32 +265,32 @@ export default class EditStoryCard extends React.Component {
               <div className="twelve wide column proto-card-preview proto-share-card-div">
                 <div className="protograph-menu-container">
                   <div className="ui compact menu">
-                    <a className={`item ${this.state.mode === '16_col' ? 'active' : ''}`}
-                      data-mode='16_col'
+                    <a className={`item ${this.state.mode === 'col16' ? 'active' : ''}`}
+                      data-mode='col16'
                       onClick={this.toggleMode}
                     >
                       16c-cover
                     </a>
-                    <a className={`item ${this.state.mode === '7_col' ? 'active' : ''}`}
-                      data-mode='7_col'
+                    <a className={`item ${this.state.mode === 'col7' ? 'active' : ''}`}
+                      data-mode='col7'
                       onClick={this.toggleMode}
                     >
                       7c
                     </a>
-                    <a className={`item ${this.state.mode === '4_col' ? 'active' : ''}`}
-                      data-mode='4_col'
+                    <a className={`item ${this.state.mode === 'col4' ? 'active' : ''}`}
+                      data-mode='col4'
                       onClick={this.toggleMode}
                     >
                       4c
                     </a>
-                    <a className={`item ${this.state.mode === '3_col' ? 'active' : ''}`}
-                      data-mode='3_col'
+                    <a className={`item ${this.state.mode === 'col3' ? 'active' : ''}`}
+                      data-mode='col3'
                       onClick={this.toggleMode}
                     >
                       3c
                     </a>
-                    <a className={`item ${this.state.mode === '2_col' ? 'active' : ''}`}
-                      data-mode='2_col'
+                    <a className={`item ${this.state.mode === 'col2' ? 'active' : ''}`}
+                      data-mode='col2'
                       onClick={this.toggleMode}
                     >
                       2c
