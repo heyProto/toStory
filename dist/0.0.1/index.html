@@ -35,24 +35,25 @@
 
     var ReceiverConsumer = Oasis.Consumer.extend({
       requests: {
-        receive: function(mode, readMoreEnabled,headerJSON) {
+        receive: function(mode, options) {
           if(typeof (view_cast_id) !== 'undefined'){
             var that = this,
-              data_base_path = base_url + "/" + view_cast_id;
+              data_base_path = base_url + "/" + view_cast_id,
+              params;
 
             document.querySelector('#tolink-div').style.minHeight = (mode == "col16") ? "430px" : "250px"
 
-            x.init({
+            params = {
               selector: document.querySelector('#tolink-div'),
               data_url: data_base_path + "/data.json",
-              domain: domain_name,
-              site_config_url: (headerJSON || base_url + '/header.json'),
-              onClickCallback: function () {
-                let h = x.getData().height,
-                  w = x.getData().width;
-                that.send('resize_frame', { width: w, height: h })
-              }
-            })
+              domain: domain_name
+            }
+            if (options.headerJSON) {
+              params['site_configs'] = options.headerJSON;
+            } else {
+              params['site_config_url'] = base_url + '/header.json'
+            }
+            x.init(params);
             renderWithMode(mode);
           }
         }

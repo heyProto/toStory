@@ -8,17 +8,43 @@
     </div>
     <script src="https://dnt71st2q6cqr.cloudfront.net/lib/protoGraph.min.js" async></script>
     <script type="text/javascript">
-        var request = new XMLHttpRequest();
+      function getJSONPromise(url) {
+        return new Promise((resolve, reject) => {
+          const xhr = new XMLHttpRequest();
+          xhr.open('GET', url, true);
+          xhr.responseType = 'json';
+          xhr.onload = function () {
+            var status = xhr.status;
+            if (status == 200) {
+              resolve(xhr.response);
+            } else {
+              reject(xhr.statusText)
+            }
+          };
+          xhr.onerror = () => reject(xhr.statusText);
+          xhr.send();
+        });
+      }
+      getJSONPromise('https://d8mb500a7948r.cloudfront.net/header.json').then((headerJSON) => {
+        var ProtoCard2262 = setInterval(function(){
+          if (window.ProtoEmbed) {
+            clearInterval(ProtoCard2262)
+          }
+          new ProtoEmbed.initFrame(document.getElementById("protograph_link_card"), "index.html?view_cast_id=35598b4990f92bb4745331d5%26schema_id=ec6c33c26b5d6015bb40%26base_url=https://dnt71st2q6cqr.cloudfront.net" , "col7", {
+            headerJSON: headerJSON
+          })}, 200);
+
+      })
+        /* var request = new XMLHttpRequest();
         request.open('GET', 'https://d8mb500a7948r.cloudfront.net/header.json', true);
         request.onreadystatechange = function() {
             if (request.readyState == 4) {
                 if(request.status == 200) {
                     var obj = JSON.parse(request.responseText);
-                    var ProtoCard2262 = setInterval(function(){if (window.ProtoEmbed){clearInterval(ProtoCard2262)};new ProtoEmbed.initFrame(document.getElementById("protograph_link_card"), "index.html?view_cast_id=35598b4990f92bb4745331d5%26schema_id=ec6c33c26b5d6015bb40%26base_url=https://dnt71st2q6cqr.cloudfront.net" , "col7", false, obj)}, 200);
                  }
             }
         };
-        request.send(null);
+        request.send(null); */
     </script>
   </body>
 </html>

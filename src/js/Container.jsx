@@ -37,21 +37,22 @@ export default class toStoryCard extends React.Component {
       stateVar.domain = this.props.domain;
     }
 
+    if (this.props.siteConfigs) {
+      stateVar.siteConfigs = this.props.siteConfigs;
+    }
+
     this.state = stateVar;
   }
 
   componentDidMount() {
     if (this.state.fetchingData){
-      let axios_array
-      if (typeof this.props.siteConfigURL !== "object"){
-        axios_array = [
-          axios.get(this.props.dataURL),
-          axios.get(this.props.siteConfigURL)
-        ]
-      } else {
-        axios_array = [axios.get(this.props.dataURL)]
+      let items_to_fetch = [
+        axios.get(this.props.dataURL)
+      ];
+      if (this.props.siteConfigURL) {
+        items_to_fetch.push(axios.get(this.props.siteConfigURL));
       }
-      axios.all(axios_array).then(axios.spread((card, site_configs) => {
+      axios.all(items_to_fetch).then(axios.spread((card, site_configs) => {
         let stateVar = {
           fetchingData: false,
           dataJSON: {
@@ -60,8 +61,7 @@ export default class toStoryCard extends React.Component {
           schemaJSON: true,
           optionalConfigJSON: {}
         };
-
-        stateVar["siteConfigs"] =  (typeof this.props.siteConfigURL !== "object") ? site_configs.data : this.props.siteConfigURL;
+        site_configs ? stateVar["siteConfigs"] = site_configs.data : stateVar["siteConfigs"] =  this.state.siteConfigs;
 
         stateVar.optionalConfigJSON.house_colour = stateVar.siteConfigs.house_colour;
         stateVar.optionalConfigJSON.reverse_house_colour = stateVar.siteConfigs.reverse_house_colour;

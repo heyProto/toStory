@@ -14,13 +14,16 @@
     <script src = "dist/0.0.1/card.min.js"></script>
     <script type="text/javascript">
       window.ref_link_sources_url = "https://cdn.protograph.pykih.com/Assets/ref_link_sources.json"
-      var x = new ProtoGraph.Card.toStory()
-      x.init({
-        selector: document.querySelector('#tolink-div'),
-        data_url: './dist/0.0.1/sample.json',
-        domain: 'indianexpress.com',
-        site_config_url: {"header_logo_url":"https://d2jco8ydyctdne.cloudfront.net/images/indianexpress/57c86975cd78ab70/2432.png","header_background_color":"#000000","header_jump_to_link":"http://indianexpress.com","header_logo_position":"center","house_colour":"#ee1c25","reverse_house_colour":"#4caf50","font_colour":"#ffffff","reverse_font_colour":"#ffffff","primary_language":"English","story_card_style":"Clear: Color","story_card_flip": true}
-      })
+      var x = new ProtoGraph.Card.toStory(),
+        params = {
+          selector: document.querySelector('#tolink-div'),
+          data_url: './dist/0.0.1/sample.json',
+          domain: 'indianexpress.com',
+        };
+        //params['site_config_url'] = "./dist/0.0.1/site.json"
+        params['site_configs'] = { "header_logo_url": "https://d2jco8ydyctdne.cloudfront.net/images/indianexpress/57c86975cd78ab70/2432.png", "header_background_color": "#000000", "header_jump_to_link": "http://indianexpress.com", "header_logo_position": "center", "house_colour": "#ee1c25", "reverse_house_colour": "#4caf50", "font_colour": "#ffffff", "reverse_font_colour": "#ffffff", "primary_language": "English", "story_card_style": "Clear: Color", "story_card_flip": true }
+
+      x.init(params);
       // x.renderSixteenCol();
       x.renderSevenCol();
       // x.renderFourCol();
