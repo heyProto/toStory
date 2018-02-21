@@ -21,16 +21,8 @@ export default class toStoryCard extends React.Component {
       stateVar.languageTexts = this.getLanguageTexts(this.props.dataJSON.card_data.data.language);
     }
 
-    if (this.props.schemaJSON) {
-      stateVar.schemaJSON = this.props.schemaJSON;
-    }
-
     if (this.props.optionalConfigJSON) {
       stateVar.optionalConfigJSON = this.props.optionalConfigJSON;
-    }
-
-    if (this.props.optionalConfigSchemaJSON) {
-      stateVar.optionalConfigSchemaJSON = this.props.optionalConfigSchemaJSON;
     }
 
     if(this.props.domain){
