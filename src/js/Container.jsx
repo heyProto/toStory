@@ -50,7 +50,6 @@ export default class toStoryCard extends React.Component {
           dataJSON: {
             card_data: card.data
           },
-          schemaJSON: true,
           optionalConfigJSON: {}
         };
         site_configs ? stateVar["siteConfigs"] = site_configs.data : stateVar["siteConfigs"] =  this.state.siteConfigs;
@@ -157,7 +156,7 @@ export default class toStoryCard extends React.Component {
   }
 
   renderSixteenCol(){
-    if(!this.state.schemaJSON){
+    if(this.state.fetchingData){
       return(
         <div>Loading</div>
       )
@@ -291,7 +290,7 @@ export default class toStoryCard extends React.Component {
   }
 
   renderSevenCol(){
-    if(!this.state.schemaJSON){
+    if(this.state.fetchingData){
       return(
         <div>Loading</div>
       )
@@ -515,7 +514,7 @@ export default class toStoryCard extends React.Component {
   }
 
   renderFourCol(){
-    if(!this.state.schemaJSON){
+    if(this.state.fetchingData){
       return(
         <div>Loading</div>
       )
@@ -735,7 +734,7 @@ export default class toStoryCard extends React.Component {
   }
 
   renderThreeCol(){
-    if(!this.state.schemaJSON){
+    if(this.state.fetchingData){
       return(
         <div>Loading</div>
       )
@@ -955,7 +954,7 @@ export default class toStoryCard extends React.Component {
   }
 
   renderTwoCol(){
-    if(!this.state.schemaJSON){
+    if(this.state.fetchingData){
       return(
         <div>Loading</div>
       )

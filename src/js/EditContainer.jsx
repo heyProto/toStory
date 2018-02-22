@@ -303,9 +303,7 @@ export default class EditStoryCard extends React.Component {
                       mode={this.state.mode}
                       dataJSON={this.state.dataJSON}
                       domain={this.props.domain}
-                      schemaJSON={this.state.schemaJSON}
                       optionalConfigJSON={this.state.optionalConfigJSON}
-                      optionalConfigSchemaJSON={this.state.optionalConfigSchemaJSON}
                       linkDetails={this.state.refLinkDetails}
                     />
                   </div>
