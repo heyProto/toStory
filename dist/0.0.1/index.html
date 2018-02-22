@@ -45,7 +45,12 @@
             params = {
               selector: document.querySelector('#tolink-div'),
               data_url: data_base_path + "/data.json",
-              domain: domain_name
+              domain: domain_name,
+              onClickCallback: function () {
+                let h = x.getData().height,
+                  w = x.getData().width;
+                that.send('resize_frame', { width: w, height: h })
+              }
             }
             if (options && options.headerJSON) {
               params['site_configs'] = options.headerJSON;

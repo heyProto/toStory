@@ -48,7 +48,6 @@ ProtoGraph.Card.toStory.prototype.render = function () {
       dataURL={this.options.data_url}
       selector={this.options.selector}
       domain={this.options.domain}
-      optionalConfigURL={this.options.configuration_url}
       siteConfigURL={this.options.site_config_url}
       siteConfigs={this.options.site_configs}
       clickCallback={this.options.onClickCallback}
