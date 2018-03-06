@@ -90,10 +90,11 @@ export default class toStoryCard extends React.Component {
     let data = this.state.dataJSON.card_data.data,
       wordArray = data.summary.split(' '),
       props = this.props;
-
-    while(el.scrollHeight > el.offsetHeight) {
-      wordArray.pop();
-      el.innerHTML = wordArray.join(' ') + '...' + '<br><a id="read-more-button" href="#" class="protograph-read-more">Read more</a>' ;
+    if (el) {
+      while(el.scrollHeight > el.offsetHeight) {
+        wordArray.pop();
+        el.innerHTML = wordArray.join(' ') + '...' + '<br><a id="read-more-button" href="#" class="protograph-read-more">Read more</a>' ;
+      }
     }
   }
 
@@ -161,7 +162,6 @@ export default class toStoryCard extends React.Component {
         <div>Loading</div>
       )
     }else{
-      console.log(this.state.optionalConfigJSON.story_card_flip, this.state.optionalConfigJSON.story_card_flip && this.state.dataJSON.card_data.data.summary);
       let genreColor = "rgba(51, 51, 51, 0.75)",
       genreFontColor = "#fff";
       if(this.state.dataJSON.card_data.data.interactive){
