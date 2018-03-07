@@ -156,6 +156,58 @@ export default class toStoryCard extends React.Component {
     window.open(this.state.dataJSON.card_data.data.url,'_top');
   }
 
+  matchDomain(domain, url) {
+    let url_domain = this.getDomainFromURL(url).replace(/^(https?:\/\/)?(www\.)?/, ''),
+      domain_has_subdomain = this.subDomain(domain),
+      url_has_subdomain = this.subDomain(url_domain);
+
+    if (domain_has_subdomain) {
+      return (domain === url_domain) || (domain.indexOf(url_domain));
+    }
+    if (url_has_subdomain) {
+      return (domain === url_domain) || (url_domain.indexOf(domain))
+    }
+    return (domain === url_domain)
+  }
+
+  getDomainFromURL(url) {
+    let a = document.createElement('a');
+    a.href = url;
+    return a.hostname;
+  }
+
+  subDomain(url) {
+    // IF THERE, REMOVE WHITE SPACE FROM BOTH ENDS
+    url = url.replace(new RegExp(/^\s+/), ""); // START
+    url = url.replace(new RegExp(/\s+$/), ""); // END
+
+    // IF FOUND, CONVERT BACK SLASHES TO FORWARD SLASHES
+    url = url.replace(new RegExp(/\\/g), "/");
+
+    // IF THERE, REMOVES 'http://', 'https://' or 'ftp://' FROM THE START
+    url = url.replace(new RegExp(/^http\:\/\/|^https\:\/\/|^ftp\:\/\//i), "");
+
+    // IF THERE, REMOVES 'www.' FROM THE START OF THE STRING
+    url = url.replace(new RegExp(/^www\./i), "");
+
+    // REMOVE COMPLETE STRING FROM FIRST FORWARD SLASH ON
+    url = url.replace(new RegExp(/\/(.*)/), "");
+
+    // REMOVES '.??.??' OR '.???.??' FROM END - e.g. '.CO.UK', '.COM.AU'
+    if (url.match(new RegExp(/\.[a-z]{2,3}\.[a-z]{2}$/i))) {
+      url = url.replace(new RegExp(/\.[a-z]{2,3}\.[a-z]{2}$/i), "");
+
+      // REMOVES '.??' or '.???' or '.????' FROM END - e.g. '.US', '.COM', '.INFO'
+    } else if (url.match(new RegExp(/\.[a-z]{2,4}$/i))) {
+      url = url.replace(new RegExp(/\.[a-z]{2,4}$/i), "");
+    }
+
+    // CHECK TO SEE IF THERE IS A DOT '.' LEFT IN THE STRING
+    var subDomain = (url.match(new RegExp(/\./g))) ? true : false;
+
+    return (subDomain);
+  }
+
   renderSixteenCol(){
     if(this.state.fetchingData){
       return(
@@ -177,7 +229,7 @@ export default class toStoryCard extends React.Component {
       let arr = str && str.split("/");
       let name = undefined;
       let dom = arr && arr[2];
-      if(this.state.domain === dom){
+      if (this.matchDomain(this.state.domain, str)) {
         fav = undefined;
       }
       let byline = this.state.dataJSON.card_data.data.byline;
@@ -307,10 +359,10 @@ export default class toStoryCard extends React.Component {
       }
       let fav = this.state.dataJSON.card_data.data.faviconurl;
       let str = this.state.dataJSON.card_data.data.url;
-      let arr = str && str.split("/");
+      // let arr = str && str.split("/");
       let name = undefined;
-      let dom = arr && (arr[2]);
-      if(this.state.domain === dom){
+      // let dom = arr && (arr[2]);
+      if (this.matchDomain(this.state.domain, str)){
         fav = undefined;
       }
       let light = this.state.dataJSON.card_data.data.col7imageurl;
@@ -534,7 +586,7 @@ export default class toStoryCard extends React.Component {
       let arr = str && str.split("/");
       let name = undefined;
       let dom = arr && (arr[2]);
-      if(this.state.domain === dom){
+      if (this.matchDomain(this.state.domain, str)) {
         fav = undefined;
       }
       let light = this.state.dataJSON.card_data.data.col7imageurl;
@@ -754,7 +806,7 @@ export default class toStoryCard extends React.Component {
       let arr = str && str.split("/");
       let name = undefined;
       let dom = arr && (arr[2]);
-      if(this.state.domain === dom){
+      if (this.matchDomain(this.state.domain, str)) {
         fav = undefined;
       }
       let light = this.state.dataJSON.card_data.data.col7imageurl;
@@ -974,6 +1026,9 @@ export default class toStoryCard extends React.Component {
       let arr = str && str.split("/");
       let name = undefined;
       let dom = arr && (arr[2]);
+      if (this.matchDomain(this.state.domain, str)) {
+        fav = undefined;
+      }
       let light = this.state.dataJSON.card_data.data.col7imageurl;
       if (!this.state.dataJSON.card_data.data.col7imageurl) {
         light = this.state.dataJSON.card_data.data.imageurl;
