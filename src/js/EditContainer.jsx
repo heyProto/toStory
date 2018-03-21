@@ -163,7 +163,7 @@ export default class EditStoryCard extends React.Component {
   renderSEO() {
     let data = this.state.dataJSON.card_data.data,
       seo_blockquote;
-    seo_blockquote = ` <blockquote> ${data.headline ? `<h2>${data.headline}</h2>` : ""}${data.byline ? `<p>${data.byline}</p>` : ""}${data.publishedat ? `<p>${data.publishedat}</p>` : ""}${data.series ? `<p>${data.series}</p>` : ""}${data.genre ? `<p>${data.genre}</p>` : ""}${data.subgenre ? `<p>${data.subgenre}</p>` : ""}${data.summary ? `<p>${data.summary}</p>` : ""}</blockquote>`;
+    seo_blockquote = `<blockquote><a url=${data.url} rel="nofollow">${data.headline ? `<h2>${data.headline}</h2>` : ""}</a>${data.byline ? `<p>${data.byline}</p>` : ""}${data.publishedat ? `<p>${data.publishedat}</p>` : ""}${data.series ? `<p>${data.series}</p>` : ""}${data.genre ? `<p>${data.genre}</p>` : ""}${data.subgenre ? `<p>${data.subgenre}</p>` : ""}${data.summary ? `<p>${data.summary}</p>` : ""}</blockquote>`;
     return seo_blockquote;
   }
 

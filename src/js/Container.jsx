@@ -177,6 +177,9 @@ export default class toStoryCard extends React.Component {
   }
 
   subDomain(url) {
+    if(!url){
+      url = "";
+    }
     // IF THERE, REMOVE WHITE SPACE FROM BOTH ENDS
     url = url.replace(new RegExp(/^\s+/), ""); // START
     url = url.replace(new RegExp(/\s+$/), ""); // END
