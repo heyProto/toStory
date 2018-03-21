@@ -466,18 +466,18 @@ export default class toStoryCard extends React.Component {
                 <div className="flip-container" style={{position: "relative"}}>
                   <div className="flipper" style={{position: "relative",height: 250}}>
                     <div className="front" style={{position: "relative",height: 250}}>
+                    <div className="card-tags" style={{position:'absolute',top:'0px', padding:'12px'}}>
+                        {fav ?
+                            <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
+                              <img className="favicon" src = {fav}/>
+                            </div> : null}
+                        <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
+                              {genre } </div> : null}</div>
+                            {
+                              this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
+                            }
+                      </div>
                       <div className="col-7-block-left bottom-pull-div" style={left_block_width}>
-                        <div className="card-tags">
-                          {fav ?
-                              <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
-                                <img className="favicon" src = {fav}/>
-                              </div> : null}
-                          <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
-                                {genre } </div> : null}</div>
-                              {
-                                this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
-                              }
-                          </div>
                         <div className="article-title" style={{color:'black' }}>
                           {this.state.dataJSON.card_data.data.headline}
                         </div>
@@ -536,8 +536,7 @@ export default class toStoryCard extends React.Component {
           return(
             <div onClick={()=>{ this.handleClick() }}>
               <div className="col-7-story-card" style={{backgroundColor: "#fafafa"}}>
-                <div className="col-7-block-left bottom-pull-div" style={left_block_width}>
-                  <div className="card-tags">
+              <div className="card-tags" style={{position:'absolute',top:'0px', padding:'12px'}}>
                     {fav ?
                         <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
                           <img className="favicon" src = {fav}/>
@@ -548,6 +547,8 @@ export default class toStoryCard extends React.Component {
                           this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
                         }
                   </div>
+                <div className="col-7-block-left bottom-pull-div" style={left_block_width}>
+                  
                   <div className="article-title" style={{color:'black' }}>
                     {this.state.dataJSON.card_data.data.headline}
                   </div>

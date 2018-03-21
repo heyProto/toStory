@@ -114,7 +114,9 @@
 	width: 300px;
 	position: relative;
 	box-sizing: border-box;
-	overflow: hidden;
+  overflow: hidden;
+  margin-left:auto;
+  margin-right:auto;
 }
 
 
