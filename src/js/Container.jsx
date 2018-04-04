@@ -162,10 +162,10 @@ export default class toStoryCard extends React.Component {
       url_has_subdomain = this.subDomain(url_domain);
 
     if (domain_has_subdomain) {
-      return (domain === url_domain) || (domain.indexOf(url_domain));
+      return (domain === url_domain) || (domain.indexOf(url_domain) >= 0);
     }
     if (url_has_subdomain) {
-      return (domain === url_domain) || (url_domain.indexOf(domain))
+      return (domain === url_domain) || (url_domain.indexOf(domain) >= 0);
     }
     return (domain === url_domain)
   }
@@ -548,7 +548,7 @@ export default class toStoryCard extends React.Component {
                         }
                   </div>
                 <div className="col-7-block-left bottom-pull-div" style={left_block_width}>
-                  
+
                   <div className="article-title" style={{color:'black' }}>
                     {this.state.dataJSON.card_data.data.headline}
                   </div>
