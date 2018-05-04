@@ -329,14 +329,14 @@
 	max-width: 860px;
 }
 
-.col-16-diag-grad{
+/* .col-16-diag-grad{
 	height: 100%;
 	width: 100%;
 	position: absolute;
 	left: 0px;
 	top: 0px;
 	background-image: linear-gradient(253deg, rgba(51, 51, 51, 0.2), rgba(51, 51, 51, 0.8));
-}
+} */
 
 .title-background{
 	height: 250px;
