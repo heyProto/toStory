@@ -29,6 +29,10 @@
           "type": "string",
           "format":"date-time"
         },
+        "hide_byline": {
+          "title": "Hide Byline",
+          "type": "boolean"
+        },
         "series":{
           "title": "Series",
           "type": "string",

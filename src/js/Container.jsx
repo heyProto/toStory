@@ -301,7 +301,7 @@ export default class toStoryCard extends React.Component {
                     {this.state.dataJSON.card_data.data.headline}
                   </div>
                   <div className="by-line">
-                    {show}
+                    {(!this.state.dataJSON.card_data.data.hide_byline) && show}
                   </div>
                 </div>
               </div>
@@ -329,7 +329,7 @@ export default class toStoryCard extends React.Component {
                   {this.state.dataJSON.card_data.data.headline}
                 </div>
                 <div className="by-line">
-                  {show}
+                  {(!this.state.dataJSON.card_data.data.hide_byline) && show}
                 </div>
               </div>
               <div className="col-16-block-right">
@@ -443,7 +443,7 @@ export default class toStoryCard extends React.Component {
                             {this.state.dataJSON.card_data.data.headline}
                           </div>
                           <div className="by-line" style={{color: light ?'white' :'black' }}>
-                            {show}
+                            {(!this.state.dataJSON.card_data.data.hide_byline) && show}
                           </div>
                         </div>
                       </div>
@@ -482,7 +482,7 @@ export default class toStoryCard extends React.Component {
                           {this.state.dataJSON.card_data.data.headline}
                         </div>
                         <div className="by-line" style={{color: '#8e8e8e' }}>
-                          {show}
+                          {(!this.state.dataJSON.card_data.data.hide_byline) && show}
                         </div>
                       </div>
                       <div className="col-7-block-right">
@@ -525,7 +525,7 @@ export default class toStoryCard extends React.Component {
                       {this.state.dataJSON.card_data.data.headline}
                     </div>
                     <div className="by-line" style={{color: light ?'white' :'black' }}>
-                      {show}
+                      {(!this.state.dataJSON.card_data.data.hide_byline) && show}
                     </div>
                   </div>
                 </div>
@@ -553,7 +553,7 @@ export default class toStoryCard extends React.Component {
                     {this.state.dataJSON.card_data.data.headline}
                   </div>
                   <div className="by-line" style={{color: '#8e8e8e' }}>
-                    {show}
+                    {(!this.state.dataJSON.card_data.data.hide_byline) && show}
                   </div>
                 </div>
                 <div className="col-7-block-right">
@@ -664,7 +664,7 @@ export default class toStoryCard extends React.Component {
                             {this.state.dataJSON.card_data.data.headline}
                           </div>
                           <div className="by-line" style={{color: light ?'white' :'black' }}>
-                            {show}
+                            {(!this.state.dataJSON.card_data.data.hide_byline) && show}
                           </div>
                         </div>
                       </div>
@@ -706,7 +706,7 @@ export default class toStoryCard extends React.Component {
                             {this.state.dataJSON.card_data.data.headline}
                           </div>
                           <div className="by-line" style={{color: '#8e8e8e' }}>
-                            {show}
+                            {(!this.state.dataJSON.card_data.data.hide_byline) && show}
                           </div>
                         </div>
                       </div>
@@ -746,7 +746,7 @@ export default class toStoryCard extends React.Component {
                       {this.state.dataJSON.card_data.data.headline}
                     </div>
                     <div className="by-line" style={{color: light ?'white' :'black' }}>
-                      {show}
+                      {(!this.state.dataJSON.card_data.data.hide_byline) && show}
                     </div>
                   </div>
                 </div>
@@ -777,7 +777,7 @@ export default class toStoryCard extends React.Component {
                       {this.state.dataJSON.card_data.data.headline}
                     </div>
                     <div className="by-line" style={{color: '#8e8e8e' }}>
-                      {show}
+                      {(!this.state.dataJSON.card_data.data.hide_byline) && show}
                     </div>
                   </div>
                 </div>
@@ -884,7 +884,7 @@ export default class toStoryCard extends React.Component {
                             {this.state.dataJSON.card_data.data.headline}
                           </div>
                           <div className="by-line" style={{color: light ?'white' :'black' }}>
-                            {show}
+                            {(!this.state.dataJSON.card_data.data.hide_byline) && show}
                           </div>
                         </div>
                       </div>
@@ -926,7 +926,7 @@ export default class toStoryCard extends React.Component {
                             {this.state.dataJSON.card_data.data.headline}
                           </div>
                           <div className="by-line" style={{color: '#8e8e8e' }}>
-                            {show}
+                            {(!this.state.dataJSON.card_data.data.hide_byline) && show}
                           </div>
                         </div>
                       </div>
@@ -966,7 +966,7 @@ export default class toStoryCard extends React.Component {
                       {this.state.dataJSON.card_data.data.headline}
                     </div>
                     <div className="by-line" style={{color: light ?'white' :'black' }}>
-                      {show}
+                      {(!this.state.dataJSON.card_data.data.hide_byline) && show}
                     </div>
                   </div>
                 </div>
@@ -997,7 +997,7 @@ export default class toStoryCard extends React.Component {
                       {this.state.dataJSON.card_data.data.headline}
                     </div>
                     <div className="by-line" style={{color: '#8e8e8e' }}>
-                      {show}
+                      {(!this.state.dataJSON.card_data.data.hide_byline) && show}
                     </div>
                   </div>
                 </div>
@@ -1091,7 +1091,7 @@ export default class toStoryCard extends React.Component {
                             {this.state.dataJSON.card_data.data.headline}
                           </div>
                           <div className="by-line" style={{color: light ?'white' :'black' }}>
-                            {show}
+                            {(!this.state.dataJSON.card_data.data.hide_byline) && show}
                           </div>
                         </div>
                       </div>
@@ -1130,7 +1130,7 @@ export default class toStoryCard extends React.Component {
                             {this.state.dataJSON.card_data.data.headline}
                           </div>
                           <div className="by-line" style={{color: '#8e8e8e' }}>
-                            {show}
+                            {(!this.state.dataJSON.card_data.data.hide_byline) && show}
                           </div>
                         </div>
                       </div>
@@ -1167,7 +1167,7 @@ export default class toStoryCard extends React.Component {
                       {this.state.dataJSON.card_data.data.headline}
                     </div>
                     <div className="by-line" style={{color: light ?'white' :'black' }}>
-                      {show}
+                      {(!this.state.dataJSON.card_data.data.hide_byline) && show}
                     </div>
                   </div>
                 </div>
@@ -1195,7 +1195,7 @@ export default class toStoryCard extends React.Component {
                       {this.state.dataJSON.card_data.data.headline}
                     </div>
                     <div className="by-line" style={{color: '#8e8e8e' }}>
-                      {show}
+                      {(!this.state.dataJSON.card_data.data.hide_byline) && show}
                     </div>
                   </div>
                 </div>
