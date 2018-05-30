@@ -434,9 +434,9 @@ export default class toStoryCard extends React.Component {
                             </div> : null}
                         <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                               {genre } </div> : null}</div>
-                            {
-                              this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
-                            }
+                          <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.card_data.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.card_data.data.sponsored ? 'underline' : 'none' }}>
+                            {this.state.dataJSON.card_data.data.sponsored ? 'Sponsored' : this.state.dataJSON.card_data.data.subgenre}
+                          </div>
                         </div>
                         <div className="bottom-pull-div">
                           <div className="article-title" style={{color: light ?'white' :'black' }}>
@@ -473,9 +473,9 @@ export default class toStoryCard extends React.Component {
                             </div> : null}
                         <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                               {genre } </div> : null}</div>
-                            {
-                              this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
-                            }
+                        <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.card_data.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.card_data.data.sponsored ? 'underline' : 'none' }}>
+                          {this.state.dataJSON.card_data.data.sponsored ? 'Sponsored' : this.state.dataJSON.card_data.data.subgenre}
+                        </div>
                       </div>
                       <div className="col-7-block-left bottom-pull-div" style={left_block_width}>
                         <div className="article-title" style={{color:'black' }}>
@@ -516,9 +516,9 @@ export default class toStoryCard extends React.Component {
                           </div> : null}
                       <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                             {genre } </div> : null}</div>
-                          {
-                            this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
-                          }
+                    <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.card_data.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.card_data.data.sponsored ? 'underline' : 'none' }}>
+                      {this.state.dataJSON.card_data.data.sponsored ? 'Sponsored' : this.state.dataJSON.card_data.data.subgenre}
+                    </div>
                   </div>
                   <div className="bottom-pull-div">
                     <div className="article-title" style={{color: light ?'white' :'black' }}>
@@ -543,9 +543,9 @@ export default class toStoryCard extends React.Component {
                         </div> : null}
                     <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                           {genre } </div> : null}</div>
-                        {
-                          this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
-                        }
+                  <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.card_data.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.card_data.data.sponsored ? 'underline' : 'none' }}>
+                    {this.state.dataJSON.card_data.data.sponsored ? 'Sponsored' : this.state.dataJSON.card_data.data.subgenre}
+                  </div>
                   </div>
                 <div className="col-7-block-left bottom-pull-div" style={left_block_width}>
 
@@ -655,9 +655,9 @@ export default class toStoryCard extends React.Component {
                             </div> : null}
                         <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                               {genre } </div> : null}</div>
-                            {
-                              this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
-                            }
+                          <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.card_data.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.card_data.data.sponsored ? 'underline' : 'none' }}>
+                            {this.state.dataJSON.card_data.data.sponsored ? 'Sponsored' : this.state.dataJSON.card_data.data.subgenre}
+                          </div>
                         </div>
                         <div className="bottom-pull-div">
                           <div className="article-title" style={{color: light ?'white' :'black' }}>
@@ -695,9 +695,9 @@ export default class toStoryCard extends React.Component {
                               </div> : null}
                           <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                                 {genre } </div> : null}</div>
-                              {
-                                this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
-                              }
+                          <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.card_data.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.card_data.data.sponsored ? 'underline' : 'none' }}>
+                            {this.state.dataJSON.card_data.data.sponsored ? 'Sponsored' : this.state.dataJSON.card_data.data.subgenre}
+                          </div>
                         </div>
                       </div>
                       <div className="col-4-block-bottom">
@@ -737,9 +737,9 @@ export default class toStoryCard extends React.Component {
                       </div> : null}
                   <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                         {genre } </div> : null}</div>
-                      {
-                        this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
-                      }
+                    <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.card_data.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.card_data.data.sponsored ? 'underline' : 'none' }}>
+                      {this.state.dataJSON.card_data.data.sponsored ? 'Sponsored' : this.state.dataJSON.card_data.data.subgenre}
+                    </div>
                   </div>
                   <div className="bottom-pull-div">
                     <div className="article-title" style={{color: light ?'white' :'black' }}>
@@ -766,9 +766,9 @@ export default class toStoryCard extends React.Component {
                         </div> : null}
                     <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                           {genre } </div> : null}</div>
-                        {
-                          this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
-                        }
+                    <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.card_data.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.card_data.data.sponsored ? 'underline' : 'none' }}>
+                      {this.state.dataJSON.card_data.data.sponsored ? 'Sponsored' : this.state.dataJSON.card_data.data.subgenre}
+                    </div>
                   </div>
                 </div>
                 <div className="col-4-block-bottom">
@@ -875,9 +875,9 @@ export default class toStoryCard extends React.Component {
                             </div> : null}
                         <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                               {genre } </div> : null}</div>
-                            {
-                              this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
-                            }
+                          <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.card_data.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.card_data.data.sponsored ? 'underline' : 'none' }}>
+                            {this.state.dataJSON.card_data.data.sponsored ? 'Sponsored' : this.state.dataJSON.card_data.data.subgenre}
+                          </div>
                         </div>
                         <div className="bottom-pull-div">
                           <div className="article-title" style={{color: light ?'white' :'black' }}>
@@ -915,9 +915,9 @@ export default class toStoryCard extends React.Component {
                               </div> : null}
                           <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                                 {genre } </div> : null}</div>
-                              {
-                                this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
-                              }
+                          <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.card_data.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.card_data.data.sponsored ? 'underline' : 'none' }}>
+                            {this.state.dataJSON.card_data.data.sponsored ? 'Sponsored' : this.state.dataJSON.card_data.data.subgenre}
+                          </div>
                         </div>
                       </div>
                       <div className="col-3-block-bottom">
@@ -957,9 +957,9 @@ export default class toStoryCard extends React.Component {
                       </div> : null}
                   <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                         {genre } </div> : null}</div>
-                      {
-                        this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
-                      }
+                    <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.card_data.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.card_data.data.sponsored ? 'underline' : 'none' }}>
+                      {this.state.dataJSON.card_data.data.sponsored ? 'Sponsored' : this.state.dataJSON.card_data.data.subgenre}
+                    </div>
                   </div>
                   <div className="bottom-pull-div">
                     <div className="article-title" style={{color: light ?'white' :'black' }}>
@@ -986,9 +986,9 @@ export default class toStoryCard extends React.Component {
                         </div> : null}
                     <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                           {genre } </div> : null}</div>
-                        {
-                          this.state.dataJSON.card_data.data.sponsored ? <div className="sub-genre-dark" style={{color: light ?'white' :'black',fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none' }}>Sponsored</div> : null
-                        }
+                    <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.card_data.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.card_data.data.sponsored ? 'underline' : 'none' }}>
+                      {this.state.dataJSON.card_data.data.sponsored ? 'Sponsored' : this.state.dataJSON.card_data.data.subgenre}
+                    </div>
                   </div>
                 </div>
                 <div className="col-3-block-bottom">
