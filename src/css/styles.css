@@ -524,6 +524,13 @@
     line-height: 19px;
     color: #333;
 }
+.icons {
+  display: inline-block;
+}
+
+.icons img {
+  margin-left: 15px;
+}
 
 @media only screen and (max-width: 500px){
 	.col-2-story-card{
