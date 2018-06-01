@@ -11,6 +11,8 @@
         "series": "\u0905\u0902\u0917\u0926\u093e\u0928 \u0915\u0940 \u0928\u0908 \u0926\u0941\u0928\u093f\u092f\u093e",
         "summary": "A \"green corridor\" is a special route to enable immediate medical care and facilitate timely travel of harvested organs from one hospital to another. The street signals are manually operated to avoid red lights and peak traffic.",
         "url": "https://www.ndtv.com/india-news/up-police-create-green-corridor-in-lucknow-to-fly-boiler-blast-victims-to-delhis-aiims-1770186",
-        "isinteractive": true
+        "isinteractive": true,
+        "left":50,
+        "top":50
     }
 }

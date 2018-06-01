@@ -229,6 +229,8 @@ export default class toStoryCard extends React.Component {
       }
       let fav = this.state.dataJSON.card_data.data.faviconurl;
       let str = this.state.dataJSON.card_data.data.url;
+      let left = this.state.dataJSON.card_data.data.left;
+      let top = this.state.dataJSON.card_data.data.top;
       let arr = str && str.split("/");
       let name = undefined;
       let dom = arr && arr[2];
@@ -277,6 +279,9 @@ export default class toStoryCard extends React.Component {
       }
 
       if (focus === "h") {
+        styles.left = left+"%";
+        styles.top = top+"%";
+        styles.transform = `translate(-${left}%,-${top}%)`;
         return(
           <div onClick={()=>{ this.handleClick() }}>
             <div className="col-16-story-card">
@@ -362,6 +367,8 @@ export default class toStoryCard extends React.Component {
       }
       let fav = this.state.dataJSON.card_data.data.faviconurl;
       let str = this.state.dataJSON.card_data.data.url;
+      let left = this.state.dataJSON.card_data.data.left;
+      let top = this.state.dataJSON.card_data.data.top;
       // let arr = str && str.split("/");
       let name = undefined;
       // let dom = arr && (arr[2]);
@@ -418,6 +425,9 @@ export default class toStoryCard extends React.Component {
 
       if(this.state.optionalConfigJSON.story_card_flip && this.state.dataJSON.card_data.data.summary){
         if (focus === "h"){
+          styles.left = left+"%";
+          styles.top = top+"%";
+          styles.transform = `translate(-${left}%,-${top}%)`;
           return(
             <div onClick={()=>{ this.handleClick() }}>
               <div className="col-7-story-card">
@@ -503,6 +513,9 @@ export default class toStoryCard extends React.Component {
         }
       } else {
         if (focus === "h"){
+          styles.left = left+"%";
+          styles.top = top+"%";
+          styles.transform = `translate(-${left}%,-${top}%)`;
           return(
             <div onClick={()=>{ this.handleClick() }}>
               <div className="col-7-story-card">
@@ -587,6 +600,8 @@ export default class toStoryCard extends React.Component {
       }
       let fav = this.state.dataJSON.card_data.data.faviconurl;
       let str = this.state.dataJSON.card_data.data.url;
+      let left = this.state.dataJSON.card_data.data.left;
+      let top = this.state.dataJSON.card_data.data.top;
       let arr = str && str.split("/");
       let name = undefined;
       let dom = arr && (arr[2]);
@@ -639,6 +654,9 @@ export default class toStoryCard extends React.Component {
 
       if(this.state.optionalConfigJSON.story_card_flip && this.state.dataJSON.card_data.data.summary){
         if (focus === "h"){
+          styles.left = left+"%";
+          styles.top = top+"%";
+          styles.transform = `translate(-${left}%,-${top}%)`;
           return(
             <div onClick={()=>{ this.handleClick() }}>
               <div className="col-4-story-card">
@@ -724,6 +742,9 @@ export default class toStoryCard extends React.Component {
         }
       } else {
         if (focus === "h"){
+          styles.left = left+"%";
+          styles.top = top+"%";
+          styles.transform = `translate(-${left}%,-${top}%)`;
           return(
             <div onClick={()=>{ this.handleClick() }}>
               <div className="col-4-story-card">
@@ -807,6 +828,8 @@ export default class toStoryCard extends React.Component {
       }
       let fav = this.state.dataJSON.card_data.data.faviconurl;
       let str = this.state.dataJSON.card_data.data.url;
+      let left = this.state.dataJSON.card_data.data.left;
+      let top = this.state.dataJSON.card_data.data.top;
       let arr = str && str.split("/");
       let name = undefined;
       let dom = arr && (arr[2]);
@@ -859,6 +882,9 @@ export default class toStoryCard extends React.Component {
       }
       if(this.state.optionalConfigJSON.story_card_flip && this.state.dataJSON.card_data.data.summary){
         if (focus === "h"){
+          styles.left = left+"%";
+          styles.top = top+"%";
+          styles.transform = `translate(-${left}%,-${top}%)`;
           return(
             <div onClick={()=>{ this.handleClick() }}>
               <div className="col-3-story-card">
@@ -944,6 +970,9 @@ export default class toStoryCard extends React.Component {
         }
       } else {
         if (focus === "h"){
+          styles.left = left+"%";
+          styles.top = top+"%";
+          styles.transform = `translate(-${left}%,-${top}%)`;
           return(
             <div onClick={()=>{ this.handleClick() }}>
               <div className="col-3-story-card" >
@@ -1027,6 +1056,8 @@ export default class toStoryCard extends React.Component {
       }
       let fav = this.state.dataJSON.card_data.data.faviconurl;
       let str = this.state.dataJSON.card_data.data.url;
+      let left = this.state.dataJSON.card_data.data.left;
+      let top = this.state.dataJSON.card_data.data.top;
       let arr = str && str.split("/");
       let name = undefined;
       let dom = arr && (arr[2]);
@@ -1069,6 +1100,9 @@ export default class toStoryCard extends React.Component {
       }
       if(this.state.optionalConfigJSON.story_card_flip && this.state.dataJSON.card_data.data.summary){
         if (focus === "h") {
+          styles.left = left+"%";
+          styles.top = top+"%";
+          styles.transform = `translate(-${left}%,-${top}%)`;
           return(
             <div onClick={()=>{ this.handleClick() }}>
               <div className="col-2-story-card">
@@ -1148,6 +1182,9 @@ export default class toStoryCard extends React.Component {
         }
       } else {
         if (focus === "h") {
+          styles.left = left+"%";
+          styles.top = top+"%";
+          styles.transform = `translate(-${left}%,-${top}%)`;
           return(
             <div onClick={()=>{ this.handleClick() }}>
               <div className="col-2-story-card">

@@ -20,6 +20,12 @@
         },
         "col7imageurl": {
             "ui:help": "Hint: 540px width. 5:3 aspect ratio."
+        },
+        "left":{
+            "ui:widget":"updown"
+        },
+        "right":{
+            "ui:widget":"updown"
         }
    }
 }

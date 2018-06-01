@@ -119,6 +119,14 @@
         },
         "faviconurl":{
           "type":"string"
+        },
+        "left":{
+          "title": "Left (in %)",
+          "type":"number"
+        },
+        "top":{
+          "title":"Top (in %)",
+          "type":"number"
         }
       },
       "title":"Card Data",
