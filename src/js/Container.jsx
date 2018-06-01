@@ -307,20 +307,6 @@ export default class toStoryCard extends React.Component {
                   </div>
                   <div className="by-line">
                     {(!this.state.dataJSON.card_data.data.hide_byline) && show}
-                    <div className="icons">
-                      {
-                        this.state.dataJSON.card_data.data.hasimage &&
-                          <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/image-icon.png" alt="Image icon" />
-                      }
-                      {
-                        this.state.dataJSON.card_data.data.hasvideo &&
-                          <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/video-icon.png" alt="Video icon" />
-                      }
-                      {
-                        this.state.dataJSON.card_data.data.hasdata &&
-                          <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/chart-icon.png" alt="Chart icon"/>
-                      }
-                    </div>
                   </div>
                 </div>
               </div>
@@ -349,20 +335,6 @@ export default class toStoryCard extends React.Component {
                 </div>
                 <div className="by-line">
                   {(!this.state.dataJSON.card_data.data.hide_byline) && show}
-                  <div className="icons">
-                    {
-                      this.state.dataJSON.card_data.data.hasimage &&
-                      <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/image-icon.png" alt="Image icon" />
-                    }
-                    {
-                      this.state.dataJSON.card_data.data.hasvideo &&
-                      <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/video-icon.png" alt="Video icon" />
-                    }
-                    {
-                      this.state.dataJSON.card_data.data.hasdata &&
-                      <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/chart-icon.png" alt="Chart icon" />
-                    }
-                  </div>
                 </div>
               </div>
               <div className="col-16-block-right">
@@ -482,20 +454,6 @@ export default class toStoryCard extends React.Component {
                           </div>
                           <div className="by-line" style={{color: light ?'white' :'black' }}>
                             {(!this.state.dataJSON.card_data.data.hide_byline) && show}
-                            <div className="icons">
-                              {
-                                this.state.dataJSON.card_data.data.hasimage &&
-                                <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/image-icon.png" alt="Image icon" />
-                              }
-                              {
-                                this.state.dataJSON.card_data.data.hasvideo &&
-                                <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/video-icon.png" alt="Video icon" />
-                              }
-                              {
-                                this.state.dataJSON.card_data.data.hasdata &&
-                                <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/chart-icon.png" alt="Chart icon" />
-                              }
-                            </div>
                           </div>
                         </div>
                       </div>
@@ -535,20 +493,6 @@ export default class toStoryCard extends React.Component {
                         </div>
                         <div className="by-line" style={{color: '#8e8e8e' }}>
                           {(!this.state.dataJSON.card_data.data.hide_byline) && show}
-                          <div className="icons">
-                            {
-                              this.state.dataJSON.card_data.data.hasimage &&
-                              <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/image-icon.png" alt="Image icon" />
-                            }
-                            {
-                              this.state.dataJSON.card_data.data.hasvideo &&
-                              <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/video-icon.png" alt="Video icon" />
-                            }
-                            {
-                              this.state.dataJSON.card_data.data.hasdata &&
-                              <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/chart-icon.png" alt="Chart icon" />
-                            }
-                          </div>
                         </div>
                       </div>
                       <div className="col-7-block-right">
@@ -595,20 +539,6 @@ export default class toStoryCard extends React.Component {
                     </div>
                     <div className="by-line" style={{color: light ?'white' :'black' }}>
                       {(!this.state.dataJSON.card_data.data.hide_byline) && show}
-                      <div className="icons">
-                        {
-                          this.state.dataJSON.card_data.data.hasimage &&
-                          <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/image-icon.png" alt="Image icon" />
-                        }
-                        {
-                          this.state.dataJSON.card_data.data.hasvideo &&
-                          <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/video-icon.png" alt="Video icon" />
-                        }
-                        {
-                          this.state.dataJSON.card_data.data.hasdata &&
-                          <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/chart-icon.png" alt="Chart icon" />
-                        }
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -637,20 +567,6 @@ export default class toStoryCard extends React.Component {
                   </div>
                   <div className="by-line" style={{color: '#8e8e8e' }}>
                     {(!this.state.dataJSON.card_data.data.hide_byline) && show}
-                    <div className="icons">
-                      {
-                        this.state.dataJSON.card_data.data.hasimage &&
-                        <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/image-icon.png" alt="Image icon" />
-                      }
-                      {
-                        this.state.dataJSON.card_data.data.hasvideo &&
-                        <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/video-icon.png" alt="Video icon" />
-                      }
-                      {
-                        this.state.dataJSON.card_data.data.hasdata &&
-                        <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/chart-icon.png" alt="Chart icon" />
-                      }
-                    </div>
                   </div>
                 </div>
                 <div className="col-7-block-right">
@@ -767,20 +683,6 @@ export default class toStoryCard extends React.Component {
                           </div>
                           <div className="by-line" style={{color: light ?'white' :'black' }}>
                             {(!this.state.dataJSON.card_data.data.hide_byline) && show}
-                            <div className="icons">
-                              {
-                                this.state.dataJSON.card_data.data.hasimage &&
-                                <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/image-icon.png" alt="Image icon" />
-                              }
-                              {
-                                this.state.dataJSON.card_data.data.hasvideo &&
-                                <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/video-icon.png" alt="Video icon" />
-                              }
-                              {
-                                this.state.dataJSON.card_data.data.hasdata &&
-                                <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/chart-icon.png" alt="Chart icon" />
-                              }
-                            </div>
                           </div>
                         </div>
                       </div>
@@ -823,20 +725,6 @@ export default class toStoryCard extends React.Component {
                           </div>
                           <div className="by-line" style={{color: '#8e8e8e' }}>
                             {(!this.state.dataJSON.card_data.data.hide_byline) && show}
-                            <div className="icons">
-                              {
-                                this.state.dataJSON.card_data.data.hasimage &&
-                                <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/image-icon.png" alt="Image icon" />
-                              }
-                              {
-                                this.state.dataJSON.card_data.data.hasvideo &&
-                                <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/video-icon.png" alt="Video icon" />
-                              }
-                              {
-                                this.state.dataJSON.card_data.data.hasdata &&
-                                <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/chart-icon.png" alt="Chart icon" />
-                              }
-                            </div>
                           </div>
                         </div>
                       </div>
@@ -880,20 +768,6 @@ export default class toStoryCard extends React.Component {
                     </div>
                     <div className="by-line" style={{color: light ?'white' :'black' }}>
                       {(!this.state.dataJSON.card_data.data.hide_byline) && show}
-                      <div className="icons">
-                        {
-                          this.state.dataJSON.card_data.data.hasimage &&
-                          <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/image-icon.png" alt="Image icon" />
-                        }
-                        {
-                          this.state.dataJSON.card_data.data.hasvideo &&
-                          <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/video-icon.png" alt="Video icon" />
-                        }
-                        {
-                          this.state.dataJSON.card_data.data.hasdata &&
-                          <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/chart-icon.png" alt="Chart icon" />
-                        }
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -925,20 +799,6 @@ export default class toStoryCard extends React.Component {
                     </div>
                     <div className="by-line" style={{color: '#8e8e8e' }}>
                       {(!this.state.dataJSON.card_data.data.hide_byline) && show}
-                      <div className="icons">
-                        {
-                          this.state.dataJSON.card_data.data.hasimage &&
-                          <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/image-icon.png" alt="Image icon" />
-                        }
-                        {
-                          this.state.dataJSON.card_data.data.hasvideo &&
-                          <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/video-icon.png" alt="Video icon" />
-                        }
-                        {
-                          this.state.dataJSON.card_data.data.hasdata &&
-                          <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/chart-icon.png" alt="Chart icon" />
-                        }
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -1052,20 +912,6 @@ export default class toStoryCard extends React.Component {
                           <div className="by-line" style={{color: light ?'white' :'black' }}>
                             {(!this.state.dataJSON.card_data.data.hide_byline) && show}
                           </div>
-                          <div className="icons">
-                            {
-                              this.state.dataJSON.card_data.data.hasimage &&
-                              <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/image-icon.png" alt="Image icon" />
-                            }
-                            {
-                              this.state.dataJSON.card_data.data.hasvideo &&
-                              <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/video-icon.png" alt="Video icon" />
-                            }
-                            {
-                              this.state.dataJSON.card_data.data.hasdata &&
-                              <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/chart-icon.png" alt="Chart icon" />
-                            }
-                          </div>
                         </div>
                       </div>
                     </div>
@@ -1107,20 +953,6 @@ export default class toStoryCard extends React.Component {
                           </div>
                           <div className="by-line" style={{color: '#8e8e8e' }}>
                             {(!this.state.dataJSON.card_data.data.hide_byline) && show}
-                          </div>
-                          <div className="icons">
-                            {
-                              this.state.dataJSON.card_data.data.hasimage &&
-                              <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/image-icon.png" alt="Image icon" />
-                            }
-                            {
-                              this.state.dataJSON.card_data.data.hasvideo &&
-                              <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/video-icon.png" alt="Video icon" />
-                            }
-                            {
-                              this.state.dataJSON.card_data.data.hasdata &&
-                              <img src="https://cdn.protograph.pykih.com/Assets/proto-app/img/chart-icon.png" alt="Chart icon" />
-                            }
                           </div>
                         </div>
                       </div>
