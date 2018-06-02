@@ -231,6 +231,7 @@ export default class toStoryCard extends React.Component {
       let str = this.state.dataJSON.card_data.data.url;
       let left = this.state.dataJSON.card_data.data.left;
       let top = this.state.dataJSON.card_data.data.top;
+      let transX,transY;
       let arr = str && str.split("/");
       let name = undefined;
       let dom = arr && arr[2];
@@ -281,7 +282,9 @@ export default class toStoryCard extends React.Component {
       if (focus === "h") {
         styles.left = left+"%";
         styles.top = top+"%";
-        styles.transform = `translate(-${left}%,-${top}%)`;
+        transX = ((100 - left) >= 0 && (100 - left) <= 100) ? 100 - left : ((100 - left) < 0)? 0 : 100;
+        transY = ((100 - top) >= 0 && (100 - top) <= 100) ? 100 - top: ((100 - top) < 0)? 0 : 100;
+        styles.transform = `translate(-${transX}%,-${transY}%)`;
         return(
           <div onClick={()=>{ this.handleClick() }}>
             <div className="col-16-story-card">
@@ -369,6 +372,7 @@ export default class toStoryCard extends React.Component {
       let str = this.state.dataJSON.card_data.data.url;
       let left = this.state.dataJSON.card_data.data.left;
       let top = this.state.dataJSON.card_data.data.top;
+      let transX,transY;
       // let arr = str && str.split("/");
       let name = undefined;
       // let dom = arr && (arr[2]);
@@ -427,7 +431,9 @@ export default class toStoryCard extends React.Component {
         if (focus === "h"){
           styles.left = left+"%";
           styles.top = top+"%";
-          styles.transform = `translate(-${left}%,-${top}%)`;
+          transX = ((100 - left) >= 0 && (100 - left) <= 100) ? 100 - left : ((100 - left) < 0)? 0 : 100;
+          transY = ((100 - top) >= 0 && (100 - top) <= 100) ? 100 - top: ((100 - top) < 0)? 0 : 100;
+          styles.transform = `translate(-${transX}%,-${transY}%)`;
           return(
             <div onClick={()=>{ this.handleClick() }}>
               <div className="col-7-story-card">
@@ -515,7 +521,9 @@ export default class toStoryCard extends React.Component {
         if (focus === "h"){
           styles.left = left+"%";
           styles.top = top+"%";
-          styles.transform = `translate(-${left}%,-${top}%)`;
+          transX = ((100 - left) >= 0 && (100 - left) <= 100) ? 100 - left : ((100 - left) < 0)? 0 : 100;
+          transY = ((100 - top) >= 0 && (100 - top) <= 100) ? 100 - top: ((100 - top) < 0)? 0 : 100;
+          styles.transform = `translate(-${transX}%,-${transY}%)`;
           return(
             <div onClick={()=>{ this.handleClick() }}>
               <div className="col-7-story-card">
@@ -602,6 +610,7 @@ export default class toStoryCard extends React.Component {
       let str = this.state.dataJSON.card_data.data.url;
       let left = this.state.dataJSON.card_data.data.left;
       let top = this.state.dataJSON.card_data.data.top;
+      let transX,transY;
       let arr = str && str.split("/");
       let name = undefined;
       let dom = arr && (arr[2]);
@@ -656,7 +665,9 @@ export default class toStoryCard extends React.Component {
         if (focus === "h"){
           styles.left = left+"%";
           styles.top = top+"%";
-          styles.transform = `translate(-${left}%,-${top}%)`;
+          transX = ((100 - left) >= 0 && (100 - left) <= 100) ? 100 - left : ((100 - left) < 0)? 0 : 100;
+          transY = ((100 - top) >= 0 && (100 - top) <= 100) ? 100 - top: ((100 - top) < 0)? 0 : 100;
+          styles.transform = `translate(-${transX}%,-${transY}%)`;
           return(
             <div onClick={()=>{ this.handleClick() }}>
               <div className="col-4-story-card">
@@ -744,7 +755,9 @@ export default class toStoryCard extends React.Component {
         if (focus === "h"){
           styles.left = left+"%";
           styles.top = top+"%";
-          styles.transform = `translate(-${left}%,-${top}%)`;
+          transX = ((100 - left) >= 0 && (100 - left) <= 100) ? 100 - left : ((100 - left) < 0)? 0 : 100;
+          transY = ((100 - top) >= 0 && (100 - top) <= 100) ? 100 - top: ((100 - top) < 0)? 0 : 100;
+          styles.transform = `translate(-${transX}%,-${transY}%)`;
           return(
             <div onClick={()=>{ this.handleClick() }}>
               <div className="col-4-story-card">
@@ -830,6 +843,7 @@ export default class toStoryCard extends React.Component {
       let str = this.state.dataJSON.card_data.data.url;
       let left = this.state.dataJSON.card_data.data.left;
       let top = this.state.dataJSON.card_data.data.top;
+      let transX,transY;
       let arr = str && str.split("/");
       let name = undefined;
       let dom = arr && (arr[2]);
@@ -884,7 +898,9 @@ export default class toStoryCard extends React.Component {
         if (focus === "h"){
           styles.left = left+"%";
           styles.top = top+"%";
-          styles.transform = `translate(-${left}%,-${top}%)`;
+          transX = ((100 - left) >= 0 && (100 - left) <= 100) ? 100 - left : ((100 - left) < 0)? 0 : 100;
+          transY = ((100 - top) >= 0 && (100 - top) <= 100) ? 100 - top: ((100 - top) < 0)? 0 : 100;
+          styles.transform = `translate(-${transX}%,-${transY}%)`;
           return(
             <div onClick={()=>{ this.handleClick() }}>
               <div className="col-3-story-card">
@@ -972,7 +988,9 @@ export default class toStoryCard extends React.Component {
         if (focus === "h"){
           styles.left = left+"%";
           styles.top = top+"%";
-          styles.transform = `translate(-${left}%,-${top}%)`;
+          transX = ((100 - left) >= 0 && (100 - left) <= 100) ? 100 - left : ((100 - left) < 0)? 0 : 100;
+          transY = ((100 - top) >= 0 && (100 - top) <= 100) ? 100 - top: ((100 - top) < 0)? 0 : 100;
+          styles.transform = `translate(-${transX}%,-${transY}%)`;
           return(
             <div onClick={()=>{ this.handleClick() }}>
               <div className="col-3-story-card" >
@@ -1058,6 +1076,7 @@ export default class toStoryCard extends React.Component {
       let str = this.state.dataJSON.card_data.data.url;
       let left = this.state.dataJSON.card_data.data.left;
       let top = this.state.dataJSON.card_data.data.top;
+      let transX,transY;
       let arr = str && str.split("/");
       let name = undefined;
       let dom = arr && (arr[2]);
@@ -1102,7 +1121,9 @@ export default class toStoryCard extends React.Component {
         if (focus === "h") {
           styles.left = left+"%";
           styles.top = top+"%";
-          styles.transform = `translate(-${left}%,-${top}%)`;
+          transX = ((100 - left) >= 0 && (100 - left) <= 100) ? 100 - left : ((100 - left) < 0)? 0 : 100;
+          transY = ((100 - top) >= 0 && (100 - top) <= 100) ? 100 - top: ((100 - top) < 0)? 0 : 100;
+          styles.transform = `translate(-${transX}%,-${transY}%)`;
           return(
             <div onClick={()=>{ this.handleClick() }}>
               <div className="col-2-story-card">
@@ -1184,7 +1205,9 @@ export default class toStoryCard extends React.Component {
         if (focus === "h") {
           styles.left = left+"%";
           styles.top = top+"%";
-          styles.transform = `translate(-${left}%,-${top}%)`;
+          transX = ((100 - left) >= 0 && (100 - left) <= 100) ? 100 - left : ((100 - left) < 0)? 0 : 100;
+          transY = ((100 - top) >= 0 && (100 - top) <= 100) ? 100 - top: ((100 - top) < 0)? 0 : 100;
+          styles.transform = `translate(-${transX}%,-${transY}%)`;
           return(
             <div onClick={()=>{ this.handleClick() }}>
               <div className="col-2-story-card">

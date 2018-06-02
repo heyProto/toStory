@@ -24,7 +24,7 @@
         "left":{
             "ui:widget":"updown"
         },
-        "right":{
+        "top":{
             "ui:widget":"updown"
         }
    }
