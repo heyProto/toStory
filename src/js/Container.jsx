@@ -229,8 +229,8 @@ export default class toStoryCard extends React.Component {
       }
       let fav = this.state.dataJSON.card_data.data.faviconurl;
       let str = this.state.dataJSON.card_data.data.url;
-      let left = this.state.dataJSON.card_data.data.left;
-      let top = this.state.dataJSON.card_data.data.top;
+      let left = this.state.dataJSON.card_data.data.left || 50;
+      let top = this.state.dataJSON.card_data.data.top || 50;
       let transX,transY;
       let arr = str && str.split("/");
       let name = undefined;
@@ -370,8 +370,8 @@ export default class toStoryCard extends React.Component {
       }
       let fav = this.state.dataJSON.card_data.data.faviconurl;
       let str = this.state.dataJSON.card_data.data.url;
-      let left = this.state.dataJSON.card_data.data.left;
-      let top = this.state.dataJSON.card_data.data.top;
+      let left = this.state.dataJSON.card_data.data.left || 50;
+      let top = this.state.dataJSON.card_data.data.top || 50;
       let transX,transY;
       // let arr = str && str.split("/");
       let name = undefined;
@@ -608,8 +608,8 @@ export default class toStoryCard extends React.Component {
       }
       let fav = this.state.dataJSON.card_data.data.faviconurl;
       let str = this.state.dataJSON.card_data.data.url;
-      let left = this.state.dataJSON.card_data.data.left;
-      let top = this.state.dataJSON.card_data.data.top;
+      let left = this.state.dataJSON.card_data.data.left || 50;
+      let top = this.state.dataJSON.card_data.data.top || 50;
       let transX,transY;
       let arr = str && str.split("/");
       let name = undefined;
@@ -841,8 +841,8 @@ export default class toStoryCard extends React.Component {
       }
       let fav = this.state.dataJSON.card_data.data.faviconurl;
       let str = this.state.dataJSON.card_data.data.url;
-      let left = this.state.dataJSON.card_data.data.left;
-      let top = this.state.dataJSON.card_data.data.top;
+      let left = this.state.dataJSON.card_data.data.left || 50;
+      let top = this.state.dataJSON.card_data.data.top || 50;
       let transX,transY;
       let arr = str && str.split("/");
       let name = undefined;
@@ -1074,8 +1074,8 @@ export default class toStoryCard extends React.Component {
       }
       let fav = this.state.dataJSON.card_data.data.faviconurl;
       let str = this.state.dataJSON.card_data.data.url;
-      let left = this.state.dataJSON.card_data.data.left;
-      let top = this.state.dataJSON.card_data.data.top;
+      let left = this.state.dataJSON.card_data.data.left || 50;
+      let top = this.state.dataJSON.card_data.data.top || 50;
       let transX,transY;
       let arr = str && str.split("/");
       let name = undefined;
