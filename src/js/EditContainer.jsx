@@ -1,6 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import axios from 'axios';
+import { render } from 'react-dom';
+import { all as axiosAll, get as axiosGet, spread as axiosSpread } from 'axios';
 import StoryCard from './Container.jsx';
 import JSONSchemaForm from '../../lib/js/react-jsonschema-form';
 
@@ -42,15 +42,15 @@ export default class EditStoryCard extends React.Component {
 
   componentDidMount() {
     if (typeof this.props.dataURL === "string"){
-      axios.all([
-        axios.get(this.props.dataURL),
-        axios.get(this.props.schemaURL),
-        axios.get(this.props.optionalConfigURL),
-        axios.get(this.props.optionalConfigSchemaURL),
-        axios.get(this.refLinkSourcesURL),
-        axios.get(this.props.uiSchemaURL),
-        axios.get(this.props.siteConfigURL)
-      ]).then(axios.spread((card, schema, opt_config, opt_config_schema, linkSources, uiSchema, site_configs) => {
+      axiosAll([
+        axiosGet(this.props.dataURL),
+        axiosGet(this.props.schemaURL),
+        axiosGet(this.props.optionalConfigURL),
+        axiosGet(this.props.optionalConfigSchemaURL),
+        axiosGet(this.refLinkSourcesURL),
+        axiosGet(this.props.uiSchemaURL),
+        axiosGet(this.props.siteConfigURL)
+      ]).then(axiosSpread((card, schema, opt_config, opt_config_schema, linkSources, uiSchema, site_configs) => {
           let formData = card.data,
               fav = undefined,
               str = formData.data.url,

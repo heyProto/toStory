@@ -1,6 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import axios from 'axios';
+import { render } from 'react-dom';
+import { all as axiosAll, get as axiosGet, spread as axiosSpread } from 'axios';
 import ta from 'time-ago';
 export default class toStoryCard extends React.Component {
   constructor(props) {
@@ -39,12 +39,12 @@ export default class toStoryCard extends React.Component {
   componentDidMount() {
     if (this.state.fetchingData){
       let items_to_fetch = [
-        axios.get(this.props.dataURL)
+        axiosGet(this.props.dataURL)
       ];
       if (this.props.siteConfigURL) {
-        items_to_fetch.push(axios.get(this.props.siteConfigURL));
+        items_to_fetch.push(axiosGet(this.props.siteConfigURL));
       }
-      axios.all(items_to_fetch).then(axios.spread((card, site_configs) => {
+      axiosAll(items_to_fetch).then(axiosSpread((card, site_configs) => {
         let stateVar = {
           fetchingData: false,
           dataJSON: {
