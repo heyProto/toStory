@@ -4,8 +4,8 @@
   "description": "",
   "dependencies": {
     "axios": "^0.16.1",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
     "time-ago": "^0.2.1"
   },
   "devDependencies": {
@@ -34,7 +34,8 @@
     "build:edit": "NODE_ENV=production webpack --config webpack.config.edit_card.js --optimize-minimize",
     "build_windows": "npm run build_windows:std && npm run build_windows:edit",
     "build_windows:std": "SET NODE_ENV=production && webpack --config webpack.config.card.js --optimize-minimize",
-    "build_windows:edit": "SET NODE_ENV=production && webpack --config webpack.config.edit_card.js --optimize-minimize"
+    "build_windows:edit": "SET NODE_ENV=production && webpack --config webpack.config.edit_card.js --optimize-minimize",
+    "build:ssr": "NODE_ENV=production webpack --config webpack.config.ssr.js --optimize-minimize"
   },
   "author": "",
   "license": "ISC"

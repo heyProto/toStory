@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {render as ReactDOMRender, hydrate as ReactDOMHydrate} from 'react-dom';
 import StoryCard from './src/js/Container.jsx';
 
 window.ProtoGraph = window.ProtoGraph || {};
@@ -43,17 +43,26 @@ ProtoGraph.Card.toStory.prototype.renderTwoCol= function (data) {
 }
 
 ProtoGraph.Card.toStory.prototype.render = function () {
-  ReactDOM.render(
-    <StoryCard
-      dataURL={this.options.data_url}
-      selector={this.options.selector}
-      domain={this.options.domain}
-      siteConfigURL={this.options.site_config_url}
-      siteConfigs={this.options.site_configs}
-      clickCallback={this.options.onClickCallback}
-      mode={this.mode}
-      ref={(e) => {
-        this.containerInstance = this.containerInstance || e;
-      }} />,
-    this.options.selector);
+  if (this.options.isFromSSR){
+    ReactDOMHydrate(
+      <StoryCard
+        mode={this.mode}
+        dataJSON={this.options.initialState.dataJSON}
+      />,
+      this.options.selector);
+  } else {
+    ReactDOMRender(
+      <StoryCard
+        dataURL={this.options.data_url}
+        selector={this.options.selector}
+        domain={this.options.domain}
+        siteConfigURL={this.options.site_config_url}
+        siteConfigs={this.options.site_configs}
+        clickCallback={this.options.onClickCallback}
+        mode={this.mode}
+        ref={(e) => {
+          this.containerInstance = this.containerInstance || e;
+        }} />,
+      this.options.selector);
+  }
 }

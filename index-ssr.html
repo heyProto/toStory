@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SSR</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./src/css/styles.css" />
+    <!-- <script src="main.js"></script> -->
+</head>
+<body>
+
+    <div id="tolink-div">
+        <div data-reactroot="">
+            <div class="col-16-story-card">
+                <div class="padding20">
+                    <img class="image-styling" style="width:1260px;left:50%;top:50%;transform:translate(-50%,-50%)" src="https://cdn.protograph.pykih.com/images/TheWire/e55455ef9128e35c/2240.jpeg"
+                    />
+                    <div class="title-background"></div>
+                    <div class="col-16-diag-grad"></div>
+                    <div class="bottom-pull-div">
+                        <div class="card-tags">
+                            <div class="publisher-icon" style="background-color:white">
+                                <img class="favicon" src="https://i0.wp.com/thewire.in/wp-content/uploads/2015/05/facebook-profile-pic2-554e49d7v1_site_icon.png?fit=32%2C32&amp;ssl=1"
+                                />
+                            </div>
+                            <div class="series-name" style="padding:1px 1px 1px 5px">Grit
+                                <div class="genre" style="margin-left:3px">Identity
+                                    <!-- -->
+                                </div>
+                            </div>
+                            <div class="sub-genre-light" style="font-style:normal;text-decoration:none"></div>
+                        </div>
+                        <div class="article-title">Zen and the Art of Sanitation, or the Right Way to Keep a Country Clean</div>
+                        <div class="by-line">By Janaki Nair . 5 months ago</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./dist/0.0.1/card.min.js"></script>
+    <script>
+        var x = new ProtoGraph.Card.toStory(),
+            params = {
+                selector: document.querySelector('#tolink-div'),
+                isFromSSR: true,
+                initialState: {
+                    "dataJSON": {
+                        "card_data": {
+                            "data": {
+                                "url": "https://thewire.in/210310/japan-cleaning-sanitation-work-swachh-bharat/",
+                                "headline": "Zen and the Art of Sanitation, or the Right Way to Keep a Country Clean",
+                                "byline": "Janaki Nair",
+                                "publishedat": "2018-01-03T06:30:00.000Z",
+                                "series": "Grit",
+                                "genre": "Identity",
+                                "iconbgcolor": "white",
+                                "hasimage": true,
+                                "hasvideo": false,
+                                "hasdata": false,
+                                "interactive": true,
+                                "summary": "In Japan, cleaning is a public service to be performed by everyone, not relegated to one marginalised section of the society.",
+                                "imageurl": "https://cdn.protograph.pykih.com/images/TheWire/e55455ef9128e35c/2240.jpeg",
+                                "col7imageurl": "https://cdn.protograph.pykih.com/images/TheWire/97a9ab4c73ec44c4/2239.png",
+                                "focus": "h",
+                                "country": null,
+                                "state": null,
+                                "city": null,
+                                "publishername": "The Wire",
+                                "domainurl": "thewire.in",
+                                "faviconurl": "https://i0.wp.com/thewire.in/wp-content/uploads/2015/05/facebook-profile-pic2-554e49d7v1_site_icon.png?fit=32%2C32\u0026ssl=1",
+                                "isinteractive": true,
+                                "top": 50,
+                                "left": 50
+                            }
+                        }
+                    }
+                }
+            };
+
+            //params['site_config_url'] = "./dist/0.0.1/site.json"
+            params['site_configs'] = { "header_logo_url": "https://d2jco8ydyctdne.cloudfront.net/images/indianexpress/57c86975cd78ab70/2432.png", "header_background_color": "#000000", "header_jump_to_link": "http://indianexpress.com", "header_logo_position": "center", "house_colour": "#ee1c25", "reverse_house_colour": "#4caf50", "font_colour": "#ffffff", "reverse_font_colour": "#ffffff", "primary_language": "English", "story_card_style": "Clear: Color", "story_card_flip": true }
+
+            x.init(params);
+            x.renderSixteenCol();
+    </script>
+
+</body>
+</html>

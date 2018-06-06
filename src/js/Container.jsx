@@ -2,6 +2,8 @@ import React from 'react';
 import { render } from 'react-dom';
 import { all as axiosAll, get as axiosGet, spread as axiosSpread } from 'axios';
 import ta from 'time-ago';
+import { parse as parseURL } from 'url';
+
 export default class toStoryCard extends React.Component {
   constructor(props) {
     super(props)
@@ -14,6 +16,8 @@ export default class toStoryCard extends React.Component {
       domain: undefined,
       optionalConfigJSON: {},
     };
+
+    console.log(`PROPS: ${JSON.stringify(this.props)}`);
 
     if (this.props.dataJSON) {
       stateVar.fetchingData = false;
@@ -34,6 +38,7 @@ export default class toStoryCard extends React.Component {
     }
 
     this.state = stateVar;
+    console.log("constructor: State: ", this.state.fetchingData);
   }
 
   componentDidMount() {
@@ -64,7 +69,10 @@ export default class toStoryCard extends React.Component {
         this.setState(stateVar);
       }));
     } else {
-      this.componentDidUpdate();
+      console.log("ISFromSSR", !this.props.isFromSSR);
+      if (!this.props.renderingSSR) {
+        this.componentDidUpdate();
+      }
     }
   }
 
@@ -171,9 +179,10 @@ export default class toStoryCard extends React.Component {
   }
 
   getDomainFromURL(url) {
-    let a = document.createElement('a');
-    a.href = url;
-    return a.hostname;
+    // let a = document.createElement('a');
+    // a.href = url;
+    let urlComponents = parseURL(url);
+    return urlComponents.hostname;
   }
 
   subDomain(url) {
@@ -212,6 +221,7 @@ export default class toStoryCard extends React.Component {
   }
 
   renderSixteenCol(){
+    console.log("Fetching Data: ", this.state.fetchingData);
     if(this.state.fetchingData){
       return(
         <div>Loading</div>
@@ -1287,6 +1297,7 @@ export default class toStoryCard extends React.Component {
   }
 
   render() {
+    console.log("THIS WAS EXECUTED", this.props.mode);
     switch(this.props.mode) {
       case 'col16':
         return this.renderSixteenCol();
