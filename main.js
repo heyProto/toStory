@@ -1,5 +1,5 @@
 import React from 'react';
-import {render as ReactDOMRender, hydrate as ReactDOMHydrate} from 'react-dom';
+import {render, hydrate} from 'react-dom';
 import StoryCard from './src/js/Container.jsx';
 
 window.ProtoGraph = window.ProtoGraph || {};
@@ -44,14 +44,14 @@ ProtoGraph.Card.toStory.prototype.renderTwoCol= function (data) {
 
 ProtoGraph.Card.toStory.prototype.render = function () {
   if (this.options.isFromSSR){
-    ReactDOMHydrate(
+    hydrate(
       <StoryCard
         mode={this.mode}
         dataJSON={this.options.initialState.dataJSON}
       />,
       this.options.selector);
   } else {
-    ReactDOMRender(
+    render(
       <StoryCard
         dataURL={this.options.data_url}
         selector={this.options.selector}
