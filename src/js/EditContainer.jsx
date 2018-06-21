@@ -8,10 +8,7 @@ export default class EditStoryCard extends React.Component {
     super(props)
     this.state = {
       step: 1,
-      dataJSON: {
-        card_data: {},
-        configs: {}
-      },
+      dataJSON: {},
       mode: "col16",
       loading: true,
       publishing: false,
@@ -29,10 +26,10 @@ export default class EditStoryCard extends React.Component {
     let data = this.state.dataJSON;
     let getDataObj = {
       step: this.state.step,
-      dataJSON: data.card_data,
+      dataJSON: data,
       schemaJSON: this.state.schemaJSON,
       uiSchemaJSON: this.state.uiSchemaJSON,
-      optionalConfigJSON: this.state.dataJSON.configs,
+      optionalConfigJSON: this.state.optionalConfigJSON,
       optionalConfigSchemaJSON: this.state.optionalConfigSchemaJSON
     }
     getDataObj["name"] = getDataObj.dataJSON.data.headline.substr(0,225); // Reduces the name to ensure the slug does not get too long
@@ -84,10 +81,7 @@ export default class EditStoryCard extends React.Component {
             schema.data.properties.data.properties.subgenre.enumNames = enumNames;
           }
           stateVar = {
-            dataJSON: {
-              card_data: formData,
-              configs: opt_config.data
-            },
+            dataJSON: formData,
             schemaJSON: schema.data,
             uiSchemaJSON: uiSchema.data,
             optionalConfigJSON: opt_config.data,
@@ -101,7 +95,7 @@ export default class EditStoryCard extends React.Component {
           stateVar.optionalConfigJSON.font_colour = stateVar.siteConfigs.font_colour;
           stateVar.optionalConfigJSON.reverse_font_colour = stateVar.siteConfigs.reverse_font_colour;
           stateVar.optionalConfigJSON.story_card_flip = stateVar.siteConfigs.story_card_flip;
-          stateVar.dataJSON.card_data.data.language = stateVar.siteConfigs.primary_language.toLowerCase();
+          stateVar.dataJSON.data.language = stateVar.siteConfigs.primary_language.toLowerCase();
           this.setState(stateVar);
         }))
         .catch((error) => {
@@ -136,7 +130,7 @@ export default class EditStoryCard extends React.Component {
           formData.data.domainurl = dom;
           formData.data.publishername = name;
           formData.data.interactive = (formData.data.hasimage || formData.data.hasvideo || formData.data.hasdata) ? true : false
-          dataJSON.card_data = formData;
+          dataJSON = formData;
           return {
             dataJSON: dataJSON
           }
@@ -160,7 +154,7 @@ export default class EditStoryCard extends React.Component {
   }
 
   renderSEO() {
-    let data = this.state.dataJSON.card_data.data,
+    let data = this.state.dataJSON.data,
       seo_blockquote;
     seo_blockquote = `<blockquote><a href=${data.url} rel="nofollow">${data.headline ? `<h2>${data.headline}</h2>` : ""}</a>${data.byline ? `<p>${data.byline}</p>` : ""}${data.publishedat ? `<p>${data.publishedat}</p>` : ""}${data.series ? `<p>${data.series}</p>` : ""}${data.genre ? `<p>${data.genre}</p>` : ""}${data.subgenre ? `<p>${data.subgenre}</p>` : ""}${data.summary ? `<p>${data.summary}</p>` : ""}</blockquote>`;
     return seo_blockquote;
@@ -171,21 +165,13 @@ export default class EditStoryCard extends React.Component {
     switch(this.state.step){
       case 1:
         return this.state.schemaJSON;
-        break;
-      case 2:
-        return this.state.optionalConfigSchemaJSON;
-        break;
     }
   }
 
   renderFormData() {
     switch(this.state.step) {
       case 1:
-        return this.state.dataJSON.card_data;
-        break;
-      case 2:
-        return this.state.dataJSON.configs;
-        break;
+        return this.state.dataJSON;
     }
   }
 
@@ -193,10 +179,6 @@ export default class EditStoryCard extends React.Component {
     switch(this.state.step) {
       case 1:
         return '';
-        break;
-      case 2:
-        return '< Back';
-        break;
     }
   }
 

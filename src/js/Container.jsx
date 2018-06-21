@@ -8,20 +8,15 @@ export default class toStoryCard extends React.Component {
     super(props)
     let stateVar = {
       fetchingData: true,
-      dataJSON: {
-        card_data: {},
-        configs: {}
-      },
+      dataJSON: {},
       domain: undefined,
       optionalConfigJSON: {},
     };
 
-    console.log(`PROPS: ${JSON.stringify(this.props)}`);
-
     if (this.props.dataJSON) {
       stateVar.fetchingData = false;
       stateVar.dataJSON = this.props.dataJSON;
-      stateVar.languageTexts = this.getLanguageTexts(this.props.dataJSON.card_data.data.language);
+      stateVar.languageTexts = this.getLanguageTexts(this.props.dataJSON.data.language);
     }
 
     if (this.props.optionalConfigJSON) {
@@ -51,9 +46,7 @@ export default class toStoryCard extends React.Component {
       axiosAll(items_to_fetch).then(axiosSpread((card, site_configs) => {
         let stateVar = {
           fetchingData: false,
-          dataJSON: {
-            card_data: card.data
-          },
+          dataJSON: card.data,
           optionalConfigJSON: {}
         };
         site_configs ? stateVar["siteConfigs"] = site_configs.data : stateVar["siteConfigs"] =  this.state.siteConfigs;
@@ -87,14 +80,14 @@ export default class toStoryCard extends React.Component {
     if (this.props.mode === 'col2'){
       this.ellipsizeTextBox();
     }
-    if(this.state.optionalConfigJSON.story_card_flip && this.state.dataJSON.card_data.data.summary){
+    if(this.state.optionalConfigJSON.story_card_flip && this.state.dataJSON.data.summary){
       let elem = document.querySelector('.protograph-summary-text');
       this.multiLineTruncate(elem);
     }
   }
 
   multiLineTruncate(el) {
-    let data = this.state.dataJSON.card_data.data,
+    let data = this.state.dataJSON.data,
       wordArray = data.summary.split(' '),
       props = this.props;
     if (el) {
@@ -118,7 +111,7 @@ export default class toStoryCard extends React.Component {
   }
 
   calculateDateTime() {
-    const data = this.state.dataJSON.card_data;
+    const data = this.state.dataJSON.data;
     let date_split, date_split_by_hyphen, new_date, month, time;
       date_split = data.data.date.split("T")[0],
       date_split_by_hyphen = date_split.split("-"),
@@ -145,13 +138,13 @@ export default class toStoryCard extends React.Component {
     text = document.querySelector('.article-title'),
       // text = document.querySelector(`.protograph-${this.props.mode}-mode .protograph-tocluster-title`),
       wordArray;
-    let headline = this.state.dataJSON.card_data.data.headline;
+    let headline = this.state.dataJSON.data.headline;
     if(headline === '' || headline === undefined){
       text.innerHTML='';
     }else{
       // Setting the string to work with edit mode.
-      text.innerHTML = this.state.dataJSON.card_data.data.headline;
-      wordArray = this.state.dataJSON.card_data.data.headline.split(' ');
+      text.innerHTML = this.state.dataJSON.data.headline;
+      wordArray = this.state.dataJSON.data.headline.split(' ');
       while (container.offsetHeight > 80) {
         wordArray.pop();
         text.innerHTML = wordArray.join(' ') + '...';
@@ -160,7 +153,7 @@ export default class toStoryCard extends React.Component {
   }
 
   handleClick(){
-    window.open(this.state.dataJSON.card_data.data.url,'_top');
+    window.open(this.state.dataJSON.data.url,'_top');
   }
 
   matchDomain(domain, url) {
@@ -228,18 +221,18 @@ export default class toStoryCard extends React.Component {
     }else{
       let genreColor = "rgba(51, 51, 51, 0.75)",
       genreFontColor = "#fff";
-      if(this.state.dataJSON.card_data.data.interactive){
+      if(this.state.dataJSON.data.interactive){
         genreColor = this.state.optionalConfigJSON.house_colour;
         genreFontColor = this.state.optionalConfigJSON.font_colour;
       }
-      if(this.state.dataJSON.card_data.data.sponsored){
+      if(this.state.dataJSON.data.sponsored){
         genreColor = this.state.optionalConfigJSON.reverse_house_colour;
         genreFontColor = this.state.optionalConfigJSON.reverse_font_colour;
       }
-      let fav = this.state.dataJSON.card_data.data.faviconurl;
-      let str = this.state.dataJSON.card_data.data.url;
-      let left = this.state.dataJSON.card_data.data.left || 50;
-      let top = this.state.dataJSON.card_data.data.top || 50;
+      let fav = this.state.dataJSON.data.faviconurl;
+      let str = this.state.dataJSON.data.url;
+      let left = this.state.dataJSON.data.left || 50;
+      let top = this.state.dataJSON.data.top || 50;
       let transX,transY;
       let arr = str && str.split("/");
       let name = undefined;
@@ -247,9 +240,9 @@ export default class toStoryCard extends React.Component {
       if (this.matchDomain(this.state.domain, str)) {
         fav = undefined;
       }
-      let byline = this.state.dataJSON.card_data.data.byline;
-      let date=this.state.dataJSON.card_data.data.publishedat;
-      let focus=this.state.dataJSON.card_data.data.focus;
+      let byline = this.state.dataJSON.data.byline;
+      let date=this.state.dataJSON.data.publishedat;
+      let focus=this.state.dataJSON.data.focus;
       let show = '';
       if(byline){
         show=show+'By '+byline;
@@ -260,12 +253,12 @@ export default class toStoryCard extends React.Component {
       if(date && date != NaN){
         show = show+ta.ago(date);
       }
-      let light = this.state.dataJSON.card_data.data.imageurl;
+      let light = this.state.dataJSON.data.imageurl;
       if(!this.checkURL(light)){
         light = undefined;
       }
-      let series = window.vertical_name || this.state.dataJSON.card_data.data.series,
-      genre = this.state.dataJSON.card_data.data.genre;
+      let series = window.vertical_name || this.state.dataJSON.data.series,
+      genre = this.state.dataJSON.data.genre;
       let padding = "1px 1px 1px 5px";
       if (!genre && series) {
         padding = "2.5px 5px";
@@ -304,21 +297,21 @@ export default class toStoryCard extends React.Component {
                 <div className="bottom-pull-div">
                   <div className="card-tags">
                     {fav ?
-                    <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
+                    <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.data.iconbgcolor || 'white'}}>
                       <img className="favicon" src = {fav}/>
                     </div> : null}
                     <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                       {genre } </div> : null}
                       </div>
-                        <div className="sub-genre-light" style={{fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none'}}>
-                          {this.state.dataJSON.card_data.data.sponsored ?'Sponsored': this.state.dataJSON.card_data.data.subgenre}
+                        <div className="sub-genre-light" style={{fontStyle:this.state.dataJSON.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.data.sponsored? 'underline' : 'none'}}>
+                          {this.state.dataJSON.data.sponsored ?'Sponsored': this.state.dataJSON.data.subgenre}
                         </div>
                   </div>
                   <div className="article-title">
-                    {this.state.dataJSON.card_data.data.headline}
+                    {this.state.dataJSON.data.headline}
                   </div>
                   <div className="by-line">
-                    {(!this.state.dataJSON.card_data.data.hide_byline) && show}
+                    {(!this.state.dataJSON.data.hide_byline) && show}
                   </div>
                 </div>
               </div>
@@ -332,21 +325,21 @@ export default class toStoryCard extends React.Component {
               <div className="col-16-block-left bottom-pull-div">
                 <div className="card-tags">
                   {fav ?
-                  <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
+                  <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.data.iconbgcolor || 'white'}}>
                     <img className="favicon" src = {fav}/>
                   </div> : null}
                   <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                     {genre } </div> : null}
                   </div>
-                  <div className="sub-genre-light" style={{fontStyle:this.state.dataJSON.card_data.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.card_data.data.sponsored? 'underline' : 'none'}}>
-                    {this.state.dataJSON.card_data.data.sponsored ?'Sponsored': this.state.dataJSON.card_data.data.subgenre}
+                  <div className="sub-genre-light" style={{fontStyle:this.state.dataJSON.data.sponsored? 'italic': 'normal', textDecoration:this.state.dataJSON.data.sponsored? 'underline' : 'none'}}>
+                    {this.state.dataJSON.data.sponsored ?'Sponsored': this.state.dataJSON.data.subgenre}
                   </div>
                 </div>
                 <div className="article-title">
-                  {this.state.dataJSON.card_data.data.headline}
+                  {this.state.dataJSON.data.headline}
                 </div>
                 <div className="by-line">
-                  {(!this.state.dataJSON.card_data.data.hide_byline) && show}
+                  {(!this.state.dataJSON.data.hide_byline) && show}
                 </div>
               </div>
               <div className="col-16-block-right">
@@ -369,18 +362,18 @@ export default class toStoryCard extends React.Component {
     }else{
       let genreColor = "rgba(51, 51, 51, 0.75)",
           genreFontColor = "#fff";
-      if(this.state.dataJSON.card_data.data.interactive){
+      if(this.state.dataJSON.data.interactive){
         genreColor = this.state.optionalConfigJSON.house_colour;
         genreFontColor = this.state.optionalConfigJSON.font_colour;
       }
-      if(this.state.dataJSON.card_data.data.sponsored){
+      if(this.state.dataJSON.data.sponsored){
         genreColor = this.state.optionalConfigJSON.reverse_house_colour;
         genreFontColor = this.state.optionalConfigJSON.reverse_font_colour;
       }
-      let fav = this.state.dataJSON.card_data.data.faviconurl;
-      let str = this.state.dataJSON.card_data.data.url;
-      let left = this.state.dataJSON.card_data.data.left || 50;
-      let top = this.state.dataJSON.card_data.data.top || 50;
+      let fav = this.state.dataJSON.data.faviconurl;
+      let str = this.state.dataJSON.data.url;
+      let left = this.state.dataJSON.data.left || 50;
+      let top = this.state.dataJSON.data.top || 50;
       let transX,transY;
       // let arr = str && str.split("/");
       let name = undefined;
@@ -388,16 +381,16 @@ export default class toStoryCard extends React.Component {
       if (this.matchDomain(this.state.domain, str)){
         fav = undefined;
       }
-      let light = this.state.dataJSON.card_data.data.col7imageurl;
-      if (!this.state.dataJSON.card_data.data.col7imageurl) {
-        light = this.state.dataJSON.card_data.data.imageurl;
+      let light = this.state.dataJSON.data.col7imageurl;
+      if (!this.state.dataJSON.data.col7imageurl) {
+        light = this.state.dataJSON.data.imageurl;
       }
       if(!this.checkURL(light)){
         light = undefined;
       }
-      let byline = this.state.dataJSON.card_data.data.byline;
-      let date=this.state.dataJSON.card_data.data.publishedat;
-      let focus=this.state.dataJSON.card_data.data.focus;
+      let byline = this.state.dataJSON.data.byline;
+      let date=this.state.dataJSON.data.publishedat;
+      let focus=this.state.dataJSON.data.focus;
       let show = '';
       if(byline){
         show=show+'By '+byline;
@@ -408,8 +401,8 @@ export default class toStoryCard extends React.Component {
       if(date && date != NaN){
         show = show+ta.ago(date);
       }
-      let series = window.vertical_name || this.state.dataJSON.card_data.data.series,
-      genre = this.state.dataJSON.card_data.data.genre;
+      let series = window.vertical_name || this.state.dataJSON.data.series,
+      genre = this.state.dataJSON.data.genre;
       let padding = "1px 1px 1px 5px";
       if (!genre && series) {
         padding = "2.5px 5px";
@@ -436,7 +429,7 @@ export default class toStoryCard extends React.Component {
         left_block_width = {width: 240}
       }
 
-      if(this.state.optionalConfigJSON.story_card_flip && this.state.dataJSON.card_data.data.summary){
+      if(this.state.optionalConfigJSON.story_card_flip && this.state.dataJSON.data.summary){
         if (focus === "h"){
           styles.left = left+"%";
           styles.top = top+"%";
@@ -454,28 +447,28 @@ export default class toStoryCard extends React.Component {
                         {light ? <div className="title-background"></div> : null}
                         <div className="card-tags">
                         {fav ?
-                            <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
+                            <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.data.iconbgcolor || 'white'}}>
                               <img className="favicon" src = {fav}/>
                             </div> : null}
                         <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                               {genre } </div> : null}</div>
-                          <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.card_data.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.card_data.data.sponsored ? 'underline' : 'none' }}>
-                            {this.state.dataJSON.card_data.data.sponsored ? 'Sponsored' : this.state.dataJSON.card_data.data.subgenre}
+                          <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.data.sponsored ? 'underline' : 'none' }}>
+                            {this.state.dataJSON.data.sponsored ? 'Sponsored' : this.state.dataJSON.data.subgenre}
                           </div>
                         </div>
                         <div className="bottom-pull-div">
                           <div className="article-title" style={{color: light ?'white' :'black' }}>
-                            {this.state.dataJSON.card_data.data.headline}
+                            {this.state.dataJSON.data.headline}
                           </div>
                           <div className="by-line" style={{color: light ?'white' :'black' }}>
-                            {(!this.state.dataJSON.card_data.data.hide_byline) && show}
+                            {(!this.state.dataJSON.data.hide_byline) && show}
                           </div>
                         </div>
                       </div>
                     </div>
                     <div className="back" style={{height: 250}}>
                       <div className="padding12">
-                        <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.card_data.data.summary}</p>
+                        <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.data.summary}</p>
                       </div>
                     </div>
                   </div>
@@ -493,21 +486,21 @@ export default class toStoryCard extends React.Component {
                     <div className="front" style={{position: "relative",height: 250}}>
                     <div className="card-tags" style={{position:'absolute',top:'0px', padding:'12px'}}>
                         {fav ?
-                            <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
+                            <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.data.iconbgcolor || 'white'}}>
                               <img className="favicon" src = {fav}/>
                             </div> : null}
                         <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                               {genre } </div> : null}</div>
-                        <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.card_data.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.card_data.data.sponsored ? 'underline' : 'none' }}>
-                          {this.state.dataJSON.card_data.data.sponsored ? 'Sponsored' : this.state.dataJSON.card_data.data.subgenre}
+                        <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.data.sponsored ? 'underline' : 'none' }}>
+                          {this.state.dataJSON.data.sponsored ? 'Sponsored' : this.state.dataJSON.data.subgenre}
                         </div>
                       </div>
                       <div className="col-7-block-left bottom-pull-div" style={left_block_width}>
                         <div className="article-title" style={{color:'black' }}>
-                          {this.state.dataJSON.card_data.data.headline}
+                          {this.state.dataJSON.data.headline}
                         </div>
                         <div className="by-line" style={{color: '#8e8e8e' }}>
-                          {(!this.state.dataJSON.card_data.data.hide_byline) && show}
+                          {(!this.state.dataJSON.data.hide_byline) && show}
                         </div>
                       </div>
                       <div className="col-7-block-right">
@@ -517,7 +510,7 @@ export default class toStoryCard extends React.Component {
                     </div>
                     <div className="back" style={{height: 250}}>
                       <div className="padding12">
-                        <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.card_data.data.summary}</p>
+                        <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.data.summary}</p>
                       </div>
                     </div>
                   </div>
@@ -541,21 +534,21 @@ export default class toStoryCard extends React.Component {
                   {light ? <div className="title-background"></div> : null}
                   <div className="card-tags">
                       {fav ?
-                          <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
+                          <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.data.iconbgcolor || 'white'}}>
                             <img className="favicon" src = {fav}/>
                           </div> : null}
                       <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                             {genre } </div> : null}</div>
-                    <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.card_data.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.card_data.data.sponsored ? 'underline' : 'none' }}>
-                      {this.state.dataJSON.card_data.data.sponsored ? 'Sponsored' : this.state.dataJSON.card_data.data.subgenre}
+                    <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.data.sponsored ? 'underline' : 'none' }}>
+                      {this.state.dataJSON.data.sponsored ? 'Sponsored' : this.state.dataJSON.data.subgenre}
                     </div>
                   </div>
                   <div className="bottom-pull-div">
                     <div className="article-title" style={{color: light ?'white' :'black' }}>
-                      {this.state.dataJSON.card_data.data.headline}
+                      {this.state.dataJSON.data.headline}
                     </div>
                     <div className="by-line" style={{color: light ?'white' :'black' }}>
-                      {(!this.state.dataJSON.card_data.data.hide_byline) && show}
+                      {(!this.state.dataJSON.data.hide_byline) && show}
                     </div>
                   </div>
                 </div>
@@ -568,22 +561,22 @@ export default class toStoryCard extends React.Component {
               <div className="col-7-story-card" style={{backgroundColor: "#fafafa"}}>
               <div className="card-tags" style={{position:'absolute',top:'0px', padding:'12px'}}>
                     {fav ?
-                        <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
+                        <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.data.iconbgcolor || 'white'}}>
                           <img className="favicon" src = {fav}/>
                         </div> : null}
                     <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                           {genre } </div> : null}</div>
-                  <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.card_data.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.card_data.data.sponsored ? 'underline' : 'none' }}>
-                    {this.state.dataJSON.card_data.data.sponsored ? 'Sponsored' : this.state.dataJSON.card_data.data.subgenre}
+                  <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.data.sponsored ? 'underline' : 'none' }}>
+                    {this.state.dataJSON.data.sponsored ? 'Sponsored' : this.state.dataJSON.data.subgenre}
                   </div>
                   </div>
                 <div className="col-7-block-left bottom-pull-div" style={left_block_width}>
 
                   <div className="article-title" style={{color:'black' }}>
-                    {this.state.dataJSON.card_data.data.headline}
+                    {this.state.dataJSON.data.headline}
                   </div>
                   <div className="by-line" style={{color: '#8e8e8e' }}>
-                    {(!this.state.dataJSON.card_data.data.hide_byline) && show}
+                    {(!this.state.dataJSON.data.hide_byline) && show}
                   </div>
                 </div>
                 <div className="col-7-block-right">
@@ -607,18 +600,18 @@ export default class toStoryCard extends React.Component {
     }else{
       let genreColor = "rgba(51, 51, 51, 0.75)",
           genreFontColor = "#fff";
-      if(this.state.dataJSON.card_data.data.interactive){
+      if(this.state.dataJSON.data.interactive){
         genreColor = this.state.optionalConfigJSON.house_colour;
         genreFontColor = this.state.optionalConfigJSON.font_colour;
       }
-      if(this.state.dataJSON.card_data.data.sponsored){
+      if(this.state.dataJSON.data.sponsored){
         genreColor = this.state.optionalConfigJSON.reverse_house_colour;
         genreFontColor = this.state.optionalConfigJSON.reverse_font_colour;
       }
-      let fav = this.state.dataJSON.card_data.data.faviconurl;
-      let str = this.state.dataJSON.card_data.data.url;
-      let left = this.state.dataJSON.card_data.data.left || 50;
-      let top = this.state.dataJSON.card_data.data.top || 50;
+      let fav = this.state.dataJSON.data.faviconurl;
+      let str = this.state.dataJSON.data.url;
+      let left = this.state.dataJSON.data.left || 50;
+      let top = this.state.dataJSON.data.top || 50;
       let transX,transY;
       let arr = str && str.split("/");
       let name = undefined;
@@ -626,16 +619,16 @@ export default class toStoryCard extends React.Component {
       if (this.matchDomain(this.state.domain, str)) {
         fav = undefined;
       }
-      let light = this.state.dataJSON.card_data.data.col7imageurl;
-      if (!this.state.dataJSON.card_data.data.col7imageurl) {
-        light = this.state.dataJSON.card_data.data.imageurl;
+      let light = this.state.dataJSON.data.col7imageurl;
+      if (!this.state.dataJSON.data.col7imageurl) {
+        light = this.state.dataJSON.data.imageurl;
       }
       if(!this.checkURL(light)){
         light = undefined;
       }
-      let byline = this.state.dataJSON.card_data.data.byline;
-      let date=this.state.dataJSON.card_data.data.publishedat;
-      let focus=this.state.dataJSON.card_data.data.focus;
+      let byline = this.state.dataJSON.data.byline;
+      let date=this.state.dataJSON.data.publishedat;
+      let focus=this.state.dataJSON.data.focus;
       let show = '';
       if(byline){
         show=show+'By '+byline;
@@ -646,8 +639,8 @@ export default class toStoryCard extends React.Component {
       if(date && date != NaN){
         show = show+ta.ago(date);
       }
-      let series = window.vertical_name || this.state.dataJSON.card_data.data.series,
-      genre = this.state.dataJSON.card_data.data.genre;
+      let series = window.vertical_name || this.state.dataJSON.data.series,
+      genre = this.state.dataJSON.data.genre;
       let padding = "1px 1px 1px 5px";
       if (!genre && series) {
         padding = "2.5px 5px";
@@ -670,7 +663,7 @@ export default class toStoryCard extends React.Component {
         }
       }
 
-      if(this.state.optionalConfigJSON.story_card_flip && this.state.dataJSON.card_data.data.summary){
+      if(this.state.optionalConfigJSON.story_card_flip && this.state.dataJSON.data.summary){
         if (focus === "h"){
           styles.left = left+"%";
           styles.top = top+"%";
@@ -688,28 +681,28 @@ export default class toStoryCard extends React.Component {
                         {light ? <div className="title-background"></div> : null}
                         <div className="card-tags">
                         {fav ?
-                            <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
+                            <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.data.iconbgcolor || 'white'}}>
                               <img className="favicon" src = {fav}/>
                             </div> : null}
                         <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                               {genre } </div> : null}</div>
-                          <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.card_data.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.card_data.data.sponsored ? 'underline' : 'none' }}>
-                            {this.state.dataJSON.card_data.data.sponsored ? 'Sponsored' : this.state.dataJSON.card_data.data.subgenre}
+                          <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.data.sponsored ? 'underline' : 'none' }}>
+                            {this.state.dataJSON.data.sponsored ? 'Sponsored' : this.state.dataJSON.data.subgenre}
                           </div>
                         </div>
                         <div className="bottom-pull-div">
                           <div className="article-title" style={{color: light ?'white' :'black' }}>
-                            {this.state.dataJSON.card_data.data.headline}
+                            {this.state.dataJSON.data.headline}
                           </div>
                           <div className="by-line" style={{color: light ?'white' :'black' }}>
-                            {(!this.state.dataJSON.card_data.data.hide_byline) && show}
+                            {(!this.state.dataJSON.data.hide_byline) && show}
                           </div>
                         </div>
                       </div>
                     </div>
                     <div className="back" style={{height: 250}}>
                       <div className="padding12">
-                        <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.card_data.data.summary}</p>
+                        <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.data.summary}</p>
                       </div>
                     </div>
                   </div>
@@ -728,30 +721,30 @@ export default class toStoryCard extends React.Component {
                         <img className="image-centering" style={styles} src={light}></img>
                         <div className="card-tags padding12" style={{top:0, position:'absolute'}}>
                           {fav ?
-                              <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
+                              <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.data.iconbgcolor || 'white'}}>
                                 <img className="favicon" src = {fav}/>
                               </div> : null}
                           <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                                 {genre } </div> : null}</div>
-                          <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.card_data.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.card_data.data.sponsored ? 'underline' : 'none' }}>
-                            {this.state.dataJSON.card_data.data.sponsored ? 'Sponsored' : this.state.dataJSON.card_data.data.subgenre}
+                          <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.data.sponsored ? 'underline' : 'none' }}>
+                            {this.state.dataJSON.data.sponsored ? 'Sponsored' : this.state.dataJSON.data.subgenre}
                           </div>
                         </div>
                       </div>
                       <div className="col-4-block-bottom">
                         <div className="bottom-pull-div">
                           <div className="article-title" style={{color: 'black', maxHeight:25, overflow:'hidden' }}>
-                            {this.state.dataJSON.card_data.data.headline}
+                            {this.state.dataJSON.data.headline}
                           </div>
                           <div className="by-line" style={{color: '#8e8e8e' }}>
-                            {(!this.state.dataJSON.card_data.data.hide_byline) && show}
+                            {(!this.state.dataJSON.data.hide_byline) && show}
                           </div>
                         </div>
                       </div>
                     </div>
                     <div className="back" style={{height: 250}}>
                       <div className="padding12">
-                        <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.card_data.data.summary}</p>
+                        <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.data.summary}</p>
                       </div>
                     </div>
                   </div>
@@ -775,21 +768,21 @@ export default class toStoryCard extends React.Component {
                   {light ? <div className="title-background"></div> : null}
                   <div className="card-tags">
                   {fav ?
-                      <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
+                      <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.data.iconbgcolor || 'white'}}>
                         <img className="favicon" src = {fav}/>
                       </div> : null}
                   <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                         {genre } </div> : null}</div>
-                    <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.card_data.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.card_data.data.sponsored ? 'underline' : 'none' }}>
-                      {this.state.dataJSON.card_data.data.sponsored ? 'Sponsored' : this.state.dataJSON.card_data.data.subgenre}
+                    <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.data.sponsored ? 'underline' : 'none' }}>
+                      {this.state.dataJSON.data.sponsored ? 'Sponsored' : this.state.dataJSON.data.subgenre}
                     </div>
                   </div>
                   <div className="bottom-pull-div">
                     <div className="article-title" style={{color: light ?'white' :'black' }}>
-                      {this.state.dataJSON.card_data.data.headline}
+                      {this.state.dataJSON.data.headline}
                     </div>
                     <div className="by-line" style={{color: light ?'white' :'black' }}>
-                      {(!this.state.dataJSON.card_data.data.hide_byline) && show}
+                      {(!this.state.dataJSON.data.hide_byline) && show}
                     </div>
                   </div>
                 </div>
@@ -804,23 +797,23 @@ export default class toStoryCard extends React.Component {
                   <img className="image-centering" style={styles} src={light}></img>
                   <div className="card-tags padding12" style={{top:0, position:'absolute'}}>
                     {fav ?
-                        <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
+                        <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.data.iconbgcolor || 'white'}}>
                           <img className="favicon" src = {fav}/>
                         </div> : null}
                     <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                           {genre } </div> : null}</div>
-                    <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.card_data.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.card_data.data.sponsored ? 'underline' : 'none' }}>
-                      {this.state.dataJSON.card_data.data.sponsored ? 'Sponsored' : this.state.dataJSON.card_data.data.subgenre}
+                    <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.data.sponsored ? 'underline' : 'none' }}>
+                      {this.state.dataJSON.data.sponsored ? 'Sponsored' : this.state.dataJSON.data.subgenre}
                     </div>
                   </div>
                 </div>
                 <div className="col-4-block-bottom">
                   <div className="bottom-pull-div">
                     <div className="article-title" style={{color: 'black', maxHeight:25, overflow:'hidden' }}>
-                      {this.state.dataJSON.card_data.data.headline}
+                      {this.state.dataJSON.data.headline}
                     </div>
                     <div className="by-line" style={{color: '#8e8e8e' }}>
-                      {(!this.state.dataJSON.card_data.data.hide_byline) && show}
+                      {(!this.state.dataJSON.data.hide_byline) && show}
                     </div>
                   </div>
                 </div>
@@ -840,18 +833,18 @@ export default class toStoryCard extends React.Component {
     }else{
       let genreColor = "rgba(51, 51, 51, 0.75)",
       genreFontColor = "#fff";
-      if(this.state.dataJSON.card_data.data.interactive){
+      if(this.state.dataJSON.data.interactive){
         genreColor = this.state.optionalConfigJSON.house_colour;
         genreFontColor = this.state.optionalConfigJSON.font_colour;
       }
-      if(this.state.dataJSON.card_data.data.sponsored){
+      if(this.state.dataJSON.data.sponsored){
         genreColor = this.state.optionalConfigJSON.reverse_house_colour;
         genreFontColor = this.state.optionalConfigJSON.reverse_font_colour;
       }
-      let fav = this.state.dataJSON.card_data.data.faviconurl;
-      let str = this.state.dataJSON.card_data.data.url;
-      let left = this.state.dataJSON.card_data.data.left || 50;
-      let top = this.state.dataJSON.card_data.data.top || 50;
+      let fav = this.state.dataJSON.data.faviconurl;
+      let str = this.state.dataJSON.data.url;
+      let left = this.state.dataJSON.data.left || 50;
+      let top = this.state.dataJSON.data.top || 50;
       let transX,transY;
       let arr = str && str.split("/");
       let name = undefined;
@@ -859,16 +852,16 @@ export default class toStoryCard extends React.Component {
       if (this.matchDomain(this.state.domain, str)) {
         fav = undefined;
       }
-      let light = this.state.dataJSON.card_data.data.col7imageurl;
-      if (!this.state.dataJSON.card_data.data.col7imageurl) {
-        light = this.state.dataJSON.card_data.data.imageurl;
+      let light = this.state.dataJSON.data.col7imageurl;
+      if (!this.state.dataJSON.data.col7imageurl) {
+        light = this.state.dataJSON.data.imageurl;
       }
       if(!this.checkURL(light)){
         light = undefined;
       }
-      let byline = this.state.dataJSON.card_data.data.byline;
-      let date=this.state.dataJSON.card_data.data.publishedat;
-      let focus=this.state.dataJSON.card_data.data.focus;
+      let byline = this.state.dataJSON.data.byline;
+      let date=this.state.dataJSON.data.publishedat;
+      let focus=this.state.dataJSON.data.focus;
       let show = '';
       if(byline){
         show=show+'By '+byline;
@@ -879,8 +872,8 @@ export default class toStoryCard extends React.Component {
       if(date && date != NaN){
         show = show+ta.ago(date);
       }
-      let series = window.vertical_name || this.state.dataJSON.card_data.data.series,
-      genre = this.state.dataJSON.card_data.data.genre;
+      let series = window.vertical_name || this.state.dataJSON.data.series,
+      genre = this.state.dataJSON.data.genre;
       let padding = "1px 1px 1px 5px";
       if (!genre && series) {
         padding = "2.5px 5px";
@@ -903,7 +896,7 @@ export default class toStoryCard extends React.Component {
         }
 
       }
-      if(this.state.optionalConfigJSON.story_card_flip && this.state.dataJSON.card_data.data.summary){
+      if(this.state.optionalConfigJSON.story_card_flip && this.state.dataJSON.data.summary){
         if (focus === "h"){
           styles.left = left+"%";
           styles.top = top+"%";
@@ -921,28 +914,28 @@ export default class toStoryCard extends React.Component {
                         {light ? <div className="title-background"></div> : null}
                         <div className="card-tags">
                         {fav ?
-                            <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
+                            <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.data.iconbgcolor || 'white'}}>
                               <img className="favicon" src = {fav}/>
                             </div> : null}
                         <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                               {genre } </div> : null}</div>
-                          <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.card_data.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.card_data.data.sponsored ? 'underline' : 'none' }}>
-                            {this.state.dataJSON.card_data.data.sponsored ? 'Sponsored' : this.state.dataJSON.card_data.data.subgenre}
+                          <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.data.sponsored ? 'underline' : 'none' }}>
+                            {this.state.dataJSON.data.sponsored ? 'Sponsored' : this.state.dataJSON.data.subgenre}
                           </div>
                         </div>
                         <div className="bottom-pull-div">
                           <div className="article-title" style={{color: light ?'white' :'black' }}>
-                            {this.state.dataJSON.card_data.data.headline}
+                            {this.state.dataJSON.data.headline}
                           </div>
                           <div className="by-line" style={{color: light ?'white' :'black' }}>
-                            {(!this.state.dataJSON.card_data.data.hide_byline) && show}
+                            {(!this.state.dataJSON.data.hide_byline) && show}
                           </div>
                         </div>
                       </div>
                     </div>
                     <div className="back" style={{height: 250}}>
                       <div className="padding12">
-                        <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.card_data.data.summary}</p>
+                        <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.data.summary}</p>
                       </div>
                     </div>
                   </div>
@@ -961,30 +954,30 @@ export default class toStoryCard extends React.Component {
                         <img className="image-centering" style={styles} src={light}></img>
                         <div className="card-tags padding12" style={{top:0, position:'absolute'}}>
                           {fav ?
-                              <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
+                              <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.data.iconbgcolor || 'white'}}>
                                 <img className="favicon" src = {fav}/>
                               </div> : null}
                           <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                                 {genre } </div> : null}</div>
-                          <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.card_data.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.card_data.data.sponsored ? 'underline' : 'none' }}>
-                            {this.state.dataJSON.card_data.data.sponsored ? 'Sponsored' : this.state.dataJSON.card_data.data.subgenre}
+                          <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.data.sponsored ? 'underline' : 'none' }}>
+                            {this.state.dataJSON.data.sponsored ? 'Sponsored' : this.state.dataJSON.data.subgenre}
                           </div>
                         </div>
                       </div>
                       <div className="col-3-block-bottom">
                         <div className="bottom-pull-div">
                           <div className="article-title" style={{color: 'black', maxHeight: 55}}>
-                            {this.state.dataJSON.card_data.data.headline}
+                            {this.state.dataJSON.data.headline}
                           </div>
                           <div className="by-line" style={{color: '#8e8e8e' }}>
-                            {(!this.state.dataJSON.card_data.data.hide_byline) && show}
+                            {(!this.state.dataJSON.data.hide_byline) && show}
                           </div>
                         </div>
                       </div>
                     </div>
                     <div className="back" style={{height: 250}}>
                       <div className="padding12">
-                        <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.card_data.data.summary}</p>
+                        <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.data.summary}</p>
                       </div>
                     </div>
                   </div>
@@ -1008,21 +1001,21 @@ export default class toStoryCard extends React.Component {
                   {light ? <div className="title-background"></div> : null}
                   <div className="card-tags">
                   {fav ?
-                      <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
+                      <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.data.iconbgcolor || 'white'}}>
                         <img className="favicon" src = {fav}/>
                       </div> : null}
                   <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                         {genre } </div> : null}</div>
-                    <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.card_data.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.card_data.data.sponsored ? 'underline' : 'none' }}>
-                      {this.state.dataJSON.card_data.data.sponsored ? 'Sponsored' : this.state.dataJSON.card_data.data.subgenre}
+                    <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.data.sponsored ? 'underline' : 'none' }}>
+                      {this.state.dataJSON.data.sponsored ? 'Sponsored' : this.state.dataJSON.data.subgenre}
                     </div>
                   </div>
                   <div className="bottom-pull-div">
                     <div className="article-title" style={{color: light ?'white' :'black' }}>
-                      {this.state.dataJSON.card_data.data.headline}
+                      {this.state.dataJSON.data.headline}
                     </div>
                     <div className="by-line" style={{color: light ?'white' :'black' }}>
-                      {(!this.state.dataJSON.card_data.data.hide_byline) && show}
+                      {(!this.state.dataJSON.data.hide_byline) && show}
                     </div>
                   </div>
                 </div>
@@ -1037,23 +1030,23 @@ export default class toStoryCard extends React.Component {
                   <img className="image-centering" style={styles} src={light}></img>
                   <div className="card-tags padding12" style={{top:0, position:'absolute'}}>
                     {fav ?
-                        <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white'}}>
+                        <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.data.iconbgcolor || 'white'}}>
                           <img className="favicon" src = {fav}/>
                         </div> : null}
                     <div className="series-name" style={{ padding: padding }}>{series}{genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor, marginLeft: series?'3px' :'0px' }}>
                           {genre } </div> : null}</div>
-                    <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.card_data.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.card_data.data.sponsored ? 'underline' : 'none' }}>
-                      {this.state.dataJSON.card_data.data.sponsored ? 'Sponsored' : this.state.dataJSON.card_data.data.subgenre}
+                    <div className="sub-genre-light" style={{ fontStyle: this.state.dataJSON.data.sponsored ? 'italic' : 'normal', textDecoration: this.state.dataJSON.data.sponsored ? 'underline' : 'none' }}>
+                      {this.state.dataJSON.data.sponsored ? 'Sponsored' : this.state.dataJSON.data.subgenre}
                     </div>
                   </div>
                 </div>
                 <div className="col-3-block-bottom">
                   <div className="bottom-pull-div">
                     <div className="article-title" style={{color: 'black', maxHeight: 55}}>
-                      {this.state.dataJSON.card_data.data.headline}
+                      {this.state.dataJSON.data.headline}
                     </div>
                     <div className="by-line" style={{color: '#8e8e8e' }}>
-                      {(!this.state.dataJSON.card_data.data.hide_byline) && show}
+                      {(!this.state.dataJSON.data.hide_byline) && show}
                     </div>
                   </div>
                 </div>
@@ -1073,18 +1066,18 @@ export default class toStoryCard extends React.Component {
     }else{
       let genreColor = "rgba(51, 51, 51, 0.75)",
       genreFontColor = "#fff";
-      if(this.state.dataJSON.card_data.data.interactive){
+      if(this.state.dataJSON.data.interactive){
         genreColor = this.state.optionalConfigJSON.house_colour;
         genreFontColor = this.state.optionalConfigJSON.font_colour;
       }
-      if(this.state.dataJSON.card_data.data.sponsored){
+      if(this.state.dataJSON.data.sponsored){
         genreColor = this.state.optionalConfigJSON.reverse_house_colour;
         genreFontColor = this.state.optionalConfigJSON.reverse_font_colour;
       }
-      let fav = this.state.dataJSON.card_data.data.faviconurl;
-      let str = this.state.dataJSON.card_data.data.url;
-      let left = this.state.dataJSON.card_data.data.left || 50;
-      let top = this.state.dataJSON.card_data.data.top || 50;
+      let fav = this.state.dataJSON.data.faviconurl;
+      let str = this.state.dataJSON.data.url;
+      let left = this.state.dataJSON.data.left || 50;
+      let top = this.state.dataJSON.data.top || 50;
       let transX,transY;
       let arr = str && str.split("/");
       let name = undefined;
@@ -1092,16 +1085,16 @@ export default class toStoryCard extends React.Component {
       if (this.matchDomain(this.state.domain, str)) {
         fav = undefined;
       }
-      let light = this.state.dataJSON.card_data.data.col7imageurl;
-      if (!this.state.dataJSON.card_data.data.col7imageurl) {
-        light = this.state.dataJSON.card_data.data.imageurl;
+      let light = this.state.dataJSON.data.col7imageurl;
+      if (!this.state.dataJSON.data.col7imageurl) {
+        light = this.state.dataJSON.data.imageurl;
       }
       if(!this.checkURL(light)){
         light = undefined;
       }
-      let byline = this.state.dataJSON.card_data.data.byline;
-      let date=this.state.dataJSON.card_data.data.publishedat;
-      let focus=this.state.dataJSON.card_data.data.focus;
+      let byline = this.state.dataJSON.data.byline;
+      let date=this.state.dataJSON.data.publishedat;
+      let focus=this.state.dataJSON.data.focus;
       let show = '';
       if(byline){
         show=show+'By '+byline;
@@ -1112,8 +1105,8 @@ export default class toStoryCard extends React.Component {
       if(date && date != NaN){
         show = show+ta.ago(date);
       }
-      let series = window.vertical_name || this.state.dataJSON.card_data.data.series,
-        genre = this.state.dataJSON.card_data.data.genre;
+      let series = window.vertical_name || this.state.dataJSON.data.series,
+        genre = this.state.dataJSON.data.genre;
       let padding = genre ? "1px" : "0px" ;
       let styles = (focus === "h") ? {height: 250} : {height: 84}
       if (light){
@@ -1126,7 +1119,7 @@ export default class toStoryCard extends React.Component {
             break;
         }
       }
-      if(this.state.optionalConfigJSON.story_card_flip && this.state.dataJSON.card_data.data.summary){
+      if(this.state.optionalConfigJSON.story_card_flip && this.state.dataJSON.data.summary){
         if (focus === "h") {
           styles.left = left+"%";
           styles.top = top+"%";
@@ -1144,25 +1137,25 @@ export default class toStoryCard extends React.Component {
                         {light ? <div className="title-background"></div> : null}
                         <div className="card-tags">
                         {fav ?
-                            <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white', marginRight:'4px'}}>
+                            <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.data.iconbgcolor || 'white', marginRight:'4px'}}>
                               <img className="favicon" src = {fav}/>
                             </div> : null}
-                        <div className="series-name" style={{ padding: padding }}>{this.state.dataJSON.card_data.data.genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor}}>
-                              {this.state.dataJSON.card_data.data.genre } </div> : null}</div>
+                        <div className="series-name" style={{ padding: padding }}>{this.state.dataJSON.data.genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor}}>
+                              {this.state.dataJSON.data.genre } </div> : null}</div>
                         </div>
                         <div className="bottom-pull-div">
                           <div className="article-title" style={{color: light ?'white' :'black' }}>
-                            {this.state.dataJSON.card_data.data.headline}
+                            {this.state.dataJSON.data.headline}
                           </div>
                           <div className="by-line" style={{color: light ?'white' :'black' }}>
-                            {(!this.state.dataJSON.card_data.data.hide_byline) && show}
+                            {(!this.state.dataJSON.data.hide_byline) && show}
                           </div>
                         </div>
                       </div>
                     </div>
                     <div className="back" style={{height: 250}}>
                       <div className="padding12">
-                        <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.card_data.data.summary}</p>
+                        <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.data.summary}</p>
                       </div>
                     </div>
                   </div>
@@ -1181,27 +1174,27 @@ export default class toStoryCard extends React.Component {
                         <img className="image-centering" style={styles} src={light}></img>
                         <div className="card-tags padding12" style={{top:0, position:'absolute'}}>
                         {fav ?
-                            <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white', marginRight:'4px'}}>
+                            <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.data.iconbgcolor || 'white', marginRight:'4px'}}>
                               <img className="favicon" src = {fav}/>
                             </div> : null}
-                        <div className="series-name" style={{ padding: padding }}>{this.state.dataJSON.card_data.data.genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor}}>
-                              {this.state.dataJSON.card_data.data.genre } </div> : null}</div>
+                        <div className="series-name" style={{ padding: padding }}>{this.state.dataJSON.data.genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor}}>
+                              {this.state.dataJSON.data.genre } </div> : null}</div>
                         </div>
                       </div>
                       <div className="col-2-block-bottom">
                         <div className="bottom-pull-div">
                           <div className="article-title" style={{color: 'black'}}>
-                            {this.state.dataJSON.card_data.data.headline}
+                            {this.state.dataJSON.data.headline}
                           </div>
                           <div className="by-line" style={{color: '#8e8e8e' }}>
-                            {(!this.state.dataJSON.card_data.data.hide_byline) && show}
+                            {(!this.state.dataJSON.data.hide_byline) && show}
                           </div>
                         </div>
                       </div>
                     </div>
                     <div className="back" style={{height: 250}}>
                       <div className="padding12">
-                        <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.card_data.data.summary}</p>
+                        <p className="protograph-summary-text" style={{ fontFamily: this.state.languageTexts.font, maxHeight: 225 }}>{this.state.dataJSON.data.summary}</p>
                       </div>
                     </div>
                   </div>
@@ -1225,18 +1218,18 @@ export default class toStoryCard extends React.Component {
                   {light ? <div className="title-background"></div> : null}
                   <div className="card-tags">
                   {fav ?
-                      <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white', marginRight:'4px'}}>
+                      <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.data.iconbgcolor || 'white', marginRight:'4px'}}>
                         <img className="favicon" src = {fav}/>
                       </div> : null}
-                  <div className="series-name" style={{ padding: padding }}>{this.state.dataJSON.card_data.data.genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor}}>
-                        {this.state.dataJSON.card_data.data.genre } </div> : null}</div>
+                  <div className="series-name" style={{ padding: padding }}>{this.state.dataJSON.data.genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor}}>
+                        {this.state.dataJSON.data.genre } </div> : null}</div>
                   </div>
                   <div className="bottom-pull-div">
                     <div className="article-title" style={{color: light ?'white' :'black' }}>
-                      {this.state.dataJSON.card_data.data.headline}
+                      {this.state.dataJSON.data.headline}
                     </div>
                     <div className="by-line" style={{color: light ?'white' :'black' }}>
-                      {(!this.state.dataJSON.card_data.data.hide_byline) && show}
+                      {(!this.state.dataJSON.data.hide_byline) && show}
                     </div>
                   </div>
                 </div>
@@ -1251,20 +1244,20 @@ export default class toStoryCard extends React.Component {
                   <img className="image-centering" style={styles} src={light}></img>
                   <div className="card-tags padding12" style={{top:0, position:'absolute'}}>
                   {fav ?
-                      <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.card_data.data.iconbgcolor || 'white', marginRight:'4px'}}>
+                      <div className="publisher-icon" style={{backgroundColor:this.state.dataJSON.data.iconbgcolor || 'white', marginRight:'4px'}}>
                         <img className="favicon" src = {fav}/>
                       </div> : null}
-                  <div className="series-name" style={{ padding: padding }}>{this.state.dataJSON.card_data.data.genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor}}>
-                        {this.state.dataJSON.card_data.data.genre } </div> : null}</div>
+                  <div className="series-name" style={{ padding: padding }}>{this.state.dataJSON.data.genre ? <div className="genre" style={{backgroundColor: genreColor, color: genreFontColor}}>
+                        {this.state.dataJSON.data.genre } </div> : null}</div>
                   </div>
                 </div>
                 <div className="col-2-block-bottom">
                   <div className="bottom-pull-div">
                     <div className="article-title" style={{color: 'black'}}>
-                      {this.state.dataJSON.card_data.data.headline}
+                      {this.state.dataJSON.data.headline}
                     </div>
                     <div className="by-line" style={{color: '#8e8e8e' }}>
-                      {(!this.state.dataJSON.card_data.data.hide_byline) && show}
+                      {(!this.state.dataJSON.data.hide_byline) && show}
                     </div>
                   </div>
                 </div>
