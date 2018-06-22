@@ -32,7 +32,6 @@ export default class toStoryCard extends React.Component {
     }
 
     this.state = stateVar;
-    console.log("constructor: State: ", this.state.fetchingData);
   }
 
   componentDidMount() {
@@ -1289,7 +1288,6 @@ export default class toStoryCard extends React.Component {
   }
 
   render() {
-    console.log("THIS WAS EXECUTED", this.props.mode);
     switch(this.props.mode) {
       case 'col16':
         return this.renderSixteenCol();
