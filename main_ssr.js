@@ -1,6 +1,6 @@
 import React from 'react'
 import { renderToString } from 'react-dom/server'
-import StoryCard from './src/js/Container.jsx'
+import Card from './src/js/card.jsx'
 
 global.window = {}
 
@@ -38,7 +38,7 @@ function getScriptString(mode, dataJSON, selector, site_configs) {
 
 function render(mode, initialState) {
     let content = renderToString(
-        <StoryCard
+        <Card
             dataJSON={initialState.dataJSON}
             mode={mode}
             renderingSSR={true}

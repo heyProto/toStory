@@ -1,6 +1,6 @@
 import React from 'react';
 import {render, hydrate} from 'react-dom';
-import StoryCard from './src/js/Container.jsx';
+import Card from './src/js/card.jsx';
 
 window.ProtoGraph = window.ProtoGraph || {};
 window.ProtoGraph.Card = window.ProtoGraph.Card || {};
@@ -17,42 +17,19 @@ ProtoGraph.Card.toStory.prototype.getData = function (data) {
   return this.containerInstance.exportData();
 }
 
-ProtoGraph.Card.toStory.prototype.renderSixteenCol= function (data) {
-  this.mode = 'col16';
-  this.render();
-}
-
-ProtoGraph.Card.toStory.prototype.renderSevenCol= function (data) {
-  this.mode = 'col7';
-  this.render();
-}
-
-ProtoGraph.Card.toStory.prototype.renderFourCol= function (data) {
-  this.mode = 'col4';
-  this.render();
-}
-
-ProtoGraph.Card.toStory.prototype.renderThreeCol= function (data) {
-  this.mode = 'col3';
-  this.render();
-}
-
-ProtoGraph.Card.toStory.prototype.renderTwoCol= function (data) {
-  this.mode = 'col2';
-  this.render();
-}
-
 ProtoGraph.Card.toStory.prototype.render = function () {
   if (this.options.isFromSSR){
     hydrate(
-      <StoryCard
+      <Card
+        selector={this.options.selector}
+        siteConfigs={this.options.site_configs}
         mode={this.mode}
         dataJSON={this.options.initialState.dataJSON}
       />,
       this.options.selector);
   } else {
     render(
-      <StoryCard
+      <Card
         dataURL={this.options.data_url}
         selector={this.options.selector}
         domain={this.options.domain}
