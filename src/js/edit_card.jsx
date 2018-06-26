@@ -15,7 +15,7 @@ export default class EditStoryCard extends React.Component {
       refLinkDetails: undefined
     }
     this.refLinkSourcesURL = window.ref_link_sources_url;
-    this.toggleMode = this.toggleMode.bind(this);
+    // this.toggleMode = this.toggleMode.bind(this);
   }
 
   exportData() {

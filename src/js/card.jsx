@@ -77,7 +77,7 @@ export default class toStoryCard extends React.Component {
     if (el) {
       while(el.scrollHeight > el.offsetHeight) {
         wordArray.pop();
-        el.innerHTML = wordArray.join(' ') + '...' + '<br><a id="read-more-button" href="#" class="protograph-read-more">Read more</a>' ;
+        el.innerHTML = wordArray.join(' ') + '...' + '<br><a id="read-more-button" href="#" className="protograph-read-more">Read more</a>' ;
       }
     }
   }
@@ -203,25 +203,453 @@ export default class toStoryCard extends React.Component {
       )
     } else {
       let data = this.state.dataJSON.data;
+      console.log(data.publishedat)
       return (
-        <div className="tostory-card">
-          <div className="tostory-card-background">
-            <img className="blur-image-bg" src={data.imageurl}/>
-            <img src={data.imageurl} width="100%"/>
-          </div>
-          <div class="tostory-background-layover"></div>
-          <div className="tostory-card-intersection intersection-tag">
-            {window.vertical_name || data.series}
-          </div>
-          <div className="tostory-card-context">
-            <div className="tostory-card-title">
-              <h1>{data.headline}</h1>
+      <div>
+        <div className="pro-container">
+          <div className="pro-col pro-col-16">
+            <div className="pro-row-1">
+              <div className="pro-card tostory-card">
+                <div className="tostory-background full-background">
+                  <img src={data.imageurl}/>
+                  <div className="tostory-background-overlay"></div>
+                </div>
+                <div className="tostory-intersection-tag">
+                  <div className="tostory-intersection">
+                      #{data.series}
+                    <div className="tostory-sub-intersection">{data.genre}</div>
+                  </div>
+                  <div className="tostory-extra-tag">{data.subgenre}</div>
+                </div>
+                <div className="tostory-context">
+                  <div className="tostory-title">
+                    <h1>{data.headline}</h1>
+                  </div>
+                  <div className="tostory-summary">
+                    <p>{data.summary}</p>
+                  </div>
+                  {data.hide_byline &&
+                    <div className="tostory-byline">
+                      <div className="tostory-byline-image"><img src={data.byimageurl}/></div>
+                      <div className="tostory-byline-name">{data.byline}</div>
+                    </div>
+                  }
+                  <div className="tostory-timeline">{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
+                </div>
+              </div>
             </div>
-            <div className="font_small">
-              {data.byline && `By ${data.byline}`} . {data.publishedat && `${ta.ago(data.publishedat)}`}
+            
+
+            <div className="pro-row-3">
+              <div className="pro-card tostory-card pro-card-row-3">
+                <div className="tostory-background full-background">
+                  <img src={data.imageurl}/>
+                  <div className="tostory-background-overlay"></div>
+                </div>
+                <div className="tostory-intersection-tag">
+                  <div className="tostory-intersection">
+                    {data.series}
+                    <div className="tostory-sub-intersection">{data.genre}</div>
+                  </div>
+                  <div className="tostory-extra-tag">{data.subgenre}</div>
+                </div>
+                <div className="tostory-context">
+                  <div className="tostory-title">
+                    <h1>{data.headline}</h1>
+                  </div>
+                  <div className="tostory-summary">
+                    <p>{data.summary}</p>
+                  </div>
+                  <div className="tostory-byline">
+                    <div className="tostory-byline-image"><img src={data.byimageurl}/></div>
+                    <div className="tostory-byline-name">{data.byline}</div>
+                  </div>
+                  <div className="tostory-timeline">{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
+                </div>
+              </div>
+            </div>
+            
+
+            <div className="pro-row-5">
+              <div className="pro-card tostory-card pro-card-row-5">
+                <div className="tostory-background full-background">
+                  <img src={data.imageurl}/>
+                  <div className="tostory-background-overlay"></div>
+                </div>
+                <div className="tostory-intersection-tag">
+                  <div className="tostory-intersection">
+                    {data.series}
+                    <div className="tostory-sub-intersection">{data.genre}</div>
+                  </div>
+                  <div className="tostory-extra-tag">{data.subgenre}</div>
+                </div>
+                <div className="tostory-context">
+                  <div className="tostory-title">
+                    <h1>{data.headline}</h1>
+                  </div>
+                  <div className="tostory-summary">
+                    <p>{data.summary}</p>
+                  </div>
+                  <div className="tostory-byline">
+                    <div className="tostory-byline-image"><img src={data.byimageurl}/></div>
+                    <div className="tostory-byline-name">{data.byline}</div>
+                  </div>
+                  <div className="tostory-timeline">{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        <div className="pro-container">
+          <div className="pro-col pro-col-7">
+            <div className="pro-row-1">
+              <div className="pro-card tostory-card pro-card-row-1">
+                <div className="tostory-background full-background">
+                  <img src={data.imageurl}/>
+                  <div className="tostory-background-overlay"></div>
+                </div>
+                <div className="tostory-intersection-tag">
+                  <div className="tostory-intersection">
+                    {data.series}
+                    <div className="tostory-sub-intersection">{data.genre}</div>
+                  </div>
+                  <div className="tostory-extra-tag">{data.subgenre}</div>
+                </div>
+                <div className="tostory-context">
+                  <div className="tostory-title">
+                    <h1>{data.headline}</h1>
+                  </div>
+                  <div className="tostory-summary">
+                    <p>{data.summary}</p>
+                  </div>
+                  <div className="tostory-byline">
+                    <div className="tostory-byline-image"><img src={data.byimageurl}/></div>
+                    <div className="tostory-byline-name">{data.byline}</div>
+                  </div>
+                  <div className="tostory-timeline">{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
+                </div>
+              </div>
+            </div>
+            <div className="pro-row-3">
+              <div className="pro-card tostory-card pro-card-row-3">
+                <div className="tostory-background full-background">
+                  <img src={data.imageurl}/>
+                  <div className="tostory-background-overlay"></div>
+                </div>
+                <div className="tostory-intersection-tag">
+                  <div className="tostory-intersection">
+                    {data.series}
+                    <div className="tostory-sub-intersection">{data.genre}</div>
+                  </div>
+                  <div className="tostory-extra-tag">{data.subgenre}</div>
+                </div>
+                <div className="tostory-context">
+                  <div className="tostory-title">
+                    <h1>{data.headline}</h1>
+                  </div>
+                  <div className="tostory-summary">
+                    <p>{data.summary}</p>
+                  </div>
+                  <div className="tostory-byline">
+                    <div className="tostory-byline-image"><img src={data.byimageurl}/></div>
+                    <div className="tostory-byline-name">{data.byline}</div>
+                  </div>
+                  <div className="tostory-timeline">{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
+                </div>
+              </div>
+            </div>
+            <div className="pro-row-5">
+              <div className="pro-card tostory-card pro-card-row-5">
+                <div className="tostory-background full-background">
+                  <img src={data.imageurl}/>
+                  <div className="tostory-background-overlay"></div>
+                </div>
+                <div className="tostory-intersection-tag">
+                  <div className="tostory-intersection">
+                    {data.series}
+                    <div className="tostory-sub-intersection">{data.genre}</div>
+                  </div>
+                  <div className="tostory-extra-tag">{data.subgenre}</div>
+                </div>
+                <div className="tostory-context">
+                  <div className="tostory-title">
+                    <h1>{data.headline}</h1>
+                  </div>
+                  <div className="tostory-summary">
+                    <p>{data.summary}</p>
+                  </div>
+                  <div className="tostory-byline">
+                    <div className="tostory-byline-image"><img src={data.byimageurl}/></div>
+                    <div className="tostory-byline-name">{data.byline}</div>
+                  </div>
+                  <div className="tostory-timeline">{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="pro-col pro-col-4">
+            <div className="pro-row-1">
+              <div className="pro-card tostory-card pro-card-row-1">
+                <div className="tostory-background full-background">
+                  <img src={data.imageurl}/>
+                  <div className="tostory-background-overlay"></div>
+                </div>
+                <div className="tostory-intersection-tag">
+                  <div className="tostory-intersection">
+                    {data.series}
+                    <div className="tostory-sub-intersection">{data.genre}</div>
+                  </div>
+                  <div className="tostory-extra-tag">{data.subgenre}</div>
+                </div>
+                <div className="tostory-context">
+                  <div className="tostory-title">
+                    <h1>{data.headline}</h1>
+                  </div>
+                  <div className="tostory-summary">
+                    <p>{data.summary}</p>
+                  </div>
+                  <div className="tostory-byline">
+                    <div className="tostory-byline-image"><img src={data.byimageurl}/></div>
+                    <div className="tostory-byline-name">{data.byline}</div>
+                  </div>
+                  <div className="tostory-timeline">{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
+                </div>
+              </div>
+            </div>
+            <div className="pro-row-3">
+              <div className="pro-card tostory-card pro-card-row-3">
+                <div className="tostory-background full-background">
+                  <img src={data.imageurl}/>
+                  <div className="tostory-background-overlay"></div>
+                </div>
+                <div className="tostory-intersection-tag">
+                  <div className="tostory-intersection">
+                    {data.series}
+                    <div className="tostory-sub-intersection">{data.genre}</div>
+                  </div>
+                  <div className="tostory-extra-tag">{data.subgenre}</div>
+                </div>
+                <div className="tostory-context">
+                  <div className="tostory-title">
+                    <h1>{data.headline}</h1>
+                  </div>
+                  <div className="tostory-summary">
+                    <p>{data.summary}</p>
+                  </div>
+                  <div className="tostory-byline">
+                    <div className="tostory-byline-image"><img src={data.byimageurl}/></div>
+                    <div className="tostory-byline-name">{data.byline}</div>
+                  </div>
+                  <div className="tostory-timeline">{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
+                </div>
+              </div>
+            </div>
+            <div className="pro-row-5">
+              <div className="pro-card tostory-card pro-card-row-5">
+                <div className="tostory-background full-background">
+                  <img src={data.imageurl}/>
+                  <div className="tostory-background-overlay"></div>
+                </div>
+                <div className="tostory-intersection-tag">
+                  <div className="tostory-intersection">
+                    {data.series}
+                    <div className="tostory-sub-intersection">{data.genre}</div>
+                  </div>
+                  <div className="tostory-extra-tag">{data.subgenre}</div>
+                </div>
+                <div className="tostory-context">
+                  <div className="tostory-title">
+                    <h1>{data.headline}</h1>
+                  </div>
+                  <div className="tostory-summary">
+                    <p>{data.summary}</p>
+                  </div>
+                  <div className="tostory-byline">
+                    <div className="tostory-byline-image"><img src={data.byimageurl}/></div>
+                    <div className="tostory-byline-name">{data.byline}</div>
+                  </div>
+                  <div className="tostory-timeline">{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="pro-col pro-col-2">
+            <div className="pro-row-1">
+              <div className="pro-card tostory-card pro-card-row-1">
+                <div className="tostory-background full-background">
+                  <img src={data.imageurl}/>
+                  <div className="tostory-background-overlay"></div>
+                </div>
+                <div className="tostory-intersection-tag">
+                  <div className="tostory-intersection">
+                    {data.series}
+                    <div className="tostory-sub-intersection">{data.genre}</div>
+                  </div>
+                  <div className="tostory-extra-tag">{data.subgenre}</div>
+                </div>
+                <div className="tostory-context">
+                  <div className="tostory-title">
+                    <h1>{data.headline}</h1>
+                  </div>
+                  <div className="tostory-summary">
+                    <p>{data.summary}</p>
+                  </div>
+                  <div className="tostory-byline">
+                    <div className="tostory-byline-image"><img src={data.byimageurl}/></div>
+                    <div className="tostory-byline-name">{data.byline}</div>
+                  </div>
+                  <div className="tostory-timeline">{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
+                </div>
+              </div>
+            </div>
+            <div className="pro-row-3">
+              <div className="pro-card tostory-card pro-card-row-3">
+                <div className="tostory-background full-background">
+                  <img src={data.imageurl}/>
+                  <div className="tostory-background-overlay"></div>
+                </div>
+                <div className="tostory-intersection-tag">
+                  <div className="tostory-intersection">
+                    {data.series}
+                    <div className="tostory-sub-intersection">{data.genre}</div>
+                  </div>
+                  <div className="tostory-extra-tag">{data.subgenre}</div>
+                </div>
+                <div className="tostory-context">
+                  <div className="tostory-title">
+                    <h1>{data.headline}</h1>
+                  </div>
+                  <div className="tostory-summary">
+                    <p>{data.summary}</p>
+                  </div>
+                  <div className="tostory-byline">
+                    <div className="tostory-byline-image"><img src={data.byimageurl}/></div>
+                    <div className="tostory-byline-name">{data.byline}</div>
+                  </div>
+                  <div className="tostory-timeline">{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
+                </div>
+              </div>
+            </div>
+            <div className="pro-row-5">
+              <div className="pro-card tostory-card pro-card-row-5">
+                <div className="tostory-background full-background">
+                  <img src={data.imageurl}/>
+                  <div className="tostory-background-overlay"></div>
+                </div>
+                <div className="tostory-intersection-tag">
+                  <div className="tostory-intersection">
+                    {data.series}
+                    <div className="tostory-sub-intersection">{data.genre}</div>
+                  </div>
+                  <div className="tostory-extra-tag">{data.subgenre}</div>
+                </div>
+                <div className="tostory-context">
+                  <div className="tostory-title">
+                    <h1>{data.headline}</h1>
+                  </div>
+                  <div className="tostory-summary">
+                    <p>{data.summary}</p>
+                  </div>
+                  <div className="tostory-byline">
+                    <div className="tostory-byline-image"><img src={data.byimageurl}/></div>
+                    <div className="tostory-byline-name">{data.byline}</div>
+                  </div>
+                  <div className="tostory-timeline">{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="pro-col pro-col-3">
+            <div className="pro-row-1">
+              <div className="pro-card tostory-card pro-card-row-1">
+                <div className="tostory-background full-background">
+                  <img src={data.imageurl}/>
+                  <div className="tostory-background-overlay"></div>
+                </div>
+                <div className="tostory-intersection-tag">
+                  <div className="tostory-intersection">
+                    {data.series}
+                    <div className="tostory-sub-intersection">{data.genre}</div>
+                  </div>
+                  <div className="tostory-extra-tag">{data.subgenre}</div>
+                </div>
+                <div className="tostory-context">
+                  <div className="tostory-title">
+                    <h1>{data.headline}</h1>
+                  </div>
+                  <div className="tostory-summary">
+                    <p>{data.summary}</p>
+                  </div>
+                  <div className="tostory-byline">
+                    <div className="tostory-byline-image"><img src={data.byimageurl}/></div>
+                    <div className="tostory-byline-name">{data.byline}</div>
+                  </div>
+                  <div className="tostory-timeline">{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
+                </div>
+              </div>
+            </div>
+            <div className="pro-row-3">
+              <div className="pro-card tostory-card pro-card-row-3">
+                <div className="tostory-background full-background">
+                  <img src={data.imageurl}/>
+                  <div className="tostory-background-overlay"></div>
+                </div>
+                <div className="tostory-intersection-tag">
+                  <div className="tostory-intersection">
+                    {data.series}
+                    <div className="tostory-sub-intersection">{data.genre}</div>
+                  </div>
+                  <div className="tostory-extra-tag">{data.subgenre}</div>
+                </div>
+                <div className="tostory-context">
+                  <div className="tostory-title">
+                    <h1>{data.headline}</h1>
+                  </div>
+                  <div className="tostory-summary">
+                    <p>{data.summary}</p>
+                  </div>
+                  <div className="tostory-byline">
+                    <div className="tostory-byline-image"><img src={data.byimageurl}/></div>
+                    <div className="tostory-byline-name">{data.byline}</div>
+                  </div>
+                  <div className="tostory-timeline">{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
+                </div>
+              </div>
+            </div>
+            <div className="pro-row-5">
+              <div className="pro-card tostory-card pro-card-row-5">
+                <div className="tostory-background full-background">
+                  <img src={data.imageurl}/>
+                  <div className="tostory-background-overlay"></div>
+                </div>
+                <div className="tostory-intersection-tag">
+                  <div className="tostory-intersection">
+                    {data.series}
+                    <div className="tostory-sub-intersection">{data.genre}</div>
+                  </div>
+                  <div className="tostory-extra-tag">{data.subgenre}</div>
+                </div>
+                <div className="tostory-context">
+                  <div className="tostory-title">
+                    <h1>{data.headline}</h1>
+                  </div>
+                  <div className="tostory-summary">
+                    <p>{data.summary}</p>
+                  </div>
+                  <div className="tostory-byline">
+                    <div className="tostory-byline-image"><img src={data.byimageurl}/></div>
+                    <div className="tostory-byline-name">{data.byline}</div>
+                  </div>
+                  <div className="tostory-timeline">{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       );
     }
   }

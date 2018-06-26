@@ -24,6 +24,11 @@
           "minLength":3,
           "maxLength": 25
         },
+        "byimageurl":{
+          "title": "Byline Image URL",
+          "type": "string",
+          "format":"uri"
+        },
         "publishedat":{
           "title": "Publish Date",
           "type": "string",
