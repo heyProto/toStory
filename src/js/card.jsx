@@ -27,6 +27,7 @@ export default class toStoryCard extends React.Component {
     }
 
     this.state = stateVar;
+    this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount() {
@@ -136,9 +137,10 @@ export default class toStoryCard extends React.Component {
     }
   }
 
-  // handleClick(){
-  //   window.open(this.state.dataJSON.data.url,'_top');
-  // }
+  handleClick(){
+    let url = this.state.dataJSON.data.url
+    window.open(url,'_top');
+  }
 
   // matchDomain(domain, url) {
   //   let url_domain = this.getDomainFromURL(url).replace(/^(https?:\/\/)?(www\.)?/, ''),
@@ -206,7 +208,7 @@ export default class toStoryCard extends React.Component {
       console.log(data.publishedat)
       return (
         <div className="pro-card tostory-card">
-          <div className="tostory-background full-background">
+          <div className="tostory-background full-background" onClick={(this.state.dataJSON.data.url)?this.handleClick:''}>
             <img src={data.imageurl}/>
             <div className="tostory-background-overlay"></div>
           </div>
