@@ -214,7 +214,7 @@ export default class toStoryCard extends React.Component {
           </div>
           <div className="tostory-intersection-tag">
             <div className="tostory-intersection">
-                #{data.series}
+              {data.series}
               {data.genre && <div className="tostory-sub-intersection">{data.genre}</div>}
             </div>
             {data.subgenre && <div className="tostory-extra-tag">{data.subgenre}</div>}
