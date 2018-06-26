@@ -4,6 +4,7 @@
   position: absolute;
   height: 100%;
   width: 100%;
+  cursor: pointer;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0, rgba(0, 0, 0, 0.3) 35%, rgba(0, 0, 0, 0.5) 58%, rgba(0, 0, 0, 0.7)); }
 .tostory-card .tostory-intersection-tag {
   position: absolute;
@@ -178,7 +179,8 @@
   display: none; }
 .pro-col-7 .pro-row-5 .full-background img {
   height: 430px;
-  width: auto; }
+  width: auto;
+ }
 .pro-col-7 .pro-row-5 .tostory-card .tostory-context {
   left: 0px;
   padding: 10px;
@@ -631,4 +633,6 @@
     display: none; }
 
 /*# sourceMappingURL=layout.css.map */
-   
+.full-background img{
+  cursor: pointer;
+}   
