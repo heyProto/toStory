@@ -77,28 +77,21 @@ export default class toStoryCard extends React.Component {
   }
 
   lazyLoadImages(){
-    var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+    inView('.lazy')
+      .on('enter', (e) => {
+          console.log(e)
 
-		  if ("IntersectionObserver" in window) {
-		    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
-		      entries.forEach(function(entry) {
-		        if (entry.isIntersecting) {
-		          console.log("int")			
-		          let lazyImage = entry.target;
-		          lazyImage.src = lazyImage.dataset.src;
-		          lazyImage.classList.remove("lazy");
-		          lazyImageObserver.unobserve(lazyImage);
-		        }
-		      });
-		    });
-
-		    lazyImages.forEach(function(lazyImage) {
-		      lazyImageObserver.observe(lazyImage);
-		    });
-		  } else {
-		    // Possibly fall back to a more compatible method here
-		    console.log("not compatible")
-		  }
+          // let $e = $(e);
+          // if (!$e.find('iframe').length) {
+          //     new ProtoEmbed.initFrame($e[0], $e.attr('iframe-url'), $e.attr('mode'), {
+          //         headerJSON: headerJSON
+          //     });
+          // }
+           let img_src = e.dataset.src
+           e.src = img_src
+           e.classList.remove('lazy')
+           console.log(img_src)
+      });
   }
 
   multiLineTruncate(el) {
@@ -265,6 +258,7 @@ export default class toStoryCard extends React.Component {
             <div className="tostory-timeline">{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
           </div>
         </div>
+        
       );
     }
   }

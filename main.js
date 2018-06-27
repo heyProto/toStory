@@ -25,6 +25,7 @@ ProtoGraph.Card.toStory.prototype.render = function () {
         siteConfigs={this.options.site_configs}
         mode={this.mode}
         dataJSON={this.options.initialState.dataJSON}
+        renderingSSR={true}
       />,
       this.options.selector);
   } else {
