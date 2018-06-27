@@ -27,8 +27,7 @@ export default class toStoryCard extends React.Component {
     }
 
     this.state = stateVar;
-    this.handleClick = this.handleClick.bind(this)
-    this.lazyLoadImages = this.lazyLoadImages.bind(this)
+    this.handleClick = this.handleClick.bind(this);
   }
 
 
@@ -53,9 +52,6 @@ export default class toStoryCard extends React.Component {
         this.componentDidUpdate();
       }
     }
-    if(this.props.renderingSSR){
-      this.lazyLoadImages()
-    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -74,24 +70,6 @@ export default class toStoryCard extends React.Component {
       let elem = document.querySelector('.protograph-summary-text');
       this.multiLineTruncate(elem);
     }
-  }
-
-  lazyLoadImages(){
-    inView('.lazy')
-      .on('enter', (e) => {
-          console.log(e)
-
-          // let $e = $(e);
-          // if (!$e.find('iframe').length) {
-          //     new ProtoEmbed.initFrame($e[0], $e.attr('iframe-url'), $e.attr('mode'), {
-          //         headerJSON: headerJSON
-          //     });
-          // }
-           let img_src = e.dataset.src
-           e.src = img_src
-           e.classList.remove('lazy')
-           console.log(img_src)
-      });
   }
 
   multiLineTruncate(el) {
@@ -251,14 +229,14 @@ export default class toStoryCard extends React.Component {
             </div>
             {data.hide_byline &&
               <div className="tostory-byline">
-                <div className="tostory-byline-image"><img className="lazy" src={this.props.renderingSSR?"":data.byimageurl} data-src={data.byimageurl} alt={data.byline}/></div>
+                <div className="tostory-byline-image"><img className="proto-lazy-load-image" src={this.props.renderingSSR?"":data.byimageurl} data-src={data.byimageurl} alt={data.byline}/></div>
                 <div className="tostory-byline-name">{data.byline}</div>
               </div>
             }
             <div className="tostory-timeline">{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
           </div>
         </div>
-        
+
       );
     }
   }
