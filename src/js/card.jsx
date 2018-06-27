@@ -231,31 +231,32 @@ export default class toStoryCard extends React.Component {
       console.log(data.publishedat)
       return (
         <div className="pro-card tostory-card">
-          <div className="tostory-background full-background" onClick={(this.state.dataJSON.data.url)?this.handleClick:''}>
+          <div className="card-background" onClick={(this.state.dataJSON.data.url)?this.handleClick:''}>
             <img className="lazy" src={this.props.renderingSSR?"":data.imageurl} data-src={data.imageurl} alt={data.headline}/>
-            <div className="tostory-background-overlay"></div>
+            <div className="background-overlay"></div>
           </div>
-          <div className="tostory-intersection-tag">
-            <div className="tostory-intersection">
-              {data.series}
-              {data.genre && <div className="tostory-sub-intersection">{data.genre}</div>}
+          <div className="intersection-tag">
+            <div className="series">
+              #{data.series}
+              {data.genre && <div className="intersection">{data.genre}</div>}
             </div>
-            {data.subgenre && <div className="tostory-extra-tag">{data.subgenre}</div>}
+            {data.subgenre && <div className="sub-intersection">{data.subgenre}</div>}
           </div>
-          <div className="tostory-context">
-            <div className="tostory-title">
+          <div className="context">
               <h1>{data.headline}</h1>
-            </div>
-            <div className="tostory-summary">
               <p>{data.summary}</p>
-            </div>
-            {data.hide_byline &&
-              <div className="tostory-byline">
-                <div className="tostory-byline-image"><img className="lazy" src={this.props.renderingSSR?"":data.byimageurl} data-src={data.byimageurl} alt={data.byline}/></div>
-                <div className="tostory-byline-name">{data.byline}</div>
-              </div>
-            }
-            <div className="tostory-timeline">{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
+              <div class="publishing-info">
+                {data.hide_byline &&
+                <div className="byline">
+                  <div className="byline-image"><img className="lazy" src={this.props.renderingSSR?"":data.byimageurl} data-src={data.byimageurl} alt={data.byline}/></div>
+                  <div className="byline-name">{data.byline}</div>
+                </div>
+
+                }
+                <div className="timeline">{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
+              </div>  
+              
+            
           </div>
         </div>
         
