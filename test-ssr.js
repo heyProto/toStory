@@ -1,7 +1,7 @@
 var SSR = require('./dist/0.0.1/ssr-card.min.js')
 var state = {
     "dataJSON": {
-        "card_data": {
+        
             "data": {
                 "url": "https://thewire.in/210310/japan-cleaning-sanitation-work-swachh-bharat/",
                 "headline": "Zen and the Art of Sanitation, or the Right Way to Keep a Country Clean",
@@ -29,6 +29,7 @@ var state = {
                 "left": 50
             }
         }
-    }
+    
 }
-SSR.render("col16", state)
+let x = SSR.render("col16", state)
+console.log(x.content)

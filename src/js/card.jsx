@@ -28,7 +28,9 @@ export default class toStoryCard extends React.Component {
 
     this.state = stateVar;
     this.handleClick = this.handleClick.bind(this)
+    this.lazyLoadImages = this.lazyLoadImages.bind(this)
   }
+
 
   componentDidMount() {
     if (this.state.fetchingData){
@@ -51,6 +53,9 @@ export default class toStoryCard extends React.Component {
         this.componentDidUpdate();
       }
     }
+    if(this.props.renderingSSR){
+      this.lazyLoadImages()
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -69,6 +74,31 @@ export default class toStoryCard extends React.Component {
       let elem = document.querySelector('.protograph-summary-text');
       this.multiLineTruncate(elem);
     }
+  }
+
+  lazyLoadImages(){
+    var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+
+		  if ("IntersectionObserver" in window) {
+		    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+		      entries.forEach(function(entry) {
+		        if (entry.isIntersecting) {
+		          console.log("int")			
+		          let lazyImage = entry.target;
+		          lazyImage.src = lazyImage.dataset.src;
+		          lazyImage.classList.remove("lazy");
+		          lazyImageObserver.unobserve(lazyImage);
+		        }
+		      });
+		    });
+
+		    lazyImages.forEach(function(lazyImage) {
+		      lazyImageObserver.observe(lazyImage);
+		    });
+		  } else {
+		    // Possibly fall back to a more compatible method here
+		    console.log("not compatible")
+		  }
   }
 
   multiLineTruncate(el) {
@@ -209,7 +239,7 @@ export default class toStoryCard extends React.Component {
       return (
         <div className="pro-card tostory-card">
           <div className="tostory-background full-background" onClick={(this.state.dataJSON.data.url)?this.handleClick:''}>
-            <img src={data.imageurl}/>
+            <img className="lazy" src={this.props.renderingSSR?"":data.imageurl} data-src={data.imageurl} alt={data.headline}/>
             <div className="tostory-background-overlay"></div>
           </div>
           <div className="tostory-intersection-tag">
@@ -228,7 +258,7 @@ export default class toStoryCard extends React.Component {
             </div>
             {data.hide_byline &&
               <div className="tostory-byline">
-                <div className="tostory-byline-image"><img src={data.byimageurl}/></div>
+                <div className="tostory-byline-image"><img className="lazy" src={this.props.renderingSSR?"":data.byimageurl} data-src={data.byimageurl} alt={data.byline}/></div>
                 <div className="tostory-byline-name">{data.byline}</div>
               </div>
             }
