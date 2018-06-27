@@ -27,8 +27,7 @@ export default class toStoryCard extends React.Component {
     }
 
     this.state = stateVar;
-    this.handleClick = this.handleClick.bind(this)
-    this.lazyLoadImages = this.lazyLoadImages.bind(this)
+    this.handleClick = this.handleClick.bind(this);
   }
 
 
@@ -53,9 +52,6 @@ export default class toStoryCard extends React.Component {
         this.componentDidUpdate();
       }
     }
-    if(this.props.renderingSSR){
-      this.lazyLoadImages()
-    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -74,24 +70,6 @@ export default class toStoryCard extends React.Component {
       let elem = document.querySelector('.protograph-summary-text');
       this.multiLineTruncate(elem);
     }
-  }
-
-  lazyLoadImages(){
-    inView('.lazy')
-      .on('enter', (e) => {
-          console.log(e)
-
-          // let $e = $(e);
-          // if (!$e.find('iframe').length) {
-          //     new ProtoEmbed.initFrame($e[0], $e.attr('iframe-url'), $e.attr('mode'), {
-          //         headerJSON: headerJSON
-          //     });
-          // }
-           let img_src = e.dataset.src
-           e.src = img_src
-           e.classList.remove('lazy')
-           console.log(img_src)
-      });
   }
 
   multiLineTruncate(el) {
@@ -259,7 +237,7 @@ export default class toStoryCard extends React.Component {
             
           </div>
         </div>
-        
+
       );
     }
   }
