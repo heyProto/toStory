@@ -210,7 +210,7 @@ export default class toStoryCard extends React.Component {
       return (
         <div className="pro-card tostory-card">
           <div className="tostory-background full-background" onClick={(this.state.dataJSON.data.url)?this.handleClick:''}>
-            <img className="lazy" src={this.props.renderingSSR?"":data.imageurl} data-src={data.imageurl} alt={data.headline}/>
+            <img className="proto-lazy-load-image" src={this.props.renderingSSR ? "" : data.imageurl} data-src={data.imageurl} alt={data.headline}/>
             <div className="tostory-background-overlay"></div>
           </div>
           <div className="tostory-intersection-tag">
