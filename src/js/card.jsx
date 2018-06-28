@@ -206,11 +206,10 @@ export default class toStoryCard extends React.Component {
       )
     } else {
       let data = this.state.dataJSON.data;
-      console.log(data.publishedat)
       return (
         <div className="pro-card tostory-card">
-          <div className="card-background" onClick={(this.state.dataJSON.data.url)?this.handleClick:''}>
-            <img className="lazy" src={this.props.renderingSSR?"":data.imageurl} data-src={data.imageurl} alt={data.headline}/>
+          <div className="card-background" onClick={(this.state.dataJSON.data.url) ? this.handleClick : ''}>
+            <img className="proto-lazy-load-image" src={this.props.renderingSSR ? "" : data.imageurl} data-src={data.imageurl} alt={data.headline} />
             <div className="background-overlay"></div>
           </div>
           <div className="intersection-tag">
@@ -221,20 +220,18 @@ export default class toStoryCard extends React.Component {
             {data.subgenre && <div className="sub-intersection">{data.subgenre}</div>}
           </div>
           <div className="context">
-              <h1>{data.headline}</h1>
-              <p>{data.summary}</p>
-              <div class="publishing-info">
-                {data.hide_byline &&
+            <h1>{data.headline}</h1>
+            <p>{data.summary}</p>
+            <div class="publishing-info">
+              {data.hide_byline &&
                 <div className="byline">
-                  <div className="byline-image"><img className="lazy" src={this.props.renderingSSR?"":data.byimageurl} data-src={data.byimageurl} alt={data.byline}/></div>
+                  <div className="byline-image"><img className="proto-lazy-load-image" src={this.props.renderingSSR ? "" : data.byimageurl} data-src={data.byimageurl} alt={data.byline} /></div>
                   <div className="byline-name">{data.byline}</div>
                 </div>
 
-                }
-                <div className="timeline">{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
-              </div>  
-              
-            
+              }
+              <div className="timeline">{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
+            </div>
           </div>
         </div>
 
