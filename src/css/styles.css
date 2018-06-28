@@ -1,83 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Domine:400,700|Montserrat:400,500,600,700,900");
-@import url("https://fonts.googleapis.com/css?family=Nunito:400,800");
-@import url("https://fonts.googleapis.com/css?family=Eczar:400,500");
-@import url("https://fonts.googleapis.com/css?family=Crimson+Text");
-body {
-  margin: 0px !important; }
-
-.pro-container {
-  width: 1260px;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative; }
-  .pro-container .pro-col {
-    display: inline-block;
-    margin-right: 20px;
-    min-width: 60px;
-    float: left;
-    position: relative; }
-    .pro-container .pro-col .pro-row {
-      display: inline-block;
-      position: relative;
-      float: left;
-      width: 100%; }
-    .pro-container .pro-col .pro-row-1 .pro-card {
-      height: 70px; }
-    .pro-container .pro-col .pro-row-3 .pro-card {
-      height: 250px; }
-    .pro-container .pro-col .pro-row-5 .pro-card {
-      height: 430px; }
-  .pro-container .pro-col:last-child {
-    margin-right: 0px; }
-  .pro-container .pro-col-2 {
-    width: 140px; }
-  .pro-container .pro-col-3 {
-    width: 220px; }
-  .pro-container .pro-col-4 {
-    width: 300px; }
-  .pro-container .pro-col-7 {
-    width: 540px; }
-  .pro-container .pro-col-8 {
-    width: 620px; }
-  .pro-container .pro-col-10 {
-    width: 780px; }
-  .pro-container .pro-col-12 {
-    width: 940px; }
-  .pro-container .pro-col-14 {
-    width: 1100px; }
-  .pro-container .pro-col-16 {
-    width: 1260px;
-    margin-right: 0px !important; }
-
-.pro-card {
-  display: inline-block;
-  position: relative;
-  float: left;
-  width: 100%;
-  margin-bottom: 20px;
-  overflow: hidden;
-  box-sizing: border-box; }
-
-body {
-  font-family: 'Domine', serif; }
-
-h1 {
-  font-family: 'Montserrat', sans-serif;
-  color: #222;
-  margin: 0px;
-  font-size: 2.1rem;
-  line-height: 2.5rem;
-  font-weight: 600; }
-
-p {
-  font-family: 'Domine', serif;
-  color: black;
-  opacity: 0.7;
-  font-size: 0.9rem;
-  line-height: 1.4rem; }
-
-/*# sourceMappingURL=style.css.map */
-
 .pro-col-16 .pro-row-5 .tostory-card .card-background, .pro-col-14 .pro-row-5 .tostory-card .card-background {
   height: 430px; }
   .pro-col-16 .pro-row-5 .tostory-card .card-background img, .pro-col-14 .pro-row-5 .tostory-card .card-background img {
@@ -98,10 +18,11 @@ p {
     color: #333;
     opacity: 0.8; }
   .pro-col-16 .pro-row-5 .tostory-card .context .byline .byline-name, .pro-col-14 .pro-row-5 .tostory-card .context .byline .byline-name {
-    color: #333; }
-  .pro-col-16 .pro-row-5 .tostory-card .context .timeline, .pro-col-14 .pro-row-5 .tostory-card .context .timeline {
     color: #333;
-    border-color: rgba(0, 0, 0, 0.5); }
+    border-color: rgba(0, 0, 0, 0.5);
+  }
+  .pro-col-16 .pro-row-5 .tostory-card .context .timeline, .pro-col-14 .pro-row-5 .tostory-card .context .timeline {
+    color: #333; }
 
 .pro-col-12 .pro-row-5 .tostory-card .card-background, .pro-col-10 .pro-row-5 .tostory-card .card-background, .pro-col-8 .pro-row-5 .tostory-card .card-background {
   height: 430px; }
@@ -147,6 +68,42 @@ p {
 .pro-col-4 .pro-row-5 .tostory-card .context .timeline, .pro-col-3 .pro-row-5 .tostory-card .context .timeline {
   display: none; }
 
+@media screen and (max-width: 480px) {
+  .pro-col-16 .pro-row-5 .tostory-card .card-background, .pro-col-14 .pro-row-5 .tostory-card .card-background, .pro-col-12 .pro-row-5 .tostory-card .card-background, .pro-col-10 .pro-row-5 .tostory-card .card-background, .pro-col-8 .pro-row-5 .tostory-card .card-background, .pro-col-7 .pro-row-5 .tostory-card .card-background {
+    height: auto; }
+    .pro-col-16 .pro-row-5 .tostory-card .card-background img, .pro-col-14 .pro-row-5 .tostory-card .card-background img, .pro-col-12 .pro-row-5 .tostory-card .card-background img, .pro-col-10 .pro-row-5 .tostory-card .card-background img, .pro-col-8 .pro-row-5 .tostory-card .card-background img, .pro-col-7 .pro-row-5 .tostory-card .card-background img {
+      width: 100vw !important;
+      height: auto;
+      margin-left: 0px;
+      margin-top: 0px;
+      transform: translate(0%, 0%);
+      position: initial;
+      width: auto; }
+    .pro-col-16 .pro-row-5 .tostory-card .card-background .background-overlay, .pro-col-14 .pro-row-5 .tostory-card .card-background .background-overlay, .pro-col-12 .pro-row-5 .tostory-card .card-background .background-overlay, .pro-col-10 .pro-row-5 .tostory-card .card-background .background-overlay, .pro-col-8 .pro-row-5 .tostory-card .card-background .background-overlay, .pro-col-7 .pro-row-5 .tostory-card .card-background .background-overlay {
+      display: none; }
+  .pro-col-16 .pro-row-5 .tostory-card .context, .pro-col-14 .pro-row-5 .tostory-card .context, .pro-col-12 .pro-row-5 .tostory-card .context, .pro-col-10 .pro-row-5 .tostory-card .context, .pro-col-8 .pro-row-5 .tostory-card .context, .pro-col-7 .pro-row-5 .tostory-card .context {
+    background: transparent;
+    height: auto;
+    position: relative; }
+    .pro-col-16 .pro-row-5 .tostory-card .context h1, .pro-col-14 .pro-row-5 .tostory-card .context h1, .pro-col-12 .pro-row-5 .tostory-card .context h1, .pro-col-10 .pro-row-5 .tostory-card .context h1, .pro-col-8 .pro-row-5 .tostory-card .context h1, .pro-col-7 .pro-row-5 .tostory-card .context h1 {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      line-height: 1.6rem;
+      color: #333; }
+    .pro-col-16 .pro-row-5 .tostory-card .context p, .pro-col-14 .pro-row-5 .tostory-card .context p, .pro-col-12 .pro-row-5 .tostory-card .context p, .pro-col-10 .pro-row-5 .tostory-card .context p, .pro-col-8 .pro-row-5 .tostory-card .context p, .pro-col-7 .pro-row-5 .tostory-card .context p {
+      color: #333;
+      opacity: 0.8;
+      display: block; }
+    .pro-col-16 .pro-row-5 .tostory-card .context .byline, .pro-col-14 .pro-row-5 .tostory-card .context .byline, .pro-col-12 .pro-row-5 .tostory-card .context .byline, .pro-col-10 .pro-row-5 .tostory-card .context .byline, .pro-col-8 .pro-row-5 .tostory-card .context .byline, .pro-col-7 .pro-row-5 .tostory-card .context .byline {
+      display: block; }
+      .pro-col-16 .pro-row-5 .tostory-card .context .byline .byline-image, .pro-col-14 .pro-row-5 .tostory-card .context .byline .byline-image, .pro-col-12 .pro-row-5 .tostory-card .context .byline .byline-image, .pro-col-10 .pro-row-5 .tostory-card .context .byline .byline-image, .pro-col-8 .pro-row-5 .tostory-card .context .byline .byline-image, .pro-col-7 .pro-row-5 .tostory-card .context .byline .byline-image {
+        display: none; }
+      .pro-col-16 .pro-row-5 .tostory-card .context .byline .byline-name, .pro-col-14 .pro-row-5 .tostory-card .context .byline .byline-name, .pro-col-12 .pro-row-5 .tostory-card .context .byline .byline-name, .pro-col-10 .pro-row-5 .tostory-card .context .byline .byline-name, .pro-col-8 .pro-row-5 .tostory-card .context .byline .byline-name, .pro-col-7 .pro-row-5 .tostory-card .context .byline .byline-name {
+        color: #333; }
+    .pro-col-16 .pro-row-5 .tostory-card .context .timeline, .pro-col-14 .pro-row-5 .tostory-card .context .timeline, .pro-col-12 .pro-row-5 .tostory-card .context .timeline, .pro-col-10 .pro-row-5 .tostory-card .context .timeline, .pro-col-8 .pro-row-5 .tostory-card .context .timeline, .pro-col-7 .pro-row-5 .tostory-card .context .timeline {
+      color: #333;
+      display: block;
+      border-color: #333; } }
 .pro-col-16 .pro-row-3 .tostory-card .card-background, .pro-col-14 .pro-row-3 .tostory-card .card-background, .pro-col-12 .pro-row-3 .tostory-card .card-background, .pro-col-10 .pro-row-3 .tostory-card .card-background, .pro-col-8 .pro-row-3 .tostory-card .card-background, .pro-col-7 .pro-row-3 .tostory-card .card-background {
   height: 250px; }
   .pro-col-16 .pro-row-3 .tostory-card .card-background img, .pro-col-14 .pro-row-3 .tostory-card .card-background img, .pro-col-12 .pro-row-3 .tostory-card .card-background img, .pro-col-10 .pro-row-3 .tostory-card .card-background img, .pro-col-8 .pro-row-3 .tostory-card .card-background img, .pro-col-7 .pro-row-3 .tostory-card .card-background img {
@@ -226,11 +183,75 @@ p {
   .pro-col-3 .pro-row-3 .tostory-card .context .timeline, .pro-col-2 .pro-row-3 .tostory-card .context .timeline {
     display: none; }
 
+@media screen and (max-width: 480px) {
+  .pro-col-16 .pro-row-3 .tostory-card .card-background, .pro-col-14 .pro-row-3 .tostory-card .card-background, .pro-col-12 .pro-row-3 .tostory-card .card-background, .pro-col-10 .pro-row-3 .tostory-card .card-background, .pro-col-8 .pro-row-3 .tostory-card .card-background, .pro-col-7 .pro-row-3 .tostory-card .card-background {
+    background: #fafafa;
+    width: 100%; }
+    .pro-col-16 .pro-row-3 .tostory-card .card-background img, .pro-col-14 .pro-row-3 .tostory-card .card-background img, .pro-col-12 .pro-row-3 .tostory-card .card-background img, .pro-col-10 .pro-row-3 .tostory-card .card-background img, .pro-col-8 .pro-row-3 .tostory-card .card-background img, .pro-col-7 .pro-row-3 .tostory-card .card-background img {
+      width: 100%;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%); }
+    .pro-col-16 .pro-row-3 .tostory-card .card-background .background-overlay, .pro-col-14 .pro-row-3 .tostory-card .card-background .background-overlay, .pro-col-12 .pro-row-3 .tostory-card .card-background .background-overlay, .pro-col-10 .pro-row-3 .tostory-card .card-background .background-overlay, .pro-col-8 .pro-row-3 .tostory-card .card-background .background-overlay, .pro-col-7 .pro-row-3 .tostory-card .card-background .background-overlay {
+      display: block; }
+  .pro-col-16 .pro-row-3 .tostory-card .context, .pro-col-14 .pro-row-3 .tostory-card .context, .pro-col-12 .pro-row-3 .tostory-card .context, .pro-col-10 .pro-row-3 .tostory-card .context, .pro-col-8 .pro-row-3 .tostory-card .context, .pro-col-7 .pro-row-3 .tostory-card .context {
+    position: absolute;
+    bottom: 0px;
+    height: auto; }
+    .pro-col-16 .pro-row-3 .tostory-card .context h1, .pro-col-14 .pro-row-3 .tostory-card .context h1, .pro-col-12 .pro-row-3 .tostory-card .context h1, .pro-col-10 .pro-row-3 .tostory-card .context h1, .pro-col-8 .pro-row-3 .tostory-card .context h1, .pro-col-7 .pro-row-3 .tostory-card .context h1 {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      line-height: 1.6rem;
+      color: white; }
+    .pro-col-16 .pro-row-3 .tostory-card .context p, .pro-col-14 .pro-row-3 .tostory-card .context p, .pro-col-12 .pro-row-3 .tostory-card .context p, .pro-col-10 .pro-row-3 .tostory-card .context p, .pro-col-8 .pro-row-3 .tostory-card .context p, .pro-col-7 .pro-row-3 .tostory-card .context p {
+      display: none; }
+    .pro-col-16 .pro-row-3 .tostory-card .context .byline, .pro-col-14 .pro-row-3 .tostory-card .context .byline, .pro-col-12 .pro-row-3 .tostory-card .context .byline, .pro-col-10 .pro-row-3 .tostory-card .context .byline, .pro-col-8 .pro-row-3 .tostory-card .context .byline, .pro-col-7 .pro-row-3 .tostory-card .context .byline {
+      display: block; }
+      .pro-col-16 .pro-row-3 .tostory-card .context .byline .byline-image, .pro-col-14 .pro-row-3 .tostory-card .context .byline .byline-image, .pro-col-12 .pro-row-3 .tostory-card .context .byline .byline-image, .pro-col-10 .pro-row-3 .tostory-card .context .byline .byline-image, .pro-col-8 .pro-row-3 .tostory-card .context .byline .byline-image, .pro-col-7 .pro-row-3 .tostory-card .context .byline .byline-image {
+        display: none; }
+    .pro-col-16 .pro-row-3 .tostory-card .context .timeline, .pro-col-14 .pro-row-3 .tostory-card .context .timeline, .pro-col-12 .pro-row-3 .tostory-card .context .timeline, .pro-col-10 .pro-row-3 .tostory-card .context .timeline, .pro-col-8 .pro-row-3 .tostory-card .context .timeline, .pro-col-7 .pro-row-3 .tostory-card .context .timeline {
+      display: block; }
+
+  .pro-col-4 .pro-row-3 .pro-card, .pro-col-3 .pro-row-3 .pro-card, .pro-col-2 .pro-row-3 .pro-card {
+    height: 70px !important; }
+  .pro-col-4 .pro-row-3 .tostory-card, .pro-col-3 .pro-row-3 .tostory-card, .pro-col-2 .pro-row-3 .tostory-card {
+    height: 70px !important; }
+    .pro-col-4 .pro-row-3 .tostory-card .card-background, .pro-col-3 .pro-row-3 .tostory-card .card-background, .pro-col-2 .pro-row-3 .tostory-card .card-background {
+      background: #fafafa;
+      width: auto;
+      height: 70px; }
+      .pro-col-4 .pro-row-3 .tostory-card .card-background img, .pro-col-3 .pro-row-3 .tostory-card .card-background img, .pro-col-2 .pro-row-3 .tostory-card .card-background img {
+        height: 100%;
+        width: auto;
+        position: relative; }
+      .pro-col-4 .pro-row-3 .tostory-card .card-background .background-overlay, .pro-col-3 .pro-row-3 .tostory-card .card-background .background-overlay, .pro-col-2 .pro-row-3 .tostory-card .card-background .background-overlay {
+        display: none; }
+    .pro-col-4 .pro-row-3 .tostory-card .intersection-tag, .pro-col-3 .pro-row-3 .tostory-card .intersection-tag, .pro-col-2 .pro-row-3 .tostory-card .intersection-tag {
+      display: none; }
+    .pro-col-4 .pro-row-3 .tostory-card .context, .pro-col-3 .pro-row-3 .tostory-card .context, .pro-col-2 .pro-row-3 .tostory-card .context {
+      position: absolute;
+      bottom: auto;
+      top: 0px;
+      height: 70px;
+      overflow: hidden;
+      padding: 0px 10px 0px; }
+      .pro-col-4 .pro-row-3 .tostory-card .context h1, .pro-col-3 .pro-row-3 .tostory-card .context h1, .pro-col-2 .pro-row-3 .tostory-card .context h1 {
+        font-family: 'Domine', serif;
+        color: #333;
+        font-size: 0.9rem;
+        line-height: 1.4rem;
+        margin: 0px;
+        opacity: 0.9; }
+      .pro-col-4 .pro-row-3 .tostory-card .context p, .pro-col-3 .pro-row-3 .tostory-card .context p, .pro-col-2 .pro-row-3 .tostory-card .context p {
+        display: none; }
+      .pro-col-4 .pro-row-3 .tostory-card .context .byline, .pro-col-3 .pro-row-3 .tostory-card .context .byline, .pro-col-2 .pro-row-3 .tostory-card .context .byline {
+        display: none; }
+      .pro-col-4 .pro-row-3 .tostory-card .context .timeline, .pro-col-3 .pro-row-3 .tostory-card .context .timeline, .pro-col-2 .pro-row-3 .tostory-card .context .timeline {
+        display: none; } }
 .tostory-card .card-background {
   display: inline-block;
-  position: relative;
-  cursor:pointer;
-}
+  position: relative; }
   .tostory-card .card-background img {
     position: relative;
     left: 50%;
@@ -303,6 +324,8 @@ p {
       display: inline-block;
       float: left;
       margin-top: 11px;
+      border-left: 1px solid rgba(255, 255, 255, 0.3);
+      padding-right: 10px;
       font-family: 'Montserrat', sans-serif; }
   .tostory-card .context .timeline {
     display: inline-block;
@@ -310,8 +333,6 @@ p {
     color: white;
     float: left;
     margin-top: 11px;
-    border-left: 1px solid rgba(255, 255, 255, 0.3);
-    padding-left: 10px;
     font-family: 'Montserrat', sans-serif; }
 
 /*# sourceMappingURL=tostory-card.css.map */

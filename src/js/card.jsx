@@ -221,7 +221,7 @@ export default class toStoryCard extends React.Component {
           </div>
           <div className="context">
             <h1>{data.headline}</h1>
-            <p>{data.summary}</p>
+            {data.summary && <p>{data.summary}</p>}
             <div class="publishing-info">
               {data.hide_byline &&
                 <div className="byline">
