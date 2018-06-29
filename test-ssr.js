@@ -31,5 +31,5 @@ var state = {
         }
     
 }
-let x = SSR.render("col16", state)
+let x = SSR.render(state)
 console.log(x.content)

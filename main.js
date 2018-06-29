@@ -23,7 +23,6 @@ ProtoGraph.Card.toStory.prototype.render = function () {
       <Card
         selector={this.options.selector}
         siteConfigs={this.options.site_configs}
-        mode={this.mode}
         dataJSON={this.options.initialState.dataJSON}
         renderingSSR={true}
       />,
@@ -37,7 +36,6 @@ ProtoGraph.Card.toStory.prototype.render = function () {
         siteConfigURL={this.options.site_config_url}
         siteConfigs={this.options.site_configs}
         clickCallback={this.options.onClickCallback}
-        mode={this.mode}
         ref={(e) => {
           this.containerInstance = this.containerInstance || e;
         }} />,

@@ -19,11 +19,10 @@ global.window = {};
 //     `
 // }
 
-function render(mode, initialState) {
+function render(initialState) {
     let content = renderToString(
         <Card
             dataJSON={initialState.dataJSON}
-            mode={mode}
             renderingSSR={true}
         />
     );
