@@ -207,8 +207,8 @@ export default class toStoryCard extends React.Component {
     } else {
       let data = this.state.dataJSON.data;
       return (
-        <div className="pro-card tostory-card">
-          <div className="card-background" onClick={(this.state.dataJSON.data.url) ? this.handleClick : ''}>
+        <div className="pro-card tostory-card" onClick={(this.state.dataJSON.data.url) ? this.handleClick : ''}>
+          <div className="card-background" >
             <img className={data.imageurl?"proto-lazy-load-image":""} src={this.props.renderingSSR ? "https://cdn.protograph.pykih.com/lib/bg-image.jpg" : data.imageurl} data-src={data.imageurl} alt={data.headline} />
             <div className="background-overlay"></div>
           </div>
@@ -223,10 +223,10 @@ export default class toStoryCard extends React.Component {
             <h1>{data.headline}</h1>
             {data.summary && <p>{data.summary}</p>}
             <div class="publishing-info">
-              {data.hide_byline &&
+              {!data.hide_byline &&
                 <div className="byline">
                   <div className="byline-image"><img className="proto-lazy-load-image" src={this.props.renderingSSR ? "https://cdn.protograph.pykih.com/lib/bg-image.jpg" : data.byimageurl} data-src={data.byimageurl} alt={data.byline} /></div>
-                  <div className="byline-name">{data.byline}</div>
+                  {data.byline && <div className="byline-name">{data.byline}</div>}
                 </div>
 
               }
