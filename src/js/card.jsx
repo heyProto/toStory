@@ -209,7 +209,7 @@ export default class toStoryCard extends React.Component {
       return (
         <div className="pro-card tostory-card">
           <div className="card-background" onClick={(this.state.dataJSON.data.url) ? this.handleClick : ''}>
-            <img className={data.imageurl?"proto-lazy-load-image":""} src={this.props.renderingSSR ? "" : data.imageurl} data-src={data.imageurl} alt={data.headline} />
+            <img className={data.imageurl?"proto-lazy-load-image":""} src={this.props.renderingSSR ? "https://cdn.protograph.pykih.com/lib/bg-image.jpg" : data.imageurl} data-src={data.imageurl} alt={data.headline} />
             <div className="background-overlay"></div>
           </div>
           <div className="intersection-tag">
@@ -225,7 +225,7 @@ export default class toStoryCard extends React.Component {
             <div class="publishing-info">
               {data.hide_byline &&
                 <div className="byline">
-                  <div className="byline-image"><img className="proto-lazy-load-image" src={this.props.renderingSSR ? "" : data.byimageurl} data-src={data.byimageurl} alt={data.byline} /></div>
+                  <div className="byline-image"><img className="proto-lazy-load-image" src={this.props.renderingSSR ? "https://cdn.protograph.pykih.com/lib/bg-image.jpg" : data.byimageurl} data-src={data.byimageurl} alt={data.byline} /></div>
                   <div className="byline-name">{data.byline}</div>
                 </div>
 
