@@ -202,7 +202,7 @@ export default class toStoryCard extends React.Component {
   render() {
     if (this.state.fetchingData) {
       return (
-        <div>Loading</div>
+        <div></div>
       )
     } else {
       let data = this.state.dataJSON.data;
@@ -214,17 +214,16 @@ export default class toStoryCard extends React.Component {
       return (
         <div className="pro-card tostory-card" onClick={(this.state.dataJSON.data.url) ? this.handleClick : ''}>
           <div className="card-background" >
-            {data.imageurl && <img className={data.imageurl?"proto-lazy-load-image":""} src={this.props.renderingSSR ? "https://cdn.protograph.pykih.com/lib/bg-image.jpg" : data.imageurl} data-src={data.imageurl} alt={data.headline} />}
+            {data.imageurl && <img src={data.imageurl} data-src={data.imageurl} alt={data.headline} />}
             <div className="background-overlay"></div>
           </div>
-          <div className="intersection-tag">
-            <div className="series">
-              #{data.series}
-              {data.genre && <div className="intersection">{data.genre}</div>}
-            </div>
-            {data.subgenre && <div className="sub-intersection">{data.subgenre}</div>}
-          </div>
+          
           <div className="context">
+            <div className="intersection-tag">
+              <span>{data.series}</span>
+              {data.genre && <span>&#x2027;</span>}
+              {data.genre && <span> {data.genre}</span>}
+            </div>
             <h1>{data.headline}</h1>
             {data.summary && <p>{data.summary}</p>}
             <div class="publishing-info">
@@ -237,10 +236,18 @@ export default class toStoryCard extends React.Component {
                   }
                   
                   {data.byline && <div className="byline-name">{data.byline}</div>}
+                  
                 </div>
 
               }
-              <div className="timeline">{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
+              <div className="timeline">{data.byline && <span>&#x2027;</span> }{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
+              <div class="media-icons">
+								<span><img src="https://s3.ap-south-1.amazonaws.com/dev.cdn.protograph/lib/image.png" height="8px"/></span>
+								<span class="dot-divider">&#x2027;</span>
+								<span><img src="https://s3.ap-south-1.amazonaws.com/dev.cdn.protograph/lib/audio.png" height="8px"/></span>
+								<span class="dot-divider">&#x2027;</span>
+								<span><img src="https://s3.ap-south-1.amazonaws.com/dev.cdn.protograph/lib/video.png" height="8px"/></span>
+							</div>
             </div>
           </div>
         </div>
