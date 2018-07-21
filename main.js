@@ -12,7 +12,30 @@ ProtoGraph.Card.toStory = function () {
 ProtoGraph.Card.toStory.prototype.init = function (options) {
   this.options = options;
 }
+ProtoGraph.Card.toStory.prototype.renderSixteenCol= function (data) {
+  this.mode = 'col16';
+  this.render();
+}
 
+ProtoGraph.Card.toStory.prototype.renderSevenCol= function (data) {
+  this.mode = 'col7';
+  this.render();
+}
+
+ProtoGraph.Card.toStory.prototype.renderFourCol= function (data) {
+  this.mode = 'col4';
+  this.render();
+}
+
+ProtoGraph.Card.toStory.prototype.renderThreeCol= function (data) {
+  this.mode = 'col3';
+  this.render();
+}
+
+ProtoGraph.Card.toStory.prototype.renderTwoCol= function (data) {
+  this.mode = 'col2';
+  this.render();
+}
 ProtoGraph.Card.toStory.prototype.getData = function (data) {
   return this.containerInstance.exportData();
 }
@@ -35,6 +58,7 @@ ProtoGraph.Card.toStory.prototype.render = function () {
         selector={this.options.selector}
         domain={this.options.domain}
         siteConfigURL={this.options.site_config_url}
+        mode={this.mode}
         siteConfigs={this.options.site_configs}
         clickCallback={this.options.onClickCallback}
         ref={(e) => {

@@ -9,13 +9,14 @@ export default class EditStoryCard extends React.Component {
     this.state = {
       dataJSON: {},
       loading: true,
+      mode: "col16",
       publishing: false,
       uiSchemaJSON: {},
       schemaJSON: undefined,
       refLinkDetails: undefined
     }
     this.refLinkSourcesURL = window.ref_link_sources_url;
-    // this.toggleMode = this.toggleMode.bind(this);
+    this.toggleMode = this.toggleMode.bind(this);
   }
 
   exportData() {
@@ -92,7 +93,27 @@ export default class EditStoryCard extends React.Component {
         });
     }
   }
-
+  toggleMode(e) {
+    let element = e.target.closest('a'),
+      mode = element.getAttribute('data-mode');
+    this.setState((prevState, props) => {
+      return {
+        mode: mode
+      }
+    }, (() => {
+          this.setState((prevState, props) => {
+            let newMode;
+            if (mode !== prevState.mode) {
+              newMode = mode;
+            } else {
+              newMode = prevState.mode
+            }
+            return {
+              mode: newMode
+            }
+          })
+        }))
+  }
   onChangeHandler({formData}) {
     this.setState((prevStep, prop) => {
       let dataJSON = prevStep.dataJSON;
@@ -176,12 +197,41 @@ export default class EditStoryCard extends React.Component {
                 </JSONSchemaForm>
               </div>
               <div className="twelve wide column proto-card-preview proto-share-card-div">
+              <div className="protograph-menu-container">
+                  <div className="ui compact menu">
+                    <a className={`item ${this.state.mode === 'col16' ? 'active' : ''}`}
+                      data-mode='col16'
+                      onClick={this.toggleMode}
+                    >
+                      16c-cover
+                    </a>
+                    <a className={`item ${this.state.mode === 'col7' ? 'active' : ''}`}
+                      data-mode='col7'
+                      onClick={this.toggleMode}
+                    >
+                      7c
+                    </a>
+                    <a className={`item ${this.state.mode === 'col4' ? 'active' : ''}`}
+                      data-mode='col4'
+                      onClick={this.toggleMode}
+                    >
+                      4c
+                    </a>
+                    <a className={`item ${this.state.mode === 'col2' ? 'active' : ''}`}
+                      data-mode='col2'
+                      onClick={this.toggleMode}
+                    >
+                      2c
+                    </a>
+                  </div>
+                </div>
                 <div className="protograph-app-holder">
                   <Card
                     dataJSON={this.state.dataJSON}
                     domain={this.props.domain}
+                    mode={this.state.mode}
                     linkDetails={this.state.refLinkDetails}
-                    site_configs={this.state.siteConfigs}
+                    siteConfigs={this.state.siteConfigs}
                   />
                 </div>
               </div>
