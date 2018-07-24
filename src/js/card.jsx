@@ -63,10 +63,9 @@ export default class toStoryCard extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.props.mode === 'col2'){
-      this.ellipsizeTextBox();
-    }
-    console.log(this.state);
+    // if (this.props.mode === 'col2'){
+    //   // this.ellipsizeTextBox();
+    // }
     if (this.state.siteConfigs.story_card_flip && this.state.dataJSON.data.summary) {
       let elem = document.querySelector('.protograph-summary-text');
       this.multiLineTruncate(elem);
@@ -120,24 +119,25 @@ export default class toStoryCard extends React.Component {
   //   }
   // }
 
-  ellipsizeTextBox() {
-    let container = this.props.selector.querySelector('.tostory-card-title h1'),
-      text = this.props.selector.querySelector('.tostory-card-title h1'),
-      // text = document.querySelector(`.protograph-${this.props.mode}-mode .protograph-tocluster-title`),
-      wordArray;
-    let headline = this.state.dataJSON.data.headline;
-    if(headline === '' || headline === undefined){
-      text.innerHTML='';
-    }else{
-      // Setting the string to work with edit mode.
-      text.innerHTML = this.state.dataJSON.data.headline;
-      wordArray = this.state.dataJSON.data.headline.split(' ');
-      while (container.offsetHeight > 80) {
-        wordArray.pop();
-        text.innerHTML = wordArray.join(' ') + '...';
-      }
-    }
-  }
+  // ellipsizeTextBox() {
+  //   let container = this.props.selector.querySelector('.tostory-card-title h1'),
+  //     text = this.props.selector.querySelector('.tostory-card-title h1'),
+  //     // text = document.querySelector(`.protograph-${this.props.mode}-mode .protograph-tocluster-title`),
+  //     wordArray;
+  //   let headline = this.state.dataJSON.data.headline;
+  //   if(headline === '' || headline === undefined){
+  //     text.innerHTML='';
+  //   }else{
+  //     console.log(this.state.dataJSON)
+  //     // Setting the string to work with edit mode.
+  //     text.innerHTML = this.state.dataJSON.data.headline;
+  //     wordArray = this.state.dataJSON.data.headline.split(' ');
+  //     while (container.offsetHeight > 80) {
+  //       wordArray.pop();
+  //       text.innerHTML = wordArray.join(' ') + '...';
+  //     }
+  //   }
+  // }
 
   handleClick(){
     let url = this.state.dataJSON.data.url
@@ -200,6 +200,54 @@ export default class toStoryCard extends React.Component {
   //   return (subDomain);
   // }
 
+  renderHTML(data) {
+    if (this.state.fetchingData) {
+      return (
+        <div></div>
+      )
+    } else {
+      return (<div className="pro-card tostory-card" onClick={(this.state.dataJSON.data.url) ? this.handleClick : ''}>
+              <div className="card-background" >
+                {data.imageurl && <img src={data.imageurl} data-src={data.imageurl} alt={data.headline} />}
+                <div className="background-overlay"></div>
+              </div>
+
+              <div className="context">
+                <div className="intersection-tag">
+                  <span>{data.series}</span>
+                  {data.genre && <span>&#x2027;</span>}
+                  {data.genre && <span> {data.genre}</span>}
+                </div>
+                <h1>{data.headline}</h1>
+                {data.summary && <p>{data.summary}</p>}
+                <div className="publishing-info">
+                  {!data.hide_byline &&
+                    <div className="byline">
+                      {data.byimageurl &&
+                        <div className="byline-image">
+                          <img className="proto-lazy-load-image" src={this.props.renderingSSR ? "https://cdn.protograph.pykih.com/lib/bg-image.jpg" : data.byimageurl} data-src={data.byimageurl} alt={data.byline} />
+                        </div>
+                      }
+
+                      {data.byline && <div className="byline-name">{data.byline}</div>}
+
+                    </div>
+
+                  }
+                  <div className="timeline">{data.byline && <span>&#x2027;</span> }{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
+                  <div className="media-icons">
+                    <span><img src="https://s3.ap-south-1.amazonaws.com/dev.cdn.protograph/lib/image.png" height="8px"/></span>
+                    <span className="dot-divider">&#x2027;</span>
+                    <span><img src="https://s3.ap-south-1.amazonaws.com/dev.cdn.protograph/lib/audio.png" height="8px"/></span>
+                    <span className="dot-divider">&#x2027;</span>
+                    <span><img src="https://s3.ap-south-1.amazonaws.com/dev.cdn.protograph/lib/video.png" height="8px"/></span>
+                  </div>
+                </div>
+              </div>
+            </div>)
+    }
+  }
+
   renderSixteenCol() {
     if (this.state.fetchingData) {
       return (
@@ -215,45 +263,7 @@ export default class toStoryCard extends React.Component {
       return (
         <div className="pro-column-16">
           <div className="pro-rows-5">
-            <div className="pro-card cover-tostory-card" onClick={(this.state.dataJSON.data.url) ? this.handleClick : ''}>
-              <div className="card-background" >
-                {data.imageurl && <img src={data.imageurl} data-src={data.imageurl} alt={data.headline} />}
-                <div className="background-overlay"></div>
-              </div>
-              
-              <div className="context">
-                <div className="intersection-tag">
-                  <span>{data.series}</span>
-                  {data.genre && <span>&#x2027;</span>}
-                  {data.genre && <span> {data.genre}</span>}
-                </div>
-                <h1>{data.headline}</h1>
-                {data.summary && <p>{data.summary}</p>}
-                <div className="publishing-info">
-                  {!data.hide_byline &&
-                    <div className="byline">
-                      {data.byimageurl && 
-                        <div className="byline-image">
-                          <img className="proto-lazy-load-image" src={this.props.renderingSSR ? "https://cdn.protograph.pykih.com/lib/bg-image.jpg" : data.byimageurl} data-src={data.byimageurl} alt={data.byline} />
-                        </div>
-                      }
-                      
-                      {data.byline && <div className="byline-name">{data.byline}</div>}
-                      
-                    </div>
-
-                  }
-                  <div className="timeline">{data.byline && <span>&#x2027;</span> }{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
-                  <div className="media-icons">
-                    <span><img src="https://s3.ap-south-1.amazonaws.com/dev.cdn.protograph/lib/image.png" height="8px"/></span>
-                    <span className="dot-divider">&#x2027;</span>
-                    <span><img src="https://s3.ap-south-1.amazonaws.com/dev.cdn.protograph/lib/audio.png" height="8px"/></span>
-                    <span className="dot-divider">&#x2027;</span>
-                    <span><img src="https://s3.ap-south-1.amazonaws.com/dev.cdn.protograph/lib/video.png" height="8px"/></span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {this.renderHTML(data)}
           </div>
         </div>
       );
@@ -274,45 +284,7 @@ export default class toStoryCard extends React.Component {
       return (
         <div className="pro-column-7">
           <div className="pro-rows-3">
-            <div className="pro-card tostory-card" onClick={(this.state.dataJSON.data.url) ? this.handleClick : ''}>
-              <div className="card-background" >
-                {data.imageurl && <img src={data.imageurl} data-src={data.imageurl} alt={data.headline} />}
-                <div className="background-overlay"></div>
-              </div>
-              
-              <div className="context">
-                <div className="intersection-tag">
-                  <span>{data.series}</span>
-                  {data.genre && <span>&#x2027;</span>}
-                  {data.genre && <span> {data.genre}</span>}
-                </div>
-                <h1>{data.headline}</h1>
-                {data.summary && <p>{data.summary}</p>}
-                <div className="publishing-info">
-                  {!data.hide_byline &&
-                    <div className="byline">
-                      {data.byimageurl && 
-                        <div className="byline-image">
-                          <img className="proto-lazy-load-image" src={this.props.renderingSSR ? "https://cdn.protograph.pykih.com/lib/bg-image.jpg" : data.byimageurl} data-src={data.byimageurl} alt={data.byline} />
-                        </div>
-                      }
-                      
-                      {data.byline && <div className="byline-name">{data.byline}</div>}
-                      
-                    </div>
-
-                  }
-                  <div className="timeline">{data.byline && <span>&#x2027;</span> }{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
-                  <div className="media-icons">
-                    <span><img src="https://s3.ap-south-1.amazonaws.com/dev.cdn.protograph/lib/image.png" height="8px"/></span>
-                    <span className="dot-divider">&#x2027;</span>
-                    <span><img src="https://s3.ap-south-1.amazonaws.com/dev.cdn.protograph/lib/audio.png" height="8px"/></span>
-                    <span className="dot-divider">&#x2027;</span>
-                    <span><img src="https://s3.ap-south-1.amazonaws.com/dev.cdn.protograph/lib/video.png" height="8px"/></span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {this.renderHTML(data)}
           </div>
         </div>
       );
@@ -333,45 +305,7 @@ export default class toStoryCard extends React.Component {
       return (
         <div className="pro-column-4">
           <div className="pro-rows-3">
-            <div className="pro-card tostory-card" onClick={(this.state.dataJSON.data.url) ? this.handleClick : ''}>
-              <div className="card-background" >
-                {data.imageurl && <img src={data.imageurl} data-src={data.imageurl} alt={data.headline} />}
-                <div className="background-overlay"></div>
-              </div>
-              
-              <div className="context">
-                <div className="intersection-tag">
-                  <span>{data.series}</span>
-                  {data.genre && <span>&#x2027;</span>}
-                  {data.genre && <span> {data.genre}</span>}
-                </div>
-                <h1>{data.headline}</h1>
-                {data.summary && <p>{data.summary}</p>}
-                <div className="publishing-info">
-                  {!data.hide_byline &&
-                    <div className="byline">
-                      {data.byimageurl && 
-                        <div className="byline-image">
-                          <img className="proto-lazy-load-image" src={this.props.renderingSSR ? "https://cdn.protograph.pykih.com/lib/bg-image.jpg" : data.byimageurl} data-src={data.byimageurl} alt={data.byline} />
-                        </div>
-                      }
-                      
-                      {data.byline && <div className="byline-name">{data.byline}</div>}
-                      
-                    </div>
-
-                  }
-                  <div className="timeline">{data.byline && <span>&#x2027;</span> }{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
-                  <div className="media-icons">
-                    <span><img src="https://s3.ap-south-1.amazonaws.com/dev.cdn.protograph/lib/image.png" height="8px"/></span>
-                    <span className="dot-divider">&#x2027;</span>
-                    <span><img src="https://s3.ap-south-1.amazonaws.com/dev.cdn.protograph/lib/audio.png" height="8px"/></span>
-                    <span className="dot-divider">&#x2027;</span>
-                    <span><img src="https://s3.ap-south-1.amazonaws.com/dev.cdn.protograph/lib/video.png" height="8px"/></span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {this.renderHTML(data)}
           </div>
         </div>
       );
@@ -392,45 +326,7 @@ export default class toStoryCard extends React.Component {
       return (
         <div className="pro-column-2">
           <div className="pro-rows-3">
-            <div className="pro-card tostory-card" onClick={(this.state.dataJSON.data.url) ? this.handleClick : ''}>
-              <div className="card-background" >
-                {data.imageurl && <img src={data.imageurl} data-src={data.imageurl} alt={data.headline} />}
-                <div className="background-overlay"></div>
-              </div>
-              
-              <div className="context">
-                <div className="intersection-tag">
-                  <span>{data.series}</span>
-                  {data.genre && <span>&#x2027;</span>}
-                  {data.genre && <span> {data.genre}</span>}
-                </div>
-                <h1>{data.headline}</h1>
-                {data.summary && <p>{data.summary}</p>}
-                <div className="publishing-info">
-                  {!data.hide_byline &&
-                    <div className="byline">
-                      {data.byimageurl && 
-                        <div className="byline-image">
-                          <img className="proto-lazy-load-image" src={this.props.renderingSSR ? "https://cdn.protograph.pykih.com/lib/bg-image.jpg" : data.byimageurl} data-src={data.byimageurl} alt={data.byline} />
-                        </div>
-                      }
-                      
-                      {data.byline && <div className="byline-name">{data.byline}</div>}
-                      
-                    </div>
-
-                  }
-                  <div className="timeline">{data.byline && <span>&#x2027;</span> }{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
-                  <div className="media-icons">
-                    <span><img src="https://s3.ap-south-1.amazonaws.com/dev.cdn.protograph/lib/image.png" height="8px"/></span>
-                    <span className="dot-divider">&#x2027;</span>
-                    <span><img src="https://s3.ap-south-1.amazonaws.com/dev.cdn.protograph/lib/audio.png" height="8px"/></span>
-                    <span className="dot-divider">&#x2027;</span>
-                    <span><img src="https://s3.ap-south-1.amazonaws.com/dev.cdn.protograph/lib/video.png" height="8px"/></span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {this.renderHTML(data)}
           </div>
         </div>
       );
@@ -455,7 +351,6 @@ export default class toStoryCard extends React.Component {
     return text_obj;
   }
   render() {
-    console.log(this.props.mode)
     switch(this.props.mode) {
       case 'col16':
         return this.renderSixteenCol();
@@ -465,6 +360,8 @@ export default class toStoryCard extends React.Component {
         return this.renderFourCol();
       case 'col2':
         return this.renderTwoCol();
+      default:
+        return this.renderHTML(this.state.dataJSON.data);
     }
   }
 }
