@@ -263,8 +263,8 @@ export default class toStoryCard extends React.Component {
         }
       }
       return (
-        <div className="pro-column-16">
-          <div className="pro-rows-5">
+        <div className="pro-col-16">
+          <div className="pro-row-5">
             {this.renderHTML(data)}
           </div>
         </div>
@@ -284,8 +284,8 @@ export default class toStoryCard extends React.Component {
         }
       }
       return (
-        <div className="pro-column-7">
-          <div className="pro-rows-3">
+        <div className="pro-col-7">
+          <div className="pro-row-3">
             {this.renderHTML(data)}
           </div>
         </div>
@@ -305,8 +305,8 @@ export default class toStoryCard extends React.Component {
         }
       }
       return (
-        <div className="pro-column-4">
-          <div className="pro-rows-3">
+        <div className="pro-col-4">
+          <div className="pro-row-3">
             {this.renderHTML(data)}
           </div>
         </div>
@@ -326,8 +326,8 @@ export default class toStoryCard extends React.Component {
         }
       }
       return (
-        <div className="pro-column-2">
-          <div className="pro-rows-3">
+        <div className="pro-col-2">
+          <div className="pro-row-3">
             {this.renderHTML(data)}
           </div>
         </div>
