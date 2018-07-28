@@ -521,6 +521,7 @@
     padding-right: 20px;
     box-sizing: border-box;
     position: relative;
+    height: auto;
   }
   .pro-col-16 .pro-row-5 .tostory-card .context .intersection-tag {
     font-size: 10px;
