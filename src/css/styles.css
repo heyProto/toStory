@@ -1,9 +1,9 @@
 @font-face {
   font-family: AvenirLTStd-Medium;
-  src: url("https://dnt71st2q6cqr.cloudfront.net/lib/AvenirLTStd-Medium.otf") format("opentype"); }
+  src: url("https://cdn.protograph.pykih.com/lib/AvenirLTStd-Medium.otf") format("opentype"); }
 @font-face {
   font-family: Avenir-Bold;
-  src: url("https://dnt71st2q6cqr.cloudfront.net/lib/AEH.ttf") format("opentype"); }
+  src: url("https://cdn.protograph.pykih.com/lib/AEH.ttf") format("opentype"); }
 
 .pro-row-3{
   position: relative;
