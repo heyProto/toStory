@@ -47,7 +47,6 @@ ProtoGraph.Card.toStory.prototype.render = function () {
         selector={this.options.selector}
         dataURL={this.options.data_url}
         siteConfigs={this.options.site_configs}
-        // dataJSON={this.options.initialState.dataJSON}
         renderingSSR={true}
       />,
       this.options.selector);

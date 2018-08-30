@@ -237,11 +237,11 @@ export default class toStoryCard extends React.Component {
               }
               <div className="timeline">{data.byline && <span>&#x2027;</span> }{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
               <div className="media-icons">
-                <span><img src="https://s3.ap-south-1.amazonaws.com/dev.cdn.protograph/lib/image.png" height="8px"/></span>
+                <span><img src="https://cdn.protograph.pykih.com/lib/image.png" height="8px"/></span>
                 <span className="dot-divider">&#x2027;</span>
-                <span><img src="https://s3.ap-south-1.amazonaws.com/dev.cdn.protograph/lib/audio.png" height="8px"/></span>
+                <span><img src="https://cdn.protograph.pykih.com/lib/image.png" height="8px"/></span>
                 <span className="dot-divider">&#x2027;</span>
-                <span><img src="https://s3.ap-south-1.amazonaws.com/dev.cdn.protograph/lib/video.png" height="8px"/></span>
+                <span><img src="https://cdn.protograph.pykih.com/lib/image.png" height="8px"/></span>
               </div>
             </div>
           </div>
