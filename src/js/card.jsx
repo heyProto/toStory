@@ -236,13 +236,13 @@ export default class toStoryCard extends React.Component {
 
               }
               <div className="timeline">{data.byline && <span>&#x2027;</span> }{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
-              <div className="media-icons">
-                <span><img src="https://cdn.protograph.pykih.com/lib/image.png" height="8px"/></span>
-                <span className="dot-divider">&#x2027;</span>
-                <span><img src="https://cdn.protograph.pykih.com/lib/image.png" height="8px"/></span>
-                <span className="dot-divider">&#x2027;</span>
-                <span><img src="https://cdn.protograph.pykih.com/lib/image.png" height="8px"/></span>
-              </div>
+              {(data.hasvideo || data.hasimage || data.hasaudio) && <div className="media-icons">
+                {data.hasimage && <span><img src="https://cdn.protograph.pykih.com/Assets/image.png" height="8px"></img>
+                    {(data.hasaudio || data.hasvideo) && <span className="dot-seperator">&#x2027;</span>}</span>}
+                {data.hasaudio && <span><img src="https://cdn.protograph.pykih.com/Assets/audio.png" height="8px"></img>
+                    {data.hasvideo && <span className="dot-seperator">&#x2027;</span>}</span>}
+                {data.hasvideo && <span><img src="https://cdn.protograph.pykih.com/Assets/video.png" height="8px"></img></span>}
+              </div>}
             </div>
           </div>
         </div>
