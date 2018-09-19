@@ -22,7 +22,7 @@
       var x = new ProtoGraph.Card.toStory(),
         params = {
           selector: document.querySelector('#tolink-div'),
-          data_url: './dist/0.0.1/sample.json',
+          data_url: 'https://p.thewire.in/dc1fd8807e5597fc249c7b23/data.json',
           domain: 'indianexpress.com',
         };
         //params['site_config_url'] = "./dist/0.0.1/site.json"
@@ -30,9 +30,9 @@
 
       x.init(params);
       // x.render();
-      x.renderSixteenCol()
+      // x.renderSixteenCol()
       // x.renderSevenCol();
-      // x.renderFourCol();
+      x.renderFourCol();
       // x.renderThreeCol();
       // x.renderTwoCol();
     </script>
