@@ -226,7 +226,7 @@ export default class toStoryCard extends React.Component {
                 <div className="byline">
                   {data.byimageurl &&
                     <div className="byline-image">
-                      <img className="proto-lazy-load-image" src={this.props.renderingSSR ? "https://cdn.protograph.pykih.com/lib/bg-image.jpg" : data.byimageurl} data-src={data.byimageurl} alt={data.byline} />
+                      <img className="proto-lazy-load-image" src={this.props.renderingSSR ? "https://utils.pro.to/lib/bg-image.jpg" : data.byimageurl} data-src={data.byimageurl} alt={data.byline} />
                     </div>
                   }
 
@@ -237,11 +237,11 @@ export default class toStoryCard extends React.Component {
               }
               <div className="timeline">{data.byline && <span>&#x2027;</span> }{data.publishedat && `${ta.ago(data.publishedat)}`}</div>
               {(data.hasvideo || data.hasimage || data.hasaudio) && <div className="media-icons">
-                {data.hasimage && <span><img src="https://cdn.protograph.pykih.com/Assets/image.png" height="8px"></img>
+                {data.hasimage && <span><img src="https://utils.pro.to/Assets/image.png" height="8px"></img>
                     {(data.hasaudio || data.hasvideo) && <span className="dot-seperator">&#x2027;</span>}</span>}
-                {data.hasaudio && <span><img src="https://cdn.protograph.pykih.com/Assets/audio.png" height="8px"></img>
+                {data.hasaudio && <span><img src="https://utils.pro.to/Assets/audio.png" height="8px"></img>
                     {data.hasvideo && <span className="dot-seperator">&#x2027;</span>}</span>}
-                {data.hasvideo && <span><img src="https://cdn.protograph.pykih.com/Assets/video.png" height="8px"></img></span>}
+                {data.hasvideo && <span><img src="https://utils.pro.to/Assets/video.png" height="8px"></img></span>}
               </div>}
             </div>
           </div>

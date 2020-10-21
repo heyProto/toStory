@@ -11,7 +11,7 @@
     <script src="card.min.js"></script>
     <script type="text/javascript">
       var x = new ProtoGraph.Card.toStory();
-      window.ref_link_sources_url = "https://cdn.protograph.pykih.com/Assets/ref_link_sources.json"
+      window.ref_link_sources_url = "https://utils.pro.to/Assets/ref_link_sources.json"
       function findGetParameter(parameterName) {
           var result = null,
               tmp = [],
@@ -30,7 +30,7 @@
       let view_cast_id = findGetParameter('view_cast_id'),
         mode = findGetParameter('mode'),
         domain_name = (findGetParameter('domain') || ""),
-        base_url = findGetParameter('base_url') || "https://cdn.protograph.pykih.com";
+        base_url = findGetParameter('base_url') || "https://utils.pro.to";
 
       if(typeof (view_cast_id) !== 'undefined'){
         var  data_base_path = base_url + "/" + view_cast_id;
